@@ -1,0 +1,122 @@
+:root {
+  --maroon: #3d0f22;
+  --maroon-dark: #3d0f22;
+  --gold: #b89a6b;
+  --gold-light: #cdb98a;
+  --text-light: #f1e9dd;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.navigation {
+  width: 100%;
+}
+
+/* ---------- Top utility bar ---------- */
+.nav-top {
+  background-color: var(--maroon);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  font-size: 14px;
+}
+
+.nav-top a {
+  color: var(--text-light);
+  text-decoration: none;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+}
+
+.nav-top a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.nav-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  object-fit: contain;
+  /* turn the black icons white to match the dark bar */
+  filter: invert(1) brightness(2);
+}
+
+.nav-icon-spacer {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  display: inline-block;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-right .icon-link {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* ---------- Footer sitemap ---------- */
+footer {
+  border-top: 1px solid var(--border-soft);
+  padding: 48px 0 28px;
+  font-size: 0.85rem;
+  background-color: var(--maroon);
+}
+ 
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+ 
+.footer-grid h3 {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sub-gold);
+  margin-bottom: 12px;
+}
+ 
+.footer-grid ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+ 
+.footer-grid a { color: var(--text-cream-dim); }
+.footer-grid a:hover, .footer-grid a:focus-visible { color: var(--text-cream); }
+ 
+.footer-base {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-soft);
+  color: var(--text-cream-dim);
+  font-size: 0.78rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ---------- Nav toggle (mobile) ---------- */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--sub-gold);
+  color: var(--text-cream);
+  padding: 8px 12px;
+  cursor: pointer;
+}
