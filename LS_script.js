@@ -377,7 +377,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             setTimeout(function () {
 
-                window.location.href = "index.html";
+                window.location.href = "main_page.html";
 
             }, 1000);
 
