@@ -8,15 +8,11 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-}
-
 .navigation {
   width: 100%;
 }
 
-/* Top utility bar: Sign In/Register, Membership, Cart, Wishlist etc. */
+/* ---------- Top utility bar ---------- */
 .nav-top {
   background-color: var(--maroon);
   display: flex;
@@ -59,39 +55,13 @@ body {
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 20px;
 }
 
 .nav-right .icon-link {
   display: flex;
   align-items: center;
-  gap: 6px;
-}
-
-/* Promo / announcement bar */
-.nav-promo {
-  background-color: var(--gold);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 40px;
-  color: var(--maroon-dark);
-}
-
-.nav-promo p {
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.3px;
-}
-
-.nav-promo p span {
-  text-transform: uppercase;
-  font-weight: 800;
-}
-
-.promo-buttons {
-  display: flex;
-  gap: 12px;
+  gap: 2px;
 }
 
 .btn {
@@ -123,24 +93,59 @@ body {
   color: var(--text-light);
 }
 
-/* Footer */
-.nav-footer {
-  background-color: var(--maroon-dark);
+/* ---------- Footer sitemap ---------- */
+footer {
+  border-top: 1px solid var(--border-soft);
+  padding: 48px 0 28px;
+  font-size: 0.85rem;
+  background-color: var(--maroon);
+}
+ 
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+ 
+.footer-grid h3 {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sub-gold);
+  margin-bottom: 12px;
+}
+ 
+.footer-grid ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  padding: 14px 40px;
-  font-size: 14px;
+  flex-direction: column;
+  gap: 8px;
+}
+ 
+.footer-grid a { color: var(--text-cream-dim); }
+.footer-grid a:hover, .footer-grid a:focus-visible { color: var(--text-cream); }
+ 
+.footer-base {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-soft);
+  color: var(--text-cream-dim);
+  font-size: 0.78rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.nav-footer a {
-  color: var(--text-light);
-  text-decoration: none;
-  opacity: 0.85;
-}
-
-.nav-footer a:hover {
-  opacity: 1;
-  text-decoration: underline;
+/* ---------- Nav toggle (mobile) ---------- */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--sub-gold);
+  color: var(--text-cream);
+  padding: 8px 12px;
+  cursor: pointer;
 }

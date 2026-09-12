@@ -55,42 +55,7 @@ h1, h2, h3 {
   font-weight: 600;
   margin: 0;
 }
- 
-/* ---------- Top utility bar ---------- */
-.topbar {
-  background: #2c0216;
-  border-bottom: 1px solid var(--border-soft);
-  font-size: 0.82rem;
-}
- 
-.topbar .wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
- 
-.topbar ul {
-  display: flex;
-  gap: 24px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-}
- 
-.topbar a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--text-cream-dim);
-  transition: color 0.15s ease;
-}
- 
-.topbar a:hover,
-.topbar a:focus-visible { color: var(--text-cream); }
- 
+
 /* ---------- Promo strip (the one signature animated moment) ---------- */
 .promo-strip {
   background: var(--sub-gold);
@@ -419,64 +384,7 @@ td.deal-price { color: var(--text-cream); font-weight: 600; }
 }
  
 .tiers dd:last-of-type { border-bottom: none; }
- 
- 
-/* ---------- Footer sitemap ---------- */
-footer {
-  border-top: 1px solid var(--border-soft);
-  padding: 48px 0 28px;
-  font-size: 0.85rem;
-}
- 
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
-}
- 
-.footer-grid h3 {
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--sub-gold);
-  margin-bottom: 12px;
-}
- 
-.footer-grid ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
- 
-.footer-grid a { color: var(--text-cream-dim); }
-.footer-grid a:hover, .footer-grid a:focus-visible { color: var(--text-cream); }
- 
-.footer-base {
-  margin-top: 36px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border-soft);
-  color: var(--text-cream-dim);
-  font-size: 0.78rem;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-}
- 
-/* ---------- Nav toggle (mobile) ---------- */
-.nav-toggle {
-  display: none;
-  background: transparent;
-  border: 1px solid var(--sub-gold);
-  color: var(--text-cream);
-  padding: 8px 12px;
-  cursor: pointer;
-}
- 
+
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
   .masthead .wrap { grid-template-columns: 1fr; text-align: center; }
@@ -495,4 +403,3 @@ footer {
   .category-nav ul { display: none; flex-direction: column; gap: 14px; }
   .footer-grid { grid-template-columns: 1fr; }
 }
- 
