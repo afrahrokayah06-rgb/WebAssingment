@@ -64,35 +64,6 @@
   gap: 2px;
 }
 
-.btn {
-  padding: 8px 22px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 3px;
-  cursor: pointer;
-  border: 2px solid var(--maroon);
-  transition: all 0.2s ease;
-}
-
-.btn-signin {
-  background-color: var(--maroon);
-  color: var(--text-light);
-}
-
-.btn-signin:hover {
-  background-color: var(--maroon-dark);
-}
-
-.btn-signup {
-  background-color: transparent;
-  color: var(--maroon);
-}
-
-.btn-signup:hover {
-  background-color: var(--maroon);
-  color: var(--text-light);
-}
-
 /* ---------- Footer sitemap ---------- */
 footer {
   border-top: 1px solid var(--border-soft);
