@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Beauty Services | Whatever</title>
+<meta name="description" content="Book a makeup application, skincare consultation or brow styling session online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="main_page.css">
+<link rel="stylesheet" href="nav.css">
+<link rel="stylesheet" href="beauty_service.css">
+</head>
+<body>
+ 
+<!-- ============ TOP UTILITY BAR ============ -->
+<header>
+  <div class="nav-top">
+    <div class="nav-left">
+      <a href="login.html" id="userAccountLink">
+          <img src="profile.png" alt="" class="nav-icon">
+          <span id="userAccountName">Sign In / Sign Up</span>
+      </a>
+    </div>
+    <div class="nav-right"> 
+    <a href="membership.html"><img src="member-removebg-preview.png" alt="" class="nav-icon">Membership</a>
+    <a href="beauty_service.html"><img src="promotion_events.png" alt="" class="nav-icon">Book Beauty Services</a>  
+    <a href="promotions.html"><img src="beautypass.png" alt="" class="nav-icon">Promotions &amp; Events</a>
+    <a href="wishlist.html" class="icon-link"><img src="wishlist.png" alt="" class="nav-icon">Wishlist</a>
+    <a href="cart.html" class="icon-link"><img src="cart.png" alt="" class="nav-icon">Cart</a>
+    </div>
+  </div>
+</header>
+ 
+<!-- ============ PROMO STRIP (animation) ============ -->
+<div class="promo-strip">
+  <div class="wrap">
+    <div class="promo-track">
+      <p>WHATEVER BEAUTY PASS MEMBERS ENJOY MORE — unlock exclusive online offers and early access to new arrivals</p>
+    </div>
+    <div class="promo-actions">
+      <a class="btn filled" href="login.html">Sign In</a>
+      <a class="btn" href="register.html">Sign Up</a>
+    </div>
+  </div>
+</div>
+
+ 
+<main>
+ 
+  <!-- ============ PAGE INTRO ============ -->
+  <section class="products-section">
+    <div class="booking-intro" style="padding-bottom: 20px;">
+      <span class="intro-kicker">Tailored Experiences</span>
+      <h1>Book A Beauty Service</h1>
+      <p>Virtual makeup lessons, skincare consultations and brow styling guidance — book an online session in minutes.</p>
+    </div>
+
+    <!-- Main Header Banner Image -->
+    <div class="intro-banner-image">
+      <img src="beautybook_main.png" alt="Beauty services banner">
+    </div>
+  </section>
+ 
+ <!-- ============ HOW IT WORKS ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>How It Works</h2>
+          <p>Three steps from booking to your appointment</p>
+        </div>
+      </div>
+ 
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">01</span>
+          <h3>Choose a service</h3>
+          <p>Pick from a virtual makeup lesson, online skincare consultation or brow styling guidance below.</p>
+        </div>
+        
+        <div class="step-card">
+          <span class="step-num">02</span>
+          <h3>Pick a date and time</h3>
+          <p>Fill in the booking form with your preferred slot and video call platform.</p>
+        </div>
+        
+        <div class="step-card">
+          <span class="step-num">03</span>
+          <h3>Confirm your booking</h3>
+          <p>Get instant confirmation by email with your video call link and a reminder before your session.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ============ OUR SERVICES — BROWSE BY CATEGORY ============ -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Our Services</h2>
+          <p>Prices shown are per session, per person</p>
+        </div>
+      </div>
+ 
+      <div class="category-tabs" role="tablist" aria-label="Filter services by category">
+        <button class="tab-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="tab-btn" data-filter="makeup" role="tab" aria-selected="false">Makeup Lessons</button>
+        <button class="tab-btn" data-filter="skincare" role="tab" aria-selected="false">Skincare</button>
+        <button class="tab-btn" data-filter="brow" role="tab" aria-selected="false">Brow Bar</button>
+      </div>
+ 
+      <div class="service-list">
+ 
+        <article class="service-item" data-category="makeup">
+          <div class="service-photo">
+            <img src="Vmakeup.png" alt="Virtual Makeup Lesson">
+          </div>
+          <div class="service-info">
+            <h3>Virtual Makeup Lesson</h3>
+            <p class="service-meta">45 mins · <span class="deal-price">RM 90.00</span></p>
+            <p>Live 1-on-1 video walkthrough using your own Whatever products, tailored to your event or everyday look.</p>
+            <details class="terms-details">
+              <summary>Terms &amp; Conditions</summary>
+              <p>Subject to Beauty Advisor availability. Reschedule at least 12 hours before your session. One rebooking per session.</p>
+            </details>
+          </div>
+          <div class="service-action">
+            <button type="button" class="btn filled book-now-btn" data-service="makeup" data-service-name="Virtual Makeup Lesson — RM 90.00">Book Now</button>
+          </div>
+        </article>
+ 
+        <article class="service-item" data-category="skincare">
+          <div class="service-photo">
+            <img src="skincare.png" alt="Online Skincare Consultation">
+          </div>
+          <div class="service-info">
+            <h3>Online Skincare Consultation</h3>
+            <p class="service-meta">30 mins · <span class="deal-price">RM 67.00</span></p>
+            <p>Skin analysis over video call and a personalised routine recommendation from a Whatever skincare advisor.</p>
+            <details class="terms-details">
+              <summary>Terms &amp; Conditions</summary>
+              <p>Consultation is advisory only and does not replace dermatological care. Reschedule at least 12 hours before your session.</p>
+            </details>
+          </div>
+          <div class="service-action">
+            <button type="button" class="btn filled book-now-btn" data-service="skincare" data-service-name="Online Skincare Consultation — RM 50.00">Book Now</button>
+          </div>
+        </article>
+ 
+        <article class="service-item" data-category="brow">
+          <div class="service-photo">
+            <img src="brow.png" alt="Brow Styling Guidance">
+          </div>
+          <div class="service-info">
+            <h3>Brow Styling Guidance</h3>
+            <p class="service-meta">20 mins · <span class="deal-price">RM 40.00</span></p>
+            <p>Live video guidance on shaping, filling and grooming your brows at home, matched to your face shape.</p>
+            <details class="terms-details">
+              <summary>Terms &amp; Conditions</summary>
+              <p>Brow tools and products must be purchased separately. Reschedule at least 12 hours before your session.</p>
+            </details>
+          </div>
+          <div class="service-action">
+            <button type="button" class="btn filled book-now-btn" data-service="brow" data-service-name="Brow Styling Guidance — RM 35.00">Book Now</button>
+          </div>
+        </article>
+
+       
+       <article class="service-item" data-category="makeup">
+        <div class="service-photo">
+        <img src="advanced.png" alt="Advanced Contour & Highlight Masterclass">
+        </div>
+        <div class="service-info">
+            <h3>Advanced Contour & Highlight Masterclass</h3>
+            <p class="service-meta">45 mins · <span class="deal-price">RM 150.00</span></p>
+            <p>Deep dive into facial sculpting techniques, dimension, and blending tailored explicitly to your bone structure.</p>
+            <details class="terms-details">
+            <summary>Terms &amp; Conditions</summary>
+            <p>Clients should have contour and highlighting products ready prior to the session. Reschedule at least 12 hours before your session.</p>
+            </details>
+        </div>
+        <div class="service-action">
+            <button type="button" class="btn filled book-now-btn" data-service="makeup" data-service-name="Advanced Contour & Highlight Masterclass — RM 95.00">Book Now</button>
+        </div>
+        </article>
+ 
+      </div>
+ 
+      <p class="table-note">Beauty Pass Rouge members enjoy 15% off all services — see <a href="membership.html">membership benefits</a>.</p>
+    </div>
+  </section>
+ 
+</main>
+
+<!-- ============ BOOKING MODAL POPUP ============ -->
+<div class="booking-modal-overlay" id="bookingModal">
+  <div class="booking-modal-content">
+    <button type="button" class="modal-close-btn" id="closeModal">&times;</button>
+    
+    <div class="section-head">
+      <div>
+        <h2>Book Your Session</h2>
+        <p>Fill in your details and we'll confirm by email with your video call link</p>
+      </div>
+    </div>
+
+    <form class="booking-form" id="bookingForm" novalidate>
+      <div class="form-row">
+        <div class="field">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" name="fullName" placeholder="e.g. Nur Aisyah" required>
+        </div>
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="012-3456789" pattern="[0-9\-+ ]{7,15}" required>
+        </div>
+        <div class="field">
+          <label for="serviceDisplay">Selected Service</label>
+          <!-- Read-only input displaying the selected service automatically -->
+          <input type="text" id="serviceDisplay" readonly disabled>
+          <input type="hidden" id="service" name="service">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="preferredDate">Preferred Date</label>
+          <input type="date" id="preferredDate" name="preferredDate" required>
+        </div>
+        <div class="field">
+          <label for="preferredTime">Preferred Time</label>
+          <input type="time" id="preferredTime" name="preferredTime" required>
+        </div>
+      </div>
+
+      <fieldset class="field field-full">
+        <legend>How Should We Connect?</legend>
+        <label class="radio-option">
+          <input type="radio" name="platform" value="zoom" checked>
+          Zoom
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="platform" value="google-meet">
+          Google Meet
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="platform" value="whatsapp">
+          WhatsApp Video Call
+        </label>
+      </fieldset>
+
+      <div class="field field-full">
+        <label for="notes">Additional Notes (optional)</label>
+        <textarea id="notes" name="notes" rows="3" placeholder="Any allergies, preferences, or special requests?"></textarea>
+      </div>
+
+      <div class="field field-full checkbox-field">
+        <label>
+          <input type="checkbox" id="reminder" name="reminder" checked>
+          Send me a reminder 24 hours before my appointment
+        </label>
+      </div>
+
+      <button type="submit" class="btn filled">Confirm Booking</button>
+      <p class="form-msg" id="bookingMsg" role="status"></p>
+    </form>
+  </div>
+</div>
+ 
+<!-- ============ FOOTER — SITEMAP ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="makeup-face.html">Face</a></li>
+          <li><a href="makeup-eyes.html">Eyes</a></li>
+          <li><a href="makeup-lips.html">Lips</a></li>
+          <li><a href="makeup-nails.html">Nails</a></li>
+          <li><a href="makeup-remover.html">Makeup Remover</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>My Account</h3>
+        <ul>
+          <li><a href="login.html">Login / Register</a></li>
+          <li><a href="membership.html">Beauty Pass Membership</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="payment.html">Payment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Discover</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="promotions.html">Promotions &amp; Events</a></li>
+          <li><a href="book-services.html">Book Beauty Services</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Get In Touch</h3>
+        <ul>
+          <li><a href="feedback.html">Feedback Form</a></li>
+          <li><a href="mailto:hello@whatever.com">hello@whatever.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+ 
+<script src="main_page.js"></script>
+<script src="beauty_service.js"></script>
+</body>
+</html>
