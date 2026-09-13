@@ -20,9 +20,7 @@
     padding: 0 20px;
 }
 
-/* 3 products in one row */
 .product-grid {
-    
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
