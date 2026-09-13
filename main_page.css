@@ -205,7 +205,7 @@ h1, h2, h3 {
 
 .category-nav a:hover,
 .category-nav a:focus-visible {
-  border-bottom: 2px solid var(--sub-gold); /* visible line on hover */
+  text-decoration: underline;
 }
 
  
