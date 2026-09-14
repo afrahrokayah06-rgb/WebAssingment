@@ -180,10 +180,10 @@ body {
 }
  
 .how-card .how-icon {
-  width: 34px;
-  height: 34px;
+  width: 300px;
+  height: 300px;
   margin-bottom: 14px;
-  filter: invert(9%) sepia(38%) saturate(2000%) hue-rotate(310deg) brightness(70%);
+  
 }
  
 .how-card h3 {

@@ -1,6 +1,6 @@
 :root {
   --maroon: #3d0f22;
-  --maroon-dark: #3d0f22;
+  --maroon-dark: #280000;
   --gold: #b89a6b;
   --gold-light: #cdb98a;
   --text-light: #f1e9dd;
@@ -14,11 +14,11 @@
 
 /* ---------- Top utility bar ---------- */
 .nav-top {
-  background-color: var(--maroon);
+  background-color: var(--maroon-dark);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 40px;
+  padding: 20px 40px;
   font-size: 14px;
 }
 

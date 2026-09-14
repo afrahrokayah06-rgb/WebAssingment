@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Wishlist</title>
+<link rel="stylesheet" href="wishlist.css">
+<link rel="stylesheet" href="lipstickpage.html">
+</head>
+<body>
+
+  <header class="wish-header">
+    <div class="eyebrow">Whatever Beauty</div>
+    <h1>Your Wishlist</h1>
+    <p>All the shades you've saved, in one place.</p>
+  </header>
+
+  <main class="wish-container">
+    <div class="wish-grid" id="wish-grid"></div>
+
+    <div class="wish-empty" id="wish-empty">
+      <img src="icons/wishlist-heart.png" alt="" class="empty-icon">
+      <h2>Your wishlist is empty</h2>
+      <p>Tap the heart icon on any product to save it here.</p>
+      <a href="lipsticks.html">Browse the Lip Collection</a>
+    </div>
+  </main>
+
+  <div id="wish-toast" class="wish-toast"></div>
+
+  <script>
+    const WISHLIST_KEY = 'whatever_wishlist';
+
+    function getWishlist() {
+      try {
+        return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveWishlist(list) {
+      localStorage.setItem(WISHLIST_KEY, JSON.stringify(list));
+    }
+
+    let toastTimer;
+    function showToast(message) {
+      const toast = document.getElementById('wish-toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function removeItem(id, cardEl) {
+      cardEl.classList.add('removing');
+      showToast('Removed from Wishlist');
+
+      cardEl.addEventListener('transitionend', () => {
+        const updated = getWishlist().filter(item => item.id !== id);
+        saveWishlist(updated);
+        renderWishlist();
+      }, { once: true });
+    }
+
+    function renderWishlist() {
+      const list = getWishlist();
+      const grid = document.getElementById('wish-grid');
+      const empty = document.getElementById('wish-empty');
+
+      grid.innerHTML = '';
+
+      if (list.length === 0) {
+        grid.style.display = 'none';
+        empty.style.display = 'block';
+        return;
+      }
+
+      grid.style.display = 'grid';
+      empty.style.display = 'none';
+
+      list.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'wish-card';
+        card.innerHTML = `
+          <div class="wish-img-wrap">
+            <img src="${item.image}" alt="${item.name}">
+          </div>
+          <div class="wish-body">
+            <h3>${item.name}</h3>
+            <span class="wish-price">${item.price}</span>
+            <div class="wish-actions">
+              <button class="wish-add-bag">Add to Bag</button>
+              <button class="wish-remove" data-id="${item.id}">Remove</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      document.querySelectorAll('.wish-remove').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('.wish-card');
+          removeItem(btn.dataset.id, card);
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderWishlist);
+  </script>
+
+</body>
+</html>
