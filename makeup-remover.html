@@ -9,7 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="main_page.css">
 <link rel="stylesheet" href="nav.css">
-<link rel="stylesheet" href="products.css">
+<link rel="stylesheet" href="lipstickpage.css">
+
 </head>
 <body>
  
@@ -48,7 +49,7 @@
 <!-- ============ MASTHEAD: logo / search form / sample note ============ -->
 <div class="masthead">
   <div class="wrap">
-    <a class="logo" href="index.html">WHATEVER</a>
+    <a class="logo" href="main_page.html">WHATEVER</a>
  
     <form class="search-form" role="search" action="#" method="get">
       <label for="site-search" class="visually-hidden">Search products</label>
@@ -83,37 +84,84 @@
   </div>
 </nav>
 
-<main>
-  <section class="products-section">
-    <div class="product-grid">
-
-      <div class="product-card">
-        <img src="Makeup_Remover_Wipes.png" alt="Makeup Remover Wipes">
-        <h2>Makeup Remover Wipes</h2>
-        <p>Gentle cleansing wipes for removing makeup.</p>
-        <span class="price">RM 15.90</span>
-        <button>ADD TO CART</button>
-      </div>
-
-      <div class="product-card">
-        <img src="Micellar_Water.png" alt="Micellar Water">
-        <h2>Micellar Water</h2>
-        <p>Refreshing micellar water for clean skin.</p>
-        <span class="price">RM 25.90</span>
-        <button>ADD TO CART</button>
-      </div>
-
-      <div class="product-card">
-        <img src="Cleansing_Balm.png" alt="Cleansing Balm">
-        <h2>Cleansing Balm</h2>
-        <p>Soft cleansing balm that melts away makeup.</p>
-        <span class="price">RM 39.90</span>
-        <button>ADD TO CART</button>
-      </div>
-
+<!-- Hero -->
+  <section class="lip-hero">
+    <div class="lip-hero-bg">
+      <img src="REMOVER.jpg" alt="Model applying WHATEVER makeup remover">
+    </div>
+    <div class="lip-hero-content">
+      <div class="eyebrow">Whatever Beauty</div>
+      <h1>Makeup Remover</h1>
+      <p>From gentle cleansing wipes to effective makeup removers — find the perfect formula to effortlessly remove makeup and refresh your skin.</p>
+      <a href="#glosses" class="hero-btn">Shop All Types</a>
     </div>
   </section>
-</main>
+
+  <div class="lip-divider">Free shipping on all orders over RM 50 · Earn Beauty Pass points on every purchase</div>
+
+  <!-- Makeup Remover -->
+  <section class="lip-section" id="glosses">
+    <div class="lip-section-heading">
+      <h2>Makeup Removers</h2>
+      <p>Gentle yet effective makeup removal with a soft, hydrated finish.</p>
+    </div>
+    <div class="lip-grid">
+
+      <div class="lip-card">
+        <div class="lip-img-wrap">
+          <img src="Remover_Wipes.png" alt="Makeup Remover Wipes">
+          <div class="lip-hover-info">Infused with soothing aloe vera and vitamin E to gently cleanse without stripping the skin of its natural moisture. The soft, textured wipes effortlessly dissolve foundation, lipstick, mascara, and everyday impurities in just a few swipes. Lightweight and refreshing, they leave skin feeling clean, comfortable, and hydrated with no sticky or greasy residue.</div>
+        </div>
+        <div class="lip-body">
+          <h3>Remover Wipes</h3>
+          <p class="lip-desc">Soft, refreshing makeup remover wipes that effortlessly dissolve makeup while leaving skin feeling clean, fresh, and hydrated.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 15.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="remover-wipes" data-name="Makeup Remover Wipes" data-price="15.00" data-image="Makeup_Remover_Wipes.png">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lip-card">
+        <div class="lip-img-wrap">
+          <img src="Micellar_Water.png" alt="Micellar Water">
+          <div class="lip-hover-info">Infused with soothing micelles and gentle cleansing ingredients, this gentle micellar water effortlessly lifts away foundation, lipstick, mascara, and everyday impurities without stripping the skin of its natural moisture. The lightweight, refreshing formula cleanses in just a few swipes, leaving skin feeling clean, soft, comfortable, and hydrated with no sticky or greasy residue.</div>
+        </div>
+        <div class="lip-body">
+          <h3>Micellar Water</h3>
+          <p class="lip-desc">A gentle yet effective micellar water that effortlessly lifts away makeup, dirt, and excess oil without drying out the skin. Leaves your complexion feeling fresh, clean, and soft after every use.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 25.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="micellar-water" data-name="Micellar Water" data-price="25.00" data-image="Micellar_Water.png">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lip-card">
+        <div class="lip-img-wrap">
+          <img src="Cleansing_Balm.png" alt="Cleansing Balm">
+          <div class="lip-hover-info">Infused with nourishing botanical oils and vitamin E, this gentle cleansing balm melts effortlessly into the skin to dissolve makeup, sunscreen, and everyday impurities without stripping away its natural moisture. The rich, silky texture transforms into a lightweight emulsion when massaged with water, effortlessly lifting away foundation, lipstick, mascara, and stubborn makeup. It rinses away easily, leaving skin feeling clean, soft, smooth, and comfortable with no greasy residue.</div>
+        </div>
+        <div class="lip-body">
+          <h3>Cleansing Balm</h3>
+          <p class="lip-desc">A silky cleansing balm that melts away makeup with ease. Its nourishing formula leaves skin feeling soft, smooth, and refreshed without a tight or greasy finish.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 35.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="cleansing-balm" data-name="Cleansing Balm" data-price="35.00" data-image="Cleansing_Balm.png">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
  
  
 <!-- ============ FOOTER — SITEMAP  ============ -->

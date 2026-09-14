@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment | Whatever</title>
+<meta name="description" content="Shop Face, Eyes, Lips, Nails and Makeup Remover. Free sample with every purchase.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="main_page.css">
+<link rel="stylesheet" href="nav.css">
+<link rel="stylesheet" href="products.css">
+<link rel="stylesheet" href="payment.css">
+</head>
+<body>
+
+<main class="payment-page">
+    <div class="payment-container">
+    <!-- Order Summary -->
+    <section class="order-summary">
+        <h2>Order Summary</h2>
+        <div id="payment-items"></div>
+        <div class="payment-total">
+            <span>Total</span>
+            <strong>RM <span id="payment-total">0.00</span></strong>
+        </div>
+    </section>
+
+    <!-- Payment Form -->
+    <section class="payment-form-section">
+        <h2>Card Details</h2>
+        <form id="payment-form" novalidate>
+
+            <!-- Cardholder Name -->
+            <div class="form-group">
+                <label for="card-name">Cardholder Name</label>
+                <input type="text" id="card-name" name="cardName" placeholder="Name on card" autocomplete="cc-name">
+                <small class="error" id="card-name-error"></small>
+            </div>
+
+            <!-- Card Number -->
+            <div class="form-group">
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" inputmode="numeric" autocomplete="cc-number">
+                <small class="error" id="card-number-error"></small>
+            </div>
+
+            <div class="form-row">
+                <!-- Expiry -->
+                <div class="form-group">
+                    <label for="expiry">Expiry Date</label>
+                    <input type="text" id="expiry" name="expiry" placeholder="MM/YY" maxlength="5" inputmode="numeric" autocomplete="cc-exp">
+                    <small class="error" id="expiry-error"></small>
+                </div>
+
+                <!-- CVV -->
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3" inputmode="numeric" autocomplete="cc-csc">
+                    <small class="error" id="cvv-error"></small>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
+                <small class="error" id="email-error">
+                </small>
+            </div>
+
+            <!-- Submit -->
+            <button
+                type="submit"
+                id="pay-button">
+                PAY RM <span id="pay-total">0.00</span>
+            </button>
+            <p id="payment-message"></p>
+        </form>
+    </section>
+    </div>
+</main>
+
+<script src="payment.js"></script>
+</body>
+</html>

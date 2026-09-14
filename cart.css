@@ -1,0 +1,75 @@
+.cart-page {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.cart-page h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 42px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.cart-item {
+    display: flex;
+    gap: 25px;
+    padding: 25px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.cart-product-info {
+    flex: 1;
+}
+
+.cart-product-info h2 {
+    margin-top: 0;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.quantity-controls button {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #333;
+    background: white;
+    cursor: pointer;
+}
+
+.cart-summary {
+    text-align: right;
+    margin-top: 30px;
+}
+
+.cart-summary button {
+    padding: 15px 25px;
+    background: #111;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-cart a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 25px;
+    background: #111;
+    color: white;
+    text-decoration: none;
+}
