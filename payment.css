@@ -1,6 +1,25 @@
+:root {
+    --payment-maroon: #3d0f22;
+    --payment-maroon-dark: #280000;
+    --payment-gold: #b89a6b;
+    --payment-gold-light: #cdb98a;
+    --payment-text-light: #f1e9dd;
+    --payment-border-soft: #e4dccb;
+
+    --payment-font: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background-image: url("makeup_banner.png");
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  font-family: var(--payment-font);
+}
+
 .payment-page {
     max-width: 1000px;
-    margin: 50px auto;
+    margin: 10px auto;
     padding: 20px;
 }
 
@@ -10,155 +29,122 @@
     gap: 50px;
 }
 
-/* ---------- Order Summary ---------- */
+.payment-page h1 {
+    font-size: 40px;
+    color: var(--payment-text-light);
+    text-align: left;
+}
 
+/* ---------- Order Summary ---------- */
 .order-summary,
 .payment-form-section {
     padding: 30px;
-
-    border: 1px solid #ddd;
-
-    background: #fff;
+    border: 1px solid var(--payment-border-soft);
+    background: #fbf6ee;
 }
 
 .order-summary h2,
 .payment-form-section h2 {
-    font-family: "Cormorant Garamond", serif;
-
+    color: var(--payment-maroon);
     font-size: 30px;
-
     margin-top: 0;
 }
 
 .payment-item {
     display: flex;
-
     align-items: center;
-
     gap: 15px;
-
     padding: 15px 0;
-
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--payment-border-soft);
+    color: #7a6f60;
 }
 
 .payment-item img {
     width: 70px;
-
     height: 70px;
-
     object-fit: contain;
 }
 
 .payment-item-info {
     flex: 1;
+    color: #7a6f60;
 }
 
 .payment-item-info h3 {
+    color: #7a6f60;
     margin: 0 0 5px;
 }
 
 .payment-total {
     display: flex;
-
     justify-content: space-between;
-
     margin-top: 25px;
-
     padding-top: 20px;
-
-    border-top: 2px solid #222;
-
+    border-top: 2px solid var(--payment-border-soft);
     font-size: 20px;
+    color: var(--payment-maroon);
 }
 
 
 /* ---------- Form ---------- */
-
 .form-group {
     margin-bottom: 20px;
+    color: #7a6f60;
 }
 
 .form-group label {
     display: block;
-
     margin-bottom: 7px;
-
     font-weight: 600;
 }
 
 .form-group input {
     width: 100%;
-
     box-sizing: border-box;
-
     padding: 13px;
-
-    border: 1px solid #bbb;
-
-    font-family: "Jost", sans-serif;
-
+    border: 1px solid var(--payment-border-soft);
     font-size: 15px;
 }
 
 .form-group input:focus {
     outline: none;
-
-    border-color: #111;
+    border-color: var(--payment-border-soft);
 }
 
 .form-row {
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 15px;
 }
 
 .error {
     display: block;
-
     min-height: 18px;
-
     margin-top: 5px;
-
     color: #c62828;
-
     font-size: 13px;
 }
 
 
 /* ---------- Pay Button ---------- */
-
 #pay-button {
     width: 100%;
-
     padding: 16px;
-
     border: none;
-
-    background: #111;
-
-    color: white;
-
-    font-family: "Jost", sans-serif;
-
+    background: var(--payment-maroon);
+    color: var(--payment-text-light);
     font-size: 15px;
-
     font-weight: 600;
-
     cursor: pointer;
 }
 
 #pay-button:hover {
-    background: #333;
+    background: var(--payment-maroon-dark);
 }
 
 #payment-message {
     text-align: center;
-
     margin-top: 15px;
-
     font-weight: 600;
 }
 
@@ -171,13 +157,28 @@
 }
 
 
-/* ---------- Mobile ---------- */
+/* ---------- Back to Cart ---------- */
+.cart-link {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    color: var(--payment-maroon);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+}
 
+.cart-link:hover {
+    color: var(--payment-gold);
+    text-decoration: underline;
+}
+
+
+/* ---------- Mobile ---------- */
 @media (max-width: 700px) {
 
     .payment-container {
         grid-template-columns: 1fr;
-
         gap: 25px;
     }
 
@@ -185,4 +186,64 @@
         font-size: 38px;
     }
 
+}
+
+/* ---------- Payment Success Popup ---------- */
+.success-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.success-popup-content {
+    width: 350px;
+    max-width: 85%;
+    padding: 35px;
+    background: #fff;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: successPopup 0.3s ease;
+}
+
+.success-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    background: #287a3e;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 60px;
+}
+
+.success-popup-content h2 {
+    margin: 10px 0;
+    font-size: 30px;
+    color: #287a3e;
+}
+
+.success-popup-content p {
+    margin: 5px 0;
+    color: #555;
+}
+
+@keyframes successPopup {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

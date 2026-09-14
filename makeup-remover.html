@@ -109,7 +109,7 @@
 
       <div class="lip-card">
         <div class="lip-img-wrap">
-          <img src="Remover_Wipes.png" alt="Makeup Remover Wipes">
+          <img src="Remover_Wipes.jpeg" alt="Makeup Remover Wipes">
           <div class="lip-hover-info">Infused with soothing aloe vera and vitamin E to gently cleanse without stripping the skin of its natural moisture. The soft, textured wipes effortlessly dissolve foundation, lipstick, mascara, and everyday impurities in just a few swipes. Lightweight and refreshing, they leave skin feeling clean, comfortable, and hydrated with no sticky or greasy residue.</div>
         </div>
         <div class="lip-body">
@@ -127,7 +127,7 @@
 
       <div class="lip-card">
         <div class="lip-img-wrap">
-          <img src="Micellar_Water.png" alt="Micellar Water">
+          <img src="Micellar_Water.jpeg" alt="Micellar Water">
           <div class="lip-hover-info">Infused with soothing micelles and gentle cleansing ingredients, this gentle micellar water effortlessly lifts away foundation, lipstick, mascara, and everyday impurities without stripping the skin of its natural moisture. The lightweight, refreshing formula cleanses in just a few swipes, leaving skin feeling clean, soft, comfortable, and hydrated with no sticky or greasy residue.</div>
         </div>
         <div class="lip-body">
@@ -145,7 +145,7 @@
 
       <div class="lip-card">
         <div class="lip-img-wrap">
-          <img src="Cleansing_Balm.png" alt="Cleansing Balm">
+          <img src="Cleansing_Balm.jpeg" alt="Cleansing Balm">
           <div class="lip-hover-info">Infused with nourishing botanical oils and vitamin E, this gentle cleansing balm melts effortlessly into the skin to dissolve makeup, sunscreen, and everyday impurities without stripping away its natural moisture. The rich, silky texture transforms into a lightweight emulsion when massaged with water, effortlessly lifting away foundation, lipstick, mascara, and stubborn makeup. It rinses away easily, leaving skin feeling clean, soft, smooth, and comfortable with no greasy residue.</div>
         </div>
         <div class="lip-body">
@@ -162,6 +162,70 @@
       </div>
     </div>
   </section>
+   
+<!-- Wishlist toast -->
+  <div id="wishlist-toast" class="toast"></div>
+  <div id="cart-toast" class="toast"></div>
+ 
+  <script>
+    const WISHLIST_KEY = 'whatever_wishlist';
+ 
+    function getWishlist() {
+      try {
+        return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+ 
+    function saveWishlist(list) {
+      localStorage.setItem(WISHLIST_KEY, JSON.stringify(list));
+    }
+ 
+    let toastTimer;
+    function showToast(message) {
+      const toast = document.getElementById('wishlist-toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+ 
+    function initWishlistButtons() {
+      const saved = getWishlist();
+      const buttons = document.querySelectorAll('.lip-wishlist-btn');
+ 
+      buttons.forEach(btn => {
+        if (saved.some(item => item.id === btn.dataset.id)) {
+          btn.classList.add('active');
+        }
+ 
+        btn.addEventListener('click', () => {
+          let list = getWishlist();
+          const exists = list.some(item => item.id === btn.dataset.id);
+ 
+          if (exists) {
+            list = list.filter(item => item.id !== btn.dataset.id);
+            btn.classList.remove('active');
+            showToast('Removed from Wishlist');
+          } else {
+            list.push({
+              id: btn.dataset.id,
+              name: btn.dataset.name,
+              price: btn.dataset.price,
+              image: btn.dataset.image
+            });
+            btn.classList.add('active');
+            showToast('Added to Wishlist');
+          }
+ 
+          saveWishlist(list);
+        });
+      });
+    }
+ 
+    document.addEventListener('DOMContentLoaded', initWishlistButtons);
+  </script>
  
  
 <!-- ============ FOOTER — SITEMAP  ============ -->

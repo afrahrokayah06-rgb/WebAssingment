@@ -71,59 +71,51 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ---------- Cart functionality ---------- */
-  // Get existing cart from localStorage
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  // Find all ADD TO CART buttons
-  const cartButtons = document.querySelectorAll(".cart");
+      // Get existing cart from localStorage
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  cartButtons.forEach(function (button) {
+    /* ---------- ADD TO CART ---------- */
+    const cartButtons = document.querySelectorAll(".cart");
 
-      button.addEventListener("click", function () {
+    cartButtons.forEach(function (button) {
 
-          // Get product information from the button
-          const product = {
-              id: button.dataset.id,
-              name: button.dataset.name,
-              price: parseFloat(button.dataset.price),
-              image: button.dataset.image,
-              quantity: 1
-          };
+        button.addEventListener("click", function () {
 
-          // Check if product already exists in cart
-          const existingProduct = cart.find(function (item) {
-              return item.id === product.id;
-          });
+            // Get product information
+            const product = {
+                id: button.dataset.id,
+                name: button.dataset.name,
+                price: parseFloat(button.dataset.price),
+                image: button.dataset.image,
+                quantity: 1
+            };
 
-          if (existingProduct) {
+            // Check if product already exists
+            const existingProduct = cart.find(function (item) {
+                return item.id === product.id;
+            });
 
-              // Product already exists, increase quantity
-              existingProduct.quantity++;
 
-          } else {
+            if (existingProduct) {
+                // Increase quantity
+                existingProduct.quantity++;
 
-              // Product doesn't exist, add it
-              cart.push(product);
+            } else {
+                // Add new product
+                cart.push(product);
+            }
 
-          }
+            // Save cart
+            localStorage.setItem("cart", JSON.stringify(cart));
 
-          // Save cart
-          localStorage.setItem("cart", JSON.stringify(cart));
+            // Update cart number
+            updateCartCount();
 
-          // Update cart number
-          updateCartCount();
-
-          // Change button temporarily
-          button.textContent = "ADDED ✓";
-
-          setTimeout(function () {
-              button.textContent = "ADD TO CART";
-          }, 1000);
-
-      });
-
-  });
+            // Show toast
+            showToast("Added to Cart");
+        });
+    });
 
   // Update Cart (number)
   function updateCartCount() {

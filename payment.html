@@ -7,14 +7,13 @@
 <meta name="description" content="Shop Face, Eyes, Lips, Nails and Makeup Remover. Free sample with every purchase.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="main_page.css">
-<link rel="stylesheet" href="nav.css">
-<link rel="stylesheet" href="products.css">
 <link rel="stylesheet" href="payment.css">
 </head>
 <body>
 
 <main class="payment-page">
+    <h1>Payment</h1>
+
     <div class="payment-container">
     <!-- Order Summary -->
     <section class="order-summary">
@@ -75,11 +74,21 @@
                 id="pay-button">
                 PAY RM <span id="pay-total">0.00</span>
             </button>
+            <a class="cart-link" href="cart.html">Back to Cart</a>
             <p id="payment-message"></p>
         </form>
     </section>
     </div>
 </main>
+
+<!-- Payment Success Popup -->
+<div id="success-popup" class="success-popup">
+    <div class="success-popup-content">
+        <div class="success-icon">✓</div>
+        <h2>Payment Successful!</h2>
+        <p>Thank you for your purchase.</p>
+    </div>
+</div>
 
 <script src="payment.js"></script>
 </body>

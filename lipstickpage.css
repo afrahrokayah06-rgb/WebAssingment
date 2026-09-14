@@ -312,7 +312,7 @@
 }
 
 /* ---------- Wishlist toast ---------- */
-.wishlist-toast {
+.toast {
   position: fixed;
   left: 50%;
   bottom: 32px;
@@ -331,7 +331,7 @@
   z-index: 999;
 }
  
-.wishlist-toast.show {
+.toast.show {
   opacity: 1;
   transform: translate(-50%, 0);
 }
