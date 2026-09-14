@@ -1,20 +1,20 @@
 :root {
-  --maroon: #3d0f22;
-  --maroon-dark: #2b0a18;
-  --gold: #b89a6b;
-  --gold-light: #cdb98a;
-  --text-light: #f1e9dd;
-  --bg-page: #faf7f2;
-  --text-dark: #2b0a18;
-  --border-soft: #e4dccb;
+  --membership-maroon: #3d0f22;
+  --membership-maroon-dark: #280000;
+  --membership-gold: #b89a6b;
+  --membership-gold-light: #cdb98a;
+  --membership-text-light: #f1e9dd;
+  --membership-bg-page: #faf7f2;
+  --membership-text-dark: #280000;
+  --membership-border-soft: #e4dccb;
 }
  
 * { box-sizing: border-box; margin: 0; padding: 0; }
  
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: var(--bg-page);
-  color: var(--text-dark);
+  background-color: var(--membership-bg-page);
+  color: var(--membership-text-dark);
 }
  
 .membership-page {
@@ -25,8 +25,8 @@ body {
  
 /* ---------- Hero / tier card ---------- */
 .tier-card {
-  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
-  color: var(--text-light);
+  background: linear-gradient(135deg, var(--membership-maroon) 0%, var(--membership-maroon-dark) 100%);
+  color: var(--membership-text-light);
   border-radius: 12px;
   padding: 32px 36px;
   display: flex;
@@ -46,13 +46,13 @@ body {
   display: inline-block;
   margin-top: 6px;
   padding: 4px 14px;
-  border: 1px solid var(--gold-light);
+  border: 1px solid var(--membership-gold-light);
   border-radius: 20px;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: var(--gold-light);
+  color: var(--membership-gold-light);
 }
  
 .tier-info p {
@@ -69,7 +69,7 @@ body {
 .points-display .points-number {
   font-size: 42px;
   font-weight: 800;
-  color: var(--gold-light);
+  color: var(--membership-gold-light);
   line-height: 1;
 }
  
@@ -104,7 +104,7 @@ body {
  
 .progress-fill {
   height: 100%;
-  background-color: var(--gold-light);
+  background-color: var(--membership-gold-light);
   border-radius: 6px;
 }
  
@@ -118,7 +118,7 @@ body {
  
 .stat-card {
   background-color: #fff;
-  border: 1px solid var(--border-soft);
+  border: 1px solid var(--membership-border-soft);
   border-radius: 10px;
   padding: 20px;
   text-align: center;
@@ -127,7 +127,7 @@ body {
 .stat-card .stat-value {
   font-size: 26px;
   font-weight: 800;
-  color: var(--maroon);
+  color: var(--membership-maroon);
 }
  
 .stat-card .stat-label {
@@ -150,13 +150,13 @@ body {
  
 .section-heading h2 {
   font-size: 20px;
-  color: var(--maroon);
+  color: var(--membership-maroon);
   letter-spacing: 0.3px;
 }
  
 .section-heading a {
   font-size: 13px;
-  color: var(--gold);
+  color: var(--membership-gold);
   text-decoration: none;
   font-weight: 600;
 }
@@ -174,7 +174,7 @@ body {
  
 .how-card {
   background-color: #fff;
-  border: 1px solid var(--border-soft);
+  border: 1px solid var(--membership-border-soft);
   border-radius: 10px;
   padding: 22px;
 }
@@ -188,7 +188,7 @@ body {
  
 .how-card h3 {
   font-size: 15px;
-  color: var(--maroon);
+  color: var(--membership-maroon);
   margin-bottom: 6px;
 }
  
@@ -207,7 +207,7 @@ body {
  
 .reward-card {
   background-color: #fff;
-  border: 1px solid var(--border-soft);
+  border: 1px solid var(--membership-border-soft);
   border-radius: 10px;
   overflow: hidden;
   display: flex;
@@ -216,7 +216,7 @@ body {
  
 .reward-card .reward-swatch {
   height: 90px;
-  background-color: var(--gold-light);
+  background-color: var(--membership-gold-light);
 }
  
 .reward-card .reward-body {
@@ -229,19 +229,19 @@ body {
  
 .reward-card h3 {
   font-size: 14px;
-  color: var(--text-dark);
+  color: var(--membership-text-dark);
 }
  
 .reward-card .reward-points {
   font-size: 13px;
   font-weight: 700;
-  color: var(--maroon);
+  color: var(--membership-maroon);
 }
  
 .reward-card button {
   margin-top: auto;
-  background-color: var(--maroon);
-  color: var(--text-light);
+  background-color: var(--membership-maroon);
+  color: var(--membership-text-light);
   border: none;
   padding: 9px 0;
   border-radius: 6px;
@@ -252,7 +252,7 @@ body {
 }
  
 .reward-card button:hover {
-  background-color: var(--maroon-dark);
+  background-color: var(--membership-maroon-dark);
 }
  
 .reward-card button:disabled {
@@ -265,7 +265,7 @@ body {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
-  border: 1px solid var(--border-soft);
+  border: 1px solid var(--membership-border-soft);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -278,18 +278,18 @@ body {
 }
  
 .activity-table th {
-  background-color: var(--maroon);
-  color: var(--text-light);
+  background-color: var(--membership-maroon);
+  color: var(--membership-text-light);
   font-weight: 600;
   letter-spacing: 0.3px;
 }
  
 .activity-table tr:not(:last-child) td {
-  border-bottom: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--membership-border-soft);
 }
  
 .activity-table td.points-earned {
-  color: var(--maroon);
+  color: var(--membership-maroon);
   font-weight: 700;
 }
  

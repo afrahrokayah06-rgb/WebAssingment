@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home | Whatever</title>
+<title>Your Cart | Whatever</title>
 <meta name="description" content="Shop Face, Eyes, Lips, Nails and Makeup Remover. Free sample with every purchase.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="main_page.css">
 <link rel="stylesheet" href="nav.css">
+<link rel="stylesheet" href="cart.css">
 </head>
 <body>
  
@@ -31,6 +32,34 @@
   </div>
 </header>
  
+<main class="cart-page">
+    <h1>Your Cart</h1>
+    <div id="cart-items"></div>
+    <div class="cart-summary">
+        <h2>Total: RM <span id="cart-total">0.00</span></h2>
+        <button id="checkout-btn">
+            PROCEED TO CHECKOUT
+        </button>
+        <script>
+          document.getElementById("checkout-btn").addEventListener("click", function () {
+            const loggedInUser = sessionStorage.getItem("loggedInUser");
+            if (!loggedInUser) { alert("Please log in before checkout.");
+            window.location.href = "login.html";
+            return;
+          }
+          
+          const cart =
+          JSON.parse(localStorage.getItem("cart")) || [];
+          
+          if (cart.length === 0) {
+            alert("Your cart is empty.");
+            return;
+          }
+          window.location.href = "payment.html";
+        });
+        </script>
+    </div>
+</main>
  
 <!-- ============ FOOTER — SITEMAP  ============ -->
 <footer>
@@ -77,5 +106,6 @@
 </footer>
  
 <script src="main_page.js"></script>
+<script src="cart.js"></script>
 </body>
 </html>

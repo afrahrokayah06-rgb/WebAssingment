@@ -1,0 +1,188 @@
+.payment-page {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.payment-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+/* ---------- Order Summary ---------- */
+
+.order-summary,
+.payment-form-section {
+    padding: 30px;
+
+    border: 1px solid #ddd;
+
+    background: #fff;
+}
+
+.order-summary h2,
+.payment-form-section h2 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 30px;
+
+    margin-top: 0;
+}
+
+.payment-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+.payment-item img {
+    width: 70px;
+
+    height: 70px;
+
+    object-fit: contain;
+}
+
+.payment-item-info {
+    flex: 1;
+}
+
+.payment-item-info h3 {
+    margin: 0 0 5px;
+}
+
+.payment-total {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 2px solid #222;
+
+    font-size: 20px;
+}
+
+
+/* ---------- Form ---------- */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 13px;
+
+    border: 1px solid #bbb;
+
+    font-family: "Jost", sans-serif;
+
+    font-size: 15px;
+}
+
+.form-group input:focus {
+    outline: none;
+
+    border-color: #111;
+}
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+}
+
+.error {
+    display: block;
+
+    min-height: 18px;
+
+    margin-top: 5px;
+
+    color: #c62828;
+
+    font-size: 13px;
+}
+
+
+/* ---------- Pay Button ---------- */
+
+#pay-button {
+    width: 100%;
+
+    padding: 16px;
+
+    border: none;
+
+    background: #111;
+
+    color: white;
+
+    font-family: "Jost", sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+#pay-button:hover {
+    background: #333;
+}
+
+#payment-message {
+    text-align: center;
+
+    margin-top: 15px;
+
+    font-weight: 600;
+}
+
+#payment-message.success {
+    color: #287a3e;
+}
+
+#payment-message.error-message {
+    color: #c62828;
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 700px) {
+
+    .payment-container {
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+    }
+
+    .payment-page h1 {
+        font-size: 38px;
+    }
+
+}
