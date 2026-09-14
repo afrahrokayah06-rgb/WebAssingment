@@ -1,0 +1,330 @@
+:root {
+  --maroon: #3d0f22;
+  --maroon-dark: #2b0a18;
+  --gold: #b89a6b;
+  --gold-light: #cdb98a;
+  --text-light: #f1e9dd;
+  --bg-page: #faf7f2;
+  --text-dark: #2b0a18;
+  --border-soft: #e4dccb;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-dark);
+}
+
+/* ---------- Hero ---------- */
+.nail-hero {
+  position: relative;
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--text-light);
+  text-align: center;
+}
+
+.nail-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.nail-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+}
+
+.nail-hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(61,15,34,0.45) 0%, rgba(43,10,24,0.7) 100%);
+}
+
+.nail-hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 70px 24px;
+}
+
+.nail-hero .eyebrow {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  font-weight: 700;
+}
+
+.nail-hero h1 {
+  font-size: 38px;
+  margin-top: 14px;
+  letter-spacing: 0.5px;
+}
+
+.nail-hero p {
+  margin-top: 14px;
+  font-size: 15px;
+  opacity: 0.85;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nail-hero .hero-btn {
+  margin-top: 26px;
+  display: inline-block;
+  background-color: var(--gold-light);
+  color: var(--maroon-dark);
+  padding: 12px 32px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.4px;
+  transition: background-color 0.2s ease;
+}
+
+.nail-hero .hero-btn:hover {
+  background-color: #fff;
+}
+
+/* ---------- Divider band ---------- */
+.nail-divider {
+  background-color: var(--gold-light);
+  color: var(--maroon-dark);
+  text-align: center;
+  padding: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+/* ---------- Product section ---------- */
+.nail-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+.nail-section-heading {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.nail-section-heading h2 {
+  font-size: 26px;
+  color: var(--maroon);
+  letter-spacing: 0.3px;
+}
+
+.nail-section-heading p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #7a6f60;
+}
+
+.nail-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+}
+
+.nail-card {
+  background-color: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nail-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 30px rgba(61, 15, 34, 0.12);
+}
+
+.nail-card .nail-img-wrap {
+  background-color: #fbf6ee;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 240px;
+  position: relative;
+  overflow: hidden;
+}
+
+.nail-card .nail-img-wrap img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  transition: opacity 0.25s ease;
+}
+
+.nail-hover-info {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(61,15,34,0.92) 0%, rgba(43,10,24,0.96) 100%);
+  color: var(--text-light);
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.55;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.nail-card:hover .nail-hover-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nail-card:hover .nail-img-wrap img {
+  opacity: 0.12;
+}
+
+.nail-card .nail-body {
+  padding: 18px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.nail-card h3 {
+  font-size: 15px;
+  color: var(--maroon);
+  margin-bottom: 8px;
+}
+
+.nail-card p.nail-desc {
+  font-size: 12.5px;
+  color: #6d6355;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.nail-card .nail-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nail-card .nail-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--maroon);
+}
+
+.nail-footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nail-wishlist-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border-soft);
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.nail-wishlist-btn img {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+}
+
+.nail-wishlist-btn:hover {
+  border-color: var(--maroon);
+  background-color: #fbf0f2;
+}
+
+.nail-wishlist-btn.active img {
+  filter: invert(13%) sepia(54%) saturate(1900%) hue-rotate(320deg) brightness(70%);
+}
+
+.nail-card button:not(.nail-wishlist-btn) {
+  background-color: var(--maroon);
+  color: var(--text-light);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.nail-card button:not(.nail-wishlist-btn):hover {
+  background-color: var(--maroon-dark);
+}
+
+/* ---------- Toast ---------- */
+.nail-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  transform: translate(-50%, 20px);
+  background-color: var(--maroon);
+  color: var(--text-light);
+  padding: 13px 26px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  box-shadow: 0 10px 24px rgba(61, 15, 34, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 999;
+}
+
+.nail-toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 1000px) {
+  .nail-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .nail-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .nail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nail-hero h1 {
+    font-size: 28px;
+  }
+}
