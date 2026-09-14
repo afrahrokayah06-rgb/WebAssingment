@@ -11,7 +11,34 @@ document.addEventListener('DOMContentLoaded', function () {
       navToggle.textContent = isOpen ? 'Close menu ✕' : 'Menu ☰';
     });
   }
- 
+
+  /* ---------- Display logged-in user ---------- */
+  const userAccountName = document.getElementById("userAccountName");
+  const userAccountLink = document.getElementById("userAccountLink");
+
+  const loggedInUser = sessionStorage.getItem("loggedInUser");
+
+  if (loggedInUser) {
+
+      try {
+
+          const user = JSON.parse(loggedInUser);
+
+          if (user.fullName && userAccountName) {
+              userAccountName.textContent = user.fullName;
+          }
+
+          if (userAccountLink) {
+              userAccountLink.href = "#account";
+          }
+
+      } catch (error) {
+
+          console.error("Error reading logged-in user:", error);
+
+      }
+  }
+
   /* ---------- Product carousel (prev / next) ---------- */
   var carousel = document.querySelector('.carousel');
   var prevBtn = document.querySelector('.carousel-btn.prev');
@@ -45,4 +72,3 @@ document.addEventListener('DOMContentLoaded', function () {
   }
  
 });
- 

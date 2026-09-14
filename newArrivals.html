@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>New Arrivals | Whatever</title>
+
+    <link rel="stylesheet" href="newArrivals.css">
+    <script src="newArrivals.js" defer></script>
+</head>
+
+<header>
+
+</header>
+
+<body>
+
+    <main class="new-arrivals-page">
+
+        <!-- ==================== -->
+        <!-- HERO SLIDESHOW -->
+        <!-- ==================== -->
+
+        <section class="new-arrivals-slider">
+
+            <!-- Slide 1 -->
+            <div class="slide active">
+
+                <div class="slide-image">
+                    <img src="images/newArrival1.png"
+                         alt="New beauty products">
+                </div>
+
+                <div class="slide-content">
+                    <p class="slide-small-title">JUST DROPPED</p>
+
+                    <h1>New Arrivals</h1>
+
+                    <p>
+                        Discover our latest beauty essentials
+                        and find your next favourite.
+                    </p>
+
+                    <button class="shop-button"
+                            onclick="scrollToProducts()">
+                        Shop Now
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Slide 2 -->
+            <div class="slide">
+
+                <div class="slide-image">
+                    <img src="images/newArrival2.png"
+                         alt="New makeup collection">
+                </div>
+
+                <div class="slide-content">
+                    <p class="slide-small-title">NEW MAKEUP</p>
+
+                    <h1>Fresh Looks</h1>
+
+                    <p>
+                        Meet the latest shades and beauty
+                        essentials for your everyday look.
+                    </p>
+
+                    <button class="shop-button"
+                            onclick="scrollToProducts()">
+                        Explore Now
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Slide 3 -->
+            <div class="slide">
+
+                <div class="slide-image">
+                    <img src="images/new-arrival-3.jpg"
+                         alt="New skincare products">
+                </div>
+
+                <div class="slide-content">
+                    <p class="slide-small-title">NEW SKINCARE</p>
+
+                    <h1>Glow Starts Here</h1>
+
+                    <p>
+                        Fresh skincare favourites made
+                        for your daily beauty routine.
+                    </p>
+
+                    <button class="shop-button"
+                            onclick="scrollToProducts()">
+                        Shop Skincare
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Previous Button -->
+            <button class="slider-button previous"
+                    onclick="changeSlide(-1)">
+                &#10094;
+            </button>
+
+
+            <!-- Next Button -->
+            <button class="slider-button next"
+                    onclick="changeSlide(1)">
+                &#10095;
+            </button>
+
+
+            <!-- Dots -->
+            <div class="slider-dots">
+
+                <button class="dot active"
+                        onclick="showSlide(0)">
+                </button>
+
+                <button class="dot"
+                        onclick="showSlide(1)">
+                </button>
+
+                <button class="dot"
+                        onclick="showSlide(2)">
+                </button>
+
+            </div>
+
+        </section>
+        <audio autoplay loop>
+        <source src="newArrivalsAudio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+
+
+        <!-- ==================== -->
+        <!-- PRODUCTS SECTION -->
+        <!-- ==================== -->
+
+        <section class="products-section" id="products">
+
+            <div class="section-heading">
+                <p>EXPLORE OUR LATEST</p>
+
+                <h2>New Arrivals</h2>
+
+                <span>
+                    Discover the newest additions to Glow Beauty.
+                </span>
+            </div>
+
+
+            <!-- Search -->
+            <div class="product-search">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search products..."
+                >
+
+            </div>
+
+
+            <!-- Category Filter -->
+            <div class="category-filter">
+
+                <button class="filter-btn active"
+                        data-category="all">
+                    All
+                </button>
+
+                <button class="filter-btn"
+                        data-category="makeup">
+                    Makeup
+                </button>
+
+                <button class="filter-btn"
+                        data-category="skincare">
+                    Skincare
+                </button>
+
+                <button class="filter-btn"
+                        data-category="haircare">
+                    Haircare
+                </button>
+
+            </div>
+
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="productGrid">
+
+
+                <!-- PRODUCT 1 -->
+
+                <div class="product-card"
+                     data-category="makeup">
+
+                    <div class="product-image">
+
+                        <img src="images/lip-gloss.jpg"
+                             alt="Rose Lip Gloss">
+
+                        <span class="new-badge">
+                            NEW
+                        </span>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <p class="product-category">
+                            Makeup
+                        </p>
+
+                        <h3>
+                            Rose Lip Gloss
+                        </h3>
+
+                        <p class="product-price">
+                            RM 29.90
+                        </p>
+
+                        <button class="add-cart">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 2 -->
+
+                <div class="product-card"
+                     data-category="skincare">
+
+                    <div class="product-image">
+
+                        <img src="images/face-serum.jpg"
+                             alt="Glow Face Serum">
+
+                        <span class="new-badge">
+                            NEW
+                        </span>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <p class="product-category">
+                            Skincare
+                        </p>
+
+                        <h3>
+                            Glow Face Serum
+                        </h3>
+
+                        <p class="product-price">
+                            RM 45.90
+                        </p>
+
+                        <button class="add-cart">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 3 -->
+
+                <div class="product-card"
+                     data-category="makeup">
+
+                    <div class="product-image">
+
+                        <img src="images/blush.jpg"
+                             alt="Soft Rose Blush">
+
+                        <span class="new-badge">
+                            NEW
+                        </span>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <p class="product-category">
+                            Makeup
+                        </p>
+
+                        <h3>
+                            Soft Rose Blush
+                        </h3>
+
+                        <p class="product-price">
+                            RM 32.90
+                        </p>
+
+                        <button class="add-cart">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 4 -->
+
+                <div class="product-card"
+                     data-category="haircare">
+
+                    <div class="product-image">
+
+                        <img src="images/hair-oil.jpg"
+                             alt="Silky Hair Oil">
+
+                        <span class="new-badge">
+                            NEW
+                        </span>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <p class="product-category">
+                            Haircare
+                        </p>
+
+                        <h3>
+                            Silky Hair Oil
+                        </h3>
+
+                        <p class="product-price">
+                            RM 35.90
+                        </p>
+
+                        <button class="add-cart">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 5 -->
+
+                <div class="product-card"
+                     data-category="skincare">
+
+                    <div class="product-image">
+
+                        <img src="images/face-mist.jpg"
+                             alt="Hydrating Face Mist">
+
+                        <span class="new-badge">
+                            NEW
+                        </span>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <p class="product-category">
+                            Skincare
+                        </p>
+
+                        <h3>
+                            Hydrating Face Mist
+                        </h3>
+
+                        <p class="product-price">
+                            RM 28.90
+                        </p>
+
+                        <button class="add-cart">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 6 -->
+
+                <div class="product-card"
+                     data-category="makeup">
+
+                    <div class="product-image">
+
+                        <img src="images/lip-tint.jpg"
+                             alt="Velvet Lip Tint">
+
+                        <span class="new-badge">
+                            NEW
+                        </span>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <p class="product-category">
+                            Makeup
+                        </p>
+
+                        <h3>
+                            Velvet Lip Tint
+                        </h3>
+
+                        <p class="product-price">
+                            RM 27.90
+                        </p>
+
+                        <button class="add-cart">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 7 -->
+
+                <div class="product-card"
+                     data-category="skincare">
+
+                    <div class="product-image">
+
+                        <img src="images/vitamin-c.jpg"
+                             alt="Vitamin C Cream">
+
+                        <span class="new-badge">
+                            NEW
+                        </span>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <p class="product-category">
+                            Skincare
+                        </p>
+
+                        <h3>
+                            Vitamin C Cream
+                        </h3>
+
+                        <p class="product-price">
+                            RM 49.90
+                        </p>
+
+                        <button class="add-cart">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 8 -->
+
+                <div class="product-card"
+                     data-category="haircare">
+
+                    <div class="product-image">
+
+                        <img src="images/hair-mask.jpg"
+                             alt="Repair Hair Mask">
+
+                        <span class="new-badge">
+                            NEW
+                        </span>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <p class="product-category">
+                            Haircare
+                        </p>
+
+                        <h3>
+                            Repair Hair Mask
+                        </h3>
+
+                        <p class="product-price">
+                            RM 39.90
+                        </p>
+
+                        <button class="add-cart">
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p id="noResults" class="no-results">
+                No products found. Try another search.
+            </p>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

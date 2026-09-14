@@ -1,0 +1,399 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*to fit the content inside this box,all pading and margarins*/
+}
+
+body {
+    font-family: Georgia, serif;
+    background-color: #420420;
+    color: #FBEBE1;
+}
+
+/* Main Container */
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    padding: 40px;
+    gap: 30px;
+    background-color: #420420;
+}
+
+/* Left Side */
+
+.auth-image {
+    width: 50%;
+
+    background-image:
+        linear-gradient(
+            180deg,
+            rgba(43, 25, 22, 0.25) 0%,
+            rgba(43, 25, 22, 0.35) 55%,
+            rgba(87, 45, 45, 0.75) 100%
+        ),
+        url("images/makeup-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.image-content {
+    text-align: center;
+    color: #FBEBE1;
+    padding: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.image-content h1 {
+    font-size: 60px;
+    font-family: Georgia, serif;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.image-content p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+.brand-line {
+    width: 60px;
+    height: 2px;
+    background-color: #C9A66B;
+    margin: 0 auto 15px;
+}
+
+/* Right Side */
+
+.auth-form-container {
+    width: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px;
+
+    background-color: #4D4430;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.auth-form {
+    width: 100%;
+    max-width: 450px;
+}
+
+/* Heading */
+
+.auth-form h2 {
+    font-family: Georgia, serif;
+    font-size: 36px;
+    margin-bottom: 10px;
+
+    color: #FBEBE1;
+}
+
+.subtitle {
+    color: #837452;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+/* Form Group */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+
+    font-size: 14px;
+    font-weight: bold;
+    color: #FBEBE1;
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    background-color: rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(201, 166, 107, 0.35);
+    border-radius: 8px;
+
+    font-size: 14px;
+    color: #FBEBE1;
+
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+.form-group input::placeholder {
+    color: #837452;
+}
+
+.form-group input:hover {
+    transform: translateY(-3px);
+    border-color: #C9A66B;
+}
+.form-group input:focus {
+    border-color: #C9A66B;
+    outline: none;
+    box-shadow: 0 0 8px rgba(201, 166, 107, 0.3);
+}
+
+
+
+/* Password */
+
+.password-container {
+    position: relative;
+}
+
+.password-container input {
+    padding-right: 65px;
+}
+
+/* Hide native browser password-reveal icons (Edge, etc.)
+   so only our custom eye icon shows */
+
+.password-container input::-ms-reveal,
+.password-container input::-ms-clear {
+    display: none;
+}
+
+.password-container input::-webkit-credentials-auto-fill-button,
+.password-container input::-webkit-textfield-decoration-container {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.toggle-password {
+    position: absolute;
+
+    right: 10px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+    background: none;
+
+    color: #C9A66B;
+
+    cursor: pointer;
+
+    padding: 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s;
+}
+
+.toggle-password svg {
+    display: block;
+}
+
+.toggle-password:hover {
+    color: #E0C08C;
+}
+
+small {
+    display: block;
+    margin-top: 6px;
+
+    color: #837452;
+    font-size: 12px;
+}
+
+/* Forgot Password */
+
+.password-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 8px;
+}
+
+.password-label label {
+    margin-bottom: 0;
+}
+
+.password-label a {
+    font-size: 13px;
+    color: #C9A66B;
+
+    text-decoration: none;
+}
+
+.password-label a:hover {
+    color: #E0C08C;
+    text-decoration: underline;
+}
+
+/* Remember Me */
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 20px;
+}
+
+.remember input {
+    width: 16px;
+    height: 16px;
+    accent-color: #C9A66B;
+}
+
+.remember label {
+    font-size: 14px;
+    color: #FBEBE1;
+}
+
+/* Terms */
+
+.terms {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 20px;
+}
+
+.terms input {
+    width: 16px;
+    height: 16px;
+    accent-color: #C9A66B;
+}
+
+.terms label {
+    font-size: 13px;
+    color: #837452;
+}
+
+/* Button */
+
+.auth-button {
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #C9A66B;
+    color: #420420;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.auth-button:hover {
+    background-color: #E0C08C;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(201, 166, 107, 0.35);
+}
+
+/* Messages */
+
+.message {
+    min-height: 20px;
+
+    margin-bottom: 10px;
+
+    font-size: 14px;
+}
+
+/* Page Switch */
+
+.switch-page {
+    text-align: center;
+
+    margin-top: 25px;
+
+    font-size: 14px;
+    color: #837452;
+}
+
+.switch-page a {
+    color: #C9A66B;
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+.switch-page a:hover {
+    color: #E0C08C;
+    text-decoration: underline;
+}
+
+/* Back Home */
+
+.back-home {
+    display: block;
+
+    text-align: center;
+
+    margin-top: 20px;
+
+    color: #837452;
+
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+.back-home:hover {
+    color: #C9A66B;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .auth-container {
+        flex-direction: column;
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .auth-image {
+        width: 100%;
+        min-height: 250px;
+    }
+
+    .image-content h1 {
+        font-size: 36px;
+    }
+
+    .auth-form-container {
+        width: 100%;
+        padding: 30px 20px;
+    }
+}
+
+
