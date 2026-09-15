@@ -259,9 +259,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // Clear the cart after successful payment
         localStorage.removeItem("cart");
 
-        // When OK is clicked, go to confirmation page
-        successOk.addEventListener("click", function () {
+        // Redirect to confirmation page after 2 seconds
+        setTimeout(function () {
             window.location.href = "order-success.html";
-        });
+        }, 2000);
     });
 });

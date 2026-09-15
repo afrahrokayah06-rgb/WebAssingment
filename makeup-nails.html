@@ -118,7 +118,7 @@
             <span class="lip-price">RM 29.00</span>
             <div class="lip-footer-actions">
               <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="midnight-star" data-name="Midnight Star Nail Set" data-price="RM 29.00" data-image="MidnightStar"><img src="wishlist.png" alt=""></button>
-              <button>Add to Cart</button>
+              <button class="cart" data-id="midnight-star" data-name="Midnight Star Nail Set" data-price="29.00" data-image="MidnightStar.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -136,7 +136,7 @@
             <span class="lip-price">RM 29.00</span>
             <div class="lip-footer-actions">
               <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="velvet-plum" data-name="Velvet Plum Nail Set" data-price="RM 29.00" data-image="VelvetPlum"><img src="wishlist.png" alt=""></button>
-              <button>Add to Cart</button>
+              <button class="cart" data-id="velvet-plum" data-name="Velvet Plum Nail Set" data-price="29.00" data-image="VelvetPlum.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -154,7 +154,7 @@
             <span class="lip-price">RM 27.00</span>
             <div class="lip-footer-actions">
               <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="sweet-sorbet" data-name="Sweet Sorbet Nail Set" data-price="RM 27.00" data-image="SweetSorbet"><img src="wishlist.png" alt=""></button>
-              <button>Add to Cart</button>
+              <button class="cart" data-id="sweet-sorbet" data-name="Sweet Sorbet Nail Set" data-price="27.00" data-image="SweetSorbet.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -172,7 +172,7 @@
             <span class="lip-price">RM 28.00</span>
             <div class="lip-footer-actions">
               <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="cocoa-bloom" data-name="Cocoa Bloom Nail Set" data-price="RM 28.00" data-image="CocoaBloom"><img src="wishlist.png" alt=""></button>
-              <button>Add to Cart</button>
+              <button class="cart" data-id="cocoa-bloom" data-name="Cocoa Bloom Nail Set" data-price="28.00" data-image="CocoaBloom.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -190,7 +190,7 @@
             <span class="lip-price">RM 29.00</span>
             <div class="lip-footer-actions">
               <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="noir-lace" data-name="Noir Lace Nail Set" data-price="RM 29.00" data-image="NoirLace"><img src="wishlist.png" alt=""></button>
-              <button>Add to Cart</button>
+              <button class="cart" data-id="noir-lace" data-name="Noir Lace Nail Set" data-price="29.00" data-image="NoirLace.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -207,8 +207,8 @@
           <div class="lip-footer">
             <span class="lip-price">RM 28.00</span>
             <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="mocha-check" data-name="Mocha Check Nail Set" data-price="$18.00" data-image="MochaCheck"><img src="wishlist.png" alt=""></button>
-              <button>Add to Cart</button>
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="mocha-check" data-name="Mocha Check Nail Set" data-price="28.00" data-image="MochaCheck.jpeg"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="mocha-check" data-name="Mocha Check Nail Set" data-price="28.00" data-image="MochaCheck.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -225,8 +225,8 @@
           <div class="lip-footer">
             <span class="lip-price">RM 29.00</span>
             <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="ruby-starlight" data-name="Ruby Starlight Nail Set" data-price="RM 29.00" data-image="RubyStarlight"><img src="wishlist.png" alt=""></button>
-              <button>Add to Cart</button>
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="ruby-starlight" data-name="Ruby Starlight Nail Set" data-price="RM 29.00" data-image="RubyStarlight.jpeg"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="ruby-starlight" data-name="Ruby Starlight Nail Set" data-price="29.00" data-image="RubyStarlight.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -243,8 +243,8 @@
           <div class="lip-footer">
             <span class="lip-price">RM 29.00</span>
             <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="rose-starlight" data-name="Ros\u00e9 Starlight Nail Set" data-price="RM 29.00" data-image="RoseStarlight"><img src="wishlist.png" alt=""></button>
-              <button>Add to Cart</button>
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="rose-starlight" data-name="Ros\u00e9 Starlight Nail Set" data-price="RM 29.00" data-image="RoseStarlight.jpeg"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="rose-starlight" data-name="Rosé Starlight Nail Set" data-price="29.00" data-image="RoseStarlight.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -255,6 +255,7 @@
 
   <!-- Wishlist toast -->
   <div id="wishlist-toast" class="toast"></div>
+  <div id="cart-toast" class="toast"></div>
  
   <script>
     const WISHLIST_KEY = 'whatever_wishlist';

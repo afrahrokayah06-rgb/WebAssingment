@@ -34,9 +34,10 @@
  
 <main class="cart-page">
     <h1>Your Cart</h1>
+    <a id="back-home" class="home-link" href="main_page.html">Back to Home</a>
     <div id="cart-items"></div>
     <div class="cart-summary">
-        <h2>Total: RM <span id="cart-total">0.00</span></h2>
+        <h2 class="cart-total">Total: RM <span id="cart-total">0.00</span></h2>
         <button id="checkout-btn">
             PROCEED TO CHECKOUT
         </button>
@@ -105,6 +106,18 @@
   </div>
 </footer>
  
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const backHome = document.getElementById("back-home");
+
+  if (cart.length === 0) {
+      backHome.style.display = "none";
+  } else {
+      backHome.style.display = "inline-block";
+  }
+});
+</script>
 <script src="main_page.js"></script>
 <script src="cart.js"></script>
 </body>
