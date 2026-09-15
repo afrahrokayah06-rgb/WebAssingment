@@ -538,4 +538,24 @@ body {
     font-size: 12px;
   }
 }
- 
+
+/* ---------- Selected Reward ---------- */
+
+.reward-card.selected {
+  border: 2px solid var(--gold);
+  box-shadow: 0 5px 18px rgba(184, 154, 107, 0.25);
+}
+
+.reward-card.selected .reward-swatch {
+  background-color: var(--gold-light);
+}
+
+.reward-card button.selected-reward {
+  background-color: var(--gold);
+  color: var(--maroon);
+  cursor: pointer;
+}
+
+.reward-card button.selected-reward:hover {
+  background-color: var(--gold-light);
+}

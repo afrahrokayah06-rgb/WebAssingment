@@ -213,26 +213,30 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             id: "r1",
             name: "RM5 Off Your Next Purchase",
-            cost: 500
+            cost: 500,
+            discount: 5
         },
 
         {
             id: "r2",
             name: "RM15 Off Your Next Purchase",
-            cost: 800
+            cost: 800,
+            discount: 15
         },
 
         {
             id: "r3",
             name: "RM25 Off Your Next Purchase",
-            cost: 1200
+            cost: 1200,
+            discount: 25
         },
 
         {
             id: "r4",
             name: "RM50 Off Your Next Purchase",
-            cost: 2500
-        },
+            cost: 2500,
+            discount: 50
+        }
 
     ];
 
@@ -279,48 +283,34 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-
-        // Prevent redeeming the same reward twice
+        // Already permanently redeemed
         if (user.redeemed.includes(reward.id)) {
-
             showToast("You already redeemed this reward.");
-
             return;
         }
-
 
         // Not enough points
         if (user.points < reward.cost) {
-
             showToast("Not enough points.");
-
             return;
         }
 
+        // Save this reward as the currently selected reward
+        localStorage.setItem(
+            "pendingReward",
+            JSON.stringify({
+                id: reward.id,
+                name: reward.name,
+                cost: reward.cost,
+                discount: reward.discount
+            })
+        );
 
-        user.points -= reward.cost;
+        renderRewards();
 
-        user.redeemed.push(reward.id);
-
-
-        user.activity.unshift({
-
-            date: todayLabel(),
-
-            desc: "Redeemed: " + reward.name,
-
-            spent: "—",
-
-            points: "-" + reward.cost
-
-        });
-
-
-        saveUser();
-
-        renderAll();
-
-        showToast("Reward redeemed!");
+        showToast(
+            reward.name + " selected!"
+        );
     }
 
 
@@ -692,13 +682,19 @@ document.addEventListener("DOMContentLoaded", function () {
             const isRedeemed =
                 user.redeemed.includes(reward.id);
 
-
             const canAfford =
                 user.points >= reward.cost;
 
+            const pendingReward =
+                JSON.parse(
+                    localStorage.getItem("pendingReward")
+                );
+
+            const isSelected =
+                pendingReward &&
+                pendingReward.id === reward.id;
 
             let buttonHTML;
-
 
             if (isRedeemed) {
 
@@ -718,11 +714,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
 
+            else if (isSelected) {
+
+                buttonHTML =
+                    `<button class="selected-reward"
+                            data-id="${reward.id}">
+                        ✓ Selected
+                    </button>`;
+
+            }
+
             else {
 
                 buttonHTML =
                     `<button data-id="${reward.id}">
-                        Redeem
+                        Select
                     </button>`;
 
             }

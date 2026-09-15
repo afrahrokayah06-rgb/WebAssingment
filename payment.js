@@ -12,19 +12,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* ---------- Get whatever is in the cart ---------- */
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let pendingReward =
+        JSON.parse(
+            localStorage.getItem("pendingReward")
+        ) || null;
+
 
     const paymentItems =
         document.getElementById("payment-items");
+    const paymentSubtotal =
+    document.getElementById("payment-subtotal");
+    const paymentShipping =
+        document.getElementById("payment-shipping");
     const paymentTotal =
         document.getElementById("payment-total");
     const payTotal =
         document.getElementById("pay-total");
+    const paymentDiscount =
+    document.getElementById("payment-discount");
+    const discountRow =
+        document.getElementById("discount-row");
+
+
 
 
 /* ---------- Check if cart is empty ---------- */
     if (cart.length === 0) {
         alert("Your cart is empty!");
         window.location.href = "main_page.html";
+        return;
     }
 
 
@@ -63,11 +79,66 @@ document.addEventListener("DOMContentLoaded", function () {
         paymentItems.appendChild(item);
     });
 
-    paymentTotal.textContent =
+/* ---------- Shipping Calculation ---------- */
+    let shipping = 0;
+
+    if (total <150) {
+        shipping = 10;
+    }
+
+/* ---------- Reward Discount ---------- */
+    let discount = 0;
+
+    if (pendingReward) {
+
+        discount = Number(
+            pendingReward.discount
+        ) || 0;
+
+        // Discount cannot exceed subtotal
+        discount = Math.min(
+            discount,
+            total
+        );
+    }
+
+/* ---------- Final Total ---------- */
+    const finalTotal =
+        Math.max(0, total + shipping - discount);
+
+
+/* ---------- Display Subtotal ---------- */
+    paymentSubtotal.textContent =
         total.toFixed(2);
 
+/* ---------- Display Discount ---------- */
+    if (pendingReward && discount > 0) {
+        discountRow.style.display = "flex";
+
+        paymentDiscount.textContent =
+            "- RM " + discount.toFixed(2);
+    } else {
+        discountRow.style.display = "none";
+    }
+
+/* ---------- Display Shipping ---------- */
+    if (shipping === 0) {
+        paymentShipping.textContent = "FREE";
+    } else {
+        paymentShipping.textContent =
+            shipping.toFixed(2);
+    }
+    
+/* ---------- Display Final Total ---------- */
+if (paymentTotal) {
+    paymentTotal.textContent =
+        finalTotal.toFixed(2);
+}
+
+if (payTotal) {
     payTotal.textContent =
-        total.toFixed(2);
+        finalTotal.toFixed(2);
+}
 
 
 /* ---------- Input Elements ---------- */
@@ -320,6 +391,48 @@ document.addEventListener("DOMContentLoaded", function () {
         const earnedPoints =
             Math.floor(total * pointsPerRinggit);
 
+    /* ---------- Use Reward ---------- */
+        if (pendingReward) {
+
+            const rewardCost =
+                Number(pendingReward.cost) || 0;
+
+            if (
+                rewardCost > 0 &&
+                user.points >= rewardCost &&
+                !user.redeemed.includes(pendingReward.id)
+            ) {
+
+                user.points -= rewardCost;
+
+                user.redeemed.push(
+                    pendingReward.id
+                );
+
+                user.activity.unshift({
+
+                    date: new Date().toLocaleDateString(
+                        "en-US",
+                        {
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric"
+                        }
+                    ),
+
+                    desc:
+                        "Redeemed: " +
+                        pendingReward.name,
+
+                    spent: "—",
+
+                    points:
+                        "-" + rewardCost
+
+                });
+
+            }
+        }
 
         // Add points
         user.points += earnedPoints;
@@ -338,7 +451,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             desc: "Purchase — " + cart.length + " item(s)",
 
-            spent: "RM " + total.toFixed(2),
+            spent: "RM " + finalTotal.toFixed(2),
 
             points: "+" + earnedPoints
 
@@ -360,8 +473,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        // Clear cart
+    /* ---------- Clear Cart ---------- */
         localStorage.removeItem("cart");
+
+    /* ---------- Clear Used Reward ---------- */
+        localStorage.removeItem("pendingReward");
+
 
 
         // Redirect
