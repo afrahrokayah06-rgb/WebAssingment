@@ -259,9 +259,15 @@
   background-color: #fbf0f2;
 }
 
-.lip-wishlist-btn.active img {
-  filter: invert(13%) sepia(54%) saturate(1900%) hue-rotate(320deg) brightness(70%);
+.lip-card .lip-wishlist-btn.active {
+  border-color: #e00000;
+  background-color: #fff;
 }
+
+.lip-wishlist-btn.active img {
+  filter: brightness(0) saturate(100%) invert(24%) sepia(97%) saturate(7466%) hue-rotate(357deg) brightness(95%) contrast(118%);
+}
+
 
 .lip-card button {
   background-color: var(--lip-maroon);
@@ -335,4 +341,3 @@
   opacity: 1;
   transform: translate(-50%, 0);
 }
- 
