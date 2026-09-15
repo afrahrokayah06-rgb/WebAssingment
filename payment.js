@@ -391,48 +391,69 @@ if (payTotal) {
         const earnedPoints =
             Math.floor(total * pointsPerRinggit);
 
-    /* ---------- Use Reward ---------- */
-        if (pendingReward) {
+/* ---------- Use Reward ---------- */
 
-            const rewardCost =
-                Number(pendingReward.cost) || 0;
+    if (pendingReward) {
 
-            if (
-                rewardCost > 0 &&
-                user.points >= rewardCost &&
-                !user.redeemed.includes(pendingReward.id)
-            ) {
+        const rewardCost =
+            Number(pendingReward.cost) || 0;
 
-                user.points -= rewardCost;
+        const rewardId =
+            pendingReward.id;
 
-                user.redeemed.push(
-                    pendingReward.id
-                );
+        // Check reward is valid
+        if (!rewardId) {
 
-                user.activity.unshift({
+            localStorage.removeItem("pendingReward");
 
-                    date: new Date().toLocaleDateString(
-                        "en-US",
-                        {
-                            month: "short",
-                            day: "numeric",
-                            year: "numeric"
-                        }
-                    ),
-
-                    desc:
-                        "Redeemed: " +
-                        pendingReward.name,
-
-                    spent: "—",
-
-                    points:
-                        "-" + rewardCost
-
-                });
-
-            }
         }
+
+        // Check if already redeemed
+        else if (user.redeemed.includes(rewardId)) {
+
+            // Reward was already used.
+            // Do NOT deduct points again.
+            localStorage.removeItem("pendingReward");
+
+        }
+
+        // Check user has enough points
+        else if (rewardCost > 0 && user.points >= rewardCost) {
+
+            // Deduct reward points
+            user.points -= rewardCost;
+
+            // Permanently mark reward as redeemed
+            user.redeemed.push(rewardId);
+
+            // Record reward redemption
+            user.activity.unshift({
+
+                date: new Date().toLocaleDateString(
+                    "en-US",
+                    {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric"
+                    }
+                ),
+
+                desc:
+                    "Redeemed: " +
+                    pendingReward.name,
+
+                spent: "—",
+
+                points:
+                    "-" + rewardCost
+
+            });
+
+        }
+
+        // Always remove pending reward after successful payment
+        localStorage.removeItem("pendingReward");
+    }
 
         // Add points
         user.points += earnedPoints;
@@ -478,7 +499,6 @@ if (payTotal) {
 
     /* ---------- Clear Used Reward ---------- */
         localStorage.removeItem("pendingReward");
-
 
 
         // Redirect

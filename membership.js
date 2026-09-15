@@ -277,40 +277,104 @@ document.addEventListener("DOMContentLoaded", function () {
        REDEEM REWARD
     ========================================================= */
 
-    function redeem(reward) {
+        function redeem(reward) {
 
         if (!reward) {
             return;
         }
 
-        // Already permanently redeemed
+
+        /* ---------- Already Permanently Redeemed ---------- */
+
         if (user.redeemed.includes(reward.id)) {
-            showToast("You already redeemed this reward.");
+
+            showToast(
+                "You already redeemed this reward."
+            );
+
             return;
         }
 
-        // Not enough points
+
+        /* ---------- Check Points ---------- */
+
         if (user.points < reward.cost) {
-            showToast("Not enough points.");
+
+            showToast(
+                "Not enough points."
+            );
+
             return;
         }
 
-        // Save this reward as the currently selected reward
+
+        /* ---------- Check Existing Pending Reward ---------- */
+
+        const existingPendingReward =
+            JSON.parse(
+                localStorage.getItem("pendingReward")
+            ) || null;
+
+        if (existingPendingReward) {
+
+            // Same reward is already selected
+            if (existingPendingReward.id === reward.id) {
+
+                showToast("This reward is already selected.");
+                return;
+            }
+
+            // Switch to the new reward
+            localStorage.setItem(
+                "pendingReward",
+                JSON.stringify({
+                    id: reward.id,
+                    name: reward.name,
+                    cost: reward.cost,
+                    discount: reward.discount
+                })
+            );
+
+            renderRewards();
+
+            showToast(
+                "Switched to " + reward.name
+            );
+
+            return;
+        }
+
+
+        /* ---------- Save Pending Reward ---------- */
+
         localStorage.setItem(
             "pendingReward",
             JSON.stringify({
-                id: reward.id,
-                name: reward.name,
-                cost: reward.cost,
-                discount: reward.discount
+
+                id:
+                    reward.id,
+
+                name:
+                    reward.name,
+
+                cost:
+                    reward.cost,
+
+                discount:
+                    reward.discount
+
             })
         );
 
+
+        /* ---------- Update Display ---------- */
+
         renderRewards();
 
+
         showToast(
-            reward.name + " selected!"
-        );
+            reward.name + " selected!");
+
     }
 
 

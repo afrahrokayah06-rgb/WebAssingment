@@ -17,16 +17,27 @@
 <header>
   <div class="nav-top">
     <div class="nav-left">
-      <a href="login.html" id="userAccountLink">
-          <img src="profile.png" alt="" class="nav-icon">
-          <span id="userAccountName">Sign In / Sign Up</span>
-      </a>
+      <div class="account-dropdown">
+        <a href="login.html" id="userAccountLink">
+            <img src="profile.png" alt="" class="nav-icon">
+            <span id="userAccountName">Sign In / Sign Up</span>
+        </a>
+        <div id="accountMenu" class="account-menu">
+            <a href="#" id="logout-button">
+                Log Out
+            </a>
+            <a href="#" id="delete-account-button" class="delete-account">
+                Delete Account
+            </a>
+        </div>
+    </div>
     </div>
     <div class="nav-right"> 
-    <a href="#membership"><img src="member-removebg-preview.png" alt=""class="nav-icon">Membership</a>
-    <a href="#services"><img src="promotion_events.png" alt=""class="nav-icon">Book Beauty Services</a>  
-    <a href="#promotions"><img src="beautypass.png" alt="" class="nav-icon">Promotions &amp; Events</a>
-    <a href="#wishlist" class="icon-link"><img src="wishlist.png" alt="" class="nav-icon">Wishlist</a>
+   <!-- AFTER -->
+    <a href="membership.html"><img src="member-removebg-preview.png" alt=""class="nav-icon">Membership</a>
+    <a href="beauty_service.html"><img src="promotion_events.png" alt=""class="nav-icon">Book Beauty Services</a>  
+    <a href="promotions.html"><img src="beautypass.png" alt="" class="nav-icon">Promotions &amp; Events</a>
+    <a href="wishlist.html" class="icon-link"><img src="wishlist.png" alt="" class="nav-icon">Wishlist</a>
     <a href="cart.html" class="icon-link"><img src="cart.png" alt="" class="nav-icon">Cart</a>
     </div>
   </div>
