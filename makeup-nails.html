@@ -2,35 +2,93 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>WHATEVER Nail Collection</title>
-<link rel="stylesheet" href="makeup-nails.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lips | Whatever</title>
+<meta name="description" content="Shop Face, Eyes, Lips, Nails and Makeup Remover. Free sample with every purchase.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="main_page.css">
 <link rel="stylesheet" href="nav.css">
+<link rel="stylesheet" href="lipstickpage.css">
 </head>
 <body>
 
-<!-- Reuses the site navigation -->
-<header class="navigation">
+<!-- ============ TOP UTILITY BAR ============ -->
+<header>
   <div class="nav-top">
     <div class="nav-left">
-      <a href="#signin"><img src="profile.png" alt="" class="nav-icon">Sign In / Register</a>
+      <a href="login.html" id="userAccountLink">
+          <img src="profile.png" alt="" class="nav-icon">
+          <span id="userAccountName">Sign In / Sign Up</span>
+      </a>
     </div>
-     <div class="nav-right"> 
-   <!-- AFTER -->
-    <a href="membership.html"><img src="member-removebg-preview.png" alt=""class="nav-icon">Membership</a>
-    <a href="beauty_service.html"><img src="promotion_events.png" alt=""class="nav-icon">Book Beauty Services</a>  
-    <a href="promotions.html"><img src="beautypass.png" alt="" class="nav-icon">Promotions &amp; Events</a>
+    <div class="nav-right"> 
+    <a href="#membership"><img src="member-removebg-preview.png" alt=""class="nav-icon">Membership</a>
+    <a href="#services"><img src="promotion_events.png" alt=""class="nav-icon">Book Beauty Services</a>  
+    <a href="#promotions"><img src="beautypass.png" alt="" class="nav-icon">Promotions &amp; Events</a>
     <a href="#wishlist" class="icon-link"><img src="wishlist.png" alt="" class="nav-icon">Wishlist</a>
     <a href="cart.html" class="icon-link"><img src="cart.png" alt="" class="nav-icon">Cart</a>
     </div>
   </div>
 </header>
+ 
+<!-- ============ PROMO STRIP (animation) ============ -->
+<div class="promo-strip">
+  <div class="wrap">
+    <div class="promo-track">
+      <p>WHATEVER BEAUTY PASS MEMBERS ENJOY MORE — unlock exclusive online offers and early access to new arrivals</p>
+    </div>
+    <div class="promo-actions">
+      <a class="btn filled" href="login.html">Sign In</a>
+      <a class="btn" href="register.html">Sign Up</a>
+    </div>
+  </div>
+</div>
+ 
+<!-- ============ MASTHEAD: logo / search form / sample note ============ -->
+<div class="masthead">
+  <div class="wrap">
+    <a class="logo" href="main_page.html">WHATEVER</a>
+ 
+    <form class="search-form" role="search" action="#" method="get">
+      <label for="site-search" class="visually-hidden">Search products</label>
+      <input type="search" id="site-search" name="q" list="search-suggestions"
+             placeholder="What are you looking for?" required>
+      <datalist id="search-suggestions">
+        <option value="Lipstick"></option>
+        <option value="Mascara"></option>
+        <option value="Foundation"></option>
+        <option value="Nail Polish"></option>
+        <option value="Makeup Remover Wipes"></option>
+      </datalist>
+      <button type="submit" aria-label="Search">🔍</button>
+    </form>
+ 
+    <p class="free-sample"><strong>Free Sample</strong>with every purchase</p>
+  </div>
+</div>
+ 
+<!-- ============ CATEGORY NAVIGATION  ============ -->
+<nav class="category-nav" aria-label="Product categories">
+  <div class="wrap">
+    <button class="nav-toggle" aria-expanded="false">Menu ☰</button>
+    <ul>
+    <li><a href="new.html">New</a></li>
+      <li><a href="makeup-face.html">Face</a></li>
+      <li><a href="makeup-eyes.html">Eyes</a></li>
+      <li><a href="makeup-lips.html">Lips</a></li>
+      <li><a href="makeup-nails.html">Nails</a></li>
+      <li><a href="makeup-remover.html">Makeup Remover</a></li>
+    </ul>
+  </div>
+</nav>
 
   <!-- Hero -->
-  <section class="nail-hero">
-    <div class="nail-hero-bg">
+  <section class="lip-hero">
+    <div class="lip-hero-bg">
       <img src="NAIL.jpg" alt="">
     </div>
-    <div class="nail-hero-content">
+    <div class="lip-hero-content">
       <div class="eyebrow">Whatever Beauty</div>
       <h1>The Nail Collection</h1>
       <p>From glassy, plumping glosses to rich, pigmented lipsticks — find your perfect shade for every mood.</p>
@@ -38,155 +96,155 @@
     </div>
   </section>
 
-  <div class="nail-divider">Free shipping on all orders over RM 50 · Earn Beauty Pass points on every purchase</div>
+  <div class="lip-divider">Free shipping on all orders over RM 50 · Earn Beauty Pass points on every purchase</div>
 
   <!-- Nail Sets -->
-  <section class="nail-section" id="nails">
-    <div class="nail-section-heading">
+  <section class="lip-section" id="nails">
+    <div class="lip-section-heading">
       <h2>Press-On Nail Sets</h2>
       <p>10 hand-painted nails per set, in graduated sizes for a custom fit.</p>
     </div>
-    <div class="nail-grid">
+    <div class="lip-grid">
 
-      <div class="nail-card">
-        <div class="nail-img-wrap">
+      <div class="lip-card">
+        <div class="lip-img-wrap">
           <img src="MidnightStar.jpeg" alt="Midnight Star nail set">
-          <div class="nail-hover-info">Lightweight almond-shaped nails in lightweight ABS material. Set includes adhesive tabs, a mini file, and a prep pad. Reusable with proper care — lasts up to 2 weeks per application.</div>
+          <div class="lip-hover-info">Lightweight almond-shaped nails in lightweight ABS material. Set includes adhesive tabs, a mini file, and a prep pad. Reusable with proper care — lasts up to 2 weeks per application.</div>
         </div>
-        <div class="nail-body">
+        <div class="lip-body">
           <h3>Midnight Star</h3>
-          <p class="nail-desc">Deep indigo and powder-blue nails with hand-painted bows, stars, and a silver spiral, finished with tiny crystal accents.</p>
-          <div class="nail-footer">
-            <span class="nail-price">RM 29.00</span>
-            <div class="nail-footer-actions">
-              <button class="nail-wishlist-btn" aria-label="Add to Wishlist" data-id="midnight-star" data-name="Midnight Star Nail Set" data-price="RM 29.00" data-image="MidnightStar"><img src="wishlist.png" alt=""></button>
-              <button>Add to Cart</button>
+          <p class="lip-desc">Deep indigo and powder-blue nails with hand-painted bows, stars, and a silver spiral, finished with tiny crystal accents.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 29.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="midnight-star" data-name="Midnight Star Nail Set" data-price="RM 29.00" data-image="MidnightStar"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="midnight-star" data-name="Midnight Star Nail Set" data-price="29.00" data-image="MidnightStar.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="nail-card">
-        <div class="nail-img-wrap">
+      <div class="lip-card">
+        <div class="lip-img-wrap">
           <img src="VelvetPlum.jpeg" alt="Velvet Plum nail set">
-          <div class="nail-hover-info">Lightweight almond-shaped nails in lightweight ABS material. Set includes adhesive tabs, a mini file, and a prep pad. Reusable with proper care — lasts up to 2 weeks per application.</div>
+          <div class="lip-hover-info">Lightweight almond-shaped nails in lightweight ABS material. Set includes adhesive tabs, a mini file, and a prep pad. Reusable with proper care — lasts up to 2 weeks per application.</div>
         </div>
-        <div class="nail-body">
+        <div class="lip-body">
           <h3>Velvet Plum</h3>
-          <p class="nail-desc">Rich plum and dove-white nails with gold star and bow details, plus a swirling gold spiral accent nail.</p>
-          <div class="nail-footer">
-            <span class="nail-price">RM 29.00</span>
-            <div class="nail-footer-actions">
-              <button class="nail-wishlist-btn" aria-label="Add to Wishlist" data-id="velvet-plum" data-name="Velvet Plum Nail Set" data-price="RM 29.00" data-image="VelvetPlum"><img src="wishlist.png" alt=""></button>
-              <button>Add to Cart</button>
+          <p class="lip-desc">Rich plum and dove-white nails with gold star and bow details, plus a swirling gold spiral accent nail.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 29.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="velvet-plum" data-name="Velvet Plum Nail Set" data-price="RM 29.00" data-image="VelvetPlum"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="velvet-plum" data-name="Velvet Plum Nail Set" data-price="29.00" data-image="VelvetPlum.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="nail-card">
-        <div class="nail-img-wrap">
+      <div class="lip-card">
+        <div class="lip-img-wrap">
           <img src="SweetSorbet.jpeg" alt="Sweet Sorbet nail set">
-          <div class="nail-hover-info">Lightweight almond-shaped nails in lightweight ABS material. Set includes adhesive tabs, a mini file, and a prep pad. Reusable with proper care — lasts up to 2 weeks per application.</div>
+          <div class="lip-hover-info">Lightweight almond-shaped nails in lightweight ABS material. Set includes adhesive tabs, a mini file, and a prep pad. Reusable with proper care — lasts up to 2 weeks per application.</div>
         </div>
-        <div class="nail-body">
+        <div class="lip-body">
           <h3>Sweet Sorbet</h3>
-          <p class="nail-desc">Buttery yellow and blush-pink nails finished with soft white stars and pastel spirals for a playful, candy-toned mani.</p>
-          <div class="nail-footer">
-            <span class="nail-price">RM 27.00</span>
-            <div class="nail-footer-actions">
-              <button class="nail-wishlist-btn" aria-label="Add to Wishlist" data-id="sweet-sorbet" data-name="Sweet Sorbet Nail Set" data-price="RM 27.00" data-image="SweetSorbet"><img src="wishlist.png" alt=""></button>
-              <button>Add to Cart</button>
+          <p class="lip-desc">Buttery yellow and blush-pink nails finished with soft white stars and pastel spirals for a playful, candy-toned mani.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 27.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="sweet-sorbet" data-name="Sweet Sorbet Nail Set" data-price="RM 27.00" data-image="SweetSorbet"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="sweet-sorbet" data-name="Sweet Sorbet Nail Set" data-price="27.00" data-image="SweetSorbet.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="nail-card">
-        <div class="nail-img-wrap">
+      <div class="lip-card">
+        <div class="lip-img-wrap">
           <img src="CocoaBloom.jpeg" alt="Cocoa Bloom nail set">
-          <div class="nail-hover-info">Lightweight almond-shaped nails in lightweight ABS material. Set includes adhesive tabs, a mini file, and a prep pad. Reusable with proper care — lasts up to 2 weeks per application.</div>
+          <div class="lip-hover-info">Lightweight almond-shaped nails in lightweight ABS material. Set includes adhesive tabs, a mini file, and a prep pad. Reusable with proper care — lasts up to 2 weeks per application.</div>
         </div>
-        <div class="nail-body">
+        <div class="lip-body">
           <h3>Cocoa Bloom</h3>
-          <p class="nail-desc">Warm burgundy and cream nails featuring hand-drawn florals, polka dots, and delicate striped detailing.</p>
-          <div class="nail-footer">
-            <span class="nail-price">RM 28.00</span>
-            <div class="nail-footer-actions">
-              <button class="nail-wishlist-btn" aria-label="Add to Wishlist" data-id="cocoa-bloom" data-name="Cocoa Bloom Nail Set" data-price="RM 28.00" data-image="CocoaBloom"><img src="wishlist.png" alt=""></button>
-              <button>Add to Cart</button>
+          <p class="lip-desc">Warm burgundy and cream nails featuring hand-drawn florals, polka dots, and delicate striped detailing.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 28.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="cocoa-bloom" data-name="Cocoa Bloom Nail Set" data-price="RM 28.00" data-image="CocoaBloom"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="cocoa-bloom" data-name="Cocoa Bloom Nail Set" data-price="28.00" data-image="CocoaBloom.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="nail-card">
-        <div class="nail-img-wrap">
+      <div class="lip-card">
+        <div class="lip-img-wrap">
           <img src="NoirLace.jpeg" alt="Noir Lace nail set">
-          <div class="nail-hover-info">Lightweight almond-shaped nails in lightweight ABS material. Set includes adhesive tabs, a mini file, and a prep pad. Reusable with proper care — lasts up to 2 weeks per application.</div>
+          <div class="lip-hover-info">Lightweight almond-shaped nails in lightweight ABS material. Set includes adhesive tabs, a mini file, and a prep pad. Reusable with proper care — lasts up to 2 weeks per application.</div>
         </div>
-        <div class="nail-body">
+        <div class="lip-body">
           <h3>Noir Lace</h3>
-          <p class="nail-desc">Ivory nails with black floral clusters and a hand-tied bow accent nail, framed with a delicate scalloped lace edge.</p>
-          <div class="nail-footer">
-            <span class="nail-price">RM 29.00</span>
-            <div class="nail-footer-actions">
-              <button class="nail-wishlist-btn" aria-label="Add to Wishlist" data-id="noir-lace" data-name="Noir Lace Nail Set" data-price="RM 29.00" data-image="NoirLace"><img src="wishlist.png" alt=""></button>
-              <button>Add to Cart</button>
+          <p class="lip-desc">Ivory nails with black floral clusters and a hand-tied bow accent nail, framed with a delicate scalloped lace edge.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 29.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="noir-lace" data-name="Noir Lace Nail Set" data-price="RM 29.00" data-image="NoirLace"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="noir-lace" data-name="Noir Lace Nail Set" data-price="29.00" data-image="NoirLace.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="nail-card">
-        <div class="nail-img-wrap">
+      <div class="lip-card">
+        <div class="lip-img-wrap">
           <img src="MochaCheck.jpeg" alt="Mocha Check nail set">
-          <div class="nail-hover-info">Lightweight almond-shaped nails in lightweight ABS material. Set includes adhesive tabs, a mini file, and a prep pad. Reusable with proper care — lasts up to 2 weeks per application.</div>
+          <div class="lip-hover-info">Lightweight almond-shaped nails in lightweight ABS material. Set includes adhesive tabs, a mini file, and a prep pad. Reusable with proper care — lasts up to 2 weeks per application.</div>
         </div>
-        <div class="nail-body">
+        <div class="lip-body">
           <h3>Mocha Check</h3>
-          <p class="nail-desc">Cream and brown gingham, polka dot, and bow nails with a chocolate-dipped French tip finish.</p>
-          <div class="nail-footer">
-            <span class="nail-price">RM 28.00</span>
-            <div class="nail-footer-actions">
-              <button class="nail-wishlist-btn" aria-label="Add to Wishlist" data-id="mocha-check" data-name="Mocha Check Nail Set" data-price="$18.00" data-image="MochaCheck"><img src="wishlist.png" alt=""></button>
-              <button>Add to Cart</button>
+          <p class="lip-desc">Cream and brown gingham, polka dot, and bow nails with a chocolate-dipped French tip finish.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 28.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="mocha-check" data-name="Mocha Check Nail Set" data-price="28.00" data-image="MochaCheck.jpeg"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="mocha-check" data-name="Mocha Check Nail Set" data-price="28.00" data-image="MochaCheck.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="nail-card">
-        <div class="nail-img-wrap">
+      <div class="lip-card">
+        <div class="lip-img-wrap">
           <img src="RubyStarlight.jpeg" alt="Ruby Starlight nail set">
-          <div class="nail-hover-info">Lightweight almond-shaped nails in lightweight ABS material. Set includes adhesive tabs, a mini file, and a prep pad. Reusable with proper care — lasts up to 2 weeks per application.</div>
+          <div class="lip-hover-info">Lightweight almond-shaped nails in lightweight ABS material. Set includes adhesive tabs, a mini file, and a prep pad. Reusable with proper care — lasts up to 2 weeks per application.</div>
         </div>
-        <div class="nail-body">
+        <div class="lip-body">
           <h3>Ruby Starlight</h3>
-          <p class="nail-desc">Cream and deep ruby-red nails with hand-painted bows, silver-outlined stars, and a metallic swirl accent.</p>
-          <div class="nail-footer">
-            <span class="nail-price">RM 29.00</span>
-            <div class="nail-footer-actions">
-              <button class="nail-wishlist-btn" aria-label="Add to Wishlist" data-id="ruby-starlight" data-name="Ruby Starlight Nail Set" data-price="RM 29.00" data-image="RubyStarlight"><img src="wishlist.png" alt=""></button>
-              <button>Add to Cart</button>
+          <p class="lip-desc">Cream and deep ruby-red nails with hand-painted bows, silver-outlined stars, and a metallic swirl accent.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 29.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="ruby-starlight" data-name="Ruby Starlight Nail Set" data-price="RM 29.00" data-image="RubyStarlight.jpeg"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="ruby-starlight" data-name="Ruby Starlight Nail Set" data-price="29.00" data-image="RubyStarlight.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="nail-card">
-        <div class="nail-img-wrap">
+      <div class="lip-card">
+        <div class="lip-img-wrap">
           <img src="RoseStarlight.jpeg" alt="Rosé Starlight nail set">
-          <div class="nail-hover-info">Lightweight almond-shaped nails in lightweight ABS material. Set includes adhesive tabs, a mini file, and a prep pad. Reusable with proper care — lasts up to 2 weeks per application.</div>
+          <div class="lip-hover-info">Lightweight almond-shaped nails in lightweight ABS material. Set includes adhesive tabs, a mini file, and a prep pad. Reusable with proper care — lasts up to 2 weeks per application.</div>
         </div>
-        <div class="nail-body">
+        <div class="lip-body">
           <h3>Rosé Starlight</h3>
-          <p class="nail-desc">Soft blush and dusty-rose nails with delicate bows, stars, and a shimmering spiral, finished with crystal accents.</p>
-          <div class="nail-footer">
-            <span class="nail-price">RM 29.00</span>
-            <div class="nail-footer-actions">
-              <button class="nail-wishlist-btn" aria-label="Add to Wishlist" data-id="rose-starlight" data-name="Ros\u00e9 Starlight Nail Set" data-price="RM 29.00" data-image="RoseStarlight"><img src="wishlist.png" alt=""></button>
-              <button>Add to Cart</button>
+          <p class="lip-desc">Soft blush and dusty-rose nails with delicate bows, stars, and a shimmering spiral, finished with crystal accents.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 29.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="rose-starlight" data-name="Ros\u00e9 Starlight Nail Set" data-price="RM 29.00" data-image="RoseStarlight.jpeg"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="rose-starlight" data-name="Rosé Starlight Nail Set" data-price="29.00" data-image="RoseStarlight.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -196,11 +254,12 @@
   </section>
 
   <!-- Wishlist toast -->
-  <div id="wishlist-toast" class="nail-toast"></div>
-
+  <div id="wishlist-toast" class="toast"></div>
+  <div id="cart-toast" class="toast"></div>
+ 
   <script>
     const WISHLIST_KEY = 'whatever_wishlist';
-
+ 
     function getWishlist() {
       try {
         return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || [];
@@ -208,11 +267,11 @@
         return [];
       }
     }
-
+ 
     function saveWishlist(list) {
       localStorage.setItem(WISHLIST_KEY, JSON.stringify(list));
     }
-
+ 
     let toastTimer;
     function showToast(message) {
       const toast = document.getElementById('wishlist-toast');
@@ -221,20 +280,20 @@
       clearTimeout(toastTimer);
       toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
     }
-
+ 
     function initWishlistButtons() {
       const saved = getWishlist();
-      const buttons = document.querySelectorAll('.nail-wishlist-btn');
-
+      const buttons = document.querySelectorAll('.lip-wishlist-btn');
+ 
       buttons.forEach(btn => {
         if (saved.some(item => item.id === btn.dataset.id)) {
           btn.classList.add('active');
         }
-
+ 
         btn.addEventListener('click', () => {
           let list = getWishlist();
           const exists = list.some(item => item.id === btn.dataset.id);
-
+ 
           if (exists) {
             list = list.filter(item => item.id !== btn.dataset.id);
             btn.classList.remove('active');
@@ -249,14 +308,59 @@
             btn.classList.add('active');
             showToast('Added to Wishlist');
           }
-
+ 
           saveWishlist(list);
         });
       });
     }
-
+ 
     document.addEventListener('DOMContentLoaded', initWishlistButtons);
   </script>
 
+<!-- ============ FOOTER — SITEMAP  ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="makeup-face.html">Face</a></li>
+          <li><a href="makeup-eyes.html">Eyes</a></li>
+          <li><a href="makeup-lips.html">Lips</a></li>
+          <li><a href="makeup-nails.html">Nails</a></li>
+          <li><a href="makeup-remover.html">Makeup Remover</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>My Account</h3>
+        <ul>
+          <li><a href="login.html">Login / Register</a></li>
+          <li><a href="membership.html">Beauty Pass Membership</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="payment.html">Payment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Discover</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="promotions.html">Promotions &amp; Events</a></li>
+          <li><a href="book-services.html">Book Beauty Services</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Get In Touch</h3>
+        <ul>
+          <li><a href="feedback.html">Feedback Form</a></li>
+          <li><a href="mailto:hello@whatever.com">hello@whatever.com</a></li>
+        </ul>
+      </div>
+    </div>
+ 
+  </div>
+</footer>
+ 
+<script src="main_page.js"></script>
 </body>
 </html>

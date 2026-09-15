@@ -1,21 +1,42 @@
+:root {
+  --cart-maroon: #3d0f22;
+  --cart-maroon-dark: #280000;
+  --cart-gold: #b89a6b;
+  --cart-gold-light: #cdb98a;
+  --cart-text-light: #f1e9dd;
+  --cart-box: #e4dccb;
+
+  --cart-font: "Segoe UI", Arial, sans-serif;;
+  
+}
+
 .cart-page {
     max-width: 1100px;
-    margin: 50px auto;
+    margin: 10px auto;
     padding: 20px;
 }
 
 .cart-page h1 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 42px;
-    text-align: center;
-    margin-bottom: 40px;
+    font-family: var(--cart-font);
+    font-size: 40px;
+    color: var(--cart-text-light);
+    text-align: left;
+    font-weight: 700;
 }
 
 .cart-item {
     display: flex;
+    align-items: center;
     gap: 25px;
-    padding: 25px 0;
-    border-bottom: 1px solid #ddd;
+
+    margin-bottom: 20px;
+    padding: 25px;
+
+    background: #fbf6ee;
+    border: 1px solid var(--cart-box);
+    border-radius: 12px;
+
+    position: relative;
 }
 
 .cart-item img {
@@ -26,50 +47,125 @@
 
 .cart-product-info {
     flex: 1;
+    color: #7a6f60;
 }
 
 .cart-product-info h2 {
     margin-top: 0;
+    color: #7a6f60;
+    font-family: var(--cart-font);
+    font-weight: 700;
 }
 
-.quantity-controls {
+/* ---------- Quantity ---------- */
+.quantity {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin: 15px 0;
 }
 
-.quantity-controls button {
+.quantity button {
     width: 35px;
     height: 35px;
-    border: 1px solid #333;
-    background: white;
+    color:  #7a6f60;
+    border: 1px solid #7a6f60;
+    background: var(--cart-text-light);
     cursor: pointer;
 }
 
+.quantity button:hover {
+    background: var(--cart-box);
+}
+
+.quantity span {
+    min-width: 20px;
+    text-align: center;
+}
+
+/* ---------- Remove Button ---------- */
+.remove-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    background: transparent;
+    border: none;
+    padding: 5px;
+}
+
+.remove-button img {
+    width: 33px;
+    height: 33px;
+    object-fit: contain;
+}
+
+.remove-button:hover img {
+    filter: brightness(0) saturate(100%) invert(24%) sepia(97%) saturate(7466%) hue-rotate(357deg) brightness(95%) contrast(118%);
+    transform: scale(1.15);
+}
+
+/* ---------- Cart Summary ---------- */
 .cart-summary {
     text-align: right;
     margin-top: 30px;
 }
 
-.cart-summary button {
-    padding: 15px 25px;
-    background: #111;
-    color: white;
-    border: none;
-    cursor: pointer;
+.cart-total {
+    font-size: 20px;
+    color: var(--cart-text-light);
+    font-weight: 700;
+    font-family: var(--cart-font);
 }
 
+.cart-summary button {
+    padding: 15px 25px;
+    background: var(--cart-maroon-dark);
+    color: var(--cart-box);
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.cart-summary button:hover {
+    background: var(--cart-gold);
+}
+
+/* ---------- Empty Cart ---------- */
 .empty-cart {
     text-align: center;
     padding: 60px 20px;
+    font-family: var(--cart-font);
+    font-weight: 700;
+    color: var(--cart-text-light);
+}
+
+.empty-cart .message {
+    font-size: 25px;
 }
 
 .empty-cart a {
     display: inline-block;
     margin-top: 20px;
     padding: 15px 25px;
-    background: #111;
-    color: white;
+    background: var(--cart-maroon-dark);
+    color: var(--cart-box);
+}
+
+.empty-cart a:hover {
+    background: var(--cart-gold);
+}
+
+/* ---------- Back to Home ---------- */
+.home-link {
+    display: block;
+    margin-top: 5px;
+    text-align: center;
     text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.home-link:hover {
+    text-decoration: underline;
 }

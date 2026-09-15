@@ -134,8 +134,7 @@ body {
     background: var(--payment-maroon);
     color: var(--payment-text-light);
     font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
+    font-weight: 700;
 }
 
 #pay-button:hover {
@@ -165,7 +164,7 @@ body {
     color: var(--payment-maroon);
     text-decoration: none;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .cart-link:hover {
@@ -176,7 +175,6 @@ body {
 
 /* ---------- Mobile ---------- */
 @media (max-width: 700px) {
-
     .payment-container {
         grid-template-columns: 1fr;
         gap: 25px;
@@ -185,7 +183,6 @@ body {
     .payment-page h1 {
         font-size: 38px;
     }
-
 }
 
 /* ---------- Payment Success Popup ---------- */
