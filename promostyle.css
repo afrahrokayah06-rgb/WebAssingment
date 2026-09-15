@@ -1,0 +1,506 @@
+/* =========================================================
+   PROMOTIONS & EVENTS PAGE STYLES
+   (Adds to / assumes nav.css already styles the header & footer)
+   ========================================================= */
+
+:root {
+  --color-maroon: #420420;
+  --color-dark-maroon: #2C0216;
+  --color-gold: #F2D9A0;
+  --color-gold-hover: #D9BB7D;
+  --color-gold-light: #F2E5C6;
+  --color-cream: #F2EFC6;
+  --color-brown: #4D4430;
+  --color-tan: #837452;
+  --color-pink-light: #FBEBE1;
+  --color-white: #ffffff;
+  --color-red: #B22234;
+  --radius-button: 6px;
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+  --font-body: "Jost", "Segoe UI", sans-serif;
+
+  /* extra tones used only inside this page, pulled straight from the brief */
+  --color-week-active: #75162d;
+  --color-bar-border: #f2e56c;
+  --color-gray-border: #595959;
+  --color-gray-fill: #d4d4d4;
+  --color-gray-text: #8a8a8a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body);
+}
+
+main {
+  display: block;
+}
+
+/* Every section: 40px left/right margin, 25px bottom margin */
+.promo-section {
+  margin: 0 40px 25px 40px;
+}
+
+/* shared "wide but not full bleed" width used by sections 2-5 */
+.promo-wide {
+  width: 80%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   SECTION 1 — IMAGE MAP
+   ============================================================ */
+.imagemap-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1122px;
+  aspect-ratio: 1122 / 623;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.imagemap-wrap img#promoMapImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.map-zone {
+  position: absolute;
+  display: block;
+  outline: none;
+}
+
+.map-zone:hover,
+.map-zone:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: -2px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================================
+   SECTION 2 — CALENDAR TABLE
+   ============================================================ */
+.promo-calendar {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 80%;
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: var(--color-gold-light);
+}
+
+.promo-calendar th,
+.promo-calendar td {
+  border: 1.5px solid var(--color-brown);
+}
+
+.promo-calendar thead tr:first-child th {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--color-dark-maroon);
+  padding: 16px 4px 14px 4px;
+  position: relative;
+}
+
+.promo-calendar thead tr:first-child th::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 2px;
+  background-color: var(--color-gold-hover);
+  margin: 8px auto 0 auto;
+}
+
+.promo-calendar thead .weekday-row th {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-dark-maroon);
+  padding: 10px 4px;
+  letter-spacing: 0.5px;
+}
+
+.promo-calendar tbody td {
+  width: 14.28%;
+  height: 110px;
+  vertical-align: top;
+  padding: 8px;
+  position: relative;
+}
+
+.promo-calendar tbody td .date-number {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-maroon);
+  text-align: right;
+  padding: 2px 4px;
+}
+
+/* days outside September: no number, no badge — blank cell */
+
+/* small red dot marking an upcoming promotion, top-right of the cell */
+.promo-calendar tbody td.has-dot::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-red);
+}
+
+.date-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  float: right;
+}
+
+/* days 1, 3, 5, 6, 9 — dull grey, past / ended promotions */
+.date-badge.badge-ended {
+  background-color: var(--color-gray-fill);
+  border: 2px solid var(--color-gray-border);
+  color: var(--color-gray-text);
+}
+
+/* days 14, 18, 20, 24, 30 — gold, upcoming promotions */
+.date-badge.badge-promo {
+  background-color: var(--color-gold);
+  border: 2px solid var(--color-brown);
+  color: var(--color-maroon);
+}
+
+.event-popup {
+  position: fixed;
+  z-index: 50;
+  padding: 14px 34px 14px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  max-width: 240px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.event-popup.popup-ended {
+  background-color: #000000;
+  color: var(--color-tan);
+  border: 2px solid var(--color-white);
+}
+
+.event-popup.popup-promo {
+  background-color: var(--color-tan);
+  color: var(--color-white);
+  border: 2px solid #000000;
+}
+
+.event-popup-close {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  line-height: 1;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* ============================================================
+   SECTION 3 — WEEK SELECTOR
+   ============================================================ */
+.week-selector {
+  width: 80%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.week-selector-month {
+  font-weight: bold;
+  color: var(--color-dark-maroon);
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.week-buttons {
+  background-color: var(--color-dark-maroon);
+  border-radius: 40px;
+  padding: 6px;
+  display: flex;
+  width: 100%;
+}
+
+.week-buttons button {
+  flex: 1 1 0;
+  background: none;
+  border: none;
+  color: var(--color-pink-light);
+  font-family: var(--font-body);
+  font-size: 16px;
+  padding: 10px 8px;
+  cursor: pointer;
+  border-radius: 34px;
+  text-align: center;
+}
+
+.week-buttons button.active {
+  background-color: var(--color-week-active);
+  font-weight: 600;
+}
+
+/* ============================================================
+   SECTION 4 — SELECTED WEEK DISPLAY
+   ============================================================ */
+.week-display {
+  width: 80%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  background-color: var(--color-dark-maroon);
+  border-radius: 12px;
+  padding: 18px 0;
+}
+
+.week-display .wd-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.week-display .wd-label {
+  font-weight: bold;
+  color: var(--color-pink-light);
+  font-size: 20px;
+}
+
+.week-display .wd-date {
+  font-size: 20px;
+  color: var(--color-pink-light);
+}
+
+/* ============================================================
+   SECTION 5 — EVENT TIMELINE
+   ============================================================ */
+.timeline-title {
+  text-align: center;
+  color: var(--color-pink-light);
+  background-color: var(--color-dark-maroon);
+  display: inline-block;
+  padding: 6px 22px;
+  border-radius: 20px;
+  margin: 0 auto 18px auto;
+}
+
+.timeline {
+  width: 80%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.timeline-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.timeline-hour {
+  width: 60px;
+  flex-shrink: 0;
+  color: var(--color-dark-maroon);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.timeline-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid var(--color-bar-border);
+  border-radius: 6px;
+  padding: 0 14px;
+  background-color: var(--color-week-active);
+}
+
+.timeline-bar .timeline-label {
+  color: var(--color-white);
+  font-size: 14px;
+}
+
+.timeline-bar img {
+  height: 28px;
+  width: auto;
+}
+
+/* ============================================================
+   SECTION 6 — ONGOING PROMOTIONS CARDS
+   ============================================================ */
+.cards-title {
+  text-align: center;
+  color: var(--color-dark-maroon);
+  margin-bottom: 20px;
+  font-family: var(--font-display);
+  font-size: 26px;
+}
+
+.promo-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.promo-card {
+  width: 250px;
+  height: 340px;
+  border: 2px solid var(--color-brown);
+  border-radius: 120px 120px 8px 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.promo-card-img {
+  flex: 1 1 50%;
+  height: 50%;
+  background-color: var(--color-gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid var(--color-brown);
+  overflow: hidden;
+}
+
+.promo-card-img img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.promo-card-text {
+  flex: 1 1 50%;
+  height: 50%;
+  padding: 14px 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--color-white);
+  transition: background-color 0.35s ease, color 0.35s ease;
+  overflow: hidden;
+}
+
+.promo-card-text h4 {
+  margin: 0 0 8px 0;
+  color: var(--color-dark-maroon);
+  transition: color 0.35s ease;
+}
+
+.promo-card-text p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-maroon);
+  transition: color 0.35s ease;
+  overflow-y: auto;
+}
+
+.promo-card-text.expanded {
+  background-color: var(--color-dark-maroon);
+}
+
+.promo-card-text.expanded h4,
+.promo-card-text.expanded p {
+  color: var(--color-pink-light);
+}
+
+/* ============================================================
+   SECTION 7 — CLICK TO REVEAL IMAGE
+   ============================================================ */
+.reveal-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.reveal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.reveal-cover {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: opacity 1s ease;
+}
+
+.reveal-cover.revealed {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.reveal-text {
+  color: var(--color-dark-maroon);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.reveal-icon {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  animation: reveal-icon-float 1.6s ease-in-out infinite;
+}
+
+.reveal-icon.icon-hover {
+  animation: reveal-icon-hover 0.6s ease-in-out infinite;
+}
+
+@keyframes reveal-icon-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-6deg); }
+}
+
+@keyframes reveal-icon-hover {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.35) rotate(12deg); }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 600px) {
+  .promo-section { margin-left: 20px; margin-right: 20px; }
+  .week-selector-month { text-align: center; }
+}

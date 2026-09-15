@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promotions and Events</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="promostyle.css" rel="stylesheet">
+    <link href="nav.css" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="nav-top">
+    <div class="nav-left">
+      <a href="login.html" id="userAccountLink">
+          <img src="profile.png" alt="Profile Icon" class="nav-icon">
+          <span id="userAccountName">Sign In / Sign Up</span>
+      </a>
+    </div>
+    <div class="nav-right">
+    <a href="#membership"><img src="member-removebg-preview.png" alt="Membership Icon" class="nav-icon">Membership</a>
+    <a href="#services"><img src="promotion_events.png" alt="Book Services Icon" class="nav-icon">Book Beauty Services</a>
+    <a href="#promotions"><img src="beautypass.png" alt="Promotions Icon" class="nav-icon">Promotions &amp; Events</a>
+    <a href="#wishlist" class="icon-link"><img src="wishlist.png" alt="Wishlist Icon" class="nav-icon">Wishlist</a>
+    <a href="cart.html" class="icon-link"><img src="cart.png" alt="Cart Icon" class="nav-icon">Cart</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ SECTION 1 : IMAGE MAP ============ -->
+  <section class="promo-section" id="section-imagemap">
+    <div class="imagemap-wrap">
+      <img src="ImageMap2.jpg" alt="Shop by category" id="promoMapImage" usemap="#promoMap">
+      <map name="promoMap" id="promoMap">
+        <area shape="rect" coords="34,50,470,570" href="eyes.html" alt="Mascara and eyeshadow - Eyes">
+        <area shape="rect" coords="505,30,650,585" href="makeup_remover.html" alt="Makeup remover">
+        <area shape="rect" coords="670,30,875,595" href="face.html" alt="Foundation - Face">
+        <area shape="rect" coords="885,90,1090,590" href="lips.html" alt="Lipstick - Lips">
+      </map>
+      <!-- Percentage-based clickable overlay (keeps working when the image scales/resizes) -->
+      <a class="map-zone" style="left:3%; top:5%; width:41%; height:88%;" href="eyes.html" aria-label="Mascara and eyeshadow - Eyes"></a>
+      <a class="map-zone" style="left:45%; top:3%; width:13%; height:92%;" href="makeup_remover.html" aria-label="Makeup remover"></a>
+      <a class="map-zone" style="left:59.5%; top:3%; width:18.5%; height:94%;" href="face.html" aria-label="Foundation - Face"></a>
+      <a class="map-zone" style="left:78.5%; top:6%; width:20%; height:90%;" href="lips.html" aria-label="Lipstick - Lips"></a>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2 : CALENDAR TABLE ============ -->
+  <section class="promo-section" id="section-calendar">
+    <table id="promoCalendar" class="promo-calendar">
+      <thead>
+        <tr><th colspan="7">Promotions for September 2026</th></tr>
+        <tr class="weekday-row">
+          <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thurs</th><th>Fri</th><th>Sat</th>
+        </tr>
+      </thead>
+      <tbody id="promoCalendarBody">
+        <!-- rows injected by JS -->
+      </tbody>
+    </table>
+
+    <div id="eventPopup" class="event-popup" hidden>
+      <button id="eventPopupClose" class="event-popup-close" aria-label="Close">&times;</button>
+      <p id="eventPopupText"></p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3 : WEEK SELECTOR ============ -->
+  <section class="promo-section" id="section-weeks">
+    <div class="week-selector">
+      <div class="week-selector-month">September</div>
+      <div class="week-buttons" id="weekButtons">
+        <!-- week buttons injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4 : SELECTED WEEK DISPLAY ============ -->
+  <section class="promo-section" id="section-week-display">
+    <div class="week-display" id="weekDisplay">
+      <!-- day headers + dates injected by JS -->
+    </div>
+  </section>
+
+  <!-- ============ SECTION 5 : EVENT TIMELINE ============ -->
+  <section class="promo-section" id="section-timeline">
+    <h3 class="timeline-title">Event Timeline</h3>
+    <div class="timeline" id="timeline">
+      <!-- timeline rows injected by JS -->
+    </div>
+  </section>
+
+  <!-- ============ SECTION 6 : ONGOING PROMOTIONS CARDS ============ -->
+  <section class="promo-section" id="section-cards">
+    <h3 class="cards-title">Ongoing Promotions</h3>
+    <div class="promo-cards" id="promoCards">
+      <!-- cards injected by JS -->
+    </div>
+  </section>
+
+  <!-- ============ SECTION 7 : REVEAL IMAGE ============ -->
+  <section class="promo-section" id="section-reveal">
+    <div class="reveal-wrap" id="revealWrap">
+      <img src="RevealImage.jpg" alt="Featured promotion" class="reveal-image">
+      <div class="reveal-cover" id="revealCover">
+        <img src="reveal-icon.png" alt="" class="reveal-icon" id="revealIcon">
+        <span class="reveal-text">Click To View</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="makeup-face.html">Face</a></li>
+          <li><a href="makeup-eyes.html">Eyes</a></li>
+          <li><a href="makeup-lips.html">Lips</a></li>
+          <li><a href="makeup-nails.html">Nails</a></li>
+          <li><a href="makeup-remover.html">Makeup Remover</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>My Account</h3>
+        <ul>
+          <li><a href="login.html">Login / Register</a></li>
+          <li><a href="membership.html">Beauty Pass Membership</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="payment.html">Payment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Discover</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="promotions.html">Promotions &amp; Events</a></li>
+          <li><a href="book-services.html">Book Beauty Services</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Get In Touch</h3>
+        <ul>
+          <li><a href="feedback.html">Feedback Form</a></li>
+          <li><a href="mailto:hello@whatever.com">hello@whatever.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="promotions.js"></script>
+</body>
+</html>
