@@ -246,22 +246,130 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        /* ---------- Payment Success Popup ---------- */
+        /* ---------- Payment Success ---------- */
         const successPopup =
             document.getElementById("success-popup");
 
-        const successOk =
-            document.getElementById("success-ok");
 
-        // Show popup
-        successPopup.style.display = "flex";
+        // Get logged-in user
+        const loggedInUserData =
+            sessionStorage.getItem("loggedInUser");
 
-        // Clear the cart after successful payment
+        if (!loggedInUserData) {
+            alert("Please log in again.");
+            window.location.href = "login.html";
+            return;
+        }
+
+        const loggedInUser =
+            JSON.parse(loggedInUserData);
+
+
+        // Get all registered users
+        let users =
+            JSON.parse(localStorage.getItem("makeupUsers")) || [];
+
+
+        // Find the current user
+        const userIndex =
+            users.findIndex(function (user) {
+                return user.email === loggedInUser.email;
+            });
+
+
+        if (userIndex === -1) {
+            alert("User account could not be found.");
+            return;
+        }
+
+
+        // Get current user
+        const user = users[userIndex];
+
+
+        // Make sure membership values exist
+        if (typeof user.points !== "number") {
+            user.points = 0;
+        }
+
+        if (typeof user.lifetimePoints !== "number") {
+            user.lifetimePoints = 0;
+        }
+
+        if (!Array.isArray(user.redeemed)) {
+            user.redeemed = [];
+        }
+
+        if (!Array.isArray(user.activity)) {
+            user.activity = [];
+        }
+
+
+        // Determine membership tier
+        let pointsPerRinggit = 1;
+
+        if (user.lifetimePoints >= 3000) {
+            pointsPerRinggit = 2;
+        }
+        else if (user.lifetimePoints >= 1000) {
+            pointsPerRinggit = 1.5;
+        }
+
+
+        // Calculate points from purchase
+        const earnedPoints =
+            Math.floor(total * pointsPerRinggit);
+
+
+        // Add points
+        user.points += earnedPoints;
+
+        user.lifetimePoints += earnedPoints;
+
+
+        // Add activity
+        user.activity.unshift({
+
+            date: new Date().toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric"
+            }),
+
+            desc: "Purchase — " + cart.length + " item(s)",
+
+            spent: "RM " + total.toFixed(2),
+
+            points: "+" + earnedPoints
+
+        });
+
+
+        // Save updated user
+        users[userIndex] = user;
+
+        localStorage.setItem(
+            "makeupUsers",
+            JSON.stringify(users)
+        );
+
+
+        // Show success popup
+        if (successPopup) {
+            successPopup.style.display = "flex";
+        }
+
+
+        // Clear cart
         localStorage.removeItem("cart");
 
-        // Redirect to confirmation page after 2 seconds
+
+        // Redirect
         setTimeout(function () {
-            window.location.href = "order-success.html";
+
+            window.location.href =
+                "order-success.html";
+
         }, 2000);
     });
 });
