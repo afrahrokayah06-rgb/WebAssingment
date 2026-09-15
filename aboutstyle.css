@@ -2,6 +2,7 @@
     --color-maroon: #420420;
     --color-dark-maroon: #2C0216;
     --color-gold: #F2D9A0;
+    --color-gold-hover: #D9BB7D;
     --color-gold-light: #F2E5C6;
     --color-cream: #F2EFC6;
     --color-brown: #4D4430;
@@ -13,6 +14,11 @@
 
     --font-display: "Cormorant Garamond", "Times New Roman", serif;
     --font-body: "Jost", "Segoe UI", sans-serif;
+
+    --sub-gold: var(--color-tan);
+    --nav-border-soft: rgba(131, 116, 82, 0.55);
+    --nav-text-cream: var(--color-pink-light);
+    --nav-text-cream-dim: rgba(251, 235, 225, 0.72);
 }
 
 /* ============ RESET / GLOBAL ============ */
@@ -40,7 +46,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   margin: 0;
 }
-/* SECTION 1 — video / about us / image map                */
+
+/* ============================================================ */
+/* SECTION 1 — video / about us / image map                     */
+/* ============================================================ */
 .section1 {
     display: flex;
     align-items: stretch;
@@ -94,6 +103,11 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.s1-button:hover {
+    background-color: var(--color-gold-hover);
 }
 
 .s1-imgmap {
@@ -144,6 +158,9 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 50%;
     overflow: hidden;
     background-color: var(--color-gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .circie-pic h6 {
@@ -157,7 +174,9 @@ h1, h2, h3, h4, h5, h6 {
     height: 5em;
 }
 
-/* SECTION 9 — definition list and decoration pics      */
+/* ============================================================ */
+/* SECTION 9 — definition list and decoration pics               */
+/* ============================================================ */
 .section9 {
     width: 100%;
     padding: 30px 20px;
@@ -226,18 +245,21 @@ h1, h2, h3, h4, h5, h6 {
 .s9-img-2 { margin-left: 40px; }
 .s9-img-3 { margin-left: 80px; }
 
-/* SECTION 3 — youtube video and 5 product cards                  */
+/* ============================================================ */
+/* SECTION 3 — youtube video and 5 product cards                 */
+/* ============================================================ */
 .section3 {
     display: flex;
     align-items: flex-start;
     width: 100%;
     margin-top: 25px;
     gap: 20px;
-    padding: 0 35px;
+    padding: 0 40px;
 }
 
 .s3-video-col {
-    flex: 1;
+    flex: 0 0 300px;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -253,7 +275,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .s3-video-wrap {
     width: 100%;
-    height: 300px;
+    height: 220px;
 }
 
 .s3-video-wrap iframe {
@@ -263,7 +285,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .s3-products-col {
-    flex: 2;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -274,8 +296,8 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-between;
     align-items: stretch;
     width: 100%;
-    height: 300px;
-    gap: 12px;
+    height: 220px;
+    gap: 24px;
 }
 
 .s3-card {
@@ -310,12 +332,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================ */
-/* SECTION 4 — background hero + 3 cards + small link           */
+/* SECTION 4 — background hero + 3 cards + small link            */
 /* ============================================================ */
 .section4 {
     width: 100%;
     margin-top: 35px;
-    padding: 0 35px;
+    padding: 0 40px;
 }
 
 .s4-bg {
@@ -358,6 +380,11 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
     cursor: pointer;
     margin-bottom: 30px;
+    transition: background-color 0.2s ease;
+}
+
+.s4-button:hover {
+    background-color: var(--color-gold-hover);
 }
 
 .s4-cards {
@@ -404,14 +431,15 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* SECTION 5 — image, text and fill circle    */
+/* ============================================================ */
+/* SECTION 5 — image, text and fill circle                       */
+/* ============================================================ */
 .section5 {
     display: flex;
     align-items: stretch;
     width: 100%;
-    height: 280px;
+    height: 300px;
     margin-top: 35px;
-    padding: 0 35px;
     overflow: hidden;
 }
 
@@ -419,7 +447,6 @@ h1, h2, h3, h4, h5, h6 {
     width: 50%;
     flex-shrink: 0;
     height: 100%;
-    image-fit: cover;
 }
 
 .s5-content {
@@ -436,12 +463,15 @@ h1, h2, h3, h4, h5, h6 {
 .s5-content h4 {
     margin-bottom: 12px;
     color: var(--color-gold-light);
+    font-size: 22px;
+    align-self: center;
 }
 
 .s5-content p {
     margin-bottom: 20px;
     line-height: 1.5;
     color: var(--color-gold-light);
+    font-size: 16px;
 }
 
 .s5-highlight {
@@ -455,10 +485,12 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     width: 100px;
     height: 100px;
+    flex-shrink: 0;
     border-radius: 50%;
     border: 2px solid var(--color-white);
     overflow: hidden;
     background-color: var(--color-white);
+    align-self: center;
 }
 
 .s4-fillred {
@@ -488,19 +520,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================ */
-/* SECTION 6 — looping image + promotions button                */
+/* SECTION 6 — looping image + promotions button                 */
 /* ============================================================ */
 .section6 {
     position: relative;
     width: 100%;
-    height: 350px;
+    height: 450px;
     margin-top: 35px;
-    padding: 0 35px;
     overflow: hidden;
     box-sizing: border-box;
 }
 
 .section6 img {
+    object-fit: cover;
     transition: opacity 0.6s ease-in-out;
 }
 
@@ -517,13 +549,19 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 15px;
     font-weight: bold;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s ease;
 }
 
-/* SECTION 7 — 4 stat labels + 3 images                         */
+.s6-button:hover {
+    background-color: var(--color-gold-hover);
+}
+
+/* ============================================================ */
+/* SECTION 7 — 4 stat labels + 3 images                          */
+/* ============================================================ */
 .section7 {
     width: 100%;
     margin-top: 0;
-    padding: 0 35px;
 }
 
 .s7-top {
@@ -532,7 +570,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     background-color: var(--color-dark-maroon);
     color: var(--color-tan);
-    padding: 30px 10px;
+    padding-top: 10px;
 }
 
 .s7-text {
@@ -573,24 +611,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================ */
-/* SECTION 8 — rotating coverflow carousel                      */
+/* SECTION 8 — rotating coverflow pics                           */
 /* ============================================================ */
 .section8 {
     width: 100%;
     margin-top: 25px;
-    padding: 20px 0 60px;
     text-align: center;
 }
 
 .section8 h3 {
     margin-bottom: 30px;
     color: var(--color-pink-light);
+    font-size: 22px;
 }
 
 .rotating {
     position: relative;
     width: 100%;
-    height: 300px;
+    height: 260px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -602,23 +640,23 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 140px;
-    height: 200px;
+    width: 300px;
+    height: 180px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-    transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+    transition: transform 1s ease-in-out, opacity 0.7s ease-in-out;
 }
 
 /* ============================================================ */
-/* SECTION 10 — timeline + store visit card + image popup       */
+/* SECTION 10 — timeline + store visit card + image popup        */
 /* ============================================================ */
 .section10 {
     display: flex;
     align-items: flex-start;
     width: 100%;
     max-width: 800px;
-    margin: 25px auto 0;
+    margin: 30px auto 0;
     padding: 0 20px;
     gap: 40px;
 }
@@ -771,7 +809,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================================ */
-/* SECTION 11 — sales bars / demographic pie / success bars     */
+/* SECTION 11 — sales bars / demographic pie / success bars      */
 /* ============================================================ */
 .section11 {
     width: 100%;
@@ -935,22 +973,45 @@ h1, h2, h3, h4, h5, h6 {
     to { background-position: 40px 0; }
 }
 
+/* Contact Us heading, sits directly above the bottom buttons */
+.s11-contact {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.s11-contact h3 {
+    color: var(--color-pink-light);
+}
+
 /* Bottom buttons */
 .s11-buttons {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-top: 45px;
+    margin-top: 15px;
 }
 
-.s11-buttons button {
-    width: 120px;
+.s11-buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 140px;
     height: 45px;
     border: none;
     border-radius: var(--radius-button);
     font-size: 16px;
     font-weight: bold;
+    font-family: var(--font-body);
     cursor: pointer;
+    text-decoration: none;
+}
+
+.s11-btn-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .s11-button-a {
@@ -966,4 +1027,11 @@ h1, h2, h3, h4, h5, h6 {
 .s11-button-c {
     background-color: var(--color-cream);
     color: var(--color-maroon);
+}
+
+/* Footer*/
+.wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
 }
