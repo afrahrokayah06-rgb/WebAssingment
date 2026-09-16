@@ -218,7 +218,17 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
     }
+    /* ---------- Hero Video Sound Toggle ---------- */
+const heroVideo = document.getElementById('hero-video');
+const soundToggle = document.getElementById('hero-sound-toggle');
 
+if (heroVideo && soundToggle) {
+  soundToggle.addEventListener('click', function () {
+    heroVideo.muted = !heroVideo.muted;
+    soundToggle.textContent = heroVideo.muted ? '🔇' : '🔊';
+    soundToggle.setAttribute('aria-label', heroVideo.muted ? 'Unmute video' : 'Mute video');
+  });
+}
 
   /* ---------- Product carousel (prev / next) ---------- */
   var carousel = document.querySelector('.carousel');
@@ -242,18 +252,34 @@ document.addEventListener('DOMContentLoaded', function () {
   }
  
   /* ---------- Header search form ---------- */
-  var searchForm = document.querySelector('.search-form');
-  if (searchForm) {
-    searchForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var term = searchForm.querySelector('input[name="q"]').value.trim();
-      if (term.length === 0) { return; }
-      window.location.href = 'search-results.html?q=' + encodeURIComponent(term);
-    });
-  }
+var searchForm = document.querySelector('.search-form');
+if (searchForm) {
+  var CATEGORY_ROUTES = [
+    { keywords: ['lipstick', 'lip', 'lips', 'lip gloss', 'lip stain'], page: 'makeup-lips.html' },
+    { keywords: ['mascara', 'eyeliner', 'eye liner', 'eyeshadow', 'eye shadow', 'eyes'], page: 'makeup-eyes.html' },
+    { keywords: ['foundation', 'concealer', 'blush', 'bronzer', 'face'], page: 'makeup-face.html' },
+    { keywords: ['nail polish', 'nail', 'nails', 'press-on', 'press on'], page: 'makeup-nails.html' },
+    { keywords: ['makeup remover', 'remover', 'wipes', 'micellar'], page: 'makeup-remover.html' }
+  ];
 
-      // Get existing cart from localStorage
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  searchForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var term = searchForm.querySelector('input[name="q"]').value.trim().toLowerCase();
+    if (term.length === 0) { return; }
+
+    var match = CATEGORY_ROUTES.find(function (route) {
+      return route.keywords.some(function (kw) {
+        return term.includes(kw) || kw.includes(term);
+      });
+    });
+
+    if (match) {
+      window.location.href = match.page;
+    } else {
+      alert('No matches found for "' + term + '". Try Lipstick, Mascara, Foundation, Nail Polish, or Makeup Remover.');
+    }
+  });
+}
 
     /* ---------- ADD TO CART ---------- */
     const cartButtons = document.querySelectorAll(".cart");
