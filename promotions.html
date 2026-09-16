@@ -6,6 +6,7 @@
     <title>Promotions and Events</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main_page.css">
     <link href="nav.css" rel="stylesheet">
     <link href="promostyle.css" rel="stylesheet">
 </head>
@@ -39,24 +40,34 @@
     </div>
   </div>
 </header>
+<div class="promo-strip">
+  <div class="wrap">
+    <div class="promo-track">
+      <p>WHATEVER BEAUTY PASS MEMBERS ENJOY MORE — unlock exclusive online offers and early access to new arrivals</p>
+    </div>
+    <div class="promo-actions">
+      <a class="btn filled" href="login.html">Sign In</a>
+      <a class="btn" href="register.html">Sign Up</a>
+    </div>
+  </div>
+</div>
 
 <main>
-
   <!-- ------------ SECTION 1 : IMAGE MAP ----------- -->
   <section class="promo-section" id="section-imagemap">
     <div class="imagemap-wrap">
       <img src="ImageMap2.jpg" alt="Shop by category" id="promoMapImage" usemap="#promoMap">
       <map name="promoMap" id="promoMap">
-        <area shape="rect" coords="34,50,470,570" href="eyes.html" alt="Mascara and eyeshadow - Eyes">
-        <area shape="rect" coords="505,30,650,585" href="makeup_remover.html" alt="Makeup remover">
-        <area shape="rect" coords="670,30,875,595" href="face.html" alt="Foundation - Face">
-        <area shape="rect" coords="885,90,1090,590" href="lips.html" alt="Lipstick - Lips">
+        <area shape="rect" coords="34,50,470,570" href="makeup-eye.html" alt="Mascara and eyeshadow - Eyes">
+        <area shape="rect" coords="505,30,650,585" href="makeup-remover.html" alt="Makeup remover">
+        <area shape="rect" coords="670,30,875,595" href="makeup-face.html" alt="Foundation - Face">
+        <area shape="rect" coords="885,90,1090,590" href="makeup-lips.html" alt="Lipstick - Lips">
       </map>
-      <!-- Percentage-based clickable overlay (keeps working when the image scales/resizes) -->
-      <a class="map-zone" style="left:2%; top:5%; width:38%; height:65%;" href="eyes.html" aria-label="Mascara and eyeshadow - Eyes"></a>
-      <a class="map-zone" style="left:41%; top:3%; width:14%; height:66%;" href="makeup_remover.html" aria-label="Makeup remover"></a>
-      <a class="map-zone" style="left:59%; top:3%; width:14.5%; height:66%;" href="face.html" aria-label="Foundation - Face"></a>
-      <a class="map-zone" style="left:76%; top:6%; width:20%; height:64%;" href="lips.html" aria-label="Lipstick - Lips"></a>
+      <!-- Percentage-based clickable overlay to keep working when the image scales/resizes -->
+      <a class="map-zone" style="left:2%; top:5%; width:38%; height:92%;" href="makeup-eye.html" aria-label="Mascara and eyeshadow - Eyes"></a>
+      <a class="map-zone" style="left:41%; top:3%; width:14%; height:94%;" href="makeup-remover.html" aria-label="Makeup remover"></a>
+      <a class="map-zone" style="left:59%; top:10%; width:14.5%; height:88%;" href="makeup-face.html" aria-label="Foundation - Face"></a>
+      <a class="map-zone" style="left:76%; top:6%; width:20%; height:90%;" href="makeup-lips.html" aria-label="Lipstick - Lips"></a>
     </div>
   </section>
 
@@ -107,7 +118,7 @@
   <!-- ============ SECTION 4 : SELECTED WEEK DISPLAY ============ -->
   <section class="promo-section" id="section-week-display">
     <div class="week-display" id="weekDisplay">
-      <!-- day headers + dates injected by JS -->
+      <!-- day heading and dates injected using JS -->
     </div>
   </section>
 
@@ -115,23 +126,114 @@
   <section class="promo-section" id="section-timeline">
     <h3 class="timeline-title">Event Timeline</h3>
     <div class="timeline" id="timeline">
-      <!-- timeline rows injected by JS -->
+
+      <!-- Section5-Rect1 -->
+      <div class="timeline-bar" style="height: 58px;">
+        <span class="timeline-date-from">1</span>
+        <span class="timeline-date-to">3</span>
+        <span class="timeline-label">Mid Month Sales for mini Blush + Brush set: Starting 1 September until 3 September</span>
+        <div class="timeline-right">
+          <button type="button" class="reminder-btn" data-on="false">Enable<br>Reminder</button>
+          <img src="Date 1to3.png" alt="Date 1to3 Promotion item">
+        </div>
+      </div>
+
+      <!-- Section5-Rect2 -->
+      <div class="timeline-bar" style="height: 49px;">
+        <span class="timeline-date-from">5</span>
+        <span class="timeline-date-to">6</span>
+        <span class="timeline-label">End of Year Sales for Selected Items: All foundation Shades. 5 to 6 September</span>
+        <div class="timeline-right">
+          <button type="button" class="reminder-btn" data-on="false">Enable<br>Reminder</button>
+          <img src="Date 5to6.png" alt="Date 5to6 Promotion item">
+        </div>
+      </div>
+
+      <!-- Section5-Rect3 -->
+      <div class="timeline-bar" style="height: 85px;">
+        <span class="timeline-date-from">9</span>
+        <span class="timeline-date-to">14</span>
+        <span class="timeline-label">Golden Shimmer Bronzer: 20% limited-time Discount from 9 to 14 September only!</span>
+        <div class="timeline-right">
+          <button type="button" class="reminder-btn" data-on="false">Enable<br>Reminder</button>
+          <img src="Date 9to14.png" alt="Date 9to14 Promotion item">
+        </div>
+      </div>
+
+      <!-- Section5-Rect4 -->
+      <div class="timeline-bar" style="height: 58px;">
+        <span class="timeline-date-from">18</span>
+        <span class="timeline-date-to">20</span>
+        <span class="timeline-label">Lotus Lipstick - Flower Edition, Palace Edition lipstick new launches. 50% Off for first-time buyers from 19 to 20 September</span>
+        <div class="timeline-right">
+          <button type="button" class="reminder-btn" data-on="false">Enable<br>Reminder</button>
+          <img src="Date 18to20.png" alt="Date 18to20 Promotion item">
+        </div>
+      </div>
+
+      <!-- Section5-Rect5 -->
+      <div class="timeline-bar" style="height: 94px;">
+        <span class="timeline-date-from">24</span>
+        <span class="timeline-date-to">30</span>
+        <span class="timeline-label">Cleansing Balm set sales: Peony and Cherry. 24 to 30 September while stocks last</span>
+        <div class="timeline-right">
+          <button type="button" class="reminder-btn" data-on="false">Enable<br>Reminder</button>
+          <img src="Date 24to30.png" alt="Date 24to30 Promotion item">
+        </div>
+      </div>
+
     </div>
     <div id="reminderPopup" class="reminder-popup"></div>
   </section>
 
-  <!-- ============ SECTION 6 : ONGOING PROMOTIONS CARDS ============ -->
+  <!-- ============ SECTION 6 : ONGOING PROMOTIONS CARDS =========================== -->
   <section class="promo-section" id="section-cards">
     <h3 class="cards-title">Ongoing Promotions</h3>
     <div class="promo-cards" id="promoCards">
-      <!-- cards injected by JS -->
+
+      <!-- Card 1 -->
+      <div class="promo-card">
+        <div class="promo-card-img">
+          <img src="Promotion1.jpg" alt="Label H4">
+        </div>
+        <div class="promo-card-text"
+             data-full="Autumn set includes: Foundation, Lipstick, Lip Balm, Eyeshadow Palette and Blush. Available: Lipstick (5 colors) Lip Balm (3 colors) Blusher (5 shades) to choose from">
+          <h4>Autumn Sale Event</h4>
+          <p>Grab our autumn collection with limited-time offers! 5 items all in Autumn colors and premium packaging</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="promo-card">
+        <div class="promo-card-img">
+          <img src="Promotion2.jpg" alt="Label H4">
+        </div>
+        <div class="promo-card-text"
+             data-full="10 nails per set, 30+ designs. Themes: Coquette (5 colors), Metallic (3 variations), Sanrio (5 designs), Pastel (4 colors), Floral (3 designs). Other themes (1 design only): Beach, Candy, Hearts, Ribbon Bows">
+          <h4>Clearance Sale</h4>
+          <p>Press On Nails Clearance Sale at limited number of stocks. Explore whatever your style is, we have over 30+ Nail Art Designs for you</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="promo-card">
+        <div class="promo-card-img">
+          <img src="Promotion3V2.jpg" alt="Label H4" style="width: 300px;">
+        </div>
+        <div class="promo-card-text"
+             data-full="Textures: Matte (12 colors), Satin (8 colors), Velvet (12 colors), Gloss (10 colors), Balm (3 colors), Pot Cream (5 colors), Lip Tint (12 colors), Shine Lipstick (6 colors), Stain Ink (3 colors), Lip Serum (10 colors), Lip Oil (3 colors), Lip Liner (10 colors) Terms and conditions apply. Limited time offer.">
+          <h4>End of Year Lipstick Sale</h4>
+          <p>Exclusive deals for all of Whatever's lip products, now accessible at special prices! Enjoy a 10% cashback on any lip product of your choice.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- ============ SECTION 7 : REVEAL IMAGE ============ -->
   <section class="promo-section" id="section-reveal">
     <div class="reveal-wrap" id="revealWrap">
-      <img src="RevealImage.jpg" alt="Featured promotion" class="reveal-image">
+      <img src="PromotionSoon.jpg" alt="Featured promotion" class="reveal-image">
       <div class="reveal-cover" id="revealCover">
         <img src="reveal-icon.png" alt="" class="reveal-icon" id="revealIcon">
         <span class="reveal-text">Click To View</span>
@@ -184,10 +286,8 @@
 </footer>
 
 <script src="promotions.js"></script>
-<<<<<<< HEAD
 <audio src="promotions.mp3" autoplay></audio>
-=======
+
 <script src="main_page.js"></script>
->>>>>>> 38fc1154c3b82ab80a372844743db714b12e54a0
 </body>
 </html>

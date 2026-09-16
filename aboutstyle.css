@@ -37,6 +37,15 @@ body {
     overflow-x: hidden;
 }
 
+a { color: inherit; text-decoration: none; 
+    font-family: var(--font-body);   
+}
+
+.wrap {
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
 .fill-img {
     width: 100%;
     height: 100%;
@@ -49,6 +58,78 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 600;
   margin: 0;
+}
+
+/* Promo strip banner from Main*/
+.promo-strip {
+    background-color: var(--sub-gold);
+    color: var(--color-maroon);
+    overflow: hidden;
+    position: relative;
+}
+
+.promo-strip .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 10px 40px;
+}
+
+.promo-track {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.promo-track p {
+    display: inline-block;
+    padding-left: 100%;
+    margin: 0;
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    animation: scroll-promo 16s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .promo-track p { animation: none; padding-left: 0; }
+}
+
+@keyframes scroll-promo {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-100%); }
+}
+
+.promo-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.promo-strip .btn {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 10px 22px;
+    border: 1px solid var(--color-maroon);
+    cursor: pointer;
+    background: transparent;
+    color: var(--color-maroon);
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.15s ease;
+}
+
+.promo-strip .btn:hover,
+.promo-strip .btn:focus-visible {
+    transform: translateY(-1px);
+}
+
+.promo-strip .btn.filled {
+    background-color: var(--color-maroon);
+    color: var(--color-pink-light);
 }
 
 /* SECTION 1 — video / about us / image map                     */
@@ -106,6 +187,8 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
     transition: background-color 0.2s ease;
 }
 
@@ -176,9 +259,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 5em;
 }
 
-/* ============================================================ */
 /* SECTION 9 — definition list and decoration pics               */
-/* ============================================================ */
 .section9 {
     width: 100%;
     padding: 30px 20px;
@@ -378,6 +459,8 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
     cursor: pointer;
     margin-bottom: 30px;
+    display: inline-block;
+    text-decoration: none;
     transition: background-color 0.2s ease;
 }
 
@@ -1016,8 +1099,9 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-maroon);
 }
 
-/* Parts that span 100% browser screen width */
+/* Parts that have 100% browser screen width */
 header,
+.promo-strip,
 .section1,
 footer {
     width: 100vw;
@@ -1026,6 +1110,11 @@ footer {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
+}
+
+.footer-grid{
+    margin-left:6%;
+    font-family: var(--font-bofu);
 }
 
 /* Responsive from 320px up            */
@@ -1062,12 +1151,4 @@ footer {
     .s11-columns {
         flex-wrap: wrap;
     }
-}
-/* Footer */
-.wrap {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0 40px;
-    box-sizing: border-box;
 }

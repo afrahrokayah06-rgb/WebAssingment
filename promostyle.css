@@ -1,4 +1,3 @@
-
 :root {
   --color-maroon: #420420;
   --color-dark-maroon: #2C0216;
@@ -33,6 +32,9 @@
 body {
   font-family: var(--font-body);
   background-color: var(--color-maroon);
+  max-width: 1024px;
+  min-width: 420px;
+  margin: 0 auto;
 }
 
 main {
@@ -52,24 +54,33 @@ main {
   margin-right: auto;
 }
 
-/* Section 1 */
+/* span 100% browser width */
+header,
+.promo-strip,
+footer,
 #section-imagemap {
-  margin-left: 0;
-  margin-right: 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+}
+
+footer {
+  border-top: none;
 }
 
 .imagemap-wrap {
   position: relative;
   width: 100%;
   max-width: none;
-  aspect-ratio: 1122 / 623;
+  aspect-ratio: 1024 / 380;
   margin: 0;
   overflow: hidden;
 }
 
 .imagemap-wrap img#promoMapImage {
   width: 100%;
-  height: 70%;
+  height: 100%;
   display: block;
   object-fit: cover;
 }
@@ -90,7 +101,7 @@ main {
 .promo-calendar {
   border-collapse: collapse;
   table-layout: fixed;
-  width: 80%;
+  width: 95%;
   max-width: 1100px;
   margin: 0 auto;
   background-color: var(--color-gold-light);
@@ -104,6 +115,7 @@ main {
 .promo-calendar thead tr:first-child th {
   padding: 16px 4px 14px 4px;
   position: relative;
+  text-align: center;
 }
 
 .calendar-title-text {
@@ -162,7 +174,7 @@ main {
   position: relative;
 }
 
-/* "Only View Event Dates" mode, toggled via the radio buttons */
+/* "Only View Event Dates" mode (selected using radio button) */
 .promo-calendar.events-only {
   background-color: var(--color-tan);
 }
@@ -203,9 +215,7 @@ main {
   padding: 2px 4px;
 }
 
-/* days outside September: no number, no badge — blank cell */
-
-/* small red dot marking an upcoming promotion, top-right of the cell */
+/* small red dot on top-right of the date */
 .promo-calendar tbody td.has-dot::after {
   content: "";
   position: absolute;
@@ -232,9 +242,6 @@ main {
   z-index: 2;
 }
 
-/* decorative image sitting centered in a promo-day cell — absolutely
-   positioned so it never affects the cell's size and can protrude
-   outside the cell freely, since the artwork is much bigger than the row */
 .promo-deco-img {
   position: absolute;
   top: 50%;
@@ -248,7 +255,7 @@ main {
   opacity: 0.9;
 }
 
-/* days 1, 3, 5, 6, 9 — dull grey, past / ended promotions */
+/* days 1, 3, 5, 6, 9 — gray, past / ended promotions */
 .date-badge.badge-ended {
   background-color: var(--color-gray-fill);
   border: 2px solid var(--color-gray-border);
@@ -297,9 +304,7 @@ main {
   cursor: pointer;
 }
 
-/* ============================================================
-   SECTION 3 — WEEK SELECTOR
-   ============================================================ */
+/* SECTION 3 — WEEK SELECTOR */
 .week-selector {
   width: 80%;
   max-width: 1100px;
@@ -341,9 +346,7 @@ main {
   font-weight: 600;
 }
 
-/* ============================================================
-   SECTION 4 — SELECTED WEEK DISPLAY
-   ============================================================ */
+/* SECTION 4 — SELECTED WEEK DISPLAY */
 .week-display {
   width: 80%;
   max-width: 1100px;
@@ -373,9 +376,7 @@ main {
   color: var(--color-pink-light);
 }
 
-/* ============================================================
-   SECTION 5 — EVENT TIMELINE
-   ============================================================ */
+/* SECTION 5 — EVENT TIMELINE */
 .timeline-title {
   display: block;
   text-align: center;
@@ -427,7 +428,7 @@ main {
 .timeline-right {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 22px;
   flex-shrink: 0;
 }
 
@@ -474,9 +475,7 @@ main {
   opacity: 1;
 }
 
-/* ============================================================
-   SECTION 6 — ONGOING PROMOTIONS CARDS
-   ============================================================ */
+/* SECTION 6 — ONGOING PROMOTIONS CARDS */
 .cards-title {
   text-align: center;
   color: var(--color-pink-light);
@@ -514,9 +513,9 @@ main {
 }
 
 .promo-card-img img {
-  max-width: 80%;
-  max-height: 80%;
-  object-fit: contain;
+  max-width: 300px;
+  max-height: 100%;
+  object-fit: cover;
 }
 
 .promo-card-text {
@@ -556,9 +555,7 @@ main {
   color: var(--color-gold-light);
 }
 
-/* ============================================================
-   SECTION 7 — CLICK TO REVEAL IMAGE
-   ============================================================ */
+/* SECTION 7 — CLICK TO REVEAL IMAGE */
 .reveal-wrap {
   position: relative;
   width: 100%;
@@ -621,19 +618,14 @@ main {
   50% { transform: scale(1.35) rotate(12deg); }
 }
 
-/* ============================================================
-   FOOTER
-   Fully handled by nav.css's .footer-grid rules — this page just
-   needs to supply the CSS variables nav.css expects (see :root
-   above: --sub-gold, --nav-border-soft, --nav-text-cream[-dim]).
-   No footer rules are duplicated here on purpose, so nav.css's
-   styling always wins without a specificity fight.
-   ============================================================ */
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+/* RESPONSIVE */
 @media (max-width: 600px) {
   .promo-section { margin-left: 20px; margin-right: 20px; }
   .week-selector-month { text-align: center; }
+  .promo-calendar,
+  .week-selector,
+  .week-display,
+  .timeline {
+    width: 92%;
+  }
 }

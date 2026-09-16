@@ -28,13 +28,18 @@ var WEEKS = [
 
   var DAY_LETTERS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
-  var ENDED_DAYS = [1, 3, 5, 6, 9];             // dull grey badge — past
-  var PROMO_DAYS = [14, 18, 20, 24, 30];        // gold badge + red dot — upcoming
-  var PROMO_LABEL_TEXT = 'Label';
+  var ENDED_DAYS = [1, 3, 5, 6, 9];
 
-  /* =========================================================
-     SECTION 2 — CALENDAR TABLE
-     ========================================================= */
+  // upcoming promotions — each date has its own picture and label
+  var PROMO_DATA = {
+    14: { img: 'Date14.png', label: 'Discounted Item: Golden Shimmer Bronzer' },
+    18: { img: 'Date18.png', label: '50% off for New Launch: Lotus Lipstick - Flower Edition' },
+    20: { img: 'Date20.png', label: 'Festive Sale 50% Off: Empress Lipstick - Palace Edition' },
+    24: { img: 'Date24.png', label: 'Big Sale: Up to 40% off for Peony - Gentle Cleansing Balm' },
+    30: { img: 'Date30.png', label: 'Set Sales: Up to 40% off for Cherry - Full Face Cleansing Balm' }
+  };
+
+  /* ============= SECTION 2 — CALENDAR TABLE ================ */
   var calendarBody = document.getElementById('promoCalendarBody');
   var popup = document.getElementById('eventPopup');
   var popupText = document.getElementById('eventPopupText');
@@ -47,29 +52,29 @@ var WEEKS = [
         var td = document.createElement('td');
 
         if (!cell.current || cell.d === null) {
-          // day outside September — leave the cell blank
+          // day outside September so will leave the cell blank
           tr.appendChild(td);
           return;
         }
 
         var isEnded = ENDED_DAYS.indexOf(cell.d) !== -1;
-        var isPromo = PROMO_DAYS.indexOf(cell.d) !== -1;
+        var promo = PROMO_DATA[cell.d];
 
-        if (isPromo) td.classList.add('has-dot');
+        if (promo) td.classList.add('has-dot');
 
-        if (isEnded || isPromo) {
+        if (isEnded || promo) {
           var badge = document.createElement('span');
           badge.className = 'date-badge ' + (isEnded ? 'badge-ended' : 'badge-promo');
           badge.textContent = cell.d;
           badge.addEventListener('click', function (e) {
             showEventPopup(e, isEnded ? 'ended' : 'promo',
-              isEnded ? 'Event has already ended!' : PROMO_LABEL_TEXT);
+              isEnded ? 'Event has already ended!' : promo.label);
           });
 
-          if (isPromo) {
+          if (promo) {
             var decoImg = document.createElement('img');
             decoImg.className = 'promo-deco-img';
-            decoImg.src = 'MakeupKit1.png';
+            decoImg.src = promo.img;
             decoImg.alt = '';
             td.appendChild(decoImg);
           }
@@ -107,7 +112,7 @@ var WEEKS = [
     }
   });
 
-  /* -- "View All Dates" / "Only View Event Dates" toggle -- */
+  /* -- View All Dates / Only View Event Dates radio button toggle -- */
   var calendarTable = document.getElementById('promoCalendar');
   var viewAllRadio = document.getElementById('viewAllDates');
   var viewEventsRadio = document.getElementById('viewEventDates');
@@ -119,9 +124,7 @@ var WEEKS = [
   viewAllRadio.addEventListener('change', applyCalendarView);
   viewEventsRadio.addEventListener('change', applyCalendarView);
 
-  /* =========================================================
-     SECTION 3 — WEEK SELECTOR, SECTION 4 — WEEK DISPLAY
-     ========================================================= */
+  /* =============== SECTION 3 — WEEK SELECTOR, SECTION 4 — WEEK DISPLAY ================== */
   var weekButtonsWrap = document.getElementById('weekButtons');
   var weekDisplay = document.getElementById('weekDisplay');
 
@@ -164,68 +167,17 @@ var WEEKS = [
     });
   }
 
-  /* =========================================================
-     SECTION 5 — EVENT TIMELINE
-     ========================================================= */
-  var TIMELINE_RANGES = [
-    { from: 1, to: 3 },
-    { from: 5, to: 6 },
-    { from: 9, to: 14 },
-    { from: 18, to: 20 },
-    { from: 24, to: 30 }
-  ];
-
-  var BAR_MIN_HEIGHT = 40;
-  var BAR_HEIGHT_PER_DAY = 9;
-
+  /* ============ SECTION 5 — EVENT TIMELINE=========== */
   var timelineWrap = document.getElementById('timeline');
   var reminderPopup = document.getElementById('reminderPopup');
   var reminderPopupTimer;
 
-  function buildTimeline() {
-    TIMELINE_RANGES.forEach(function (range) {
-      var span = range.to - range.from;
-      var height = BAR_MIN_HEIGHT + span * BAR_HEIGHT_PER_DAY;
-
-      var bar = document.createElement('div');
-      bar.className = 'timeline-bar';
-      bar.style.height = height + 'px';
-
-      var fromLabel = document.createElement('span');
-      fromLabel.className = 'timeline-date-from';
-      fromLabel.textContent = range.from;
-
-      var toLabel = document.createElement('span');
-      toLabel.className = 'timeline-date-to';
-      toLabel.textContent = range.to;
-
-      var label = document.createElement('span');
-      label.className = 'timeline-label';
-      label.textContent = 'Label';
-
-      var reminderBtn = document.createElement('button');
-      reminderBtn.type = 'button';
-      reminderBtn.className = 'reminder-btn';
-      reminderBtn.innerHTML = 'Enable<br>Reminder';
-      reminderBtn.dataset.on = 'false';
-      reminderBtn.addEventListener('click', function () {
-        toggleReminder(reminderBtn);
+  function initTimelineButtons() {
+    var buttons = timelineWrap.querySelectorAll('.reminder-btn');
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        toggleReminder(btn);
       });
-
-      var img = document.createElement('img');
-      img.src = 'MakeupKit1.png';
-      img.alt = 'Promotion item';
-
-      var rightGroup = document.createElement('div');
-      rightGroup.className = 'timeline-right';
-      rightGroup.appendChild(reminderBtn);
-      rightGroup.appendChild(img);
-
-      bar.appendChild(fromLabel);
-      bar.appendChild(toLabel);
-      bar.appendChild(label);
-      bar.appendChild(rightGroup);
-      timelineWrap.appendChild(bar);
     });
   }
 
@@ -256,54 +208,27 @@ var WEEKS = [
     }, 1500);
   }
 
-  /* =========================================================
-     SECTION 6 — ONGOING PROMOTIONS CARDS
-     ========================================================= */
-  var CARDS = [
-    { title: 'Label H4', short: 'paragraph', full: 'paragraph — full promotion details go here. Terms and conditions apply, see in-store or online for more information on this offer.' },
-    { title: 'Label H4', short: 'paragraph', full: 'paragraph — full promotion details go here. Terms and conditions apply, see in-store or online for more information on this offer.' },
-    { title: 'Label H4', short: 'paragraph', full: 'paragraph — full promotion details go here. Terms and conditions apply, see in-store or online for more information on this offer.' }
-  ];
-
+  /* ============ SECTION 6 — ONGOING PROMOTIONS CARDS ============= */
   var cardsWrap = document.getElementById('promoCards');
 
-  function buildCards() {
-    CARDS.forEach(function (card) {
-      var wrap = document.createElement('div');
-      wrap.className = 'promo-card';
-
-      var imgBox = document.createElement('div');
-      imgBox.className = 'promo-card-img';
-      var img = document.createElement('img');
-      img.src = 'PromoCardImage.png';
-      img.alt = card.title;
-      imgBox.appendChild(img);
-
-      var textBox = document.createElement('div');
-      textBox.className = 'promo-card-text';
-
-      var h4 = document.createElement('h4');
-      h4.textContent = card.title;
-      var p = document.createElement('p');
-      p.textContent = card.short;
-
-      textBox.appendChild(h4);
-      textBox.appendChild(p);
+  function initCards() {
+    var textBoxes = cardsWrap.querySelectorAll('.promo-card-text');
+    textBoxes.forEach(function (textBox) {
+      var p = textBox.querySelector('p');
+      // the default/reverted state is whatever text is actually written
+      // in the <p> in the HTML — not a separate data-short attribute,
+      // so it can never drift out of sync with what's on the page
+      var shortText = p.textContent;
+      var fullText = textBox.dataset.full;
 
       textBox.addEventListener('click', function () {
         var expanded = textBox.classList.toggle('expanded');
-        p.textContent = expanded ? card.full : card.short;
+        p.textContent = expanded ? fullText : shortText;
       });
-
-      wrap.appendChild(imgBox);
-      wrap.appendChild(textBox);
-      cardsWrap.appendChild(wrap);
     });
   }
 
-  /* =========================================================
-     SECTION 7 — CLICK TO REVEAL IMAGE
-     ========================================================= */
+  /* ==============SECTION 7 — CLICK TO REVEAL IMAGE ================= */
   var revealCover = document.getElementById('revealCover');
   var revealIcon = document.getElementById('revealIcon');
 
@@ -319,14 +244,12 @@ var WEEKS = [
     });
   }
 
-  /* =========================================================
-     INIT
-     ========================================================= */
+
   buildCalendar();
   buildWeekButtons();
-  selectWeek(2); // default to Week 3, matching the reference sketch
-  buildTimeline();
-  buildCards();
+  selectWeek(2); // default is Week 3
+  initTimelineButtons();
+  initCards();
   setupReveal();
 
 });
