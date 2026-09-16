@@ -521,19 +521,59 @@ if (payTotal) {
 
         /* Real timestamp of when this order was placed, used on the
            tracking page to calculate the cancellation window */
-        sessionStorage.setItem("orderPlacedAt", Date.now().toString());
+        const orderPlacedAt = Date.now();
+            sessionStorage.setItem(
+                "orderPlacedAt",
+                orderPlacedAt.toString()
+            );
 
-        /* Clear any cancellation flag from a previous order */
-        sessionStorage.removeItem("orderCancelled");
- 
-        /* Also save a snapshot of what was purchased, in case the
-           tracking page (or a future receipt) needs to list items */
- 
-        sessionStorage.setItem("lastOrderItems", JSON.stringify(cart));
-        sessionStorage.setItem("lastOrderSubtotal", total.toFixed(2));
-        sessionStorage.setItem("lastOrderShipping", shipping.toFixed(2));
-        sessionStorage.setItem("lastOrderDiscount", discount.toFixed(2));
-        sessionStorage.setItem("lastOrderTotal", finalTotal.toFixed(2));
+        // Save order to order history
+        let orderHistory =
+            JSON.parse(
+                localStorage.getItem("orderHistory")
+            ) || [];
+
+
+        const newOrder = {
+
+        orderNumber: orderNumber,
+
+        userEmail: loggedInUser.email,
+
+        orderDate: orderDate,
+
+        orderPlacedAt: orderPlacedAt,
+
+        items: cart.map(function (prod) {
+
+            return {
+                name: prod.name,
+                price: Number(prod.price) || 0,
+                quantity: Number(prod.quantity) || 1,
+                image: prod.image || ""
+            };
+
+        }),
+
+        subtotal: Number(total.toFixed(2)),
+        shipping: Number(shipping.toFixed(2)),
+        discount: Number(discount.toFixed(2)),
+        total: Number(finalTotal.toFixed(2)),
+
+        status: "Order Placed",
+
+        cancelled: false
+    };
+
+        /* Newest order appears first */
+
+        orderHistory.unshift(newOrder);
+
+
+        localStorage.setItem(
+            "orderHistory",
+            JSON.stringify(orderHistory)
+        );
 
 
     /* ---------- Clear Cart ---------- */
@@ -547,7 +587,8 @@ if (payTotal) {
         setTimeout(function () {
 
             window.location.href =
-                "orderSummary.html";
+            "orderSummary.html?order=" +
+            encodeURIComponent(orderNumber);
 
         }, 2000);
     });

@@ -1,90 +1,324 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const orderNumberEl = document.getElementById("orderNumber");
-    const orderDateEl = document.getElementById("orderDate");
+    /* =========================
+       CHECK LOGIN
+    ========================= */
 
-    if (orderNumberEl && orderDateEl) {
+    const loggedInUser =
+        sessionStorage.getItem("loggedInUser");
 
-        const savedOrderNumber = sessionStorage.getItem("currentOrderNumber");
-        const savedOrderDate = sessionStorage.getItem("currentOrderDate");
+    if (!loggedInUser) {
 
-        if (savedOrderNumber && savedOrderDate) {
+        alert("Please log in to track your order.");
 
-            orderNumberEl.textContent = "#" + savedOrderNumber;
-            orderDateEl.textContent = savedOrderDate;
+        window.location.href = "login.html";
 
-        } else {
+        return;
+    }
 
-            orderNumberEl.textContent = "No order found";
-            orderDateEl.textContent = "-";
+
+    /* =========================
+       GET LOGGED-IN USER
+    ========================= */
+
+    const currentUser =
+        JSON.parse(loggedInUser);
+
+
+    /* =========================
+       GET ORDER NUMBER FROM URL
+    ========================= */
+
+    const urlParams =
+        new URLSearchParams(window.location.search);
+
+    const selectedOrderNumber =
+        urlParams.get("order");
+
+
+    /* =========================
+       GET ORDER HISTORY
+    ========================= */
+
+    const orderHistory =
+        JSON.parse(
+            localStorage.getItem("orderHistory")
+        ) || [];
+
+
+    /* =========================
+       FIND SELECTED ORDER
+    ========================= */
+
+    let order = null;
+
+    if (selectedOrderNumber) {
+
+        order =
+            orderHistory.find(function (item) {
+
+                return (
+                    item.orderNumber === selectedOrderNumber &&
+                    item.userEmail === currentUser.email
+                );
+
+            });
+
+    }
+
+
+    /* =========================
+       GET ELEMENTS
+    ========================= */
+
+    const orderNumberEl =
+        document.getElementById("orderNumber");
+
+    const orderDateEl =
+        document.getElementById("orderDate");
+
+    const steps =
+        document.querySelectorAll(".timeline-step");
+
+    const deliveryCheck =
+        document.getElementById("deliveryCheck");
+
+    const timeline =
+        document.getElementById("timeline");
+
+    const confirmYes =
+        document.getElementById("confirmYes");
+
+    const confirmNo =
+        document.getElementById("confirmNo");
+
+    const deliveryIssue =
+        document.getElementById("deliveryIssue");
+
+    const cancelledMessage =
+        document.getElementById("cancelledMessage");
+
+
+    /* =========================
+       NO ORDER FOUND
+    ========================= */
+
+    if (!order) {
+
+        orderNumberEl.textContent =
+            "No order found";
+
+        orderDateEl.textContent =
+            "-";
+
+        if (timeline) {
+            timeline.style.display = "none";
+        }
+
+        if (deliveryCheck) {
+            deliveryCheck.style.display = "none";
+        }
+
+        if (cancelledMessage) {
+            cancelledMessage.style.display = "none";
+        }
+
+        return;
+    }
+
+
+    /* =========================
+       DISPLAY ORDER INFORMATION
+    ========================= */
+
+    orderNumberEl.textContent =
+        "#" + order.orderNumber;
+
+    orderDateEl.textContent =
+        order.orderDate || "-";
+
+
+    /* =========================
+       CHECK IF ORDER IS CANCELLED
+    ========================= */
+
+    if (order.cancelled === true) {
+
+        if (timeline) {
+            timeline.style.display = "none";
+        }
+
+        if (deliveryCheck) {
+            deliveryCheck.style.display = "none";
+        }
+
+        if (deliveryIssue) {
+            deliveryIssue.style.display = "none";
+        }
+
+        if (cancelledMessage) {
+            cancelledMessage.style.display = "block";
+        }
+
+        return;
+    }
+
+
+    /* =========================
+       NORMAL ORDER
+    ========================= */
+
+    if (cancelledMessage) {
+        cancelledMessage.style.display = "none";
+    }
+
+
+    /* =========================
+    ORDER TIMELINE
+    ========================= */
+
+    let progressTimer = null;
+
+    const STATUS_BY_STEP = [
+        "Order Placed",
+        "Order Confirmed",
+        "Preparing",
+        "Shipped",
+        "Delivered"
+    ];
+
+
+    function saveTrackingProgress() {
+
+        const orderIndex =
+            orderHistory.findIndex(function (item) {
+
+                return (
+                    item.orderNumber ===
+                    order.orderNumber
+                );
+
+            });
+
+
+        if (orderIndex !== -1) {
+
+            orderHistory[orderIndex] =
+                order;
+
+            localStorage.setItem(
+                "orderHistory",
+                JSON.stringify(orderHistory)
+            );
 
         }
 
     }
 
 
-    const steps = document.querySelectorAll(".timeline-step");
-    const deliveryCheck = document.getElementById("deliveryCheck");
-    const timeline = document.getElementById("timeline");
+    function activateStep(index) {
 
-    const cancelControl = document.getElementById("cancelControl");
-    const cancelOrderBtn = document.getElementById("cancelOrderBtn");
-    const cancelConfirm = document.getElementById("cancelConfirm");
-    const cancelBackBtn = document.getElementById("cancelBackBtn");
-    const cancelConfirmBtn = document.getElementById("cancelConfirmBtn");
-    const cancelledMessage = document.getElementById("cancelledMessage");
-    const cancelTimer = document.getElementById("cancelTimer");
+        steps.forEach(function (step, i) {
 
-    /* ---------- CANCELLATION WINDOW (based on real elapsed time) ----------
-       In a real system this would be 1 hour, matching the FAQ policy.
-       For this demo it's shortened to 10 seconds so it's actually
-       demonstrable. This is completely independent of the visual
-       timeline animation below, which just simulates courier updates. */
+            step.classList.remove("active");
+            step.classList.remove("completed");
 
-    const CANCEL_WINDOW_MS = 10 * 1000; // 10 seconds for demo
 
-    let currentStep = 0;
-    let progressTimer = null;
-    let cancelCountdownTimer = null;
+            if (i < index) {
 
-    /* ---------- If this order was already cancelled earlier, show
-       that immediately and skip everything else ---------- */
+                step.classList.add("completed");
 
-    if (sessionStorage.getItem("orderCancelled") === "true") {
+            }
 
-        timeline.style.display = "none";
-        cancelledMessage.style.display = "block";
+        });
 
-    } else {
 
-        startTimeline();
-        startCancelCountdown();
+        if (steps[index]) {
+
+            steps[index].classList.add("active");
+
+        }
+
+
+        /*
+        * Update order status to match
+        * the current timeline step.
+        */
+
+        if (STATUS_BY_STEP[index]) {
+
+            order.status =
+                STATUS_BY_STEP[index];
+
+        }
+
+
+        order.trackingStep =
+            index;
+
+
+        saveTrackingProgress();
 
     }
 
 
     function startTimeline() {
 
-        /* How long each step "takes" before moving to the next one. */
-        const STEP_DURATION = 5000; // milliseconds
+        const STEP_DURATION = 5000;
+
+        /*
+        * Use saved tracking progress.
+        * If there is no saved progress, start at step 0.
+        */
+        let currentStep =
+            Number.isInteger(order.trackingStep)
+                ? order.trackingStep
+                : 0;
+
+
+        function saveTrackingProgress() {
+
+            const orderIndex =
+                orderHistory.findIndex(function (item) {
+
+                    return (
+                        item.orderNumber === order.orderNumber &&
+                        item.userEmail.toLowerCase() ===
+                        currentUser.email.toLowerCase()
+                    );
+
+                });
+
+
+            if (orderIndex !== -1) {
+
+                orderHistory[orderIndex] = order;
+
+                localStorage.setItem(
+                    "orderHistory",
+                    JSON.stringify(orderHistory)
+                );
+
+            }
+
+        }
+
 
         function activateStep(index) {
 
             steps.forEach(function (step, i) {
 
                 step.classList.remove("active");
+                step.classList.remove("completed");
 
                 if (i < index) {
 
                     step.classList.add("completed");
 
-                } else if (i > index) {
-
-                    step.classList.remove("completed");
-
                 }
 
             });
+
 
             if (steps[index]) {
 
@@ -94,147 +328,349 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-        activateStep(currentStep);
 
-        progressTimer = setInterval(function () {
+        /* =========================
+        RESTORE SAVED DELIVERY
+        ========================= */
 
-            currentStep++;
+        if (order.deliveryStatus === "Received") {
 
-            if (currentStep >= steps.length) {
-
-                steps[steps.length - 1].classList.remove("active");
-                steps[steps.length - 1].classList.add("completed");
-
-                clearInterval(progressTimer);
-
-                deliveryCheck.style.display = "block";
-
-                return;
-            }
+            currentStep = steps.length - 1;
 
             activateStep(currentStep);
 
-        }, STEP_DURATION);
+            steps[currentStep].classList.remove("active");
+            steps[currentStep].classList.add("completed");
 
-    }
-
-
-    /* ---------- Time-based cancel eligibility ---------- */
-
-    function startCancelCountdown() {
-
-        const placedAtRaw = sessionStorage.getItem("orderPlacedAt");
-        const placedAt = placedAtRaw ? parseInt(placedAtRaw) : Date.now();
-
-        function updateCountdown() {
-
-            const elapsed = Date.now() - placedAt;
-            const remaining = CANCEL_WINDOW_MS - elapsed;
-
-            if (remaining <= 0) {
-
-                /* Window has expired — hide the option entirely */
-
-                cancelControl.style.display = "none";
-                clearInterval(cancelCountdownTimer);
-                return;
-
+            if (deliveryCheck) {
+                deliveryCheck.style.display = "none";
             }
 
-            cancelControl.style.display = "block";
+            if (deliveryIssue) {
+                deliveryIssue.style.display = "none";
+            }
 
-            const secondsLeft = Math.ceil(remaining / 1000);
-            cancelTimer.textContent =
-                "You can cancel within " + secondsLeft + "s";
+            return;
+        }
+
+
+        if (order.deliveryStatus === "Not Received") {
+
+            currentStep = steps.length - 1;
+
+            activateStep(currentStep);
+
+            steps[currentStep].classList.remove("active");
+            steps[currentStep].classList.add("completed");
+
+            if (deliveryCheck) {
+                deliveryCheck.style.display = "none";
+            }
+
+            if (deliveryIssue) {
+                deliveryIssue.style.display = "block";
+            }
+
+            return;
+        }
+
+
+        /* =========================
+        RESTORE NORMAL PROGRESS
+        ========================= */
+
+        if (currentStep >= steps.length) {
+
+            currentStep = steps.length - 1;
 
         }
 
-        updateCountdown();
 
-        cancelCountdownTimer = setInterval(updateCountdown, 1000);
+        activateStep(currentStep);
+
+
+        /* =========================
+        UPDATE STATUS
+        ========================= */
+
+        if (currentStep === 0) {
+
+            order.status = "Order Placed";
+
+        }
+        else if (currentStep === 1) {
+
+            order.status = "Order Confirmed";
+
+        }
+        else if (currentStep === 2) {
+
+            order.status = "Preparing";
+
+        }
+        else if (currentStep === 3) {
+
+            order.status = "Shipped";
+
+        }
+        else if (currentStep === 4) {
+
+            order.status = "Delivered";
+
+            /*
+            * Do NOT mark Received here.
+            * User still needs to confirm.
+            */
+
+            if (deliveryCheck) {
+                deliveryCheck.style.display = "block";
+            }
+
+        }
+
+
+        order.trackingStep = currentStep;
+
+        saveTrackingProgress();
+
+
+        /* =========================
+        DON'T START TIMER IF DONE
+        ========================= */
+
+        if (currentStep >= steps.length - 1) {
+            return;
+        }
+
+
+        /* =========================
+        MOVE THROUGH TIMELINE
+        ========================= */
+
+        progressTimer =
+            setInterval(function () {
+
+                currentStep++;
+
+
+                /* Timeline reached Delivered */
+
+                if (currentStep >= steps.length - 1) {
+
+                    clearInterval(progressTimer);
+
+                    currentStep =
+                        steps.length - 1;
+
+                    activateStep(currentStep);
+
+
+                    order.trackingStep =
+                        currentStep;
+
+                    order.status =
+                        "Delivered";
+
+
+                    saveTrackingProgress();
+
+
+                    if (deliveryCheck) {
+
+                        deliveryCheck.style.display =
+                            "block";
+
+                    }
+
+                    return;
+                }
+
+
+                /* Update visual timeline */
+
+                activateStep(currentStep);
+
+
+                /* Save progress */
+
+                order.trackingStep =
+                    currentStep;
+
+
+                if (currentStep === 1) {
+
+                    order.status =
+                        "Order Confirmed";
+
+                }
+                else if (currentStep === 2) {
+
+                    order.status =
+                        "Preparing";
+
+                }
+                else if (currentStep === 3) {
+
+                    order.status =
+                        "Shipped";
+
+                }
+
+
+                saveTrackingProgress();
+
+            }, STEP_DURATION);
 
     }
 
 
     /* =========================
-       CANCEL ORDER FLOW
+    START TRACKING
     ========================= */
 
-    cancelOrderBtn.addEventListener("click", function () {
+    startTimeline();
 
-        cancelControl.style.display = "none";
-        cancelConfirm.style.display = "block";
 
-    });
 
-    cancelBackBtn.addEventListener("click", function () {
+    /* =========================
+       START TRACKING
+    ========================= */
 
-        cancelConfirm.style.display = "none";
-
-        /* Only bring the cancel option back if the time window
-           hasn't expired while the confirmation was open */
-
-        const placedAtRaw = sessionStorage.getItem("orderPlacedAt");
-        const placedAt = placedAtRaw ? parseInt(placedAtRaw) : Date.now();
-        const stillEligible = (Date.now() - placedAt) < CANCEL_WINDOW_MS;
-
-        if (stillEligible) {
-
-            cancelControl.style.display = "block";
-
-        }
-
-    });
-
-    cancelConfirmBtn.addEventListener("click", function () {
-
-        /* Stop both timers permanently */
-
-        if (progressTimer) {
-
-            clearInterval(progressTimer);
-
-        }
-
-        if (cancelCountdownTimer) {
-
-            clearInterval(cancelCountdownTimer);
-
-        }
-
-        sessionStorage.setItem("orderCancelled", "true");
-
-        timeline.style.display = "none";
-        cancelControl.style.display = "none";
-        cancelConfirm.style.display = "none";
-        deliveryCheck.style.display = "none";
-
-        cancelledMessage.style.display = "block";
-
-    });
+    startTimeline();
 
 
     /* =========================
        DELIVERY CONFIRMATION
     ========================= */
 
-    const confirmYes = document.getElementById("confirmYes");
-    const confirmNo = document.getElementById("confirmNo");
-    const deliveryIssue = document.getElementById("deliveryIssue");
+    function saveDeliveryStatus(status) {
 
-    confirmYes.addEventListener("click", function () {
+        const orderIndex =
+            orderHistory.findIndex(function (item) {
 
-        /* Order confirmed as delivered — send the user to the feedback page */
+                return (
+                    item.orderNumber === order.orderNumber &&
+                    item.userEmail.toLowerCase() ===
+                    currentUser.email.toLowerCase()
+                );
 
-        window.location.href = "feedback.html";
+            });
 
-    });
 
-    confirmNo.addEventListener("click", function () {
+        if (orderIndex === -1) {
 
-        deliveryCheck.style.display = "none";
-        deliveryIssue.style.display = "block";
+            console.error("Order could not be found.");
 
-    });
+            return false;
+        }
+
+
+        /* Update the order */
+
+        order.status = status;
+        order.deliveryStatus = status;
+
+
+        /* Save updated order */
+
+        orderHistory[orderIndex] = order;
+
+        localStorage.setItem(
+            "orderHistory",
+            JSON.stringify(orderHistory)
+        );
+
+
+        console.log(
+            "Order saved:",
+            status
+        );
+
+        return true;
+    }
+
+
+    /* =========================
+    RECEIVED
+    ========================= */
+
+    if (confirmYes) {
+
+        confirmYes.addEventListener(
+            "click",
+            function () {
+
+                const saved =
+                    saveDeliveryStatus("Received");
+
+
+                if (!saved) {
+                    return;
+                }
+
+
+                /* Hide confirmation */
+
+                if (deliveryCheck) {
+
+                    deliveryCheck.style.display =
+                        "none";
+
+                }
+
+
+                /* Go to feedback */
+
+                window.location.href =
+                    "feedback.html";
+
+            }
+        );
+
+    }
+
+
+    /* =========================
+    NOT RECEIVED
+    ========================= */
+
+    if (confirmNo) {
+
+        confirmNo.addEventListener(
+            "click",
+            function () {
+
+                const saved =
+                    saveDeliveryStatus("Not Received");
+
+
+                if (!saved) {
+                    return;
+                }
+
+
+                /* Hide confirmation */
+
+                if (deliveryCheck) {
+
+                    deliveryCheck.style.display =
+                        "none";
+
+                }
+
+
+                /* Show delivery problem */
+
+                if (deliveryIssue) {
+
+                    deliveryIssue.style.display =
+                        "block";
+
+                }
+
+            }
+        );
+
+    }
 
 });
