@@ -15,29 +15,210 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---------- Display logged-in user ---------- */
   const userAccountName = document.getElementById("userAccountName");
   const userAccountLink = document.getElementById("userAccountLink");
+  const accountMenu = document.getElementById("accountMenu");
+  
+  let loggedInUser = null;
 
-  const loggedInUser = sessionStorage.getItem("loggedInUser");
+    try {
+    const storedUser = sessionStorage.getItem("loggedInUser");
 
-  if (loggedInUser) {
+    if (storedUser) {
+        loggedInUser = JSON.parse(storedUser);
+    }
 
-      try {
+    } catch (error) {
 
-          const user = JSON.parse(loggedInUser);
+    console.error("Unable to read logged-in user:", error);
+    sessionStorage.removeItem("loggedInUser");
+    }
 
-          if (user.fullName && userAccountName) {
-              userAccountName.textContent = user.fullName;
-          }
 
-          if (userAccountLink) {
-              userAccountLink.href = "#account";
-          }
+    if (loggedInUser) {
 
-      } catch (error) {
+    if (loggedInUser.fullName && userAccountName) {
+        userAccountName.textContent = loggedInUser.fullName;
+    }
 
-          console.error("Error reading logged-in user:", error);
+    if (userAccountLink) {
+        userAccountLink.href = "#account";
+    }
+    }
 
-      }
-  }
+
+/* ---------- Dropdown ---------- */
+    if (userAccountLink && accountMenu) {
+
+    userAccountLink.addEventListener("click", function (event) {
+
+        if (!loggedInUser) {
+            return;
+        }
+
+        event.preventDefault();
+
+        const isOpen = accountMenu.classList.toggle("open");
+
+        accountMenu.setAttribute(
+            "aria-hidden",
+            String(!isOpen)
+        );
+    });
+
+
+    /* Close dropdown when clicking elsewhere */
+    document.addEventListener("click", function (event) {
+        const accountDropdown =
+            document.querySelector(".account-dropdown");
+
+        if (
+            accountDropdown &&
+            !accountDropdown.contains(event.target)
+        ) {
+            accountMenu.classList.remove("open");
+            accountMenu.setAttribute("aria-hidden", "true");
+        }
+    });
+    }
+
+
+/* ---------- Logout ---------- */
+    const logoutButton =
+    document.getElementById("logout-button");
+
+    if (logoutButton) {
+    logoutButton.addEventListener("click", function (event) {
+
+        event.preventDefault();
+
+        sessionStorage.removeItem("loggedInUser");
+
+        window.location.href = "main_page.html";
+    });
+    }
+
+
+/* ---------- Delete Account ---------- */
+    const deleteAccountButton =
+        document.getElementById("delete-account-button");
+
+    if (deleteAccountButton) {
+        deleteAccountButton.addEventListener("click", function (event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            const confirmed = window.confirm(
+                "Are you sure you want to delete your account?"
+            );
+
+            if (!confirmed) {
+                return;
+            }
+
+            /* Get currently logged-in user */
+            let loggedInUser = null;
+
+            try {
+
+                const storedUser =
+                    sessionStorage.getItem("loggedInUser");
+
+                if (storedUser) {
+                    loggedInUser = JSON.parse(storedUser);
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "Unable to read logged-in user:",
+                    error
+                );
+
+            }
+
+
+            /* Make sure a user is logged in */
+            if (!loggedInUser || !loggedInUser.email) {
+
+                alert("No logged-in account was found.");
+
+                return;
+            }
+
+
+            /* Get registered users */
+            let users = [];
+
+            try {
+
+                users =
+                    JSON.parse(
+                        localStorage.getItem("makeupUsers")
+                    ) || [];
+
+            } catch (error) {
+
+                console.error(
+                    "Unable to read users:",
+                    error
+                );
+
+            }
+
+
+            /* Remove the logged-in user's account */
+            users = users.filter(function (user) {
+
+                return user.email !== loggedInUser.email;
+
+            });
+
+
+            /* Save updated users */
+            localStorage.setItem(
+                "makeupUsers",
+                JSON.stringify(users)
+            );
+
+
+            /* Remove login session */
+            sessionStorage.removeItem("loggedInUser");
+
+
+            /* Remove remembered email if it belongs to this account */
+            const rememberedEmail =
+                localStorage.getItem("rememberedEmail");
+
+            if (rememberedEmail === loggedInUser.email) {
+
+                localStorage.removeItem("rememberedEmail");
+
+            }
+
+
+            /* Close account dropdown */
+            if (accountMenu) {
+
+                accountMenu.classList.remove("open");
+
+                accountMenu.setAttribute(
+                    "aria-hidden",
+                    "true"
+                );
+
+            }
+
+
+            alert("Your account has been deleted successfully.");
+
+
+            /* Return to main page */
+            window.location.href = "main_page.html";
+
+        });
+
+    }
+
 
   /* ---------- Product carousel (prev / next) ---------- */
   var carousel = document.querySelector('.carousel');
@@ -70,7 +251,6 @@ document.addEventListener('DOMContentLoaded', function () {
       window.location.href = 'search-results.html?q=' + encodeURIComponent(term);
     });
   }
-
 
       // Get existing cart from localStorage
     let cart = JSON.parse(localStorage.getItem("cart")) || [];

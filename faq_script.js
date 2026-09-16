@@ -44,8 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-
-
     /* =========================
        REGISTER
     ========================= */
@@ -122,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 phone.replace(/[\s-]/g, "");
 
             const phonePattern =
-                /^[0-9]{9,10}$/;
+                /^[0-9]{9,11}$/;
 
             if (!phonePattern.test(phoneNumber)) {
 
@@ -172,7 +170,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 return;
             }
-            
 
 
             /* Get existing users */
@@ -380,13 +377,125 @@ document.addEventListener("DOMContentLoaded", function () {
 
             setTimeout(function () {
 
-                window.location.href = "main_page.html";
+                window.location.href = "index.html";
 
             }, 1000);
 
         });
 
     }
+
+
+    /* =========================
+       FAQ SEARCH / FILTER
+    ========================= */
+
+    const faqSearch = document.getElementById("faqSearch");
+
+    if (faqSearch) {
+
+        const faqGroups = document.querySelectorAll(".faq-group");
+        const faqNoResults = document.getElementById("faqNoResults");
+
+        faqSearch.addEventListener("input", function () {
+
+            const searchTerm = faqSearch.value.trim().toLowerCase();
+
+            let anyVisible = false;
+
+            faqGroups.forEach(function (group) {
+
+                const items = group.querySelectorAll(".faq-item");
+
+                let groupHasMatch = false;
+
+                items.forEach(function (item) {
+
+                    const questionText =
+                        item.querySelector(".faq-question")
+                            .textContent
+                            .trim()
+                            .toLowerCase();
+
+                    const matches = questionText.includes(searchTerm);
+
+                    item.style.display = matches ? "" : "none";
+
+                    if (matches) {
+
+                        groupHasMatch = true;
+                        anyVisible = true;
+
+                    }
+
+                });
+
+                /* Hide the whole category if nothing in it matches */
+
+                group.style.display = groupHasMatch ? "" : "none";
+
+            });
+
+            /* Show a message if nothing matched anywhere */
+
+            if (faqNoResults) {
+
+                faqNoResults.style.display = anyVisible ? "none" : "block";
+
+            }
+
+        });
+
+    }
+
+
+    /* =========================
+       FAQ ACCORDION
+    ========================= */
+
+    const faqQuestions = document.querySelectorAll(".faq-question");
+
+    faqQuestions.forEach(function (question) {
+
+        question.addEventListener("click", function () {
+
+            const item = question.closest(".faq-item");
+            const answer = item.querySelector(".faq-answer");
+
+            /* Close any other open item (accordion behavior) */
+
+            document.querySelectorAll(".faq-item").forEach(function (otherItem) {
+
+                if (otherItem !== item) {
+
+                    otherItem.classList.remove("active");
+                    otherItem.querySelector(".faq-answer").style.maxHeight = null;
+
+                }
+
+            });
+
+            /* Toggle the clicked item */
+
+            const isOpening = !item.classList.contains("active");
+
+            item.classList.toggle("active");
+
+            if (isOpening) {
+
+                /* Set max-height to the answer's real content height */
+
+                answer.style.maxHeight = answer.scrollHeight + "px";
+
+            } else {
+
+                answer.style.maxHeight = null;
+
+            }
+
+        });
+
+    });
 
 
     /* =========================
@@ -404,7 +513,7 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
 
             alert(
-                "Password reset link has been sent to your email."
+                "Password reset functionality will be implemented soon."
             );
 
         });
@@ -412,52 +521,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
-
-/* =========================
-       TERMS & CONDITIONS MODAL
-    ========================= */
-
-    const openTermsBtn = document.getElementById("openTermsBtn");
-    const termsModal = document.getElementById("termsModal");
-    const closeTermsBtn = document.getElementById("closeTermsBtn");
-
-    if (openTermsBtn && termsModal && closeTermsBtn) {
-
-        openTermsBtn.addEventListener("click", function (event) {
-
-            event.preventDefault();
-            termsModal.classList.add("active");
-
-        });
-
-        closeTermsBtn.addEventListener("click", function () {
-
-            termsModal.classList.remove("active");
-
-        });
-
-        /* Close when clicking the dark overlay outside the box */
-
-        termsModal.addEventListener("click", function (event) {
-
-            if (event.target === termsModal) {
-
-                termsModal.classList.remove("active");
-
-            }
-
-        });
-
-        /* Close on Escape key */
-
-        document.addEventListener("keydown", function (event) {
-
-            if (event.key === "Escape") {
-
-                termsModal.classList.remove("active");
-
-            }
-
-        });
-
-    }

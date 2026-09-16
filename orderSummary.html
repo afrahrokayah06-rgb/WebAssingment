@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Confirmed | Whatever</title>
+
+    <link rel="stylesheet" href="orderSummary.css">
+    <script src="orderSummary.js" defer></script>
+</head>
+
+
+<body>
+
+    <div class="summary-page">
+
+        <div class="summary-box">
+
+            <div class="confirmation-icon">✓</div>
+
+            <h1>Order Confirmed!</h1>
+            <p class="summary-subtitle">
+                Thank you for shopping with Whatever. Your order has been placed successfully.
+            </p>
+
+            <div class="order-meta">
+                <div>
+                    <span class="meta-label">Order Number</span>
+                    <span class="meta-value" id="orderNumber">Loading...</span>
+                </div>
+                <div>
+                    <span class="meta-label">Order Date</span>
+                    <span class="meta-value" id="orderDate">Loading...</span>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="order-items-section">
+
+                <h3>Order Summary</h3>
+
+                <div id="orderItemsContainer">
+                    <!-- Items are inserted here dynamically -->
+                </div>
+
+                <div class="summary-divider"></div>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="orderSubtotal">RM0.00</span>
+                </div>
+
+                <div class="summary-row" id="orderDiscountRow" style="display:none;">
+                    <span>Reward Discount</span>
+                    <span id="orderDiscount">- RM0.00</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span id="orderShipping">RM0.00</span>
+                </div>
+
+                <div class="summary-row total-row">
+                    <span>Total</span>
+                    <span id="orderTotal">RM0.00</span>
+                </div>
+
+            </div>
+
+            <!-- Actions -->
+            <div class="summary-actions">
+                <a href="orderTracking.html" class="btn-track-order">
+                    Track My Order
+                </a>
+                <a href="main_page.html" class="btn-continue-shopping">
+                    Continue Shopping
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+    
+
+</body>
+</html>

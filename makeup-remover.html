@@ -18,16 +18,27 @@
 <header>
   <div class="nav-top">
     <div class="nav-left">
-      <a href="login.html" id="userAccountLink">
-          <img src="profile.png" alt="" class="nav-icon">
-          <span id="userAccountName">Sign In / Sign Up</span>
-      </a>
+      <div class="account-dropdown">
+        <a href="login.html" id="userAccountLink">
+            <img src="profile.png" alt="" class="nav-icon">
+            <span id="userAccountName">Sign In / Sign Up</span>
+        </a>
+        <div id="accountMenu" class="account-menu">
+            <a href="#" id="logout-button">
+                Log Out
+            </a>
+            <a href="#" id="delete-account-button" class="delete-account">
+                Delete Account
+            </a>
+        </div>
+    </div>
     </div>
     <div class="nav-right"> 
-    <a href="#membership"><img src="member-removebg-preview.png" alt=""class="nav-icon">Membership</a>
-    <a href="#services"><img src="promotion_events.png" alt=""class="nav-icon">Book Beauty Services</a>  
-    <a href="#promotions"><img src="beautypass.png" alt="" class="nav-icon">Promotions &amp; Events</a>
-    <a href="#wishlist" class="icon-link"><img src="wishlist.png" alt="" class="nav-icon">Wishlist</a>
+   <!-- AFTER -->
+    <a href="membership.html"><img src="member-removebg-preview.png" alt=""class="nav-icon">Membership</a>
+    <a href="beauty_service.html"><img src="promotion_events.png" alt=""class="nav-icon">Book Beauty Services</a>  
+    <a href="promotions.html"><img src="beautypass.png" alt="" class="nav-icon">Promotions &amp; Events</a>
+    <a href="wishlist.html" class="icon-link"><img src="wishlist.png" alt="" class="nav-icon">Wishlist</a>
     <a href="cart.html" class="icon-link"><img src="cart.png" alt="" class="nav-icon">Cart</a>
     </div>
   </div>
@@ -107,61 +118,104 @@
     </div>
     <div class="lip-grid">
 
-      <div class="lip-card">
+    <!-- Remover Wipes -->
+    <div class="lip-card">
         <div class="lip-img-wrap">
-          <img src="Remover_Wipes.jpeg" alt="Makeup Remover Wipes">
-          <div class="lip-hover-info">Infused with soothing aloe vera and vitamin E to gently cleanse without stripping the skin of its natural moisture. The soft, textured wipes effortlessly dissolve foundation, lipstick, mascara, and everyday impurities in just a few swipes. Lightweight and refreshing, they leave skin feeling clean, comfortable, and hydrated with no sticky or greasy residue.</div>
+            <button class="product-image-btn"
+                onclick="openProduct('Remover Wipes', 'Remover_Wipes.jpeg', 'RM 15.00', 'Soft, refreshing makeup remover wipes that effortlessly dissolve makeup while leaving skin feeling clean, fresh, and hydrated.')">
+                <img src="Remover_Wipes.jpeg" alt="Makeup Remover Wipes">
+            </button>
         </div>
         <div class="lip-body">
-          <h3>Remover Wipes</h3>
-          <p class="lip-desc">Soft, refreshing makeup remover wipes that effortlessly dissolve makeup while leaving skin feeling clean, fresh, and hydrated.</p>
-          <div class="lip-footer">
-            <span class="lip-price">RM 15.00</span>
+            <div class="lip-shade-dot"></div>
+            <h3>Remover Wipes</h3>
+            <p class="lip-desc">
+                Soft, refreshing makeup remover wipes that effortlessly dissolve makeup while leaving skin feeling clean, fresh, and hydrated.
+            </p>
+            <div class="lip-footer">
+                <span class="lip-price">RM 38.00</span>
             <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="remover-wipes" data-name="Makeup Remover Wipes" data-price="15.00" data-image="Remover_Wipes.jpeg">Add to Cart</button>
+                    <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="remover-wipes" data-name="Makeup Remover Wipes" data-price="15.00" data-image="Remover_Wipes.jpeg"><img src="wishlist.png" alt=""></button>
+                    <button class="cart" data-id="remover-wipes" data-name="Makeup Remover Wipes" data-price="15.00" data-image="Remover_Wipes.jpeg">Add to Cart</button>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
 
-      <div class="lip-card">
+    <!-- Micellar Water -->
+    <div class="lip-card">
         <div class="lip-img-wrap">
-          <img src="Micellar_Water.jpeg" alt="Micellar Water">
-          <div class="lip-hover-info">Infused with soothing micelles and gentle cleansing ingredients, this gentle micellar water effortlessly lifts away foundation, lipstick, mascara, and everyday impurities without stripping the skin of its natural moisture. The lightweight, refreshing formula cleanses in just a few swipes, leaving skin feeling clean, soft, comfortable, and hydrated with no sticky or greasy residue.</div>
+            <button class="product-image-btn"
+                onclick="openProduct('Micellar Water', 'Micellar_Water.jpeg', 'RM 20.00', 'A gentle yet effective micellar water that effortlessly lifts away makeup, dirt, and excess oil without drying out the skin. Leaves your complexion feeling fresh, clean, and soft after every use.')">
+                <img src="Micellar_Water.jpeg" alt="Micellar Water">
+            </button>
         </div>
         <div class="lip-body">
-          <h3>Micellar Water</h3>
-          <p class="lip-desc">A gentle yet effective micellar water that effortlessly lifts away makeup, dirt, and excess oil without drying out the skin. Leaves your complexion feeling fresh, clean, and soft after every use.</p>
-          <div class="lip-footer">
-            <span class="lip-price">RM 25.00</span>
+            <div class="lip-shade-dot"></div>
+            <h3>Micellar Water</h3>
+            <p class="lip-desc">
+                A gentle yet effective micellar water that effortlessly lifts away makeup, dirt, and excess oil without drying out the skin. Leaves your complexion feeling fresh, clean, and soft after every use.
+            </p>
+            <div class="lip-footer">
+                <span class="lip-price">RM 20.00</span>
             <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="micellar-water" data-name="Micellar Water" data-price="25.00" data-image="Micellar_Water.jpeg">Add to Cart</button>
+                    <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="micellar-water" data-name="Micellar Water" data-price="20.00" data-image="Micellar_Water.jpeg"><img src="wishlist.png" alt=""></button>
+                    <button class="cart" data-id="micellar-water" data-name="Micellar Water" data-price="20.00" data-image="Micellar_Water.jpeg">Add to Cart</button>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
 
-      <div class="lip-card">
+    <!-- Cleansing Balm -->
+    <div class="lip-card">
         <div class="lip-img-wrap">
-          <img src="Cleansing_Balm.jpeg" alt="Cleansing Balm">
-          <div class="lip-hover-info">Infused with nourishing botanical oils and vitamin E, this gentle cleansing balm melts effortlessly into the skin to dissolve makeup, sunscreen, and everyday impurities without stripping away its natural moisture. The rich, silky texture transforms into a lightweight emulsion when massaged with water, effortlessly lifting away foundation, lipstick, mascara, and stubborn makeup. It rinses away easily, leaving skin feeling clean, soft, smooth, and comfortable with no greasy residue.</div>
+            <button class="product-image-btn"
+                onclick="openProduct('Cleansing Balm', 'Cleansing_Balm.jpeg', 'RM 25.00', 'A silky cleansing balm that melts away makeup with ease. Its nourishing formula leaves skin feeling soft, smooth, and refreshed without a tight or greasy finish.')">
+                <img src="Cleansing_Balm.jpeg" alt="Cleansing Balm">
+            </button>
         </div>
         <div class="lip-body">
-          <h3>Cleansing Balm</h3>
-          <p class="lip-desc">A silky cleansing balm that melts away makeup with ease. Its nourishing formula leaves skin feeling soft, smooth, and refreshed without a tight or greasy finish.</p>
-          <div class="lip-footer">
-            <span class="lip-price">RM 35.00</span>
+            <div class="lip-shade-dot"></div>
+            <h3>Cleansing Balm</h3>
+            <p class="lip-desc">
+                A silky cleansing balm that melts away makeup with ease. Its nourishing formula leaves skin feeling soft, smooth, and refreshed without a tight or greasy finish.
+            </p>
+            <div class="lip-footer">
+                <span class="lip-price">RM 20.00</span>
             <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="cleansing-balm" data-name="Cleansing Balm" data-price="35.00" data-image="Cleansing_Balm.jpeg">Add to Cart</button>
+                    <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="cleansing-balm" data-name="Cleansing Balm" data-price="25.00" data-image="Cleansing_Balm.jpeg"><img src="wishlist.png" alt=""></button>
+                    <button class="cart" data-id="cleansing-balm" data-name="Cleansing Balm" data-price="25.00" data-image="Cleansing_Balm.jpeg">Add to Cart</button>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
   </section>
+
+<!-- Product Image Popup -->
+<div id="product-modal" class="product-modal">
+
+    <div class="product-modal-content">
+
+        <button class="product-close" onclick="closeProduct()">×</button>
+
+        <div class="product-modal-image">
+            <img id="modal-image" src="" alt="">
+        </div>
+
+        <div class="product-modal-info">
+
+    <h2 id="modal-name"></h2>
+
+    <p id="modal-price"></p>
+
+    <h3>Product Description</h3>
+
+    <p id="modal-description"></p>
+
+</div>
+
+</div>
+</div>
    
 <!-- Wishlist toast -->
   <div id="wishlist-toast" class="toast"></div>
@@ -225,6 +279,22 @@
     }
  
     document.addEventListener('DOMContentLoaded', initWishlistButtons);
+
+    function openProduct(name, image, price, description) {
+
+      document.getElementById("modal-image").src = image;
+      document.getElementById("modal-image").alt = name;
+
+      document.getElementById("modal-name").textContent = name;
+      document.getElementById("modal-price").textContent = price;
+      document.getElementById("modal-description").textContent = description;
+
+      document.getElementById("product-modal").classList.add("show");
+    }
+
+    function closeProduct() {
+      document.getElementById("product-modal").classList.remove("show");
+    }
   </script>
  
  
