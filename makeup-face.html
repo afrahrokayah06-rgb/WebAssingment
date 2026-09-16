@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Face | Whatever</title>
+<meta name="description" content="Shop Face, Eyes, Lips, Nails and Makeup Remover. Free sample with every purchase.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="main_page.css">
+<link rel="stylesheet" href="nav.css">
+<link rel="stylesheet" href="lipstickpage.css">
+</head>
+<body>
+ 
+<!-- ============ TOP UTILITY BAR ============ -->
+<header>
+  <div class="nav-top">
+    <div class="nav-left">
+      <div class="account-dropdown">
+        <a href="login.html" id="userAccountLink">
+            <img src="profile.png" alt="" class="nav-icon">
+            <span id="userAccountName">Sign In / Sign Up</span>
+        </a>
+        <div id="accountMenu" class="account-menu">
+            <a href="#" id="logout-button">
+                Log Out
+            </a>
+            <a href="#" id="delete-account-button" class="delete-account">
+                Delete Account
+            </a>
+        </div>
+    </div>
+    </div>
+    <div class="nav-right"> 
+    <a href="membership.html"><img src="member-removebg-preview.png" alt=""class="nav-icon">Membership</a>
+    <a href="beauty_service.html"><img src="promotion_events.png" alt=""class="nav-icon">Book Beauty Services</a>  
+    <a href="promotions.html"><img src="beautypass.png" alt="" class="nav-icon">Promotions &amp; Events</a>
+    <a href="wishlist.html" class="icon-link"><img src="wishlist.png" alt="" class="nav-icon">Wishlist</a>
+    <a href="cart.html" class="icon-link"><img src="cart.png" alt="" class="nav-icon">Cart</a>
+    </div>
+  </div>
+</header>
+ 
+<!-- ============ PROMO STRIP (animation) ============ -->
+<div class="promo-strip">
+  <div class="wrap">
+    <div class="promo-track">
+      <p>WHATEVER BEAUTY PASS MEMBERS ENJOY MORE — unlock exclusive online offers and early access to new arrivals</p>
+    </div>
+    <div class="promo-actions">
+      <a class="btn filled" href="login.html">Sign In</a>
+      <a class="btn" href="register.html">Sign Up</a>
+    </div>
+  </div>
+</div>
+ 
+<!-- ============ MASTHEAD: logo / search form / sample note ============ -->
+<div class="masthead">
+  <div class="wrap">
+    <a class="logo" href="main_page.html">WHATEVER</a>
+ 
+    <form class="search-form" role="search" action="#" method="get">
+      <label for="site-search" class="visually-hidden">Search products</label>
+      <input type="search" id="site-search" name="q" list="search-suggestions"
+             placeholder="What are you looking for?" required>
+      <datalist id="search-suggestions">
+        <option value="Foundation"></option>
+        <option value="Concealer"></option>
+        <option value="Blush"></option>
+        <option value="Bronzer"></option>
+        <option value="Makeup Remover Wipes"></option>
+      </datalist>
+      <button type="submit" aria-label="Search">🔍</button>
+    </form>
+ 
+    <p class="free-sample"><strong>Free Sample</strong>with every purchase</p>
+  </div>
+</div>
+ 
+<!-- ============ CATEGORY NAVIGATION  ============ -->
+<nav class="category-nav" aria-label="Product categories">
+  <div class="wrap">
+    <button class="nav-toggle" aria-expanded="false">Menu ☰</button>
+    <ul>
+    <li><a href="new.html">New</a></li>
+      <li><a href="makeup-face.html">Face</a></li>
+      <li><a href="makeup-eyes.html">Eyes</a></li>
+      <li><a href="makeup-lips.html">Lips</a></li>
+      <li><a href="makeup-nails.html">Nails</a></li>
+      <li><a href="makeup-remover.html">Makeup Remover</a></li>
+    </ul>
+  </div>
+</nav>
+ 
+  <!-- Hero -->
+  <section class="lip-hero">
+    <div class="lip-hero-bg">
+      <img src="Facehero.jpg" alt="">
+    </div>
+    <div class="lip-hero-content">
+      <div class="eyebrow">Whatever Beauty</div>
+      <h1>The Face Collection</h1>
+      <p>From weightless, skin-true foundations to warm bronzers and soft, blendable blush — build a base that looks like skin, only better.</p>
+      <a href="#foundation" class="hero-btn">Shop All Face</a>
+    </div>
+  </section>
+ 
+  <div class="lip-divider">Free shipping on all orders over RM 50 · Earn Beauty Pass points on every purchase</div>
+ 
+  <!-- Foundation -->
+  <section class="lip-section" id="foundation">
+    <div class="lip-section-heading">
+      <h2>Foundation</h2>
+      <p>Buildable, breathable coverage in shades made for a wide range of skin tones.</p>
+    </div>
+    <div class="lip-grid">
+ 
+      <div class="lip-card">
+        <div class="lip-img-wrap">
+          <button class="product-image-btn" onclick="openProduct('Second Skin Foundation', 'foundation1.png', 'RM 89.00', 'A lightweight, buildable foundation with a natural skin-like finish and 24-hour hydration.')">
+            <img src="foundation1.png" alt="Second Skin Foundation">
+          </button>
+        </div>
+        <div class="lip-body">
+          <h3>Second Skin Foundation</h3>
+          <p class="lip-desc">A lightweight, buildable foundation with a natural skin-like finish and 24-hour hydration.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 89.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="second-skin-foundation" data-name="Second Skin Foundation" data-price="RM 89.00" data-image="SecondSkinFoundation.jpeg"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="second-skin-foundation" data-name="Second Skin Foundation" data-price="89.00" data-image="SecondSkinFoundation.jpeg">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="lip-card">
+        <div class="lip-img-wrap">
+          <button class="product-image-btn" onclick="openProduct('Velvet Matte Foundation', 'foundation2.png', 'RM 92.00', 'Full-coverage, oil-control foundation that sets to a soft matte finish without looking cakey.')">
+            <img src="foundation2.png" alt="Velvet Matte Foundation">
+          </button>
+        </div>
+        <div class="lip-body">
+          <h3>Velvet Matte Foundation</h3>
+          <p class="lip-desc">Full-coverage, oil-control foundation that sets to a soft matte finish without looking cakey.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 92.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="velvet-matte-foundation" data-name="Velvet Matte Foundation" data-price="RM 92.00" data-image="foundation2.png"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="velvet-matte-foundation" data-name="Velvet Matte Foundation" data-price="92.00" data-image="foundation2.png">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="lip-card">
+        <div class="lip-img-wrap">
+          <button class="product-image-btn" onclick="openProduct('Dewy Glow Foundation', 'foundation3.png', 'RM 85.00', 'A luminous, medium-coverage foundation infused with hyaluronic acid for a fresh, glowing finish.')">
+            <img src="foundation3.png" alt="Dewy Glow Foundation">
+          </button>
+        </div>
+        <div class="lip-body">
+          <h3>Dewy Glow Foundation</h3>
+          <p class="lip-desc">A luminous, medium-coverage foundation infused with hyaluronic acid for a fresh, glowing finish.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 85.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="dewy-glow-foundation" data-name="Dewy Glow Foundation" data-price="RM 85.00" data-image="foundation3.png"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="dewy-glow-foundation" data-name="Dewy Glow Foundation" data-price="85.00" data-image="foundation3.png">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+    </div>
+  </section>
+ 
+  <!-- Concealer -->
+  <section class="lip-section" id="concealer">
+    <div class="lip-section-heading">
+      <h2>Concealer</h2>
+      <p>Crease-resistant coverage for under-eyes, blemishes, and everything in between.</p>
+    </div>
+    <div class="lip-grid">
+ 
+      <div class="lip-card">
+        <div class="lip-img-wrap">
+          <button class="product-image-btn" onclick="openProduct('Bright Eye Concealer', 'concealer1.png', 'RM 55.00', 'A brightening, crease-proof concealer that cancels dark circles without settling into fine lines.')">
+            <img src="concealer1.png" alt="Bright Eye Concealer">
+          </button>
+        </div>
+        <div class="lip-body">
+          <h3>Bright Eye Concealer</h3>
+          <p class="lip-desc">A brightening, crease-proof concealer that cancels dark circles without settling into fine lines.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 55.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="bright-eye-concealer" data-name="Bright Eye Concealer" data-price="RM 55.00" data-image="concealer1.png"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="bright-eye-concealer" data-name="Bright Eye Concealer" data-price="55.00" data-image="concealer1.png">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="lip-card">
+        <div class="lip-img-wrap">
+          <button class="product-image-btn" onclick="openProduct('Full Cover Concealer', 'concealer2.png', 'RM 58.00', 'High-pigment, full-coverage concealer for blemishes, redness, and discoloration that lasts all day.')">
+            <img src="concealer2.png" alt="Full Cover Concealer">
+          </button>
+        </div>
+        <div class="lip-body">
+          <h3>Full Cover Concealer</h3>
+          <p class="lip-desc">High-pigment, full-coverage concealer for blemishes, redness, and discoloration that lasts all day.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 58.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="full-cover-concealer" data-name="Full Cover Concealer" data-price="RM 58.00" data-image="concealer2.png"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="full-cover-concealer" data-name="Full Cover Concealer" data-price="58.00" data-image="concealer2.png">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+    </div>
+  </section>
+ 
+  <!-- Blush & Bronzer -->
+  <section class="lip-section" id="blush-bronzer">
+    <div class="lip-section-heading">
+      <h2>Blush &amp; Bronzer</h2>
+      <p>Soft-focus color and warmth to sculpt and flush the skin.</p>
+    </div>
+    <div class="lip-grid">
+ 
+      <div class="lip-card">
+        <div class="lip-img-wrap">
+          <button class="product-image-btn" onclick="openProduct('Cloud Flush Blush', 'blush1.png', 'RM 45.00', 'A soft, buildable powder blush that blends effortlessly for a natural, just-pinched flush.')">
+            <img src="blush1.png" alt="Cloud Flush Blush">
+          </button>
+        </div>
+        <div class="lip-body">
+          <h3>Cloud Flush Blush</h3>
+          <p class="lip-desc">A soft, buildable powder blush that blends effortlessly for a natural, just-pinched flush.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 45.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="cloud-flush-blush" data-name="Cloud Flush Blush" data-price="RM 45.00" data-image="blush1.png"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="cloud-flush-blush" data-name="Cloud Flush Blush" data-price="45.00" data-image="blush1.png">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="lip-card">
+        <div class="lip-img-wrap">
+          <button class="product-image-btn" onclick="openProduct('Petal Pop Cream Blush', 'blush2.png', 'RM 48.00', 'A creamy, dewy blush stick that melts into skin for a fresh, lit-from-within flush.')">
+            <img src="blush2.png" alt="Petal Pop Cream Blush">
+          </button>
+        </div>
+        <div class="lip-body">
+          <h3>Petal Pop Cream Blush</h3>
+          <p class="lip-desc">A creamy, dewy blush stick that melts into skin for a fresh, lit-from-within flush.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 48.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="petal-pop-cream-blush" data-name="Petal Pop Cream Blush" data-price="RM 48.00" data-image="blush2.png"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="petal-pop-cream-blush" data-name="Petal Pop Cream Blush" data-price="48.00" data-image="blush2.png">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="lip-card">
+        <div class="lip-img-wrap">
+          <button class="product-image-btn" onclick="openProduct('Sun-Kissed Bronzer', 'bronzer.jpg', 'RM 52.00', 'A warm, matte bronzing powder that sculpts and adds a natural sun-kissed glow.')">
+            <img src="bronzer.jpg" alt="Sun-Kissed Bronzer">
+          </button>
+        </div>
+        <div class="lip-body">
+          <h3>Sun-Kissed Bronzer</h3>
+          <p class="lip-desc">A warm, matte bronzing powder that sculpts and adds a natural sun-kissed glow.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 52.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="sun-kissed-bronzer" data-name="Sun-Kissed Bronzer" data-price="RM 52.00" data-image="bronzer.jpg"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="sun-kissed-bronzer" data-name="Sun-Kissed Bronzer" data-price="52.00" data-image="bronzer.jpg">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+    </div>
+  </section>
+ 
+<!-- Product Image Popup -->
+<div id="product-modal" class="product-modal">
+ 
+    <div class="product-modal-content">
+ 
+        <button class="product-close" onclick="closeProduct()">×</button>
+ 
+        <div class="product-modal-image">
+            <img id="modal-image" src="" alt="">
+        </div>
+ 
+        <div class="product-modal-info">
+ 
+    <h2 id="modal-name"></h2>
+ 
+    <p id="modal-price"></p>
+ 
+    <h3>Product Description</h3>
+ 
+    <p id="modal-description"></p>
+ 
+</div>
+ 
+    </div>
+ 
+</div>
+ 
+  <!-- Wishlist toast -->
+  <div id="wishlist-toast" class="toast"></div>
+  <div id="cart-toast" class="toast"></div>
+ 
+  <script>
+    const WISHLIST_KEY = 'whatever_wishlist';
+ 
+    function getWishlist() {
+      try {
+        return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+ 
+    function saveWishlist(list) {
+      localStorage.setItem(WISHLIST_KEY, JSON.stringify(list));
+    }
+ 
+    let toastTimer;
+    function showToast(message) {
+      const toast = document.getElementById('wishlist-toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+ 
+    function initWishlistButtons() {
+      const saved = getWishlist();
+      const buttons = document.querySelectorAll('.lip-wishlist-btn');
+ 
+      buttons.forEach(btn => {
+        if (saved.some(item => item.id === btn.dataset.id)) {
+          btn.classList.add('active');
+        }
+ 
+        btn.addEventListener('click', () => {
+          let list = getWishlist();
+          const exists = list.some(item => item.id === btn.dataset.id);
+ 
+          if (exists) {
+            list = list.filter(item => item.id !== btn.dataset.id);
+            btn.classList.remove('active');
+            showToast('Removed from Wishlist');
+          } else {
+            list.push({
+              id: btn.dataset.id,
+              name: btn.dataset.name,
+              price: btn.dataset.price,
+              image: btn.dataset.image
+            });
+            btn.classList.add('active');
+            showToast('Added to Wishlist');
+          }
+ 
+          saveWishlist(list);
+        });
+      });
+    }
+ 
+    document.addEventListener('DOMContentLoaded', initWishlistButtons);
+ 
+    function openProduct(name, image, price, description) {
+ 
+      document.getElementById("modal-image").src = image;
+      document.getElementById("modal-image").alt = name;
+ 
+      document.getElementById("modal-name").textContent = name;
+      document.getElementById("modal-price").textContent = price;
+      document.getElementById("modal-description").textContent = description;
+ 
+      document.getElementById("product-modal").classList.add("show");
+    }
+ 
+    function closeProduct() {
+      document.getElementById("product-modal").classList.remove("show");
+    }
+  </script>
+ 
+<!-- ============ FOOTER — SITEMAP  ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="makeup-face.html">Face</a></li>
+          <li><a href="makeup-eyes.html">Eyes</a></li>
+          <li><a href="makeup-lips.html">Lips</a></li>
+          <li><a href="makeup-nails.html">Nails</a></li>
+          <li><a href="makeup-remover.html">Makeup Remover</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>My Account</h3>
+        <ul>
+          <li><a href="login.html">Login / Register</a></li>
+          <li><a href="membership.html">Beauty Pass Membership</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="payment.html">Payment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Discover</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="promotions.html">Promotions &amp; Events</a></li>
+          <li><a href="book-services.html">Book Beauty Services</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Get In Touch</h3>
+        <ul>
+          <li><a href="feedback.html">Feedback Form</a></li>
+          <li><a href="mailto:hello@whatever.com">hello@whatever.com</a></li>
+        </ul>
+      </div>
+    </div>
+ 
+  </div>
+</footer>
+ 
+<script src="main_page.js"></script>
+</body>
+</html>
