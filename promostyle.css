@@ -1,7 +1,3 @@
-/* =========================================================
-   PROMOTIONS & EVENTS PAGE STYLES
-   (Adds to / assumes nav.css already styles the header & footer)
-   ========================================================= */
 
 :root {
   --color-maroon: #420420;
@@ -19,18 +15,24 @@
   --font-display: "Cormorant Garamond", "Times New Roman", serif;
   --font-body: "Jost", "Segoe UI", sans-serif;
 
-  /* extra tones used only inside this page, pulled straight from the brief */
+  /* extra tones */
   --color-week-active: #75162d;
   --color-bar-border: #f2e56c;
   --color-gray-border: #595959;
   --color-gray-fill: #d4d4d4;
   --color-gray-text: #8a8a8a;
+
+  --sub-gold: var(--color-tan);
+  --nav-border-soft: rgba(131, 116, 82, 0.55);
+  --nav-text-cream: var(--color-pink-light);
+  --nav-text-cream-dim: rgba(251, 235, 225, 0.72);
 }
 
 * { box-sizing: border-box; }
 
 body {
   font-family: var(--font-body);
+  background-color: var(--color-maroon);
 }
 
 main {
@@ -42,7 +44,7 @@ main {
   margin: 0 40px 25px 40px;
 }
 
-/* shared "wide but not full bleed" width used by sections 2-5 */
+/* width used by sections 2-5 */
 .promo-wide {
   width: 80%;
   max-width: 1100px;
@@ -50,21 +52,24 @@ main {
   margin-right: auto;
 }
 
-/* ============================================================
-   SECTION 1 — IMAGE MAP
-   ============================================================ */
+/* Section 1 */
+#section-imagemap {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .imagemap-wrap {
   position: relative;
   width: 100%;
-  max-width: 1122px;
+  max-width: none;
   aspect-ratio: 1122 / 623;
-  margin: 0 auto;
+  margin: 0;
   overflow: hidden;
 }
 
 .imagemap-wrap img#promoMapImage {
   width: 100%;
-  height: 100%;
+  height: 70%;
   display: block;
   object-fit: cover;
 }
@@ -78,13 +83,10 @@ main {
 .map-zone:hover,
 .map-zone:focus-visible {
   outline: 2px solid var(--color-white);
-  outline-offset: -2px;
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* ============================================================
-   SECTION 2 — CALENDAR TABLE
-   ============================================================ */
+/* SECTION 2 — CALENDAR TABLE */
 .promo-calendar {
   border-collapse: collapse;
   table-layout: fixed;
@@ -100,22 +102,47 @@ main {
 }
 
 .promo-calendar thead tr:first-child th {
+  padding: 16px 4px 14px 4px;
+  position: relative;
+}
+
+.calendar-title-text {
+  display: inline-block;
   font-family: var(--font-display);
   font-size: 26px;
   font-weight: 700;
   letter-spacing: 1px;
   color: var(--color-dark-maroon);
-  padding: 16px 4px 14px 4px;
-  position: relative;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--color-gold-hover);
+  text-shadow:
+    1px 1px 0 var(--color-gold),
+    2px 2px 0 var(--color-gold-hover),
+    3px 3px 5px rgba(44, 2, 22, 0.45);
 }
 
-.promo-calendar thead tr:first-child th::after {
-  content: "";
-  display: block;
-  width: 120px;
-  height: 2px;
-  background-color: var(--color-gold-hover);
-  margin: 8px auto 0 auto;
+.calendar-view-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  padding: 12px 4px 4px 4px;
+  font-family: var(--font-body);
+}
+
+.calendar-view-toggle label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-maroon);
+  cursor: pointer;
+}
+
+.calendar-view-toggle input[type="radio"] {
+  accent-color: var(--color-brown);
+  cursor: pointer;
 }
 
 .promo-calendar thead .weekday-row th {
@@ -133,6 +160,38 @@ main {
   vertical-align: top;
   padding: 8px;
   position: relative;
+}
+
+/* "Only View Event Dates" mode, toggled via the radio buttons */
+.promo-calendar.events-only {
+  background-color: var(--color-tan);
+}
+
+.promo-calendar.events-only th,
+.promo-calendar.events-only td {
+  border-color: var(--color-gold-light);
+}
+
+.promo-calendar.events-only .calendar-title-text,
+.promo-calendar.events-only .calendar-view-toggle label {
+  color: var(--color-gold-light);
+}
+
+.promo-calendar.events-only .weekday-row th {
+  color: var(--color-white);
+}
+
+.promo-calendar.events-only tbody .date-number {
+  display: none;
+}
+
+.promo-calendar.events-only tbody td {
+  color: var(--color-white);
+}
+
+.promo-calendar.events-only .date-badge.badge-ended,
+.promo-calendar.events-only .date-badge.badge-promo {
+  color: var(--color-white);
 }
 
 .promo-calendar tbody td .date-number {
@@ -169,6 +228,24 @@ main {
   font-weight: 700;
   cursor: pointer;
   float: right;
+  position: relative;
+  z-index: 2;
+}
+
+/* decorative image sitting centered in a promo-day cell — absolutely
+   positioned so it never affects the cell's size and can protrude
+   outside the cell freely, since the artwork is much bigger than the row */
+.promo-deco-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.9;
 }
 
 /* days 1, 3, 5, 6, 9 — dull grey, past / ended promotions */
@@ -190,7 +267,8 @@ main {
   z-index: 50;
   padding: 14px 34px 14px 16px;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 16px;
+  font-family: var(--font-body);
   max-width: 240px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
@@ -229,15 +307,17 @@ main {
 }
 
 .week-selector-month {
-  font-weight: bold;
-  color: var(--color-dark-maroon);
-  margin-bottom: 10px;
-  font-size: 16px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-pink-light);
+  margin: 0 0 10px 0;
+  text-align: center;
 }
 
 .week-buttons {
   background-color: var(--color-dark-maroon);
-  border-radius: 40px;
+  border-radius: 10px;
   padding: 6px;
   display: flex;
   width: 100%;
@@ -252,7 +332,7 @@ main {
   font-size: 16px;
   padding: 10px 8px;
   cursor: pointer;
-  border-radius: 34px;
+  border-radius: 10px;
   text-align: center;
 }
 
@@ -297,12 +377,12 @@ main {
    SECTION 5 — EVENT TIMELINE
    ============================================================ */
 .timeline-title {
+  display: block;
   text-align: center;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
   color: var(--color-pink-light);
-  background-color: var(--color-dark-maroon);
-  display: inline-block;
-  padding: 6px 22px;
-  border-radius: 20px;
   margin: 0 auto 18px auto;
 }
 
@@ -315,40 +395,83 @@ main {
   gap: 14px;
 }
 
-.timeline-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.timeline-hour {
-  width: 60px;
-  flex-shrink: 0;
-  color: var(--color-dark-maroon);
-  font-size: 14px;
-  font-weight: 600;
-  text-align: right;
-}
-
 .timeline-bar {
-  flex: 1;
+  position: relative;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 2px solid var(--color-bar-border);
+  border: 2px solid var(--color-tan);
   border-radius: 6px;
-  padding: 0 14px;
+  padding: 8px 60px 8px 40px;
   background-color: var(--color-week-active);
 }
+
+.timeline-date-from,
+.timeline-date-to {
+  position: absolute;
+  left: 10px;
+  color: var(--color-white);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.timeline-date-from { top: 6px; }
+.timeline-date-to { bottom: 6px; }
 
 .timeline-bar .timeline-label {
   color: var(--color-white);
   font-size: 14px;
 }
 
+.timeline-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.reminder-btn {
+  flex-shrink: 0;
+  background-color: var(--color-gold);
+  color: var(--color-dark-maroon);
+  border: 1px solid var(--color-pink-light);
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+  padding: 6px 12px;
+  cursor: pointer;
+  text-align: center;
+}
+
 .timeline-bar img {
-  height: 28px;
+  height: 84px;
   width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.reminder-popup {
+  position: fixed;
+  z-index: 60;
+  background-color: var(--color-white);
+  color: var(--color-brown);
+  font-size: 18px;
+  font-family: var(--font-body);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 20px;
+  max-width: 260px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.reminder-popup.show {
+  opacity: 1;
 }
 
 /* ============================================================
@@ -356,10 +479,10 @@ main {
    ============================================================ */
 .cards-title {
   text-align: center;
-  color: var(--color-dark-maroon);
+  color: var(--color-pink-light);
   margin-bottom: 20px;
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: 22px;
 }
 
 .promo-cards {
@@ -405,7 +528,7 @@ main {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  background-color: var(--color-white);
+  background-color: var(--color-pink-light);
   transition: background-color 0.35s ease, color 0.35s ease;
   overflow: hidden;
 }
@@ -425,12 +548,12 @@ main {
 }
 
 .promo-card-text.expanded {
-  background-color: var(--color-dark-maroon);
+  background-color: var(--color-tan);
 }
 
 .promo-card-text.expanded h4,
 .promo-card-text.expanded p {
-  color: var(--color-pink-light);
+  color: var(--color-gold-light);
 }
 
 /* ============================================================
@@ -472,7 +595,8 @@ main {
 
 .reveal-text {
   color: var(--color-dark-maroon);
-  font-size: 20px;
+  font-family: var(--font-display);
+  font-size: 30px;
   font-weight: 600;
 }
 
@@ -496,6 +620,15 @@ main {
   0%, 100% { transform: scale(1) rotate(0deg); }
   50% { transform: scale(1.35) rotate(12deg); }
 }
+
+/* ============================================================
+   FOOTER
+   Fully handled by nav.css's .footer-grid rules — this page just
+   needs to supply the CSS variables nav.css expects (see :root
+   above: --sub-gold, --nav-border-soft, --nav-text-cream[-dim]).
+   No footer rules are duplicated here on purpose, so nav.css's
+   styling always wins without a specificity fight.
+   ============================================================ */
 
 /* ============================================================
    RESPONSIVE

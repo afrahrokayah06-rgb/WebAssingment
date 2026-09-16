@@ -6,8 +6,8 @@
     <title>Promotions and Events</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
-    <link href="promostyle.css" rel="stylesheet">
     <link href="nav.css" rel="stylesheet">
+    <link href="promostyle.css" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -30,7 +30,7 @@
 
 <main>
 
-  <!-- ============ SECTION 1 : IMAGE MAP ============ -->
+  <!-- ------------ SECTION 1 : IMAGE MAP ----------- -->
   <section class="promo-section" id="section-imagemap">
     <div class="imagemap-wrap">
       <img src="ImageMap2.jpg" alt="Shop by category" id="promoMapImage" usemap="#promoMap">
@@ -41,24 +41,38 @@
         <area shape="rect" coords="885,90,1090,590" href="lips.html" alt="Lipstick - Lips">
       </map>
       <!-- Percentage-based clickable overlay (keeps working when the image scales/resizes) -->
-      <a class="map-zone" style="left:3%; top:5%; width:41%; height:88%;" href="eyes.html" aria-label="Mascara and eyeshadow - Eyes"></a>
-      <a class="map-zone" style="left:45%; top:3%; width:13%; height:92%;" href="makeup_remover.html" aria-label="Makeup remover"></a>
-      <a class="map-zone" style="left:59.5%; top:3%; width:18.5%; height:94%;" href="face.html" aria-label="Foundation - Face"></a>
-      <a class="map-zone" style="left:78.5%; top:6%; width:20%; height:90%;" href="lips.html" aria-label="Lipstick - Lips"></a>
+      <a class="map-zone" style="left:2%; top:5%; width:38%; height:65%;" href="eyes.html" aria-label="Mascara and eyeshadow - Eyes"></a>
+      <a class="map-zone" style="left:41%; top:3%; width:14%; height:66%;" href="makeup_remover.html" aria-label="Makeup remover"></a>
+      <a class="map-zone" style="left:59%; top:3%; width:14.5%; height:66%;" href="face.html" aria-label="Foundation - Face"></a>
+      <a class="map-zone" style="left:76%; top:6%; width:20%; height:64%;" href="lips.html" aria-label="Lipstick - Lips"></a>
     </div>
   </section>
 
-  <!-- ============ SECTION 2 : CALENDAR TABLE ============ -->
+  <!-- ------------ SECTION 2 : CALENDAR TABLE ------------ -->
   <section class="promo-section" id="section-calendar">
     <table id="promoCalendar" class="promo-calendar">
       <thead>
-        <tr><th colspan="7">Promotions for September 2026</th></tr>
+        <tr><th colspan="7"><span class="calendar-title-text">Promotions for September 2026</span></th></tr>
+        <tr>
+          <th colspan="7">
+            <div class="calendar-view-toggle">
+              <label>
+                <input type="radio" name="calendarView" value="all" id="viewAllDates" checked>
+                View All Dates
+              </label>
+              <label>
+                <input type="radio" name="calendarView" value="events" id="viewEventDates">
+                Only View Event Dates
+              </label>
+            </div>
+          </th>
+        </tr>
         <tr class="weekday-row">
           <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thurs</th><th>Fri</th><th>Sat</th>
         </tr>
       </thead>
       <tbody id="promoCalendarBody">
-        <!-- rows injected by JS -->
+        <!-- rows injected using JS -->
       </tbody>
     </table>
 
@@ -71,9 +85,9 @@
   <!-- ============ SECTION 3 : WEEK SELECTOR ============ -->
   <section class="promo-section" id="section-weeks">
     <div class="week-selector">
-      <div class="week-selector-month">September</div>
+      <h3 class="week-selector-month">September</h3>
       <div class="week-buttons" id="weekButtons">
-        <!-- week buttons injected by JS -->
+        <!-- week buttons injected using JS -->
       </div>
     </div>
   </section>
@@ -91,6 +105,7 @@
     <div class="timeline" id="timeline">
       <!-- timeline rows injected by JS -->
     </div>
+    <div id="reminderPopup" class="reminder-popup"></div>
   </section>
 
   <!-- ============ SECTION 6 : ONGOING PROMOTIONS CARDS ============ -->
@@ -157,5 +172,6 @@
 </footer>
 
 <script src="promotions.js"></script>
+<audio src="promotions.mp3" autoplay></audio>
 </body>
 </html>

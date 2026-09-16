@@ -1,11 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-
-  /* =========================================================
-     SHARED DATA — September 2026
-     Sept 1, 2026 is a Tuesday, so the Sun-start grid spans
-     Aug 30 - Oct 3. Cells outside September are left blank.
-     ========================================================= */
-  var WEEKS = [
+var WEEKS = [
     { label: 'Week 1', dates: [
       { d: null }, { d: null },
       { d: 1, current: true }, { d: 2, current: true }, { d: 3, current: true },
@@ -36,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var ENDED_DAYS = [1, 3, 5, 6, 9];             // dull grey badge — past
   var PROMO_DAYS = [14, 18, 20, 24, 30];        // gold badge + red dot — upcoming
-  var PROMO_LABEL_TEXT = 'Label';               // placeholder, user fills in later
+  var PROMO_LABEL_TEXT = 'Label';
 
   /* =========================================================
      SECTION 2 — CALENDAR TABLE
@@ -71,6 +65,15 @@ document.addEventListener('DOMContentLoaded', function () {
             showEventPopup(e, isEnded ? 'ended' : 'promo',
               isEnded ? 'Event has already ended!' : PROMO_LABEL_TEXT);
           });
+
+          if (isPromo) {
+            var decoImg = document.createElement('img');
+            decoImg.className = 'promo-deco-img';
+            decoImg.src = 'MakeupKit1.png';
+            decoImg.alt = '';
+            td.appendChild(decoImg);
+          }
+
           td.appendChild(badge);
         } else {
           var span = document.createElement('span');
@@ -104,8 +107,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  /* -- "View All Dates" / "Only View Event Dates" toggle -- */
+  var calendarTable = document.getElementById('promoCalendar');
+  var viewAllRadio = document.getElementById('viewAllDates');
+  var viewEventsRadio = document.getElementById('viewEventDates');
+
+  function applyCalendarView() {
+    calendarTable.classList.toggle('events-only', viewEventsRadio.checked);
+  }
+
+  viewAllRadio.addEventListener('change', applyCalendarView);
+  viewEventsRadio.addEventListener('change', applyCalendarView);
+
   /* =========================================================
-     SECTION 3 — WEEK SELECTOR   &   SECTION 4 — WEEK DISPLAY
+     SECTION 3 — WEEK SELECTOR, SECTION 4 — WEEK DISPLAY
      ========================================================= */
   var weekButtonsWrap = document.getElementById('weekButtons');
   var weekDisplay = document.getElementById('weekDisplay');
@@ -151,9 +166,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* =========================================================
      SECTION 5 — EVENT TIMELINE
-     Bar height is proportional to the gap between each pair of
-     dates, so a longer stretch between promotions reads as a
-     taller block.
      ========================================================= */
   var TIMELINE_RANGES = [
     { from: 1, to: 3 },
@@ -163,42 +175,85 @@ document.addEventListener('DOMContentLoaded', function () {
     { from: 24, to: 30 }
   ];
 
-  var BAR_MIN_HEIGHT = 34;
+  var BAR_MIN_HEIGHT = 40;
   var BAR_HEIGHT_PER_DAY = 9;
 
   var timelineWrap = document.getElementById('timeline');
+  var reminderPopup = document.getElementById('reminderPopup');
+  var reminderPopupTimer;
 
   function buildTimeline() {
     TIMELINE_RANGES.forEach(function (range) {
       var span = range.to - range.from;
       var height = BAR_MIN_HEIGHT + span * BAR_HEIGHT_PER_DAY;
 
-      var row = document.createElement('div');
-      row.className = 'timeline-row';
-
-      var hourLabel = document.createElement('span');
-      hourLabel.className = 'timeline-hour';
-      hourLabel.textContent = range.from + ' \u2013 ' + range.to;
-
       var bar = document.createElement('div');
       bar.className = 'timeline-bar';
       bar.style.height = height + 'px';
+
+      var fromLabel = document.createElement('span');
+      fromLabel.className = 'timeline-date-from';
+      fromLabel.textContent = range.from;
+
+      var toLabel = document.createElement('span');
+      toLabel.className = 'timeline-date-to';
+      toLabel.textContent = range.to;
 
       var label = document.createElement('span');
       label.className = 'timeline-label';
       label.textContent = 'Label';
 
+      var reminderBtn = document.createElement('button');
+      reminderBtn.type = 'button';
+      reminderBtn.className = 'reminder-btn';
+      reminderBtn.innerHTML = 'Enable<br>Reminder';
+      reminderBtn.dataset.on = 'false';
+      reminderBtn.addEventListener('click', function () {
+        toggleReminder(reminderBtn);
+      });
+
       var img = document.createElement('img');
       img.src = 'MakeupKit1.png';
       img.alt = 'Promotion item';
 
-      bar.appendChild(label);
-      bar.appendChild(img);
+      var rightGroup = document.createElement('div');
+      rightGroup.className = 'timeline-right';
+      rightGroup.appendChild(reminderBtn);
+      rightGroup.appendChild(img);
 
-      row.appendChild(hourLabel);
-      row.appendChild(bar);
-      timelineWrap.appendChild(row);
+      bar.appendChild(fromLabel);
+      bar.appendChild(toLabel);
+      bar.appendChild(label);
+      bar.appendChild(rightGroup);
+      timelineWrap.appendChild(bar);
     });
+  }
+
+  function toggleReminder(btn) {
+    var isOn = btn.dataset.on === 'true';
+    var nowOn = !isOn;
+    btn.dataset.on = nowOn ? 'true' : 'false';
+    btn.innerHTML = nowOn ? 'Enable<br>Reminder \u2713' : 'Enable<br>Reminder';
+
+    showReminderPopup(btn, nowOn
+      ? 'Reminders: ON<br>You will be notified 5 mins before the Promotion Event starts.'
+      : 'Reminders: OFF<br>You will not be alerted.');
+  }
+
+  function showReminderPopup(anchorEl, html) {
+    clearTimeout(reminderPopupTimer);
+    reminderPopup.innerHTML = html;
+    var rect = anchorEl.getBoundingClientRect();
+    var top = rect.top - 10;
+    var left = rect.right + 12;
+    if (left + 260 > window.innerWidth) left = rect.left;
+    reminderPopup.style.top = top + 'px';
+    reminderPopup.style.left = left + 'px';
+    reminderPopup.classList.add('show');
+
+    reminderPopupTimer = setTimeout(function () {
+      reminderPopup.classList.remove('show');
+    }, 1500);
   }
 
   /* =========================================================

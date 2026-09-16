@@ -31,6 +31,10 @@
 body {
     font-family: var(--font-body);
     background-color: var(--color-maroon);
+    max-width: 1024px;
+    min-width: 320px;
+    margin: 0 auto;
+    overflow-x: hidden;
 }
 
 .fill-img {
@@ -47,9 +51,8 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-/* ============================================================ */
 /* SECTION 1 — video / about us / image map                     */
-/* ============================================================ */
+
 .section1 {
     display: flex;
     align-items: stretch;
@@ -133,9 +136,8 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
 }
 
-/* ============================================================ */
 /* SECTION 2 — 4 circular category icons                        */
-/* ============================================================ */
+
 .section2 {
     display: flex;
     justify-content: space-evenly;
@@ -245,9 +247,7 @@ h1, h2, h3, h4, h5, h6 {
 .s9-img-2 { margin-left: 40px; }
 .s9-img-3 { margin-left: 80px; }
 
-/* ============================================================ */
-/* SECTION 3 — youtube video and 5 product cards                 */
-/* ============================================================ */
+/* SECTION 3 — youtube video and 5 product category cards                 */
 .section3 {
     display: flex;
     align-items: flex-start;
@@ -331,9 +331,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 16px;
 }
 
-/* ============================================================ */
-/* SECTION 4 — background hero + 3 cards + small link            */
-/* ============================================================ */
+/* SECTION 4 — background pic, 2 cards           */
 .section4 {
     width: 100%;
     margin-top: 35px;
@@ -431,14 +429,12 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* ============================================================ */
-/* SECTION 5 — image, text and fill circle                       */
-/* ============================================================ */
+/* SECTION 5 — image, text and fill circle animation                     */
 .section5 {
     display: flex;
     align-items: stretch;
     width: 100%;
-    height: 300px;
+    height: 350px;
     margin-top: 35px;
     overflow: hidden;
 }
@@ -519,9 +515,7 @@ h1, h2, h3, h4, h5, h6 {
     100% { height: 100%; }
 }
 
-/* ============================================================ */
-/* SECTION 6 — looping image + promotions button                 */
-/* ============================================================ */
+/* SECTION 6 — looping image and promotions button button                */
 .section6 {
     position: relative;
     width: 100%;
@@ -556,9 +550,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--color-gold-hover);
 }
 
-/* ============================================================ */
-/* SECTION 7 — 4 stat labels + 3 images                          */
-/* ============================================================ */
+/* SECTION 7 — 4 labels and 3 images                          */
 .section7 {
     width: 100%;
     margin-top: 0;
@@ -590,6 +582,7 @@ h1, h2, h3, h4, h5, h6 {
 .s7-text h4 {
     color: var(--color-tan);
     font-size: 20px;
+    margin-bottom: 15px;
 }
 
 .s7-bottom {
@@ -610,9 +603,7 @@ h1, h2, h3, h4, h5, h6 {
     border-right: none;
 }
 
-/* ============================================================ */
 /* SECTION 8 — rotating coverflow pics                           */
-/* ============================================================ */
 .section8 {
     width: 100%;
     margin-top: 25px;
@@ -648,9 +639,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: transform 1s ease-in-out, opacity 0.7s ease-in-out;
 }
 
-/* ============================================================ */
-/* SECTION 10 — timeline + store visit card + image popup        */
-/* ============================================================ */
+/* SECTION 10 — timeline, store visit card, image popup        */
 .section10 {
     display: flex;
     align-items: flex-start;
@@ -808,9 +797,7 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* ============================================================ */
-/* SECTION 11 — sales bars / demographic pie / success bars      */
-/* ============================================================ */
+/* SECTION 11 — bar chart, pie chart, progress bars      */
 .section11 {
     width: 100%;
     margin-top: 25px;
@@ -973,7 +960,7 @@ h1, h2, h3, h4, h5, h6 {
     to { background-position: 40px 0; }
 }
 
-/* Contact Us heading, sits directly above the bottom buttons */
+/* Contact Us heading */
 .s11-contact {
     text-align: center;
     margin-top: 40px;
@@ -1029,9 +1016,58 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-maroon);
 }
 
-/* Footer*/
+/* Parts that span 100% browser screen width */
+header,
+.section1,
+footer {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+/* Responsive from 320px up            */
+@media (max-width: 768px) {
+    .section1 {
+        flex-direction: column;
+        height: auto;
+    }
+    .s1-video,
+    .s1-imgmap {
+        width: 100%;
+        height: 260px;
+    }
+    .section3 {
+        flex-direction: column;
+    }
+    .s3-video-col {
+        max-width: 100%;
+        flex-basis: auto;
+    }
+    .section5 {
+        flex-direction: column;
+        height: auto;
+    }
+    .s5-img {
+        width: 100%;
+        height: 220px;
+    }
+    .section10 {
+        flex-direction: column;
+    }
+    .s7-top,
+    .s7-bottom,
+    .s11-columns {
+        flex-wrap: wrap;
+    }
+}
+/* Footer */
 .wrap {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 32px;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 40px;
+    box-sizing: border-box;
 }
