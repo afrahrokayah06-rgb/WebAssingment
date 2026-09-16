@@ -493,6 +493,48 @@ if (payTotal) {
             successPopup.style.display = "flex";
         }
 
+    
+        /* ---------- Generate Order Number & Date for Tracking Page ----------*/
+    
+        const now = new Date();
+ 
+        const datePart =
+            now.getFullYear().toString() +
+            String(now.getMonth() + 1).padStart(2, "0") +
+            String(now.getDate()).padStart(2, "0");
+ 
+        const randomPart =
+            Math.floor(1000 + Math.random() * 9000);
+ 
+        const orderNumber = "GB" + datePart + "-" + randomPart;
+ 
+        const months = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+ 
+        const orderDate =
+            now.getDate() + " " + months[now.getMonth()] + " " + now.getFullYear();
+ 
+        sessionStorage.setItem("currentOrderNumber", orderNumber);
+        sessionStorage.setItem("currentOrderDate", orderDate);
+
+        /* Real timestamp of when this order was placed, used on the
+           tracking page to calculate the cancellation window */
+        sessionStorage.setItem("orderPlacedAt", Date.now().toString());
+
+        /* Clear any cancellation flag from a previous order */
+        sessionStorage.removeItem("orderCancelled");
+ 
+        /* Also save a snapshot of what was purchased, in case the
+           tracking page (or a future receipt) needs to list items */
+ 
+        sessionStorage.setItem("lastOrderItems", JSON.stringify(cart));
+        sessionStorage.setItem("lastOrderSubtotal", total.toFixed(2));
+        sessionStorage.setItem("lastOrderShipping", shipping.toFixed(2));
+        sessionStorage.setItem("lastOrderDiscount", discount.toFixed(2));
+        sessionStorage.setItem("lastOrderTotal", finalTotal.toFixed(2));
+
 
     /* ---------- Clear Cart ---------- */
         localStorage.removeItem("cart");
@@ -505,7 +547,7 @@ if (payTotal) {
         setTimeout(function () {
 
             window.location.href =
-                "order-success.html";
+                "orderSummary.html";
 
         }, 2000);
     });
