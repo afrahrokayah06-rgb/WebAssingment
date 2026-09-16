@@ -1,66 +1,220 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     /* =========================
-       ORDER NUMBER & DATE
-       (generated earlier in payment.js, this page just displays them)
+       GET SELECTED ORDER
     ========================= */
 
-    const orderNumberEl = document.getElementById("orderNumber");
-    const orderDateEl = document.getElementById("orderDate");
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedOrderNumber = urlParams.get("order");
 
-    const savedOrderNumber = sessionStorage.getItem("currentOrderNumber");
-    const savedOrderDate = sessionStorage.getItem("currentOrderDate");
+    const orderNumberEl =
+        document.getElementById("orderNumber");
 
-    if (savedOrderNumber && savedOrderDate) {
+    const orderDateEl =
+        document.getElementById("orderDate");
 
-        orderNumberEl.textContent = "#" + savedOrderNumber;
-        orderDateEl.textContent = savedOrderDate;
+    const orderItemsContainer =
+        document.getElementById("orderItemsContainer");
 
-    } else {
+    const orderSubtotalEl =
+        document.getElementById("orderSubtotal");
 
-        orderNumberEl.textContent = "No order found";
-        orderDateEl.textContent = "-";
+    const orderShippingEl =
+        document.getElementById("orderShipping");
+
+    const orderTotalEl =
+        document.getElementById("orderTotal");
+
+    const orderDiscountRow =
+        document.getElementById("orderDiscountRow");
+
+    const orderDiscountEl =
+        document.getElementById("orderDiscount");
+
+
+    /* =========================
+    CHECK LOGIN
+    ========================= */
+
+    const loggedInUser =
+        sessionStorage.getItem("loggedInUser");
+
+    if (!loggedInUser) {
+
+        alert("Please log in to view your order.");
+
+        window.location.href = "login.html";
+
+        return;
+    }
+
+    const currentUser =
+        JSON.parse(loggedInUser);
+
+
+    /* =========================
+    GET ORDER HISTORY
+    ========================= */
+
+    const orderHistory =
+        JSON.parse(
+            localStorage.getItem("orderHistory")
+        ) || [];
+
+
+    let order = null;
+
+
+    /* ---------- If an order number was provided ---------- */
+
+    if (selectedOrderNumber) {
+
+        order = orderHistory.find(function (item) {
+
+            return (
+                item.orderNumber === selectedOrderNumber &&
+                item.userEmail === currentUser.email
+            );
+
+        });
 
     }
 
 
+    /* ---------- If no URL order was provided ---------- */
+
+    if (!order) {
+
+        const currentOrderNumber =
+            sessionStorage.getItem("currentOrderNumber");
+
+        if (currentOrderNumber) {
+
+            order = orderHistory.find(function (item) {
+
+                return (
+                    item.orderNumber === currentOrderNumber &&
+                    item.userEmail === currentUser.email
+                );
+
+            });
+
+        }
+
+    }
+
+
+
     /* =========================
-       ORDER ITEMS
-       (saved as "lastOrderItems" in payment.js right before the
-       real cart was cleared)
+       NO ORDER FOUND
     ========================= */
 
-    const orderItemsContainer = document.getElementById("orderItemsContainer");
-    const orderSubtotalEl = document.getElementById("orderSubtotal");
-    const orderShippingEl = document.getElementById("orderShipping");
-    const orderTotalEl = document.getElementById("orderTotal");
-    const orderDiscountRow = document.getElementById("orderDiscountRow");
-    const orderDiscountEl = document.getElementById("orderDiscount");
+    if (!order) {
 
-    const orderItems = JSON.parse(sessionStorage.getItem("lastOrderItems")) || [];
+        orderNumberEl.textContent = "No order found";
+        orderDateEl.textContent = "-";
+
+        orderItemsContainer.innerHTML = `
+            <p style="
+                color:#7a6f60;
+                font-size:14px;
+            ">
+                We could not find this order.
+            </p>
+        `;
+
+        orderSubtotalEl.textContent = "RM0.00";
+        orderShippingEl.textContent = "RM0.00";
+        orderTotalEl.textContent = "RM0.00";
+
+        orderDiscountRow.style.display = "none";
+
+        return;
+    }
+
+
+    /* =========================
+       ORDER NUMBER & DATE
+    ========================= */
+
+    orderNumberEl.textContent =
+        "#" + order.orderNumber;
+
+    orderDateEl.textContent =
+        order.orderDate;
+
+
+    /* =========================
+       ORDER ITEMS
+    ========================= */
 
     orderItemsContainer.innerHTML = "";
 
-    if (orderItems.length === 0) {
+    const items =
+        Array.isArray(order.items)
+            ? order.items
+            : [];
 
-        orderItemsContainer.innerHTML =
-            "<p style='color:#7a6f60; font-size:14px;'>No items found for this order.</p>";
+
+    if (items.length === 0) {
+
+        orderItemsContainer.innerHTML = `
+            <p style="
+                color:#7a6f60;
+                font-size:14px;
+            ">
+                No items found for this order.
+            </p>
+        `;
 
     } else {
 
-        orderItems.forEach(function (product) {
+        items.forEach(function (product) {
 
-            const price = Number(product.price) || 0;
-            const quantity = Number(product.quantity) || 1;
-            const lineTotal = price * quantity;
+            const price =
+                Number(product.price) || 0;
 
-            const itemRow = document.createElement("div");
+            const quantity =
+                Number(product.quantity) || 1;
+
+            const lineTotal =
+                price * quantity;
+
+
+            const itemRow =
+                document.createElement("div");
+
             itemRow.classList.add("summary-item");
 
-            itemRow.innerHTML =
-                "<span class='item-name'>" + product.name + "</span>" +
-                "<span class='item-qty'>x" + quantity + "</span>" +
-                "<span class='item-price'>RM" + lineTotal.toFixed(2) + "</span>";
+
+            /* Use textContent instead of inserting
+               product names directly into HTML. */
+
+            const name =
+                document.createElement("span");
+
+            name.className = "item-name";
+            name.textContent = product.name;
+
+
+            const qty =
+                document.createElement("span");
+
+            qty.className = "item-qty";
+            qty.textContent = "x" + quantity;
+
+
+            const priceEl =
+                document.createElement("span");
+
+            priceEl.className = "item-price";
+            priceEl.textContent =
+                "RM" + lineTotal.toFixed(2);
+
+
+            itemRow.appendChild(name);
+            itemRow.appendChild(qty);
+            itemRow.appendChild(priceEl);
 
             orderItemsContainer.appendChild(itemRow);
 
@@ -68,22 +222,58 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    /* Use the exact totals payment.js already calculated (including
-       any reward discount) rather than recalculating them here */
 
-    const subtotal = Number(sessionStorage.getItem("lastOrderSubtotal")) || 0;
-    const shipping = Number(sessionStorage.getItem("lastOrderShipping")) || 0;
-    const discount = Number(sessionStorage.getItem("lastOrderDiscount")) || 0;
-    const total = Number(sessionStorage.getItem("lastOrderTotal")) || 0;
+    /* =========================
+       TOTALS
+    ========================= */
 
-    orderSubtotalEl.textContent = "RM" + subtotal.toFixed(2);
-    orderShippingEl.textContent = shipping === 0 ? "FREE" : "RM" + shipping.toFixed(2);
-    orderTotalEl.textContent = "RM" + total.toFixed(2);
+    const subtotal =
+        Number(order.subtotal) || 0;
+
+    const shipping =
+        Number(order.shipping) || 0;
+
+    const discount =
+        Number(order.discount) || 0;
+
+    const total =
+        Number(order.total) || 0;
+
+
+    orderSubtotalEl.textContent =
+        "RM" + subtotal.toFixed(2);
+
+
+    if (shipping === 0) {
+
+        orderShippingEl.textContent = "FREE";
+
+    } else {
+
+        orderShippingEl.textContent =
+            "RM" + shipping.toFixed(2);
+
+    }
+
+
+    orderTotalEl.textContent =
+        "RM" + total.toFixed(2);
+
+
+    /* =========================
+       DISCOUNT
+    ========================= */
 
     if (discount > 0) {
 
         orderDiscountRow.style.display = "flex";
-        orderDiscountEl.textContent = "- RM" + discount.toFixed(2);
+
+        orderDiscountEl.textContent =
+            "- RM" + discount.toFixed(2);
+
+    } else {
+
+        orderDiscountRow.style.display = "none";
 
     }
 
