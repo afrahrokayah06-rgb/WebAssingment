@@ -5,47 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Your Cart | Whatever</title>
 <meta name="description" content="Shop Face, Eyes, Lips, Nails and Makeup Remover. Free sample with every purchase.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="main_page.css">
-<link rel="stylesheet" href="nav.css">
 <link rel="stylesheet" href="cart.css">
 </head>
 <body>
  
-<!-- ============ TOP UTILITY BAR ============ -->
-<header>
-  <div class="nav-top">
-    <div class="nav-left">
-      <div class="account-dropdown">
-        <a href="login.html" id="userAccountLink">
-            <img src="profile.png" alt="" class="nav-icon">
-            <span id="userAccountName">Sign In / Sign Up</span>
-        </a>
-        <div id="accountMenu" class="account-menu">
-            <a href="#" id="logout-button">
-                Log Out
-            </a>
-            <a href="#" id="delete-account-button" class="delete-account">
-                Delete Account
-            </a>
-        </div>
-    </div>
-    </div>
-    <div class="nav-right"> 
-   <!-- AFTER -->
-    <a href="membership.html"><img src="member-removebg-preview.png" alt=""class="nav-icon">Membership</a>
-    <a href="beauty_service.html"><img src="promotion_events.png" alt=""class="nav-icon">Book Beauty Services</a>  
-    <a href="promotions.html"><img src="beautypass.png" alt="" class="nav-icon">Promotions &amp; Events</a>
-    <a href="wishlist.html" class="icon-link"><img src="wishlist.png" alt="" class="nav-icon">Wishlist</a>
-    <a href="cart.html" class="icon-link"><img src="cart.png" alt="" class="nav-icon">Cart</a>
-    </div>
-  </div>
-</header>
- 
-<main class="cart-page">
+  <header class="cart-header">
     <h1>Your Cart</h1>
-    <a id="back-home" class="home-link" href="main_page.html">Back to Home</a>
+    <a href="main_page.html">Back to Home</a>
+  </header>
+
+<main class="cart-page">
     <div id="cart-items"></div>
     <div class="cart-summary">
         <h2 class="cart-total">Total: RM <span id="cart-total">0.00</span></h2>
@@ -72,50 +41,6 @@
         </script>
     </div>
 </main>
-
-<!-- ============ FOOTER — SITEMAP  ============ -->
-<footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h3>Shop</h3>
-        <ul>
-          <li><a href="makeup-face.html">Face</a></li>
-          <li><a href="makeup-eyes.html">Eyes</a></li>
-          <li><a href="makeup-lips.html">Lips</a></li>
-          <li><a href="makeup-nails.html">Nails</a></li>
-          <li><a href="makeup-remover.html">Makeup Remover</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>My Account</h3>
-        <ul>
-          <li><a href="login.html">Login / Register</a></li>
-          <li><a href="membership.html">Beauty Pass Membership</a></li>
-          <li><a href="cart.html">Cart</a></li>
-          <li><a href="payment.html">Payment</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Discover</h3>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="promotions.html">Promotions &amp; Events</a></li>
-          <li><a href="book-services.html">Book Beauty Services</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Get In Touch</h3>
-        <ul>
-          <li><a href="feedback.html">Feedback Form</a></li>
-          <li><a href="mailto:hello@whatever.com">hello@whatever.com</a></li>
-        </ul>
-      </div>
-    </div>
- 
-  </div>
-</footer>
  
 <script>
 document.addEventListener("DOMContentLoaded", function () {

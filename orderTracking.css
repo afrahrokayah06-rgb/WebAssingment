@@ -1,7 +1,9 @@
-/* =========================
-   ORDER TRACKING PAGE
-   (Styled to match payment.css's palette and card design)
-========================= */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
 
 :root {
     --payment-maroon: #3d0f22;
@@ -20,7 +22,13 @@
     justify-content: center;
     align-items: flex-start;
     padding: 40px 20px;
+    
+    font-family: var(--payment-font);
+
     background-image: url("makeup_banner.png");
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
     font-family: var(--payment-font);
 }
 
@@ -158,74 +166,7 @@
     color: #7a6f60;
 }
 
-/* Cancel order control */
-
-.cancel-control {
-    display: none;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.btn-cancel-order {
-    background: none;
-    border: none;
-    color: #7a6f60;
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.btn-cancel-order:hover {
-    color: #c62828;
-}
-
-.cancel-timer {
-    font-size: 12px;
-    color: #b9ad9c;
-    margin-top: 4px;
-}
-
-.cancel-confirm {
-    display: none;
-    text-align: center;
-    border-top: 2px solid var(--payment-border-soft);
-    padding-top: 20px;
-    margin-top: 10px;
-}
-
-.cancel-confirm h3 {
-    color: var(--payment-maroon);
-    font-size: 20px;
-    margin-bottom: 8px;
-}
-
-.cancel-confirm p {
-    color: #7a6f60;
-    font-size: 14px;
-    margin-bottom: 20px;
-}
-
-.cancel-confirm-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.btn-cancel-confirm {
-    padding: 14px 24px;
-    border: none;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.2s;
-    background: #c62828;
-    color: #fff;
-}
-
-.btn-cancel-confirm:hover {
-    background: #a01f1f;
-}
+/* Cancel order */
 
 .cancelled-message {
     display: none;
@@ -322,6 +263,23 @@
     font-weight: 700;
     text-decoration: underline;
     font-size: 14px;
+}
+
+/* ---------- Back to Cart ---------- */
+.back-purchases {
+    text-align: center;
+    display: block;
+    padding-bottom: 35px;
+    text-align: center;
+    color: var(--payment-maroon);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.back-purchases:hover {
+    color: var(--payment-gold);
+    text-decoration: underline;
 }
 
 .issue-link:hover {
