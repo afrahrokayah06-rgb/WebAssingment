@@ -107,7 +107,12 @@ body {
     background-color: rgba(0, 0, 0, 0.15);
 }
  
+.faq-item.active {
+    overflow: visible;
+}
+
 .faq-item.active .faq-answer {
+    max-height: none !important;
     padding: 18px 24px 24px;
     border-top: 1px solid rgba(201, 166, 107, 0.35);
 }
@@ -182,17 +187,22 @@ body {
     font-size: 13px;
 }
  
+.faq-table tbody tr {
+    background: transparent !important;
+}
+
 .faq-table th,
 .faq-table td {
-    border: 1px solid rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     padding: 10px 12px;
     text-align: center;
     vertical-align: middle;
     color: #4D4430;
+    background-color: #F2E5C6; /* Cream color */
 }
- 
+
 .faq-table th {
-    background-color: rgba(228, 147, 7, 0.15);
+    background-color: #E2D1A8; /* Slightly darker cream for table headers */
     color: #4D4430;
     font-weight: bold;
 }
