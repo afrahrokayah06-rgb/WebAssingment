@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="main_page.css">
-<link rel="stylesheet" href="nav.css">
+<link rel="stylesheet" href="nav.css">>
 <link rel="stylesheet" href="lipstickpage.css">
 </head>
 <body>
@@ -106,9 +106,9 @@
       <a href="#glosses" class="hero-btn">Shop All Shades</a>
     </div>
   </section>
-
+ 
   <div class="lip-divider">Free shipping on all orders over RM 50 · Earn Beauty Pass points on every purchase</div>
-
+ 
   <!-- Lip Glosses -->
   <section class="lip-section" id="glosses">
     <div class="lip-section-heading">
@@ -116,126 +116,175 @@
       <p>High-shine, non-sticky color with a plumping, glass-like finish.</p>
     </div>
     <div class="lip-grid">
-
-      <div class="lip-card">
+ 
+    <!-- Cherry Bloom -->
+    <div class="lip-card">
+ 
         <div class="lip-img-wrap">
-          <img src="CherryBloom.jpeg" alt="Cherry Bloom lip gloss">
-          <div class="lip-hover-info">Infused with vitamin E and a hint of peppermint for a light, tingly plump. The tri-bead applicator hugs your lip line for a precise, non-drippy application. Buildable from a sheer tint to full-on cherry-red opacity.</div>
+ 
+            <button class="product-image-btn"
+                onclick="openProduct('Cherry Bloom', 'CherryBloom.jpeg', 'RM 38.00', 'A juicy rosy-red gloss that delivers rich color payoff in one swipe, with a high-shine finish that never feels sticky.')">
+ 
+                <img src="CherryBloom.jpeg" alt="Cherry Bloom lip gloss">
+ 
+            </button>
+ 
         </div>
+ 
         <div class="lip-body">
-          <span class="lip-shade-dot" style="background-color:#b03052;"></span>
-          <h3>Cherry Bloom</h3>
-          <p class="lip-desc">A juicy rosy-red gloss that delivers rich color payoff in one swipe, with a high-shine finish that never feels sticky.</p>
-          <div class="lip-footer">
-            <span class="lip-price">RM 38.00</span>
+ 
+            <div class="lip-shade-dot"></div>
+ 
+            <h3>Cherry Bloom</h3>
+ 
+            <p class="lip-desc">
+                A juicy rosy-red gloss that delivers rich color payoff in one swipe,
+                with a high-shine finish that never feels sticky.
+            </p>
+ 
+            <div class="lip-footer">
+ 
+                <span class="lip-price">RM 38.00</span>
+ 
             <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="cherry-bloom" data-name="Cherry Bloom Lip Gloss" data-price="38.00" data-image="CherryBloom.jpeg">Add to Cart</button>
+                    <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="cherry-bloom" data-name="Cherry Bloom Lip Gloss" data-price="38.00" data-image="CherryBloom.jpeg"><img src="wishlist.png" alt=""></button>
+                    <button class="cart" data-id="cherry-bloom" data-name="Cherry Bloom Lip Gloss" data-price="38.00" data-image="CherryBloom.jpeg">Add to Cart</button>
+                </div>
+ 
             </div>
-          </div>
+ 
         </div>
-      </div>
-
-      <div class="lip-card">
-        <div class="lip-img-wrap">
-          <img src="CoralCharm.jpeg" alt="Coral Charm lip gloss">
-          <div class="lip-hover-info">A lightweight, hydrating formula enriched with shea butter to keep lips soft, not sticky. Sheer, buildable coral-pink that flatters most skin tones. Great worn alone or layered over your favorite lipstick for extra shine.</div>
-        </div>
-        <div class="lip-body">
-          <span class="lip-shade-dot" style="background-color:#d16b7a;"></span>
-          <h3>Coral Charm</h3>
-          <p class="lip-desc">A soft coral-pink wash of color with a glassy, second-skin shine — perfect for building up a natural everyday glow.</p>
-          <div class="lip-footer">
-            <span class="lip-price">RM 38.00</span>
-            <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="rose-starlight" data-name="Rosé Starlight Nail Set" data-price="29.00" data-image="RoseStarlight.jpeg">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lip-card">
-        <div class="lip-img-wrap">
-          <img src="PoppyPop.jpeg" alt="Poppy Pop lip gloss">
-          <div class="lip-hover-info">A high-pigment formula that delivers true-to-tube color in a single swipe, no layering needed. The plush doe-foot applicator makes for effortless, mirror-free touch-ups on the go. Finishes glossy, never tacky.</div>
-        </div>
-        <div class="lip-body">
-          <span class="lip-shade-dot" style="background-color:#d3401f;"></span>
-          <h3>Poppy Pop</h3>
-          <p class="lip-desc">A fiery red-orange gloss with bold, saturated color and a comfortable, cushiony feel that lasts all day.</p>
-          <div class="lip-footer">
-            <span class="lip-price">RM 38.00</span>
-            <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="poppy-pop" data-name="Poppy Pop Lip Gloss" data-price="38.00" data-image="PoppyPop.jpeg">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lip-card">
-        <div class="lip-img-wrap">
-          <img src="BareMauve.jpeg" alt="Bare Mauve lip gloss">
-          <div class="lip-hover-info">A universally flattering mauve-nude that mimics your natural lip color, just richer. Formulated with jojoba oil for an all-day comfortable wear. Ideal for everyday looks or as a base under bolder shades.</div>
-        </div>
-        <div class="lip-body">
-          <span class="lip-shade-dot" style="background-color:#a15d64;"></span>
-          <h3>Bare Mauve</h3>
-          <p class="lip-desc">A your-lips-but-better mauve-nude gloss that adds subtle depth and dimension without ever looking flat.</p>
-          <div class="lip-footer">
-            <span class="lip-price">RM 38.00</span>
-            <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="bare-mauve" data-name="Bare Mauve Lip Gloss" data-price="38.00" data-image="BareMauve.jpeg">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lip-card">
-        <div class="lip-img-wrap">
-          <img src="PeachFizz.jpeg" alt="Peach Fizz lip gloss">
-          <div class="lip-hover-info">A sheer wash of peachy-pink with a dewy, second-skin finish that looks like you're not wearing anything at all. Lightly scented with a hint of peach. Layers beautifully for a soft, gradient lip.</div>
-        </div>
-        <div class="lip-body">
-          <span class="lip-shade-dot" style="background-color:#e06e77;"></span>
-          <h3>Peach Fizz</h3>
-          <p class="lip-desc">A sheer, peachy-pink gloss with a dewy finish that layers beautifully for a fresh, effortless look.</p>
-          <div class="lip-footer">
-            <span class="lip-price">RM 38.00</span>
-            <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="peach-fizz" data-name="Peach Fizz Lip Gloss" data-price="38.00" data-image="PeachFizz.jpeg">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lip-card">
-        <div class="lip-img-wrap">
-          <img src="MerlotShine.jpeg" alt="Merlot Shine lip gloss">
-          <div class="lip-hover-info">A rich berry-wine gloss with mirror-shine finish and full-coverage pigment in one coat. The deep tone is designed to complement deeper skin tones especially well. Housed in a sleek metallic tube for a luxe vanity moment.</div>
-        </div>
-        <div class="lip-body">
-          <span class="lip-shade-dot" style="background-color:#6d1f2f;"></span>
-          <h3>Merlot Shine</h3>
-          <p class="lip-desc">A deep berry-wine gloss housed in a luxe metallic tube — rich, moody pigment with a glossy mirror shine.</p>
-          <div class="lip-footer">
-            <span class="lip-price">RM 38.00</span>
-            <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="merlot-shine" data-name="Merlot Shine Lip Gloss" data-price="38.00" data-image="MerlotShine.jpeg">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+ 
     </div>
+ 
+ 
+    <!-- Coral Charm -->
+    <div class="lip-card">
+ 
+        <div class="lip-img-wrap">
+ 
+            <button class="product-image-btn"
+                onclick="openProduct('Coral Charm', 'CoralCharm.jpeg', 'RM 38.00', 'A soft coral-pink wash of color with a glassy, second-skin shine — perfect for building up a natural everyday glow.')">
+ 
+                <img src="CoralCharm.jpeg" alt="Coral Charm lip gloss">
+ 
+            </button>
+ 
+        </div>
+ 
+        <div class="lip-body">
+ 
+            <div class="lip-shade-dot"></div>
+ 
+            <h3>Coral Charm</h3>
+ 
+            <p class="lip-desc">
+                A soft coral-pink wash of color with a glassy, second-skin shine —
+                perfect for building up a natural everyday glow.
+            </p>
+ 
+            <div class="lip-footer">
+ 
+                <span class="lip-price">RM 38.00</span>
+ 
+                <div class="lip-footer-actions">
+                    <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="coral-charm" data-name="Coral Charm Lip Gloss" data-price="38.00" data-image="CoralCharm.jpeg"><img src="wishlist.png" alt=""></button>
+                    <button class="cart" data-id="coral-charm" data-name="Coral Charm Lip Gloss" data-price="38.00" data-image="CoralCharm.jpeg">Add to Cart</button>
+                </div>
+ 
+            </div>
+ 
+        </div>
+ 
+    </div>
+ 
+ 
+    <!-- Poppy Pop -->
+    <div class="lip-card">
+ 
+        <div class="lip-img-wrap">
+ 
+            <button class="product-image-btn"
+                onclick="openProduct('Poppy Pop', 'PoppyPop.jpeg', 'RM 38.00', 'A fiery red-orange gloss with bold, saturated color and a comfortable, cushiony feel that lasts all day.')">
+ 
+                <img src="PoppyPop.jpeg" alt="Poppy Pop lip gloss">
+ 
+            </button>
+ 
+        </div>
+ 
+        <div class="lip-body">
+ 
+            <div class="lip-shade-dot"></div>
+ 
+            <h3>Poppy Pop</h3>
+ 
+            <p class="lip-desc">
+                A fiery red-orange gloss with bold, saturated color and a comfortable,
+                cushiony feel that lasts all day.
+            </p>
+ 
+            <div class="lip-footer">
+ 
+                <span class="lip-price">RM 38.00</span>
+ 
+                <div class="lip-footer-actions">
+                    <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="poppy-pop" data-name="Poppy Pop Lip Gloss" data-price="38.00" data-image="PoppyPop.jpeg"><img src="wishlist.png" alt=""></button>
+                    <button class="cart" data-id="poppy-pop" data-name="Poppy Pop Lip Gloss" data-price="38.00" data-image="PoppyPop.jpeg">Add to Cart</button>
+                </div>
+ 
+            </div>
+ 
+        </div>
+ 
+    </div>
+ 
+ 
+    <!-- Bare Mauve -->
+    <div class="lip-card">
+ 
+        <div class="lip-img-wrap">
+ 
+            <button class="product-image-btn"
+                onclick="openProduct('Bare Mauve', 'BareMauve.jpeg', 'RM 38.00', 'A your-lips-but-better mauve-nude gloss that adds subtle depth and dimension without ever looking flat.')">
+ 
+                <img src="BareMauve.jpeg" alt="Bare Mauve lip gloss">
+ 
+            </button>
+ 
+        </div>
+ 
+        <div class="lip-body">
+ 
+            <div class="lip-shade-dot"></div>
+ 
+            <h3>Bare Mauve</h3>
+ 
+            <p class="lip-desc">
+                A your-lips-but-better mauve-nude gloss that adds subtle depth
+                and dimension without ever looking flat.
+            </p>
+ 
+            <div class="lip-footer">
+ 
+                <span class="lip-price">RM 38.00</span>
+ 
+                <div class="lip-footer-actions">
+                    <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="bare-mauve" data-name="Bare Mauve Lip Gloss" data-price="38.00" data-image="BareMauve.jpeg"><img src="wishlist.png" alt=""></button>
+                    <button class="cart" data-id="bare-mauve" data-name="Bare Mauve Lip Gloss" data-price="38.00" data-image="BareMauve.jpeg">Add to Cart</button>
+                </div>
+ 
+            </div>
+ 
+        </div>
+ 
+    </div>
+ 
+</div>
   </section>
-
+ 
   <div class="lip-divider">New shades restocking weekly — join Beauty Pass for early access</div>
-
+ 
   <!-- Lipsticks -->
   <section class="lip-section" id="lipsticks">
     <div class="lip-section-heading">
@@ -243,30 +292,40 @@
       <p>Creamy, richly pigmented color in our signature gold-capped bullet.</p>
     </div>
     <div class="lip-grid">
-
+ 
       <div class="lip-card">
         <div class="lip-img-wrap">
-          <img src="WineStain.jpeg" alt="Wine Stain lipstick">
-          <div class="lip-hover-info">A creamy, soft-matte lipstick that glides on without dragging or settling into lip lines. Long-wearing formula holds color through meals and drinks. Best paired with a lip liner for extra staying power.</div>
+          <button class="product-image-btn"
+            onclick="openProduct('Wine Stain', 'WineStain.jpeg', 'RM 42.00', 'A creamy, soft-matte lipstick that glides on without dragging or settling into lip lines. Long-wearing formula holds color through meals and drinks. Best paired with a lip liner for extra staying power.')">
+ 
+            <img src="WineStain.jpeg" alt="Wine Stain lipstick">
+ 
+          </button>
+ 
         </div>
         <div class="lip-body">
           <span class="lip-shade-dot" style="background-color:#7a1f30;"></span>
           <h3>Wine Stain</h3>
           <p class="lip-desc">A deep wine-red cream lipstick with a soft-matte finish that glides on smooth and wears comfortably all day.</p>
           <div class="lip-footer">
-            <span class="lip-price">$42.00</span>
+            <span class="lip-price">RM 42.00</span>
             <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="wine-stain" data-name="Wine Stain Lipstick" data-price="42.00" data-image="WineStain.jpeg"><img src="wishlist.png" alt=""></button>
               <button class="cart" data-id="wine-stain" data-name="Wine Stain Lipstick" data-price="42.00" data-image="WineStain.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
-
+ 
       <div class="lip-card">
         <div class="lip-img-wrap">
-          <img src="DustyRose.jpeg" alt="Dusty Rose lipstick">
-          <div class="lip-hover-info">A soft, muted rose with a satin finish that catches just the right amount of light. Enriched with vitamin E for a nourishing, non-drying wear. Our most-reached-for everyday shade.</div>
+          <button class="product-image-btn"
+            onclick="openProduct('Dusty Rose', 'WineStain.jpeg', 'RM 42.00', 'A soft, muted rose with a satin finish that catches just the right amount of light. Enriched with vitamin E for a nourishing, non-drying wear. Our most-reached-for everyday shade.')">
+ 
+            <img src="DustyRose.jpeg" alt="Dusty Rose lipstick">
+ 
+          </button>
+ 
         </div>
         <div class="lip-body">
           <span class="lip-shade-dot" style="background-color:#c17b82;"></span>
@@ -275,17 +334,22 @@
           <div class="lip-footer">
             <span class="lip-price">RM 42.00</span>
             <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="dusty-rose" data-name="Dusty Rose Lipstick" data-price="42.00" data-image="DustyRose.jpeg"><img src="wishlist.png" alt=""></button>
               <button class="cart" data-id="dusty-rose" data-name="Dusty Rose Lipstick" data-price="42.00" data-image="DustyRose.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
-
+ 
       <div class="lip-card">
-        <div class="lip-img-wrap">
-          <img src="ClassicRed.jpeg" alt="Classic Red lipstick">
-          <div class="lip-hover-info">A true blue-toned red that suits nearly every skin tone. Full opacity in a single swipe, with a satin-glossy finish that never looks dry. The go-to shade for a bold, confident lip.</div>
+         <div class="lip-img-wrap">
+          <button class="product-image-btn"
+            onclick="openProduct('Classic Red', 'ClassicRed.jpeg', 'RM 42.00', 'A true blue-toned red that suits nearly every skin tone. Full opacity in a single swipe, with a satin-glossy finish that never looks dry. The go-to shade for a bold, confident lip.')">
+ 
+            <img src="ClassicRed.jpeg" alt="Classic Red lipstick">
+ 
+          </button>
+ 
         </div>
         <div class="lip-body">
           <span class="lip-shade-dot" style="background-color:#c81f2b;"></span>
@@ -294,17 +358,22 @@
           <div class="lip-footer">
             <span class="lip-price">RM 42.00</span>
             <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="classic-red" data-name="Classic Red Lipstick" data-price="42.00" data-image="ClassicRed.jpeg"><img src="wishlist.png" alt=""></button>
               <button class="cart" data-id="classic-red" data-name="Classic Red Lipstick" data-price="42.00" data-image="ClassicRed.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
-
+ 
       <div class="lip-card">
         <div class="lip-img-wrap">
-          <img src="CocoaNoir.jpeg" alt="Cocoa Noir lipstick">
-          <div class="lip-hover-info">A deep, moody chocolate-brown with a velvety, blurred-lip effect. Rich pigment means one swipe delivers full, even coverage. A modern alternative to a classic red for a directional look.</div>
+          <button class="product-image-btn"
+            onclick="openProduct('Cocoa Noir', 'CocoaNoir.jpeg', 'RM 42.00', 'A deep, moody chocolate-brown with a velvety, blurred-lip effect. Rich pigment means one swipe delivers full, even coverage. A modern alternative to a classic red for a directional look.')">
+ 
+            <img src="CocoaNoir.jpeg" alt="Cocoa Noir lipstick">
+ 
+          </button>
+ 
         </div>
         <div class="lip-body">
           <span class="lip-shade-dot" style="background-color:#4a2224;"></span>
@@ -313,17 +382,22 @@
           <div class="lip-footer">
             <span class="lip-price">RM 42.00</span>
             <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="cocoa-noir" data-name="Cocoa Noir Lipstick" data-price="42.00" data-image="CocoaNoir.jpeg"><img src="wishlist.png" alt=""></button>
               <button class="cart" data-id="cocoa-noir" data-name="Cocoa Noir Lipstick" data-price="42.00" data-image="CocoaNoir.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
-
+ 
       <div class="lip-card">
         <div class="lip-img-wrap">
-          <img src="SparklingEmber.jpeg" alt="Sparkling Ember lipstick">
-          <div class="lip-hover-info">Fine gold micro-shimmer suspended in a warm red-copper base for a lit-from-within glow. Slightly balmy finish keeps lips feeling comfortable, not stiff. A standout shade for evening looks and special occasions.</div>
+          <button class="product-image-btn"
+            onclick="openProduct('Sparkling Ember', 'SparklingEmber.jpeg', 'RM 48.00', 'Fine gold micro-shimmer suspended in a warm red-copper base for a lit-from-within glow. Slightly balmy finish keeps lips feeling comfortable, not stiff. A standout shade for evening looks and special occasions.')">
+ 
+            <img src="SparklingEmber.jpeg" alt="Sparkling Ember lipstick">
+ 
+          </button>
+ 
         </div>
         <div class="lip-body">
           <span class="lip-shade-dot" style="background-color:#a8402e;"></span>
@@ -332,17 +406,22 @@
           <div class="lip-footer">
             <span class="lip-price">RM 48.00</span>
             <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="sparkling-ember" data-name="Sparkling Ember Lipstick" data-price="48.00" data-image="SparklingEmber.jpeg"><img src="wishlist.png" alt=""></button>
               <button class="cart" data-id="sparkling-ember" data-name="Sparkling Ember Lipstick" data-price="48.00" data-image="SparklingEmber.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
-
+ 
       <div class="lip-card">
         <div class="lip-img-wrap">
-          <img src="TerracottaSunset.jpeg" alt="Terracotta Sunset lipstick">
-          <div class="lip-hover-info">A warm, earthy rust with a soft satin sheen inspired by golden-hour light. Flattering on warm and olive undertones alike. Pairs beautifully with a bronzed, sun-kissed makeup look.</div>
+          <button class="product-image-btn"
+            onclick="openProduct('Terracotta Sunset', 'TerracottaSunset.jpeg', 'RM 42.00', 'A  warm, earthy rust with a soft satin sheen inspired by golden-hour light. Flattering on warm and olive undertones alike. Pairs beautifully with a bronzed, sun-kissed makeup look.')">
+ 
+            <img src="TerracottaSunset.jpeg" alt="Terracotta Sunset lipstick">
+ 
+          </button>
+ 
         </div>
         <div class="lip-body">
           <span class="lip-shade-dot" style="background-color:#a04738;"></span>
@@ -351,18 +430,54 @@
           <div class="lip-footer">
             <span class="lip-price">RM 42.00</span>
             <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist"><img src="wishlist.png" alt=""></button>
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="terracotta-sunset" data-name="Terracotta Sunset Lipstick" data-price="42.00" data-image="TerracottaSunset.jpeg"><img src="wishlist.png" alt=""></button>
               <button class="cart" data-id="terracotta-sunset" data-name="Terracotta Sunset Lipstick" data-price="42.00" data-image="TerracottaSunset.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
-
+ 
     </div>
   </section>
+ 
+<!-- Product Image Popup -->
+<div id="product-modal" class="product-modal">
+ 
+    <div class="product-modal-content">
+ 
+        <button class="product-close" onclick="closeProduct()">×</button>
+ 
+        <div class="product-modal-image">
+            <img id="modal-image" src="" alt="">
+        </div>
+ 
+        <div class="product-modal-info">
+ 
+    <h2 id="modal-name"></h2>
+ 
+    <p id="modal-price"></p>
+ 
+    <h3>Product Description</h3>
+ 
+    <p id="modal-description"></p>
+ 
+</div>
+ 
+    </div>
+ 
+</div>
+ 
+ 
+ 
   <!-- Wishlist toast -->
   <div id="wishlist-toast" class="toast"></div>
   <div id="cart-toast" class="toast"></div>
+ 
+ 
+ 
+ 
+ 
+ 
  
   <script>
     const WISHLIST_KEY = 'whatever_wishlist';
@@ -421,9 +536,30 @@
       });
     }
  
+ 
+    function openProduct(name, image, price, description) {
+ 
+    document.getElementById("modal-image").src = image;
+    document.getElementById("modal-image").alt = name;
+ 
+    document.getElementById("modal-name").textContent = name;
+    document.getElementById("modal-price").textContent = price;
+    document.getElementById("modal-description").textContent = description;
+ 
+    document.getElementById("product-modal").classList.add("show");
+}
+ 
+function closeProduct() {
+ 
+    document.getElementById("product-modal").classList.remove("show");
+ 
+}
+ 
+ 
+ 
     document.addEventListener('DOMContentLoaded', initWishlistButtons);
   </script>
-
+ 
 <!-- ============ FOOTER — SITEMAP  ============ -->
 <footer>
   <div class="wrap">
