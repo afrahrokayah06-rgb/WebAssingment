@@ -2,10 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box; /*to fit the content inside this box,all pading and margarins*/
+    --font-display: "Cormorant Garamond", "Times New Roman", serif;
+    --font-body: "Jost", "Segoe UI", sans-serif;
 }
 
 body {
-    font-family: Georgia, serif;
+
     background-color: #420420;
     color: #FBEBE1;
 }
@@ -58,7 +60,7 @@ body {
 
 .image-content h1 {
     font-size: 60px;
-    font-family: Georgia, serif;
+    font-family: var(--font-display);
     margin-bottom: 15px;
     letter-spacing: 2px;
 }
@@ -98,7 +100,7 @@ body {
 /* Heading */
 
 .auth-form h2 {
-    font-family: Georgia, serif;
+    font-family: var(--font-display);
     font-size: 36px;
     margin-bottom: 10px;
 
@@ -120,8 +122,8 @@ body {
 .form-group label {
     display: block;
     margin-bottom: 8px;
-
-    font-size: 14px;
+    letter-spacing: 1px;
+    font-size: 16px;
     font-weight: bold;
     color: #FBEBE1;
 }
@@ -218,6 +220,7 @@ body {
 small {
     display: block;
     margin-top: 6px;
+    font-family: var(--font-body);
 
     color: #837452;
     font-size: 12px;
@@ -276,8 +279,8 @@ small {
     display: flex;
     align-items: center;
     gap: 8px;
-
     margin-bottom: 20px;
+    font-family: var(--font-body);
 }
 
 .terms input {
@@ -289,6 +292,107 @@ small {
 .terms label {
     font-size: 13px;
     color: #837452;
+}
+
+/* Terms & Conditions Link */
+
+.terms a {
+    color: #FBEBE1;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.terms a:hover {
+    opacity: 0.7;
+}
+
+
+/* Terms Modal */
+
+.terms-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.terms-modal.active {
+    display: flex;
+}
+
+.terms-content {
+    position: relative;
+
+    width: 100%;
+    max-width: 600px;
+    max-height: 80vh;
+
+    overflow-y: auto;
+
+    background: #F2E5C6;
+    padding: 40px;
+
+    border-radius: 12px;
+}
+
+.terms-content h2 {
+    color: #420420;
+    margin-bottom: 20px;
+}
+
+.terms-content h3 {
+    color: #4D4430;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.terms-content p {
+    color: #333;
+    line-height: 1.6;
+}
+
+
+/* Close X */
+
+.close-terms {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+
+    border: none;
+    background: none;
+
+    font-size: 28px;
+    cursor: pointer;
+}
+
+
+/* I Understand Button */
+
+.terms-close-button {
+    display: block;
+    margin: 25px auto 0;
+
+    padding: 12px 25px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #420420;
+    color: #FBEBE1;
+
+    cursor: pointer;
+}
+
+.terms-close-button:hover {
+    opacity: 0.85;
 }
 
 /* Button */
@@ -393,6 +497,98 @@ small {
     .auth-form-container {
         width: 100%;
         padding: 30px 20px;
+    }
+}
+/* =========================
+   TERMS & CONDITIONS MODAL
+========================= */
+ 
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+ 
+    background: rgba(0, 0, 0, 0.6);
+ 
+    justify-content: center;
+    align-items: center;
+ 
+    z-index: 1000;
+    padding: 20px;
+}
+ 
+.modal-overlay.active {
+    display: flex;
+}
+ 
+.modal-box {
+    position: relative;
+ 
+    width: 100%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+ 
+    background-color: #F2E5C6;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+ 
+    padding: 40px 40px 30px;
+}
+ 
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+ 
+    background: none;
+    border: none;
+ 
+    font-size: 26px;
+    color: #4D4430;
+ 
+    cursor: pointer;
+    line-height: 1;
+}
+ 
+.modal-close:hover {
+    color: #7A0E4D;
+}
+ 
+.modal-box h2 {
+    font-family: Georgia, serif;
+    color: #4D4430;
+    font-size: 26px;
+    margin-bottom: 6px;
+}
+ 
+.modal-updated {
+    color: #837452;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+ 
+.modal-content section {
+    margin-bottom: 20px;
+}
+ 
+.modal-content h3 {
+    color: #4D4430;
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+ 
+.modal-content p {
+    color: #5c5340;
+    font-size: 13px;
+    line-height: 1.6;
+}
+@media (max-width: 600px) {
+    .modal-box {
+        padding: 30px 20px 25px;
     }
 }
 

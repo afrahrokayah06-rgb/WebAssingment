@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>FAQ Whatever</title>
+    <meta name="description" content="Shop Face, Eyes, Lips, Nails and Makeup Remover. Free sample with every purchase.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+ 
+    <link rel="stylesheet" href="faq_style.css">
+    <script src="faq_script.js"defer ></script>
+    <link rel="stylesheet" href="main_page.css">
+    <link rel="stylesheet" href="nav.css">
+    
+</head>
+<body>
+<!-- ============ TOP UTILITY BAR ============ -->
+<header>
+  <div class="nav-top">
+    <div class="nav-left">
+      <div class="account-dropdown">
+        <a href="login.html" id="userAccountLink">
+            <img src="profile.png" alt="" class="nav-icon">
+            <span id="userAccountName">Sign In / Sign Up</span>
+        </a>
+        <div id="accountMenu" class="account-menu">
+            <a href="#" id="logout-button">
+                Log Out
+            </a>
+            <a href="#" id="delete-account-button" class="delete-account">
+                Delete Account
+            </a>
+        </div>
+    </div>
+    </div>
+    <div class="nav-right"> 
+   <!-- AFTER -->
+    <a href="membership.html"><img src="member-removebg-preview.png" alt=""class="nav-icon">Membership</a>
+    <a href="beauty_service.html"><img src="promotion_events.png" alt=""class="nav-icon">Book Beauty Services</a>  
+    <a href="promotions.html"><img src="beautypass.png" alt="" class="nav-icon">Promotions &amp; Events</a>
+    <a href="wishlist.html" class="icon-link"><img src="wishlist.png" alt="" class="nav-icon">Wishlist</a>
+    <a href="cart.html" class="icon-link"><img src="cart.png" alt="" class="nav-icon">Cart</a>
+    </div>
+  </div>
+</header>
+ 
+<!-- ============ PROMO STRIP (animation) ============ -->
+<div class="promo-strip">
+  <div class="wrap">
+    <div class="promo-track">
+      <p>WHATEVER BEAUTY PASS MEMBERS ENJOY MORE — unlock exclusive online offers and early access to new arrivals</p>
+    </div>
+    <div class="promo-actions">
+      <a class="btn filled" href="login.html">Sign In</a>
+      <a class="btn" href="register.html">Sign Up</a>
+    </div>
+  </div>
+</div>
+ 
+<!-- ============ MASTHEAD: logo / search form / sample note ============ -->
+<div class="masthead">
+  <div class="wrap">
+    <a class="logo" href="main_page.html">WHATEVER</a>
+ 
+    <form class="search-form" role="search" action="#" method="get">
+      <label for="site-search" class="visually-hidden">Search products</label>
+      <input type="search" id="site-search" name="q" list="search-suggestions"
+             placeholder="What are you looking for?" required>
+      <datalist id="search-suggestions">
+        <option value="Lipstick"></option>
+        <option value="Mascara"></option>
+        <option value="Foundation"></option>
+        <option value="Nail Polish"></option>
+        <option value="Makeup Remover Wipes"></option>
+      </datalist>
+      <button type="submit" aria-label="Search">🔍</button>
+    </form>
+ 
+    <p class="free-sample"><strong>Free Sample</strong>with every purchase</p>
+  </div>
+</div>
+ 
+<!-- ============ CATEGORY NAVIGATION  ============ -->
+<nav class="category-nav" aria-label="Product categories">
+  <div class="wrap">
+    <button class="nav-toggle" aria-expanded="false">Menu ☰</button>
+    <ul>
+    <li><a href="newArrivals.html">New</a></li>
+      <li><a href="makeup-face.html">Face</a></li>
+      <li><a href="makeup-eyes.html">Eyes</a></li>
+      <li><a href="makeup-lips.html">Lips</a></li>
+      <li><a href="makeup-nails.html">Nails</a></li>
+      <li><a href="makeup-remover.html">Makeup Remover</a></li>
+    </ul>
+  </div>
+</nav>
+ 
+<main>
+ 
+  <!-- ============ HERO BANNER — IMAGE MAP / HOTSPOT ============ -->
+  <section class="hero-banner">
+    <div class="wrap">
+      <figure>
+        <img src="makeup_banner.png" usemap="#makeupmap" width="1200" height="260"
+             alt="Makeup banner: click the lips, eyes, face, nails or remover smear to shop that category">
+        <map name="makeupmap">
+          <area shape="rect" coords="30,80,255,220" href="makeup-lips.html" alt="Shop Lips">
+          <area shape="rect" coords="270,75,480,220" href="makeup-eyes.html" alt="Shop Eyes">
+          <area shape="rect" coords="495,80,715,220" href="makeup-face.html" alt="Shop Face">
+          <area shape="rect" coords="730,80,940,220" href="makeup-nails.html" alt="Shop Nails">
+          <area shape="rect" coords="955,85,1170,220" href="makeup-remover.html" alt="Shop Makeup Remover">
+        </map>
+        <figcaption>A timeless collection of haute beauty, curated for the true connoisseur.</figcaption>
+      </figure>
+    </div>
+  </section>
+ 
+
+ 
+    <div class="faq-page">
+ 
+        <div class="faq-header">
+            <h1>Frequently Asked Questions</h1>
+            <p>Everything you need to know about orders, shipping, and your Whatever account.</p>
+        </div>
+ 
+        <div class="faq-container">
+ 
+            <!-- Search -->
+            <input
+                type="text"
+                id="faqSearch"
+                class="faq-search"
+                placeholder="Search for a question..."
+            >
+
+            <!-- Category: General -->
+            <div class="faq-group">
+
+            <h3 class="faq-category">General Questions</h3>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    What is Whatever?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Whatever is an online beauty and cosmetics store offering
+                        makeup and beauty essentials. We're dedicated to helping you feel
+                        confident with quality products at fair prices.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Are your products cruelty-free?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Yes! All Whatever products are cruelty-free and never tested on animals.
+                        We work closely with our suppliers to ensure this standard is maintained.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Are your products suitable for sensitive skin?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Many of our products are formulated to be gentle on sensitive skin, and
+                        full ingredient lists are listed on each product page. We recommend doing
+                        a patch test before first use, especially if you have known allergies.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Do you have a physical store?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Yes we're at Kuala Lumpur,please check our about us page for more details regarding location.
+                    </p>
+                </div>
+            </div>
+
+        
+            <div class="faq-item">
+                <button class="faq-question">
+                    How do I cancel my appointment
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        You may cancel your appointment via our Whatever App by Navigating to My Account, 
+                        then to My Appointments, and clicking on Manage to either reschedule or cancel your appointment.
+                        Alternatively, you may cancel your appointment via the email notifications sent to the contact details provided at the time of booking.
+                    </p>
+                </div>
+            </div>
+ 
+            <div class="faq-item">
+                <button class="faq-question">
+                    What are your delivery options and how much is shipping?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>We're happy to offer the following delivery options:</p>
+
+                    <table class="faq-table">
+                        <thead>
+                            <tr>
+                                <th>Service</th>
+                                <th>Cost</th>
+                                <th>Delivery Timeframe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="2">Standard Delivery</td>
+                                <td>RM25 under RM80*</td>
+                                <td rowspan="2">
+                                    <strong>Klang Valley</strong> (Kuala Lumpur, Selangor, and Putrajaya) – 1-3 business days<br><br>
+                                    <strong>Rest of West Malaysia</strong> – 2-4 business days<br><br>
+                                    <strong>East Malaysia and Labuan</strong> – 2-6 business days
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Free for Order RM80 and above*</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p><strong>*Limited time only:</strong> RM80 shipping threshold.</p>
+
+                    <p><strong>We do have some terms and conditions for delivery though!</strong></p>
+
+                    <ul class="faq-list">
+                        <li>Delivery times in the table above are based on orders placed before 12pm MYT.</li>
+                        <li>Next business day delivery in Klang Valley is not available during weekends, sale events, holidays, or in the event of severe weather.</li>
+                        <li>Delivery fees apply if your minimum purchase falls below RM80 after discounts are applied.</li>
+                        <li>Delivery may take additional time during sale periods, holidays, and unforeseen circumstances such as extreme weather events.</li>
+                        <li>Delivery is only available on weekdays (excluding Malaysia Public Holidays).</li>
+                    </ul>
+
+                    
+                </div>
+            </div>
+ 
+ 
+            </div>
+            <!-- end General group -->
+ 
+            <!-- Category: Orders -->
+            <div class="faq-group">
+ 
+            <h3 class="faq-category">Orders &amp; Payment</h3>
+ 
+            <div class="faq-item">
+                <button class="faq-question">
+                    How do I place an order?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Browse our products, add items to your cart, and proceed to checkout.
+                        You'll need to create an account or log in before completing your purchase.
+                    </p>
+                </div>
+            </div>
+ 
+            <div class="faq-item">
+                <button class="faq-question">
+                    What payment methods do you accept?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        We accept major credit/debit cards, online banking, and select e-wallets.
+                        All available options will be shown at checkout.
+                    </p>
+                </div>
+            </div>
+ 
+            <div class="faq-item">
+                <button class="faq-question">
+                    Can I cancel or change my order after placing it?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Orders can be changed or cancelled within 1 hour of placing them.
+                        Please contact our support team as soon as possible if you need to make changes.
+                    </p>
+                </div>
+            </div>
+            
+            
+ 
+            </div>
+            <!-- end Orders group -->
+ 
+            <!-- Category: Delivery -->
+            <div class="faq-group">
+ 
+            <h3 class="faq-category">Product Delivery</h3>
+ 
+            <div class="faq-item">
+                <button class="faq-question">
+                    How long does delivery take?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Standard delivery takes 3–5 business days within the city, and 5–7 business
+                        days for other regions. Express delivery options are available at checkout.
+                    </p>
+                </div>
+            </div>
+ 
+            <div class="faq-item">
+                <button class="faq-question">
+                    How can I track my order?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Once your order ships, you'll receive a tracking number by email.
+                        You can also view your order status anytime under your account dashboard.
+                    </p>
+                </div>
+            </div>
+ 
+            <div class="faq-item">
+                <button class="faq-question">
+                    Do you deliver internationally?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Currently we only deliver within the country. International shipping
+                        is something we're working on for the future!
+                    </p>
+                </div>
+            </div>
+ 
+            </div>
+            <!-- end Delivery group -->
+ 
+            <!-- Category: Account -->
+            <div class="faq-group">
+ 
+            <h3 class="faq-category">Account &amp; Returns</h3>
+ 
+            <div class="faq-item">
+                <button class="faq-question">
+                    I forgot my password. What do I do?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Click "Forgot Password?" on the login page and follow the instructions
+                        sent to your registered email address.
+                    </p>
+                </div>
+            </div>
+ 
+            <div class="faq-item">
+                <button class="faq-question">
+                    What is your return policy?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Unopened products can be returned within 14 days of delivery for a full
+                        refund. Opened or used items are not eligible for return due to hygiene reasons.
+                    </p>
+                </div>
+            </div>
+ 
+            </div>
+            <!-- end Account group -->
+ 
+            <p id="faqNoResults" class="faq-no-results">
+                No questions found. Try a different search term.
+            </p>
+ 
+        </div>
+ 
+        
+ 
+    </div>
+
+    <!-- ============ FOOTER — SITEMAP  ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="makeup-face.html">Face</a></li>
+          <li><a href="makeup-eyes.html">Eyes</a></li>
+          <li><a href="makeup-lips.html">Lips</a></li>
+          <li><a href="makeup-nails.html">Nails</a></li>
+          <li><a href="makeup-remover.html">Makeup Remover</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>My Account</h3>
+        <ul>
+          <li><a href="login.html">Login / Register</a></li>
+          <li><a href="membership.html">Beauty Pass Membership</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="payment.html">Payment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Discover</h3>
+        <ul>
+          <li><a href="aboutus.html">About Us</a></li>
+          <li><a href="promotions.html">Promotions &amp; Events</a></li>
+          <li><a href="book-services.html">Book Beauty Services</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Get In Touch</h3>
+        <ul>
+          <li><a href="feedback.html">Feedback Form</a></li>
+          <li><a href="mailto:hello@whatever.com">hello@whatever.com</a></li>
+        </ul>
+      </div>
+    </div>
+ 
+  </div>
+</footer>
+ 
+</body>
+</html>

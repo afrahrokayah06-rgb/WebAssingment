@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Track Your Order | Whatever</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="orderTracking.css">
+    <script src="orderTracking.js" defer></script>
+</head>
+
+<body>
+
+    <div class="tracking-page">
+
+        <div class="tracking-box">
+
+            <div class="tracking-header">
+                <h1>Track Your Order</h1>
+                 <div class="order-meta">
+                    <div>
+                        <span class="meta-label">Order Number</span>
+                        <span class="meta-value" id="orderNumber">Loading...</span>
+                    </div>
+                    <div>
+                        <span class="meta-label">Order Date</span>
+                        <span class="meta-value" id="orderDate">Loading...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline" id="timeline">
+
+                <div class="timeline-step" data-step="0">
+                    <div class="timeline-icon">1</div>
+                    <div class="timeline-label">
+                        <h3>Order Placed</h3>
+                        <p>We've received your order.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step" data-step="1">
+                    <div class="timeline-icon">2</div>
+                    <div class="timeline-label">
+                        <h3>Order Confirmed</h3>
+                        <p>Your payment has been verified.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step" data-step="2">
+                    <div class="timeline-icon">3</div>
+                    <div class="timeline-label">
+                        <h3>Preparing</h3>
+                        <p>Your items are being packed.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step" data-step="3">
+                    <div class="timeline-icon">4</div>
+                    <div class="timeline-label">
+                        <h3>Shipped</h3>
+                        <p>Your order is on its way.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step" data-step="4">
+                    <div class="timeline-icon">5</div>
+                    <div class="timeline-label">
+                        <h3>Delivered</h3>
+                        <p>Your order has arrived.</p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Back to Purchases -->
+                <div class="back-to-purchases">
+                    <a href="your_purchases.html" class="back-purchases">
+                        Back to Purchases
+                    </a>
+                </div>
+
+            <!-- Cancelled order message -->
+            <div class="cancelled-message" id="cancelledMessage">
+                <p>
+                    ❌ This order has been cancelled. If this was a mistake, please
+                    contact our customer support team.
+                </p>
+                <a href="faq.html" class="issue-link">Visit our FAQ for help</a><br>
+                <a href="main_page.html" class="issue-link">Back to Home</a>
+            </div>
+
+            <!-- Step 1: Ask if it was actually delivered -->
+            <div class="delivery-check" id="deliveryCheck">
+                <h3>Has your order been delivered?</h3>
+                <p>Please confirm so we can complete this order.</p>
+
+                <div class="delivery-check-buttons">
+                    <button type="button" class="btn-yes" id="confirmYes">Yes, I received it</button>
+                    <button type="button" class="btn-no" id="confirmNo">No, not yet</button>
+                </div>
+            </div>
+
+            <!-- Step 2a: Not delivered validation message -->
+            <div class="delivery-issue" id="deliveryIssue">
+                <p>
+                    ⚠️ We're sorry to hear that. Please contact our customer support
+                    team so we can look into your delivery immediately.
+                </p>
+                <a href="faq.html" class="issue-link">Visit our FAQ for help</a><br>
+                <a href="main_page.html" class="issue-link">Back to Home</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

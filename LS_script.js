@@ -44,6 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
+
+
     /* =========================
        REGISTER
     ========================= */
@@ -170,6 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 return;
             }
+            
 
 
             /* Get existing users */
@@ -409,3 +412,52 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+/* =========================
+       TERMS & CONDITIONS MODAL
+    ========================= */
+
+    const openTermsBtn = document.getElementById("openTermsBtn");
+    const termsModal = document.getElementById("termsModal");
+    const closeTermsBtn = document.getElementById("closeTermsBtn");
+
+    if (openTermsBtn && termsModal && closeTermsBtn) {
+
+        openTermsBtn.addEventListener("click", function (event) {
+
+            event.preventDefault();
+            termsModal.classList.add("active");
+
+        });
+
+        closeTermsBtn.addEventListener("click", function () {
+
+            termsModal.classList.remove("active");
+
+        });
+
+        /* Close when clicking the dark overlay outside the box */
+
+        termsModal.addEventListener("click", function (event) {
+
+            if (event.target === termsModal) {
+
+                termsModal.classList.remove("active");
+
+            }
+
+        });
+
+        /* Close on Escape key */
+
+        document.addEventListener("keydown", function (event) {
+
+            if (event.key === "Escape") {
+
+                termsModal.classList.remove("active");
+
+            }
+
+        });
+
+    }

@@ -76,13 +76,31 @@ body {
 }
 
 .payment-total {
-    display: flex;
-    justify-content: space-between;
     margin-top: 25px;
     padding-top: 20px;
     border-top: 2px solid var(--payment-border-soft);
+    font-size: 15px;
+    color: grey;
+}
+
+.payment-total > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.payment-grand-total {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid var(--payment-border-soft);
     font-size: 20px;
+    font-weight: 700;
     color: var(--payment-maroon);
+}
+
+.payment-total strong {
+    font-weight: 700;
 }
 
 

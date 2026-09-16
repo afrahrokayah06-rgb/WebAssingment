@@ -12,19 +12,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* ---------- Get whatever is in the cart ---------- */
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let pendingReward =
+        JSON.parse(
+            localStorage.getItem("pendingReward")
+        ) || null;
+
 
     const paymentItems =
         document.getElementById("payment-items");
+    const paymentSubtotal =
+    document.getElementById("payment-subtotal");
+    const paymentShipping =
+        document.getElementById("payment-shipping");
     const paymentTotal =
         document.getElementById("payment-total");
     const payTotal =
         document.getElementById("pay-total");
+    const paymentDiscount =
+    document.getElementById("payment-discount");
+    const discountRow =
+        document.getElementById("discount-row");
+
+
 
 
 /* ---------- Check if cart is empty ---------- */
     if (cart.length === 0) {
         alert("Your cart is empty!");
         window.location.href = "main_page.html";
+        return;
     }
 
 
@@ -63,11 +79,66 @@ document.addEventListener("DOMContentLoaded", function () {
         paymentItems.appendChild(item);
     });
 
-    paymentTotal.textContent =
+/* ---------- Shipping Calculation ---------- */
+    let shipping = 0;
+
+    if (total <150) {
+        shipping = 10;
+    }
+
+/* ---------- Reward Discount ---------- */
+    let discount = 0;
+
+    if (pendingReward) {
+
+        discount = Number(
+            pendingReward.discount
+        ) || 0;
+
+        // Discount cannot exceed subtotal
+        discount = Math.min(
+            discount,
+            total
+        );
+    }
+
+/* ---------- Final Total ---------- */
+    const finalTotal =
+        Math.max(0, total + shipping - discount);
+
+
+/* ---------- Display Subtotal ---------- */
+    paymentSubtotal.textContent =
         total.toFixed(2);
 
+/* ---------- Display Discount ---------- */
+    if (pendingReward && discount > 0) {
+        discountRow.style.display = "flex";
+
+        paymentDiscount.textContent =
+            "- RM " + discount.toFixed(2);
+    } else {
+        discountRow.style.display = "none";
+    }
+
+/* ---------- Display Shipping ---------- */
+    if (shipping === 0) {
+        paymentShipping.textContent = "FREE";
+    } else {
+        paymentShipping.textContent =
+            shipping.toFixed(2);
+    }
+    
+/* ---------- Display Final Total ---------- */
+if (paymentTotal) {
+    paymentTotal.textContent =
+        finalTotal.toFixed(2);
+}
+
+if (payTotal) {
     payTotal.textContent =
-        total.toFixed(2);
+        finalTotal.toFixed(2);
+}
 
 
 /* ---------- Input Elements ---------- */
@@ -246,22 +317,279 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        /* ---------- Payment Success Popup ---------- */
+        /* ---------- Payment Success ---------- */
         const successPopup =
             document.getElementById("success-popup");
 
-        const successOk =
-            document.getElementById("success-ok");
 
-        // Show popup
-        successPopup.style.display = "flex";
+        // Get logged-in user
+        const loggedInUserData =
+            sessionStorage.getItem("loggedInUser");
 
-        // Clear the cart after successful payment
+        if (!loggedInUserData) {
+            alert("Please log in again.");
+            window.location.href = "login.html";
+            return;
+        }
+
+        const loggedInUser =
+            JSON.parse(loggedInUserData);
+
+
+        // Get all registered users
+        let users =
+            JSON.parse(localStorage.getItem("makeupUsers")) || [];
+
+
+        // Find the current user
+        const userIndex =
+            users.findIndex(function (user) {
+                return user.email === loggedInUser.email;
+            });
+
+
+        if (userIndex === -1) {
+            alert("User account could not be found.");
+            return;
+        }
+
+
+        // Get current user
+        const user = users[userIndex];
+
+
+        // Make sure membership values exist
+        if (typeof user.points !== "number") {
+            user.points = 0;
+        }
+
+        if (typeof user.lifetimePoints !== "number") {
+            user.lifetimePoints = 0;
+        }
+
+        if (!Array.isArray(user.redeemed)) {
+            user.redeemed = [];
+        }
+
+        if (!Array.isArray(user.activity)) {
+            user.activity = [];
+        }
+
+
+        // Determine membership tier
+        let pointsPerRinggit = 1;
+
+        if (user.lifetimePoints >= 3000) {
+            pointsPerRinggit = 2;
+        }
+        else if (user.lifetimePoints >= 1000) {
+            pointsPerRinggit = 1.5;
+        }
+
+
+        // Calculate points from purchase
+        const earnedPoints =
+            Math.floor(total * pointsPerRinggit);
+
+/* ---------- Use Reward ---------- */
+
+    if (pendingReward) {
+
+        const rewardCost =
+            Number(pendingReward.cost) || 0;
+
+        const rewardId =
+            pendingReward.id;
+
+        // Check reward is valid
+        if (!rewardId) {
+
+            localStorage.removeItem("pendingReward");
+
+        }
+
+        // Check if already redeemed
+        else if (user.redeemed.includes(rewardId)) {
+
+            // Reward was already used.
+            // Do NOT deduct points again.
+            localStorage.removeItem("pendingReward");
+
+        }
+
+        // Check user has enough points
+        else if (rewardCost > 0 && user.points >= rewardCost) {
+
+            // Deduct reward points
+            user.points -= rewardCost;
+
+            // Permanently mark reward as redeemed
+            user.redeemed.push(rewardId);
+
+            // Record reward redemption
+            user.activity.unshift({
+
+                date: new Date().toLocaleDateString(
+                    "en-US",
+                    {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric"
+                    }
+                ),
+
+                desc:
+                    "Redeemed: " +
+                    pendingReward.name,
+
+                spent: "—",
+
+                points:
+                    "-" + rewardCost
+
+            });
+
+        }
+
+        // Always remove pending reward after successful payment
+        localStorage.removeItem("pendingReward");
+    }
+
+        // Add points
+        user.points += earnedPoints;
+
+        user.lifetimePoints += earnedPoints;
+
+
+        // Add activity
+        user.activity.unshift({
+
+            date: new Date().toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric"
+            }),
+
+            desc: "Purchase — " + cart.length + " item(s)",
+
+            spent: "RM " + finalTotal.toFixed(2),
+
+            points: "+" + earnedPoints
+
+        });
+
+
+        // Save updated user
+        users[userIndex] = user;
+
+        localStorage.setItem(
+            "makeupUsers",
+            JSON.stringify(users)
+        );
+
+
+        // Show success popup
+        if (successPopup) {
+            successPopup.style.display = "flex";
+        }
+
+    
+        /* ---------- Generate Order Number & Date for Tracking Page ----------*/
+    
+        const now = new Date();
+ 
+        const datePart =
+            now.getFullYear().toString() +
+            String(now.getMonth() + 1).padStart(2, "0") +
+            String(now.getDate()).padStart(2, "0");
+ 
+        const randomPart =
+            Math.floor(1000 + Math.random() * 9000);
+ 
+        const orderNumber = "GB" + datePart + "-" + randomPart;
+ 
+        const months = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+ 
+        const orderDate =
+            now.getDate() + " " + months[now.getMonth()] + " " + now.getFullYear();
+ 
+        sessionStorage.setItem("currentOrderNumber", orderNumber);
+        sessionStorage.setItem("currentOrderDate", orderDate);
+
+        /* Real timestamp of when this order was placed, used on the
+           tracking page to calculate the cancellation window */
+        const orderPlacedAt = Date.now();
+            sessionStorage.setItem(
+                "orderPlacedAt",
+                orderPlacedAt.toString()
+            );
+
+        // Save order to order history
+        let orderHistory =
+            JSON.parse(
+                localStorage.getItem("orderHistory")
+            ) || [];
+
+
+        const newOrder = {
+
+        orderNumber: orderNumber,
+
+        userEmail: loggedInUser.email,
+
+        orderDate: orderDate,
+
+        orderPlacedAt: orderPlacedAt,
+
+        items: cart.map(function (prod) {
+
+            return {
+                name: prod.name,
+                price: Number(prod.price) || 0,
+                quantity: Number(prod.quantity) || 1,
+                image: prod.image || ""
+            };
+
+        }),
+
+        subtotal: Number(total.toFixed(2)),
+        shipping: Number(shipping.toFixed(2)),
+        discount: Number(discount.toFixed(2)),
+        total: Number(finalTotal.toFixed(2)),
+
+        status: "Order Placed",
+
+        cancelled: false
+    };
+
+        /* Newest order appears first */
+
+        orderHistory.unshift(newOrder);
+
+
+        localStorage.setItem(
+            "orderHistory",
+            JSON.stringify(orderHistory)
+        );
+
+
+    /* ---------- Clear Cart ---------- */
         localStorage.removeItem("cart");
 
-        // Redirect to confirmation page after 2 seconds
+    /* ---------- Clear Used Reward ---------- */
+        localStorage.removeItem("pendingReward");
+
+
+        // Redirect
         setTimeout(function () {
-            window.location.href = "order-success.html";
+
+            window.location.href =
+            "orderSummary.html?order=" +
+            encodeURIComponent(orderNumber);
+
         }, 2000);
     });
 });

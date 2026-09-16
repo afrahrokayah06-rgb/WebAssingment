@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lips | Whatever</title>
+<title>Face | Whatever</title>
 <meta name="description" content="Shop Face, Eyes, Lips, Nails and Makeup Remover. Free sample with every purchase.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="lipstickpage.css">
 </head>
 <body>
-
+ 
 <!-- ============ TOP UTILITY BAR ============ -->
 <header>
   <div class="nav-top">
@@ -23,9 +23,6 @@
             <span id="userAccountName">Sign In / Sign Up</span>
         </a>
         <div id="accountMenu" class="account-menu">
-            <a href="your_purchases.html" id="order-button">
-                Your Purchases
-            </a>
             <a href="#" id="logout-button">
                 Log Out
             </a>
@@ -36,7 +33,6 @@
     </div>
     </div>
     <div class="nav-right"> 
-   <!-- AFTER -->
     <a href="membership.html"><img src="member-removebg-preview.png" alt=""class="nav-icon">Membership</a>
     <a href="beauty_service.html"><img src="promotion_events.png" alt=""class="nav-icon">Book Beauty Services</a>  
     <a href="promotions.html"><img src="beautypass.png" alt="" class="nav-icon">Promotions &amp; Events</a>
@@ -69,10 +65,10 @@
       <input type="search" id="site-search" name="q" list="search-suggestions"
              placeholder="What are you looking for?" required>
       <datalist id="search-suggestions">
-        <option value="Lipstick"></option>
-        <option value="Mascara"></option>
         <option value="Foundation"></option>
-        <option value="Nail Polish"></option>
+        <option value="Concealer"></option>
+        <option value="Blush"></option>
+        <option value="Bronzer"></option>
         <option value="Makeup Remover Wipes"></option>
       </datalist>
       <button type="submit" aria-label="Search">🔍</button>
@@ -96,212 +92,234 @@
     </ul>
   </div>
 </nav>
-
+ 
   <!-- Hero -->
   <section class="lip-hero">
     <div class="lip-hero-bg">
-      <img src="NAIL.jpg" alt="">
+      <img src="Facehero.jpg" alt="">
     </div>
     <div class="lip-hero-content">
       <div class="eyebrow">Whatever Beauty</div>
-      <h1>The Nail Collection</h1>
-      <p>From glassy, plumping glosses to rich, pigmented lipsticks — find your perfect shade for every mood.</p>
-      <a href="#glosses" class="hero-btn">Shop All Nails</a>
+      <h1>The Face Collection</h1>
+      <p>From weightless, skin-true foundations to warm bronzers and soft, blendable blush — build a base that looks like skin, only better.</p>
+      <a href="#foundation" class="hero-btn">Shop All Face</a>
     </div>
   </section>
-
+ 
   <div class="lip-divider">Free shipping on all orders over RM 50 · Earn Beauty Pass points on every purchase</div>
-
-  <!-- Nail Sets -->
-  <section class="lip-section" id="nails">
+ 
+  <!-- Foundation -->
+  <section class="lip-section" id="foundation">
     <div class="lip-section-heading">
-      <h2>Press-On Nail Sets</h2>
-      <p>10 hand-painted nails per set, in graduated sizes for a custom fit.</p>
+      <h2>Foundation</h2>
+      <p>Buildable, breathable coverage in shades made for a wide range of skin tones.</p>
     </div>
     <div class="lip-grid">
-
+ 
       <div class="lip-card">
         <div class="lip-img-wrap">
-          <button class="product-image-btn" onclick="openProduct('Midnight Star', 'MidnightStar.jpeg', 'RM 29.00', 'Deep indigo and powder-blue nails with hand-painted bows, stars, and a silver spiral, finished with tiny crystal accents.')">
-            <img src="MidnightStar.jpeg" alt="Midnight Star nail set">
+          <button class="product-image-btn" onclick="openProduct('Second Skin Foundation', 'foundation1.png', 'RM 89.00', 'A lightweight, buildable foundation with a natural skin-like finish and 24-hour hydration.')">
+            <img src="foundation1.png" alt="Second Skin Foundation">
           </button>
         </div>
         <div class="lip-body">
-          <h3>Midnight Star</h3>
-          <p class="lip-desc">Deep indigo and powder-blue nails with hand-painted bows, stars, and a silver spiral, finished with tiny crystal accents.</p>
+          <h3>Second Skin Foundation</h3>
+          <p class="lip-desc">A lightweight, buildable foundation with a natural skin-like finish and 24-hour hydration.</p>
           <div class="lip-footer">
-            <span class="lip-price">RM 29.00</span>
+            <span class="lip-price">RM 89.00</span>
             <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="midnight-star" data-name="Midnight Star Nail Set" data-price="RM 29.00" data-image="MidnightStar.jpeg"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="midnight-star" data-name="Midnight Star Nail Set" data-price="29.00" data-image="MidnightStar.jpeg">Add to Cart</button>
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="second-skin-foundation" data-name="Second Skin Foundation" data-price="RM 89.00" data-image="SecondSkinFoundation.jpeg"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="second-skin-foundation" data-name="Second Skin Foundation" data-price="89.00" data-image="SecondSkinFoundation.jpeg">Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
-
+ 
       <div class="lip-card">
         <div class="lip-img-wrap">
-          <button class="product-image-btn" onclick="openProduct('Velvet Plum', 'VelvetPlum.jpeg', 'RM 29.00', 'Rich plum and dove-white nails with gold star and bow details, plus a swirling gold spiral accent nail.')">
-            <img src="VelvetPlum.jpeg" alt="Velvet Plum nail set">
+          <button class="product-image-btn" onclick="openProduct('Velvet Matte Foundation', 'foundation2.png', 'RM 92.00', 'Full-coverage, oil-control foundation that sets to a soft matte finish without looking cakey.')">
+            <img src="foundation2.png" alt="Velvet Matte Foundation">
           </button>
         </div>
         <div class="lip-body">
-          <h3>Velvet Plum</h3>
-          <p class="lip-desc">Rich plum and dove-white nails with gold star and bow details, plus a swirling gold spiral accent nail.</p>
+          <h3>Velvet Matte Foundation</h3>
+          <p class="lip-desc">Full-coverage, oil-control foundation that sets to a soft matte finish without looking cakey.</p>
           <div class="lip-footer">
-            <span class="lip-price">RM 29.00</span>
+            <span class="lip-price">RM 92.00</span>
             <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="velvet-plum" data-name="Velvet Plum Nail Set" data-price="RM 29.00" data-image="VelvetPlum.jpeg"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="velvet-plum" data-name="Velvet Plum Nail Set" data-price="29.00" data-image="VelvetPlum.jpeg">Add to Cart</button>
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="velvet-matte-foundation" data-name="Velvet Matte Foundation" data-price="RM 92.00" data-image="foundation2.png"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="velvet-matte-foundation" data-name="Velvet Matte Foundation" data-price="92.00" data-image="foundation2.png">Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
-
+ 
       <div class="lip-card">
         <div class="lip-img-wrap">
-          <button class="product-image-btn" onclick="openProduct('Sweet Sorbet', 'SweetSorbet.jpeg', 'RM 27.00', 'Buttery yellow and blush-pink nails finished with soft white stars and pastel spirals for a playful, candy-toned mani.')">
-            <img src="SweetSorbet.jpeg" alt="Sweet Sorbet nail set">
+          <button class="product-image-btn" onclick="openProduct('Dewy Glow Foundation', 'foundation3.png', 'RM 85.00', 'A luminous, medium-coverage foundation infused with hyaluronic acid for a fresh, glowing finish.')">
+            <img src="foundation3.png" alt="Dewy Glow Foundation">
           </button>
         </div>
         <div class="lip-body">
-          <h3>Sweet Sorbet</h3>
-          <p class="lip-desc">Buttery yellow and blush-pink nails finished with soft white stars and pastel spirals for a playful, candy-toned mani.</p>
+          <h3>Dewy Glow Foundation</h3>
+          <p class="lip-desc">A luminous, medium-coverage foundation infused with hyaluronic acid for a fresh, glowing finish.</p>
           <div class="lip-footer">
-            <span class="lip-price">RM 27.00</span>
+            <span class="lip-price">RM 85.00</span>
             <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="sweet-sorbet" data-name="Sweet Sorbet Nail Set" data-price="RM 27.00" data-image="SweetSorbet.jpeg"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="sweet-sorbet" data-name="Sweet Sorbet Nail Set" data-price="27.00" data-image="SweetSorbet.jpeg">Add to Cart</button>
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="dewy-glow-foundation" data-name="Dewy Glow Foundation" data-price="RM 85.00" data-image="foundation3.png"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="dewy-glow-foundation" data-name="Dewy Glow Foundation" data-price="85.00" data-image="foundation3.png">Add to Cart</button>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="lip-card">
-        <div class="lip-img-wrap">
-          <button class="product-image-btn" onclick="openProduct('Cocoa Bloom', 'CocoaBloom.jpeg', 'RM 28.00', 'Warm burgundy and cream nails featuring hand-drawn florals, polka dots, and delicate striped detailing.')">
-            <img src="CocoaBloom.jpeg" alt="Cocoa Bloom nail set">
-          </button>
-        </div>
-        <div class="lip-body">
-          <h3>Cocoa Bloom</h3>
-          <p class="lip-desc">Warm burgundy and cream nails featuring hand-drawn florals, polka dots, and delicate striped detailing.</p>
-          <div class="lip-footer">
-            <span class="lip-price">RM 28.00</span>
-            <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="cocoa-bloom" data-name="Cocoa Bloom Nail Set" data-price="RM 28.00" data-image="CocoaBloom.jpeg"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="cocoa-bloom" data-name="Cocoa Bloom Nail Set" data-price="28.00" data-image="CocoaBloom.jpeg">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lip-card">
-        <div class="lip-img-wrap">
-          <button class="product-image-btn" onclick="openProduct('Noir Lace', 'NoirLace.jpeg', 'RM 29.00', 'Ivory nails with black floral clusters and a hand-tied bow accent nail, framed with a delicate scalloped lace edge.')">
-            <img src="NoirLace.jpeg" alt="Noir Lace nail set">
-          </button>
-        </div>
-        <div class="lip-body">
-          <h3>Noir Lace</h3>
-          <p class="lip-desc">Ivory nails with black floral clusters and a hand-tied bow accent nail, framed with a delicate scalloped lace edge.</p>
-          <div class="lip-footer">
-            <span class="lip-price">RM 29.00</span>
-            <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="noir-lace" data-name="Noir Lace Nail Set" data-price="RM 29.00" data-image="NoirLace.jpeg"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="noir-lace" data-name="Noir Lace Nail Set" data-price="29.00" data-image="NoirLace.jpeg">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lip-card">
-        <div class="lip-img-wrap">
-          <button class="product-image-btn" onclick="openProduct('Mocha Check', 'MochaCheck.jpeg', 'RM 28.00', 'Cream and brown gingham, polka dot, and bow nails with a chocolate-dipped French tip finish.')">
-            <img src="MochaCheck.jpeg" alt="Mocha Check nail set">
-          </button>
-        </div>
-        <div class="lip-body">
-          <h3>Mocha Check</h3>
-          <p class="lip-desc">Cream and brown gingham, polka dot, and bow nails with a chocolate-dipped French tip finish.</p>
-          <div class="lip-footer">
-            <span class="lip-price">RM 28.00</span>
-            <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="mocha-check" data-name="Mocha Check Nail Set" data-price="28.00" data-image="MochaCheck.jpeg"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="mocha-check" data-name="Mocha Check Nail Set" data-price="28.00" data-image="MochaCheck.jpeg">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lip-card">
-        <div class="lip-img-wrap">
-          <button class="product-image-btn" onclick="openProduct('Ruby Starlight', 'RubyStarlight.jpeg', 'RM 29.00', 'Cream and deep ruby-red nails with hand-painted bows, silver-outlined stars, and a metallic swirl accent.')">
-            <img src="RubyStarlight.jpeg" alt="Ruby Starlight nail set">
-          </button>
-        </div>
-        <div class="lip-body">
-          <h3>Ruby Starlight</h3>
-          <p class="lip-desc">Cream and deep ruby-red nails with hand-painted bows, silver-outlined stars, and a metallic swirl accent.</p>
-          <div class="lip-footer">
-            <span class="lip-price">RM 29.00</span>
-            <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="ruby-starlight" data-name="Ruby Starlight Nail Set" data-price="RM 29.00" data-image="RubyStarlight.jpeg"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="ruby-starlight" data-name="Ruby Starlight Nail Set" data-price="29.00" data-image="RubyStarlight.jpeg">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lip-card">
-        <div class="lip-img-wrap">
-          <button class="product-image-btn" onclick="openProduct('Rosé Starlight', 'RoseStarlight.jpeg', 'RM 29.00', 'Soft blush and dusty-rose nails with delicate bows, stars, and a shimmering spiral, finished with crystal accents.')">
-            <img src="RoseStarlight.jpeg" alt="Rosé Starlight nail set">
-          </button>
-        </div>
-        <div class="lip-body">
-          <h3>Rosé Starlight</h3>
-          <p class="lip-desc">Soft blush and dusty-rose nails with delicate bows, stars, and a shimmering spiral, finished with crystal accents.</p>
-          <div class="lip-footer">
-            <span class="lip-price">RM 29.00</span>
-            <div class="lip-footer-actions">
-              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="rose-starlight" data-name="Rosé Starlight Nail Set" data-price="RM 29.00" data-image="RoseStarlight.jpeg"><img src="wishlist.png" alt=""></button>
-              <button class="cart" data-id="rose-starlight" data-name="Rosé Starlight Nail Set" data-price="29.00" data-image="RoseStarlight.jpeg">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+ 
     </div>
   </section>
-
+ 
+  <!-- Concealer -->
+  <section class="lip-section" id="concealer">
+    <div class="lip-section-heading">
+      <h2>Concealer</h2>
+      <p>Crease-resistant coverage for under-eyes, blemishes, and everything in between.</p>
+    </div>
+    <div class="lip-grid">
+ 
+      <div class="lip-card">
+        <div class="lip-img-wrap">
+          <button class="product-image-btn" onclick="openProduct('Bright Eye Concealer', 'concealer1.png', 'RM 55.00', 'A brightening, crease-proof concealer that cancels dark circles without settling into fine lines.')">
+            <img src="concealer1.png" alt="Bright Eye Concealer">
+          </button>
+        </div>
+        <div class="lip-body">
+          <h3>Bright Eye Concealer</h3>
+          <p class="lip-desc">A brightening, crease-proof concealer that cancels dark circles without settling into fine lines.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 55.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="bright-eye-concealer" data-name="Bright Eye Concealer" data-price="RM 55.00" data-image="concealer1.png"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="bright-eye-concealer" data-name="Bright Eye Concealer" data-price="55.00" data-image="concealer1.png">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="lip-card">
+        <div class="lip-img-wrap">
+          <button class="product-image-btn" onclick="openProduct('Full Cover Concealer', 'concealer2.png', 'RM 58.00', 'High-pigment, full-coverage concealer for blemishes, redness, and discoloration that lasts all day.')">
+            <img src="concealer2.png" alt="Full Cover Concealer">
+          </button>
+        </div>
+        <div class="lip-body">
+          <h3>Full Cover Concealer</h3>
+          <p class="lip-desc">High-pigment, full-coverage concealer for blemishes, redness, and discoloration that lasts all day.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 58.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="full-cover-concealer" data-name="Full Cover Concealer" data-price="RM 58.00" data-image="concealer2.png"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="full-cover-concealer" data-name="Full Cover Concealer" data-price="58.00" data-image="concealer2.png">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+    </div>
+  </section>
+ 
+  <!-- Blush & Bronzer -->
+  <section class="lip-section" id="blush-bronzer">
+    <div class="lip-section-heading">
+      <h2>Blush &amp; Bronzer</h2>
+      <p>Soft-focus color and warmth to sculpt and flush the skin.</p>
+    </div>
+    <div class="lip-grid">
+ 
+      <div class="lip-card">
+        <div class="lip-img-wrap">
+          <button class="product-image-btn" onclick="openProduct('Cloud Flush Blush', 'blush1.png', 'RM 45.00', 'A soft, buildable powder blush that blends effortlessly for a natural, just-pinched flush.')">
+            <img src="blush1.png" alt="Cloud Flush Blush">
+          </button>
+        </div>
+        <div class="lip-body">
+          <h3>Cloud Flush Blush</h3>
+          <p class="lip-desc">A soft, buildable powder blush that blends effortlessly for a natural, just-pinched flush.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 45.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="cloud-flush-blush" data-name="Cloud Flush Blush" data-price="RM 45.00" data-image="blush1.png"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="cloud-flush-blush" data-name="Cloud Flush Blush" data-price="45.00" data-image="blush1.png">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="lip-card">
+        <div class="lip-img-wrap">
+          <button class="product-image-btn" onclick="openProduct('Petal Pop Cream Blush', 'blush2.png', 'RM 48.00', 'A creamy, dewy blush stick that melts into skin for a fresh, lit-from-within flush.')">
+            <img src="blush2.png" alt="Petal Pop Cream Blush">
+          </button>
+        </div>
+        <div class="lip-body">
+          <h3>Petal Pop Cream Blush</h3>
+          <p class="lip-desc">A creamy, dewy blush stick that melts into skin for a fresh, lit-from-within flush.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 48.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="petal-pop-cream-blush" data-name="Petal Pop Cream Blush" data-price="RM 48.00" data-image="blush2.png"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="petal-pop-cream-blush" data-name="Petal Pop Cream Blush" data-price="48.00" data-image="blush2.png">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="lip-card">
+        <div class="lip-img-wrap">
+          <button class="product-image-btn" onclick="openProduct('Sun-Kissed Bronzer', 'bronzer.jpg', 'RM 52.00', 'A warm, matte bronzing powder that sculpts and adds a natural sun-kissed glow.')">
+            <img src="bronzer.jpg" alt="Sun-Kissed Bronzer">
+          </button>
+        </div>
+        <div class="lip-body">
+          <h3>Sun-Kissed Bronzer</h3>
+          <p class="lip-desc">A warm, matte bronzing powder that sculpts and adds a natural sun-kissed glow.</p>
+          <div class="lip-footer">
+            <span class="lip-price">RM 52.00</span>
+            <div class="lip-footer-actions">
+              <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="sun-kissed-bronzer" data-name="Sun-Kissed Bronzer" data-price="RM 52.00" data-image="bronzer.jpg"><img src="wishlist.png" alt=""></button>
+              <button class="cart" data-id="sun-kissed-bronzer" data-name="Sun-Kissed Bronzer" data-price="52.00" data-image="bronzer.jpg">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+    </div>
+  </section>
+ 
 <!-- Product Image Popup -->
 <div id="product-modal" class="product-modal">
-
+ 
     <div class="product-modal-content">
-
+ 
         <button class="product-close" onclick="closeProduct()">×</button>
-
+ 
         <div class="product-modal-image">
             <img id="modal-image" src="" alt="">
         </div>
-
+ 
         <div class="product-modal-info">
-
+ 
     <h2 id="modal-name"></h2>
-
+ 
     <p id="modal-price"></p>
-
+ 
     <h3>Product Description</h3>
-
+ 
     <p id="modal-description"></p>
-
+ 
 </div>
-
+ 
     </div>
-
+ 
 </div>
-
+ 
   <!-- Wishlist toast -->
   <div id="wishlist-toast" class="toast"></div>
   <div id="cart-toast" class="toast"></div>
@@ -364,24 +382,24 @@
     }
  
     document.addEventListener('DOMContentLoaded', initWishlistButtons);
-
+ 
     function openProduct(name, image, price, description) {
-
+ 
       document.getElementById("modal-image").src = image;
       document.getElementById("modal-image").alt = name;
-
+ 
       document.getElementById("modal-name").textContent = name;
       document.getElementById("modal-price").textContent = price;
       document.getElementById("modal-description").textContent = description;
-
+ 
       document.getElementById("product-modal").classList.add("show");
     }
-
+ 
     function closeProduct() {
       document.getElementById("product-modal").classList.remove("show");
     }
   </script>
-
+ 
 <!-- ============ FOOTER — SITEMAP  ============ -->
 <footer>
   <div class="wrap">

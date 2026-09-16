@@ -1,0 +1,304 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+:root {
+    --payment-maroon: #3d0f22;
+    --payment-maroon-dark: #280000;
+    --payment-gold: #b89a6b;
+    --payment-gold-light: #cdb98a;
+    --payment-text-light: #f1e9dd;
+    --payment-border-soft: #e4dccb;
+
+    --payment-font: "Segoe UI", Arial, sans-serif;
+}
+
+.tracking-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    
+    font-family: var(--payment-font);
+
+    background-image: url("makeup_banner.png");
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+    font-family: var(--payment-font);
+}
+
+.tracking-box {
+    width: 100%;
+    max-width: 650px;
+
+    background: #fbf6ee;
+    border: 1px solid var(--payment-border-soft);
+    border-radius: 12px;
+    padding: 30px;
+}
+
+.tracking-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.tracking-header h1 {
+    font-family: var(--payment-font);
+    color: var(--payment-maroon);
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* Order meta (order number / date) — matches the two-column
+   layout used previously on the order confirmation page */
+
+.order-meta {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.meta-label {
+    display: block;
+    font-size: 12px;
+    color: #7a6f60;
+    margin-bottom: 3px;
+}
+
+.meta-value {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--payment-maroon);
+}
+
+/* Timeline */
+
+.timeline {
+    position: relative;
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+
+.timeline-step {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding-bottom: 20px;
+}
+
+/* Connecting line between steps */
+
+.timeline-step:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 19px;
+    top: 40px;
+    width: 2px;
+    height: calc(100% - 30px);
+    background-color: var(--payment-border-soft);
+    z-index: 0;
+}
+
+.timeline-step.completed:not(:last-child)::before {
+    background-color: var(--payment-gold);
+}
+
+.timeline-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+    border: 2px solid var(--payment-border-soft);
+    background-color: #fbf6ee;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+    font-size: 14px;
+    color: #7a6f60;
+
+    position: relative;
+    z-index: 1;
+
+    transition: 0.3s ease;
+}
+
+.timeline-step.active .timeline-icon {
+    border-color: var(--payment-gold);
+    background-color: var(--payment-gold);
+    color: var(--payment-maroon-dark);
+    box-shadow: 0 0 0 6px rgba(184, 154, 107, 0.25);
+}
+
+.timeline-step.completed .timeline-icon {
+    border-color: var(--payment-gold);
+    background-color: var(--payment-gold);
+    color: var(--payment-maroon-dark);
+}
+
+.timeline-step.completed .timeline-icon::after {
+    content: "✓";
+}
+
+.timeline-label h3 {
+    font-size: 17px;
+    color: var(--payment-maroon);
+    margin-bottom: 3px;
+}
+
+.timeline-step:not(.active):not(.completed) .timeline-label h3,
+.timeline-step:not(.active):not(.completed) .timeline-label p {
+    color: #b9ad9c;
+}
+
+.timeline-label p {
+    font-size: 13px;
+    color: #7a6f60;
+}
+
+/* Cancel order */
+
+.cancelled-message {
+    display: none;
+    text-align: center;
+    border-top: 2px solid var(--payment-border-soft);
+    padding-top: 20px;
+    margin-top: 10px;
+}
+
+.cancelled-message p {
+    color: #c62828;
+    background-color: rgba(198, 40, 40, 0.06);
+    border: 1px solid rgba(198, 40, 40, 0.2);
+    padding: 16px;
+    font-size: 14px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+/* Delivery confirmation */
+
+.delivery-check,
+.delivery-issue {
+    display: none;
+    text-align: center;
+    border-top: 2px solid var(--payment-border-soft);
+    padding-top: 20px;
+    margin-top: 10px;
+}
+
+.delivery-check h3 {
+    color: var(--payment-maroon);
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.delivery-check p {
+    color: #7a6f60;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.delivery-check-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-yes,
+.btn-no {
+    padding: 14px 24px;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Matches #pay-button styling from payment.css */
+
+.btn-yes {
+    background: var(--payment-maroon);
+    color: var(--payment-text-light);
+}
+
+.btn-yes:hover {
+    background: var(--payment-maroon-dark);
+}
+
+.btn-no {
+    background: transparent;
+    border: 1px solid var(--payment-maroon);
+    color: var(--payment-maroon);
+}
+
+.btn-no:hover {
+    background-color: rgba(61, 15, 34, 0.06);
+}
+
+/* Not delivered message — matches payment.css's .error color */
+
+.delivery-issue p {
+    color: #c62828;
+    background-color: rgba(198, 40, 40, 0.06);
+    border: 1px solid rgba(198, 40, 40, 0.2);
+    padding: 16px;
+    font-size: 14px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.issue-link {
+    color: var(--payment-maroon);
+    font-weight: 700;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+/* ---------- Back to Cart ---------- */
+.back-purchases {
+    text-align: center;
+    display: block;
+    padding-bottom: 35px;
+    text-align: center;
+    color: var(--payment-maroon);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.back-purchases:hover {
+    color: var(--payment-gold);
+    text-decoration: underline;
+}
+
+.issue-link:hover {
+    color: var(--payment-gold);
+}
+
+@media (max-width: 600px) {
+    .tracking-box {
+        padding: 25px 20px;
+    }
+
+    .order-meta {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .delivery-check-buttons,
+    .cancel-confirm-buttons {
+        flex-direction: column;
+    }
+}

@@ -20,8 +20,25 @@
         <h2>Order Summary</h2>
         <div id="payment-items"></div>
         <div class="payment-total">
-            <span>Total</span>
-            <strong>RM <span id="payment-total">0.00</span></strong>
+            <div>
+                <span>Subtotal</span>
+                <strong>RM <span id="payment-subtotal">0.00</span></strong>
+            </div>
+
+            <div id="discount-row" style="display: none;">
+                <span>Reward Discount</span>
+                <strong id="payment-discount"> - RM 0.00 </strong>
+            </div>
+
+            <div>
+                <span>Shipping</span>
+                <strong id="payment-shipping">RM 10.00</strong>
+            </div>
+
+            <div class="payment-grand-total">
+                <span>Total</span>
+                <strong>RM <span id="payment-total">0.00</span></strong>
+            </div>
         </div>
     </section>
 
@@ -40,7 +57,7 @@
             <!-- Card Number -->
             <div class="form-group">
                 <label for="card-number">Card Number</label>
-                <input type="text" id="card-number" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" inputmode="numeric" autocomplete="cc-number">
+                <input type="text" id="card-number" name="cardNumber" placeholder="1234567890123456" maxlength="16" inputmode="numeric" autocomplete="cc-number">
                 <small class="error" id="card-number-error"></small>
             </div>
 

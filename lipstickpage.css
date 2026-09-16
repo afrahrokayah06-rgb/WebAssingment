@@ -158,31 +158,6 @@
   transition: opacity 0.25s ease;
 }
 
-.lip-hover-info {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(61,15,34,0.92) 0%, rgba(43,10,24,0.96) 100%);
-  color: var(--lip-text-light);
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  font-size: 12.5px;
-  line-height: 1.55;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  pointer-events: none;
-}
-
-.lip-card:hover .lip-hover-info {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.lip-card:hover .lip-img-wrap img {
-  opacity: 0.12;
-}
 
 .lip-card .lip-body {
   padding: 20px 22px 24px;
@@ -316,6 +291,215 @@
     min-height: 480px;
   }
 }
+
+/* ---------- Clickable Product Image ---------- */
+
+.product-image-btn {
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.product-image-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+
+/* ---------- Product Popup ---------- */
+
+.product-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+/* Show popup */
+
+.product-modal.show {
+    display: flex;
+}
+
+
+/* Popup box */
+
+.product-modal-content {
+    position: relative;
+
+    width: 800px;
+    max-width: 90%;
+
+    background: #fff;
+
+    padding: 30px;
+
+    display: flex;
+    gap: 40px;
+
+    border-radius: 10px;
+
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+
+/* ---------- Large Product Image ---------- */
+
+.product-modal-image {
+    width: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-modal-image img {
+    width: 100%;
+    max-height: 500px;
+
+    object-fit: contain;
+}
+
+
+/* ---------- Product Information ---------- */
+
+.product-modal-info {
+    width: 50%;
+    padding: 20px 10px;
+}
+
+
+/* Product name */
+
+.product-modal-info h2 {
+    font-family: var(--lip-font);
+
+    font-size: 30px;
+    font-weight: 700;
+
+    color: var(--lip-maroon);
+
+    margin-bottom: 10px;
+}
+
+
+/* Product price */
+
+#modal-price {
+    font-size: 20px;
+    font-weight: 700;
+
+    color: var(--lip-maroon);
+
+    margin-bottom: 20px;
+}
+
+
+/* Product description heading */
+
+.product-modal-info h3 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    color: var(--lip-maroon);
+}
+
+
+/* Product description */
+
+#modal-description {
+    font-size: 14px;
+    line-height: 1.6;
+
+    color: var(--lip-maroon);
+
+    margin: 0;
+}
+
+
+/* ---------- Close Button ---------- */
+
+.product-close {
+    position: absolute;
+
+    top: 10px;
+    right: 15px;
+
+    border: none;
+    background: transparent;
+
+    color: var(--lip-maroon);
+
+    font-size: 30px;
+    font-weight: 400;
+
+    cursor: pointer;
+
+    line-height: 1;
+}
+
+.product-close:hover {
+    color: var(--lip-maroon-dark);
+}
+
+
+/* ---------- Mobile Popup ---------- */
+
+@media (max-width: 600px) {
+
+    .product-modal-content {
+        flex-direction: column;
+
+        width: 90%;
+        max-width: 500px;
+
+        padding: 25px;
+
+        gap: 20px;
+    }
+
+    .product-modal-image,
+    .product-modal-info {
+        width: 100%;
+    }
+
+    .product-modal-image img {
+        max-height: 300px;
+    }
+
+    .product-modal-info {
+        padding: 10px 5px;
+    }
+
+    .product-modal-info h2 {
+        font-size: 24px;
+    }
+
+}
+
 
 /* ---------- Wishlist toast ---------- */
 .toast {

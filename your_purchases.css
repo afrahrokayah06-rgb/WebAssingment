@@ -1,0 +1,374 @@
+:root {
+    --orders-maroon: #3d0f22;
+    --orders-maroon-dark: #280000;
+    --orders-gold: #b89a6b;
+    --orders-text-light: #f1e9dd;
+    --orders-border: #e4dccb;
+    --orders-background: #fbf6ee;
+    --orders-muted: #7a6f60;
+
+    --orders-font: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--orders-font);
+}
+
+.orders-page {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 40px 20px;
+
+    background-color: var(--orders-maroon);
+}
+
+.orders-box {
+    width: 100%;
+    max-width: 700px;
+
+    background: var(--orders-background);
+
+    border: 1px solid var(--orders-border);
+    border-radius: 12px;
+
+    padding: 35px;
+}
+
+.orders-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.orders-header h1 {
+    color: var(--orders-maroon);
+    font-size: 30px;
+    margin: 0 0 10px;
+}
+
+.orders-header p {
+    color: var(--orders-muted);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* =========================
+   ORDER CARD
+========================= */
+
+.order-card {
+    border: 1px solid var(--orders-border);
+    background: #fffdf9;
+
+    padding: 22px;
+    margin-bottom: 18px;
+
+    border-radius: 8px;
+}
+
+.order-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--orders-border);
+
+    gap: 15px;
+}
+
+.order-number {
+    color: var(--orders-maroon);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.order-date {
+    color: var(--orders-muted);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.order-status {
+    background: rgba(184, 154, 107, 0.15);
+    color: var(--orders-maroon);
+
+    padding: 6px 10px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    border-radius: 4px;
+
+    white-space: nowrap;
+}
+
+/* =========================
+   ORDER INFORMATION
+========================= */
+
+.order-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 0;
+
+    color: var(--orders-muted);
+    font-size: 14px;
+}
+
+.order-total {
+    color: var(--orders-maroon);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* =========================
+   ORDER ITEMS PREVIEW
+========================= */
+
+.order-items-preview {
+    margin-bottom: 15px;
+}
+
+.order-item-preview {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 6px 0;
+
+    color: var(--orders-muted);
+    font-size: 13px;
+}
+
+.order-item-preview-name {
+    flex: 1;
+}
+
+.order-item-preview-qty {
+    margin-left: 15px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.order-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.order-buttons a {
+    flex: 1;
+
+    text-align: center;
+
+    padding: 12px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.btn-summary {
+    background: var(--orders-maroon);
+    color: var(--orders-text-light);
+}
+
+.btn-summary:hover {
+    background: var(--orders-maroon-dark);
+}
+
+.btn-tracking {
+    background: transparent;
+
+    border: 1px solid var(--orders-maroon);
+
+    color: var(--orders-maroon);
+}
+
+.btn-tracking:hover {
+    background: rgba(61, 15, 34, 0.06);
+}
+
+/* =========================
+   NO ORDERS
+========================= */
+
+.no-orders {
+    text-align: center;
+
+    padding: 55px 25px;
+}
+
+.no-orders h2 {
+    color: var(--orders-gold);
+
+    font-size: 20px;
+    font-weight: 700;
+
+    margin: 0 0 10px;
+}
+
+.no-orders p {
+    color: var(--orders-muted);
+
+    font-size: 15px;
+    line-height: 1.6;
+
+    margin: 0 auto 25px;
+
+    max-width: 400px;
+}
+
+.no-orders a {
+    display: inline-block;
+
+    background: var(--orders-maroon);
+    color: var(--orders-text-light);
+
+    padding: 12px 28px;
+
+    border-radius: 5px;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    transition: all 0.2s ease;
+}
+
+.no-orders a:hover {
+    background: var(--orders-maroon-dark);
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 12px rgba(61, 15, 34, 0.18);
+}
+
+/* =========================
+   BOTTOM ACTION
+========================= */
+
+.orders-actions {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.btn-shopping {
+    color: var(--orders-maroon);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.btn-shopping:hover {
+    color: var(--orders-gold);
+    text-decoration: underline;
+}
+
+/* =========================
+   CANCEL BUTTON
+========================= */
+
+.btn-cancel {
+    flex: 1;
+
+    padding: 12px;
+
+    border: 1px solid #8b2635;
+
+    background: transparent;
+
+    color: #8b2635;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.btn-cancel:hover:not(:disabled) {
+    background: #8b2635;
+    color: white;
+}
+
+.btn-cancel:disabled {
+    background: #e5e0d8;
+    border-color: #c8c2b8;
+    color: #8a847b;
+
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* =========================
+   ORDER STATUS COLORS
+========================= */
+
+/* Delivered */
+.order-status.status-delivered {
+    background: #eee5f7;
+    color: #6a3d8f;
+}
+
+/* Received */
+.order-status.status-received {
+    background: #e3f4e8;
+    color: #287a45;
+}
+
+/* Not Received */
+.order-status.status-not-received {
+    background: #f9e1e1;
+    color: #a52a2a;
+}
+
+/* Cancelled */
+.order-status.status-cancelled {
+    background: #f9e1e1;
+    color: #a52a2a;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .orders-box {
+        padding: 25px 20px;
+    }
+
+    .order-card {
+        padding: 18px;
+    }
+
+    .order-card-header {
+        flex-direction: column;
+    }
+
+    .order-info {
+        align-items: flex-start;
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .order-buttons {
+        flex-direction: column;
+    }
+
+}
