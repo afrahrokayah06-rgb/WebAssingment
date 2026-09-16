@@ -86,7 +86,7 @@
   <div class="wrap">
     <button class="nav-toggle" aria-expanded="false">Menu ☰</button>
     <ul>
-    <li><a href="newArrivals.html">New</a></li>
+    <li><a href="new.html">New</a></li>
       <li><a href="makeup-face.html">Face</a></li>
       <li><a href="makeup-eyes.html">Eyes</a></li>
       <li><a href="makeup-lips.html">Lips</a></li>
@@ -97,24 +97,19 @@
 </nav>
  
 <main>
- 
-  <!-- ============ HERO BANNER — IMAGE MAP / HOTSPOT ============ -->
-  <section class="hero-banner">
-    <div class="wrap">
-      <figure>
-        <img src="makeup_banner.png" usemap="#makeupmap" width="1200" height="260"
-             alt="Makeup banner: click the lips, eyes, face, nails or remover smear to shop that category">
-        <map name="makeupmap">
-          <area shape="rect" coords="30,80,255,220" href="makeup-lips.html" alt="Shop Lips">
-          <area shape="rect" coords="270,75,480,220" href="makeup-eyes.html" alt="Shop Eyes">
-          <area shape="rect" coords="495,80,715,220" href="makeup-face.html" alt="Shop Face">
-          <area shape="rect" coords="730,80,940,220" href="makeup-nails.html" alt="Shop Nails">
-          <area shape="rect" coords="955,85,1170,220" href="makeup-remover.html" alt="Shop Makeup Remover">
-        </map>
-        <figcaption>A timeless collection of haute beauty, curated for the true connoisseur.</figcaption>
-      </figure>
-    </div>
-  </section>
+<section class="hero-banner">
+  <div class="wrap">
+    <figure>
+      <figcaption>A timeless collection of haute beauty, curated for the true connoisseur.</figcaption>
+      <div class="hero-video-wrap">
+        <video id="hero-video" class="hero-video" autoplay muted loop playsinline poster="makeup_banner.png">
+          <source src="mainpage_vd.mp4" type="video/mp4">
+        </video>
+        <button id="hero-sound-toggle" class="hero-sound-btn" aria-label="Unmute video">🔇</button>
+      </div>
+    </figure>
+  </div>
+</section>
  
   <!-- ============ RECOMMENDED CAROUSEL (JavaScript) ============ -->
   <section class="section">
@@ -129,78 +124,50 @@
       <div class="carousel-shell">
         <button class="carousel-btn prev" aria-label="Previous products">&#8249;</button>
  
-        <div class="carousel">
-          <article class="product-card">
-            <svg viewBox="0 0 100 60" aria-hidden="true">
-              <rect x="42" y="4" width="16" height="20" rx="3" fill="#420420"/>
-              <rect x="38" y="24" width="24" height="30" rx="6" fill="#B5657A"/>
-            </svg>
-            <p class="brand">MAC</p>
-            <h3>Matte Lipstick — Velvet Rose</h3>
-            <p class="price">RM 98.00</p>
-          </article>
- 
-          <article class="product-card">
-            <svg viewBox="0 0 100 60" aria-hidden="true">
-              <rect x="46" y="2" width="8" height="34" fill="#C7A76B"/>
-              <ellipse cx="50" cy="46" rx="20" ry="12" fill="#8A6D8F"/>
-            </svg>
-            <p class="brand">Dior</p>
-            <h3>Addict Lip Glow Balm</h3>
-            <p class="price">RM 145.00</p>
-          </article>
- 
-          <article class="product-card">
-            <svg viewBox="0 0 100 60" aria-hidden="true">
-              <rect x="44" y="4" width="10" height="26" fill="#4D4430"/>
-              <rect x="34" y="30" width="30" height="22" rx="4" fill="#C7A100" opacity="0.85"/>
-            </svg>
-            <p class="brand">Whatever Collection</p>
-            <h3>Volumising Mascara</h3>
-            <p class="price">RM 62.00</p>
-          </article>
- 
-          <article class="product-card">
-            <svg viewBox="0 0 100 60" aria-hidden="true">
-              <rect x="40" y="6" width="12" height="24" fill="#2c0216"/>
-              <ellipse cx="46" cy="42" rx="22" ry="14" fill="#7A3B4E"/>
-            </svg>
-            <p class="brand">Whatever</p>
-            <h3>Cream Lip Stain</h3>
-            <p class="price">RM 79.00</p>
-          </article>
- 
-          <article class="product-card">
-            <svg viewBox="0 0 100 60" aria-hidden="true">
-              <rect x="30" y="14" width="40" height="34" rx="4" fill="#E7DDC9"/>
-              <rect x="30" y="4" width="40" height="12" rx="3" fill="#420420"/>
-            </svg>
-            <p class="brand">Laura Mercier</p>
-            <h3>Translucent Setting Powder</h3>
-            <p class="price">RM 210.00</p>
-          </article>
+            <div class="carousel">
+      <article class="product-card">
+        <img src="foundation1.png" alt="Second Skin Foundation" class="product-card-img">
+        <h3>Second Skin Foundation</h3>
+        <p class="price">RM 89.00</p>
+      </article>
 
-          <article class="product-card">
-            <svg viewBox="0 0 100 60" aria-hidden="true">
-              <rect x="30" y="20" width="14" height="30" rx="3" fill="#420420"/>
-              <ellipse cx="60" cy="30" rx="18" ry="10" fill="#7A3B4E"/>
-            </svg>
-            <p class="brand">OPI</p>
-            <h3>Gel Nail Polish — Crimson</h3>
-            <p class="price">RM 39.00</p>
-          </article>
+      <article class="product-card">
+        <img src="concealer1.png" alt="Bright Eye Concealer" class="product-card-img">
+        <h3>Bright Eye Concealer</h3>
+        <p class="price">RM 55.00</p>
+      </article>
 
-          <article class="product-card">
-            <svg viewBox="0 0 100 60" aria-hidden="true">
-              <rect x="34" y="10" width="32" height="40" rx="6" fill="#E7DDC9"/>
-              <circle cx="50" cy="26" r="8" fill="#FBEBE1"/>
-            </svg>
-            <p class="brand">Whatever</p>
-            <h3>Micellar Makeup Remover 400ml</h3>
-            <p class="price">RM 55.00</p>
-          </article>
-        </div>
- 
+      <article class="product-card">
+        <img src="blush1.png" alt="Cloud Flush Blush" class="product-card-img">
+        <h3>Cloud Flush Blush</h3>
+        <p class="price">RM 45.00</p>
+      </article>
+
+      <article class="product-card">
+        <img src="CherryBloom.jpeg" alt="Cherry Bloom lip gloss" class="product-card-img">
+        <h3>Cherry Bloom</h3>
+        <p class="price">RM 38.00</p>
+      </article>
+
+      <article class="product-card">
+        <img src="liner1.png" alt="Precision Felt-Tip Liner" class="product-card-img">
+        <h3>Precision Felt-Tip Liner</h3>
+        <p class="price">RM 39.00</p>
+      </article>
+
+      <article class="product-card">
+        <img src="Micellar_Water.jpeg" alt="Micellar Water" class="product-card-img">
+        <h3>Micellar Water</h3>
+        <p class="price">RM 20.00</p>
+      </article>
+
+      <article class="product-card">
+        <img src="CoralCharm.jpeg" alt="Coral Charm Blush" class="product-card-img">
+        <h3>Coral Charm</h3>
+        <p class="price">RM 38.00</p>
+      </article>
+    </div>
+    
         <button class="carousel-btn next" aria-label="Next products">&#8250;</button>
       </div>
     </div>
@@ -229,31 +196,31 @@
         </thead>
         <tbody>
           <tr>
-            <td>Matte Lipstick — Velvet Rose</td>
-            <td>Lips</td>
-            <td>RM 98.00</td>
+            <td>Second Skin Foundation</td>
+            <td>Face</td>
+            <td>RM 89.00</td>
             <td class="deal-price">RM 74.00</td>
             <td>20 Sept</td>
           </tr>
           <tr>
-            <td>Volumising Mascara</td>
-            <td>Eyes</td>
+            <td>Bright Eye Concealer</td>
+            <td>Face</td>
             <td>RM 62.00</td>
-            <td class="deal-price">RM 45.00</td>
+            <td class="deal-price">RM 55.00</td>
             <td>20 Sept</td>
           </tr>
           <tr>
-            <td>Gel Nail Polish — Crimson</td>
-            <td>Nails</td>
-            <td>RM 39.00</td>
-            <td class="deal-price">RM 29.00</td>
+            <td>Micellar Water</td>
+            <td>Makeup Remover</td>
+            <td>RM 30.00</td>
+            <td class="deal-price">RM 20.00</td>
             <td>22 Sept</td>
           </tr>
           <tr>
-            <td>Micellar Makeup Remover 400ml</td>
-            <td>Makeup Remover</td>
-            <td>RM 55.00</td>
-            <td class="deal-price">RM 42.00</td>
+            <td>Coral Charm</td>
+            <td>Lips</td>
+            <td>RM 45.00</td>
+            <td class="deal-price">RM 35.00</td>
             <td>22 Sept</td>
           </tr>
         </tbody>
@@ -261,31 +228,39 @@
     </div>
   </section>
  
-  <!-- ============ BOOK BEAUTY SERVICES — ORDERED LIST ============ -->
+  <!-- ============ HOW IT WORKS ============ -->
   <section class="section">
     <div class="wrap">
       <div class="section-head">
         <div>
-          <h2>Book A Beauty Service Online In 3 Steps</h2>
-<p>Virtual makeup tutorials, skincare consultations, and brow styling guidance from anywhere</p>
-
-<ol class="steps">
-    <li>
-        <h3>Choose a service</h3>
-        <p>Pick from virtual makeup lessons, online skincare consultations, or brow styling tips.</p>
-    </li>
-    <li>
-        <h3>Pick a time</h3>
-        <p>Select an available online appointment slot that works for you.</p>
-    </li>
-    <li>
-        <h3>Confirm your booking</h3>
-        <p>Get instant confirmation and a reminder before your online session.</p>
-    </li>
-</ol>
-
+          <h2>Booking a beauty service online in 3 simple steps</h2>
+          <p>Three steps from booking to your appointment</p>
+        </div>
+      </div>
  
-      <p style="margin-top:24px;"><a class="btn" href="book-services.html">Book Beauty Services →</a></p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">01</span>
+          <h3>Choose a service</h3>
+          <p>Pick from a virtual makeup lesson, online skincare consultation or brow styling guidance below.</p>
+        </div>
+        
+        <div class="step-card">
+          <span class="step-num">02</span>
+          <h3>Pick a date and time</h3>
+          <p>Fill in the booking form with your preferred slot and video call platform.</p>
+        </div>
+        
+        <div class="step-card">
+          <span class="step-num">03</span>
+          <h3>Confirm your booking</h3>
+          <p>Get instant confirmation by email with your video call link and a reminder before your session.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+      <p style="margin-top:24px;"><a class="btn" href="beauty_service.html">Book Beauty Services →</a></p>
     </div>
   </section>
  
@@ -373,7 +348,7 @@
         <ul>
           <li><a href="aboutus.html">About Us</a></li>
           <li><a href="promotions.html">Promotions &amp; Events</a></li>
-          <li><a href="book-services.html">Book Beauty Services</a></li>
+          <li><a href="beauty_service.html">Book Beauty Services</a></li>
           <li><a href="faq.html">FAQ</a></li>
         </ul>
       </div>

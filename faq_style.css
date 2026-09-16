@@ -5,9 +5,10 @@
 body {
     background-color: #420420;
     font-family: var(--font-body);
+    max-width: 1024px;
+    min-width: 320px;
 }
 .faq-page {
-    max-width: 950px;
     width: 90%;
     margin: 40px auto;
     padding: 60px 20px;
