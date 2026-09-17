@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>New Arrivals | Whatever</title>
+    <link rel="stylesheet" href="nav.css">
+
+    <link rel="stylesheet" href="newArrivals.css">
+    <link rel="stylesheet" href="lipstickpage.css">
+    <script src="newArrivals.js" defer></script>
+</head>
+
+<!-- ============ TOP UTILITY BAR ============ -->
+<header>
+  <div class="nav-top">
+    <div class="nav-left">
+      <div class="account-dropdown">
+        <a href="login.html" id="userAccountLink">
+            <img src="profile.png" alt="" class="nav-icon">
+            <span id="userAccountName">Sign In / Sign Up</span>
+        </a>
+        <div id="accountMenu" class="account-menu">
+            <a href="#" id="logout-button">
+                Log Out
+            </a>
+            <a href="#" id="delete-account-button" class="delete-account">
+                Delete Account
+            </a>
+        </div>
+    </div>
+    </div>
+    <div class="nav-right"> 
+   <!-- AFTER -->
+    <a href="membership.html"><img src="member-removebg-preview.png" alt=""class="nav-icon">Membership</a>
+    <a href="beauty_service.html"><img src="promotion_events.png" alt=""class="nav-icon">Book Beauty Services</a>  
+    <a href="promotions.html"><img src="beautypass.png" alt="" class="nav-icon">Promotions &amp; Events</a>
+    <a href="wishlist.html" class="icon-link"><img src="wishlist.png" alt="" class="nav-icon">Wishlist</a>
+    <a href="cart.html" class="icon-link"><img src="cart.png" alt="" class="nav-icon">Cart</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MASTHEAD: logo / search form / sample note ============ -->
+<div class="masthead">
+  <div class="wrap">
+    <a class="logo" href="index.html">WHATEVER</a>
+  <form class="search-form" role="search" action="#" method="get">
+      <label for="site-search" class="visually-hidden">Search products</label>
+      <input type="search" id="site-search" name="q" list="search-suggestions"
+             placeholder="What are you looking for?" required>
+      <datalist id="search-suggestions">
+        <option value="Lipstick"></option>
+        <option value="Mascara"></option>
+        <option value="Foundation"></option>
+        <option value="Nail Polish"></option>
+        <option value="Makeup Remover Wipes"></option>
+      </datalist>
+      <button type="submit" aria-label="Search">🔍</button>
+    </form>
+   
+ 
+    <p class="free-sample"><strong>Free Sample</strong>with every purchase</p>
+  </div>
+</div>
+ 
+<!-- ============ CATEGORY NAVIGATION  ============ -->
+<nav class="category-nav" aria-label="Product categories">
+  <div class="wrap">
+    <button class="nav-toggle" aria-expanded="false">Menu ☰</button>
+    <ul>
+    <li><a href="new.html">New</a></li>
+      <li><a href="makeup-face.html">Face</a></li>
+      <li><a href="makeup-eyes.html">Eyes</a></li>
+      <li><a href="makeup-lips.html">Lips</a></li>
+      <li><a href="makeup-nails.html">Nails</a></li>
+      <li><a href="makeup-remover.html">Makeup Remover</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<body>
+
+    <main class="new-arrivals-page">
+
+        <!-- ==================== -->
+        <!-- HERO SLIDESHOW -->
+        <!-- ==================== -->
+
+        <section class="new-arrivals-slider">
+
+            <!-- Slide 1 -->
+            <div class="slide active">
+
+                <div class="slide-image">
+                    <img src="images/newArrival1.png"
+                         alt="New beauty products">
+                </div>
+
+                <div class="slide-content">
+                    <p class="slide-small-title">JUST DROPPED</p>
+
+                    <h1>New Arrivals</h1>
+
+                    <p>
+                        Meet the latest shades and beauty
+                        essentials for your everyday look.
+                        
+                    </p>
+
+                    <button class="shop-button"
+                            onclick="scrollToProducts()">
+                        Shop Now
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Slide 2 -->
+            <div class="slide">
+
+                <div class="slide-image">
+                    <img src="images/newArrival2.png"
+                         alt="New makeup collection">
+                </div>
+
+                <div class="slide-content">
+                    <p class="slide-small-title">SLAYYY</p>
+
+                    <h1>Fresh Looks</h1>
+
+                    <p>
+                        Discover our latest beauty essentials
+                        and find your next favourite.
+                    </p>
+
+                    <button class="shop-button"
+                            onclick="scrollToProducts()">
+                        Explore Now
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Slide 3 -->
+            <div class="slide">
+
+                <div class="slide-image">
+                    <img src="images/newArrival3.png"
+                         alt="New products">
+                </div>
+
+                <div class="slide-content">
+                    <p class="slide-small-title">JUST FOR YOU</p>
+
+                    <h1>Glow Starts Here</h1>
+
+                    <p>
+                        New trends, timeless beauty, endless possibilities
+                    </p>
+
+                    <button class="shop-button"
+                            onclick="scrollToProducts()">
+                        Click Here
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Previous Button -->
+            <button class="slider-button previous"
+                    onclick="changeSlide(-1)">
+                &#10094;
+            </button>
+
+
+            <!-- Next Button -->
+            <button class="slider-button next"
+                    onclick="changeSlide(1)">
+                &#10095;
+            </button>
+
+
+            <!-- Dots -->
+            <div class="slider-dots">
+
+                <button class="dot active"
+                        onclick="showSlide(0)">
+                </button>
+
+                <button class="dot"
+                        onclick="showSlide(1)">
+                </button>
+
+                <button class="dot"
+                        onclick="showSlide(2)">
+                </button>
+
+            </div>
+
+        </section>
+        <audio autoplay loop>
+        <source src="newArrivalsAudio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+
+
+        <!-- ==================== -->
+        <!-- PRODUCTS SECTION -->
+        <!-- ==================== -->
+
+        <section class="products-section" id="products">
+
+            <div class="section-heading">
+                <p>EXPLORE OUR LATEST</p>
+
+                <h2>New Arrivals</h2>
+
+                <span>
+                    Discover the newest additions to Whatever.
+                </span>
+            </div>
+
+
+           
+
+
+            <!-- Category Filter -->
+            <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="face">Face</button>
+            <button class="filter-btn" data-filter="eyes">Eyes</button>
+            <button class="filter-btn" data-filter="lips">Lips</button>
+            <button class="filter-btn" data-filter="nails">Nails</button>
+            <button class="filter-btn" data-filter="makeup-remover">Makeup Remover</button>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="lip-grid">
+
+                <!--NewArrival1-->
+                <div class="lip-card" data-category="face">
+                <div class="lip-img-wrap">
+                    <button class="product-image-btn" onclick="openProduct('Second Skin Foundation', 'foundation1.png', 'RM 89.00', 'A lightweight, buildable foundation with a natural skin-like finish and 24-hour hydration.')">
+                        <img src="foundation1.png" alt="Second Skin Foundation">
+                    </button>
+                    </div>
+                    <div class="lip-body">
+                        <h3>Second Skin Foundation</h3>
+                        <p class="lip-desc">A lightweight, buildable foundation with a natural skin-like finish and 24-hour hydration.</p>
+                        <div class="lip-footer">
+                            <span class="lip-price">RM 89.00</span>
+                            <div class="lip-footer-actions">
+                                <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="second-skin-foundation" data-name="Second Skin Foundation" data-price="RM 89.00" data-image="foundation1.png"><img src="wishlist.png" alt=""></button>
+                                <button class="cart" data-id="second-skin-foundation" data-name="Second Skin Foundation" data-price="89.00" data-image="foundation1.png">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--NewArrival2-->
+                <div class="lip-card" data-category="face">
+                <div class="lip-img-wrap">
+                    <button class="product-image-btn" onclick="openProduct('Bright Eye Concealer', 'concealer1.png', 'RM 55.00', 'A brightening, crease-proof concealer that cancels dark circles without settling into fine lines.')">
+                    <img src="concealer1.png" alt="Bright Eye Concealer">
+                </button>
+                </div>
+                <div class="lip-body">
+                    <h3>Bright Eye Concealer</h3>
+                    <p class="lip-desc">A brightening, crease-proof concealer that cancels dark circles without settling into fine lines.</p>
+                    <div class="lip-footer">
+                        <span class="lip-price">RM 55.00</span>
+                        <div class="lip-footer-actions">
+                            <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="bright-eye-concealer" data-name="Bright Eye Concealer" data-price="RM 55.00" data-image="concealer1.png"><img src="wishlist.png" alt=""></button>
+                            <button class="cart" data-id="bright-eye-concealer" data-name="Bright Eye Concealer" data-price="55.00" data-image="concealer1.png">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+
+                <!--NewArrival3-->
+                <div class="lip-card" data-category="face">
+                <div class="lip-img-wrap">
+                    <button class="product-image-btn" onclick="openProduct('Petal Pop Cream Blush', 'blush2.png', 'RM 48.00', 'A creamy, dewy blush stick that melts into skin for a fresh, lit-from-within flush.')">
+                    <img src="blush2.png" alt="Petal Pop Cream Blush">
+                    </button>
+                </div>
+                <div class="lip-body">
+                    <h3>Petal Pop Cream Blush</h3>
+                    <p class="lip-desc">A creamy, dewy blush stick that melts into skin for a fresh, lit-from-within flush.</p>
+                    <div class="lip-footer">
+                        <span class="lip-price">RM 48.00</span>
+                        <div class="lip-footer-actions">
+                            <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="petal-pop-cream-blush" data-name="Petal Pop Cream Blush" data-price="RM 48.00" data-image="blush2.png"><img src="wishlist.png" alt=""></button>
+                            <button class="cart" data-id="petal-pop-cream-blush" data-name="Petal Pop Cream Blush" data-price="48.00" data-image="blush2.png">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+
+                <!--NewArrival4-->
+                <div class="lip-card" data-category="eyes">
+                <div class="lip-img-wrap">
+                    <button class="product-image-btn" onclick="openProduct('Waterproof Length Mascara', 'mac3.png', 'RM 54.00', 'A smudge-proof, waterproof formula that lengthens lash-tip to root and holds through humidity and tears.')">
+                    <img src="mac3.png " alt="Waterproof Length Mascara">
+                </button>
+                </div>
+                <div class="lip-body">
+                    <h3>Waterproof Length Mascara</h3>
+                    <p class="lip-desc">A smudge-proof, waterproof formula that lengthens lash-tip to root and holds through humidity and tears.</p>
+                    <div class="lip-footer">
+                        <span class="lip-price">RM 54.00</span>
+                        <div class="lip-footer-actions">
+                            <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="waterproof-length-mascara" data-name="Waterproof Length Mascara" data-price="RM 54.00" data-image="mac3.png"><img src="wishlist.png" alt=""></button>
+                            <button class="cart" data-id="waterproof-length-mascara" data-name="Waterproof Length Mascara" data-price="54.00" data-image="mac3.png">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <!--NewArrival5-->
+                <div class="lip-card" data-category="eyes">
+                <div class="lip-img-wrap">
+                    <button class="product-image-btn" onclick="openProduct('Precision Felt-Tip Liner', 'liner1.png', 'RM 39.00', 'An ultra-fine felt tip for a crisp, opaque line in one stroke, from subtle flicks to bold wings.')">
+                    <img src="liner1.png" alt="Precision Felt-Tip Liner">
+                </button>
+                </div>
+                <div class="lip-body">
+                    <h3>Precision Felt-Tip Liner</h3>
+                    <p class="lip-desc">An ultra-fine felt tip for a crisp, opaque line in one stroke, from subtle flicks to bold wings.</p>
+                    <div class="lip-footer">
+                        <span class="lip-price">RM 39.00</span>
+                        <div class="lip-footer-actions">
+                            <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="precision-felt-tip-liner" data-name="Precision Felt-Tip Liner" data-price="RM 39.00" data-image="liner1.png"><img src="wishlist.png" alt=""></button>
+                            <button class="cart" data-id="precision-felt-tip-liner" data-name="Precision Felt-Tip Liner" data-price="39.00" data-image="liner1.png">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+
+                <!--NewArrival6-->
+                
+                <div class="lip-card" data-category="nails">
+                <div class="lip-img-wrap">
+                    <button class="product-image-btn" onclick="openProduct('Velvet Plum', 'VelvetPlum.jpeg', 'RM 29.00', 'Rich plum and dove-white nails with gold star and bow details, plus a swirling gold spiral accent nail.')">
+                    <img src="VelvetPlum.jpeg" alt="Velvet Plum nail set">
+                </button>
+                </div>
+                <div class="lip-body">
+                <h3>Velvet Plum</h3>
+                <p class="lip-desc">Rich plum and dove-white nails with gold star and bow details, plus a swirling gold spiral accent nail.</p>
+                <div class="lip-footer">
+                    <span class="lip-price">RM 29.00</span>
+                    <div class="lip-footer-actions">
+                    <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="velvet-plum" data-name="Velvet Plum Nail Set" data-price="RM 29.00" data-image="VelvetPlum.jpeg"><img src="wishlist.png" alt=""></button>
+                    <button class="cart" data-id="velvet-plum" data-name="Velvet Plum Nail Set" data-price="29.00" data-image="VelvetPlum.jpeg">Add to Cart</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+                
+            
+                <!--NewArrival7-->
+                <div class="lip-card" data-category="lips">
+                <div class="lip-img-wrap">
+                <button class="product-image-btn"
+                    onclick="openProduct('Wine Stain', 'WineStain.jpeg', 'RM 42.00', 'A creamy, soft-matte lipstick that glides on without dragging or settling into lip lines. Long-wearing formula holds color through meals and drinks. Best paired with a lip liner for extra staying power.')">
+        
+                    <img src="WineStain.jpeg" alt="Wine Stain lipstick">
+        
+                </button>
+        
+                </div>
+                <div class="lip-body">
+                    <span class="lip-shade-dot" style="background-color:#7a1f30;"></span>
+                    <h3>Wine Stain</h3>
+                    <p class="lip-desc">A deep wine-red cream lipstick with a soft-matte finish that glides on smooth and wears comfortably all day.</p>
+                    <div class="lip-footer">
+                        <span class="lip-price">RM 42.00</span>
+                        <div class="lip-footer-actions">
+                            <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="wine-stain" data-name="Wine Stain Lipstick" data-price="42.00" data-image="WineStain.jpeg"><img src="wishlist.png" alt=""></button>
+                            <button class="cart" data-id="wine-stain" data-name="Wine Stain Lipstick" data-price="42.00" data-image="WineStain.jpeg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+    
+                <!--NewArrival8-->
+                <div class="lip-card" data-category="lips">
+ 
+                <div class="lip-img-wrap">
+                    <button class="product-image-btn"
+                        onclick="openProduct('Coral Charm', 'CoralCharm.jpeg', 'RM 38.00', 'A soft coral-pink wash of color with a glassy, second-skin shine — perfect for building up a natural everyday glow.')">
+                        <img src="CoralCharm.jpeg" alt="Coral Charm lip gloss">
+                    </button>
+                </div>
+                <div class="lip-body">
+                    <div class="lip-shade-dot"></div>
+                    <h3>Coral Charm</h3>
+                    <p class="lip-desc">
+                        A soft coral-pink wash of color with a glassy, second-skin shine —
+                        perfect for building up a natural everyday glow.
+                    </p>
+                    <div class="lip-footer">
+                        <span class="lip-price">RM 38.00</span>
+                        <div class="lip-footer-actions">
+                            <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="coral-charm" data-name="Coral Charm Lip Gloss" data-price="38.00" data-image="CoralCharm.jpeg"><img src="wishlist.png" alt=""></button>
+                            <button class="cart" data-id="coral-charm" data-name="Coral Charm Lip Gloss" data-price="38.00" data-image="CoralCharm.jpeg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+
+                <!--NewArrival9-->
+                <div class="lip-card" data-category="lips">
+                <div class="lip-img-wrap">
+                    <button class="product-image-btn"
+                        onclick="openProduct('Classic Red', 'ClassicRed.jpeg', 'RM 42.00', 'A true blue-toned red that suits nearly every skin tone. Full opacity in a single swipe, with a satin-glossy finish that never looks dry. The go-to shade for a bold, confident lip.')">
+            
+                        <img src="ClassicRed.jpeg" alt="Classic Red lipstick">
+            
+                    </button>
+            
+                </div>
+                <div class="lip-body">
+                    <span class="lip-shade-dot" style="background-color:#c81f2b;"></span>
+                    <h3>Classic Red</h3>
+                    <p class="lip-desc">A true, vibrant red with a glossy satin finish — the ultimate statement lip for any occasion.</p>
+                    <div class="lip-footer">
+                        <span class="lip-price">RM 42.00</span>
+                        <div class="lip-footer-actions">
+                            <button class="lip-wishlist-btn" aria-label="Add to Wishlist" data-id="classic-red" data-name="Classic Red Lipstick" data-price="42.00" data-image="ClassicRed.jpeg"><img src="wishlist.png" alt=""></button>
+                            <button class="cart" data-id="classic-red" data-name="Classic Red Lipstick" data-price="42.00" data-image="ClassicRed.jpeg">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                
+                
+
+
+
+            </div>
+
+
+            <!-- Wishlist toast -->
+  <div id="wishlist-toast" class="toast"></div>
+  <div id="cart-toast" class="toast"></div>
+ 
+  <script>
+    const WISHLIST_KEY = 'whatever_wishlist';
+ 
+    function getWishlist() {
+      try {
+        return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+ 
+    function saveWishlist(list) {
+      localStorage.setItem(WISHLIST_KEY, JSON.stringify(list));
+    }
+ 
+    let toastTimer;
+    function showToast(message) {
+      const toast = document.getElementById('wishlist-toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+ 
+    function initWishlistButtons() {
+      const saved = getWishlist();
+      const buttons = document.querySelectorAll('.lip-wishlist-btn');
+ 
+      buttons.forEach(btn => {
+        if (saved.some(item => item.id === btn.dataset.id)) {
+          btn.classList.add('active');
+        }
+ 
+        btn.addEventListener('click', () => {
+          let list = getWishlist();
+          const exists = list.some(item => item.id === btn.dataset.id);
+ 
+          if (exists) {
+            list = list.filter(item => item.id !== btn.dataset.id);
+            btn.classList.remove('active');
+            showToast('Removed from Wishlist');
+          } else {
+            list.push({
+              id: btn.dataset.id,
+              name: btn.dataset.name,
+              price: btn.dataset.price,
+              image: btn.dataset.image
+            });
+            btn.classList.add('active');
+            showToast('Added to Wishlist');
+          }
+ 
+          saveWishlist(list);
+        });
+      });
+    }
+ 
+    document.addEventListener('DOMContentLoaded', initWishlistButtons);
+ 
+    function openProduct(name, image, price, description) {
+ 
+      document.getElementById("modal-image").src = image;
+      document.getElementById("modal-image").alt = name;
+ 
+      document.getElementById("modal-name").textContent = name;
+      document.getElementById("modal-price").textContent = price;
+      document.getElementById("modal-description").textContent = description;
+ 
+      document.getElementById("product-modal").classList.add("show");
+    }
+ 
+    function closeProduct() {
+      document.getElementById("product-modal").classList.remove("show");
+    }
+  </script>
+
+          </section>
+        <!-- PRODUCT DESCRIPTION POPUP -->
+        <div id="product-modal" class="product-modal">
+
+            <div class="product-modal-content">
+
+                <button class="product-close" onclick="closeProduct()">×</button>
+
+                <div class="product-modal-image">
+                    <img id="modal-image" src="" alt="">
+                </div>
+
+                <div class="product-modal-info">
+
+                    <h2 id="modal-name"></h2>
+
+                    <p id="modal-price"></p>
+
+                    <h3>Product Description</h3>
+
+                    <p id="modal-description"></p>
+
+                </div>
+
+            </div>
+
+        </div>
+        
+      
+        <!-- ============ FOOTER — SITEMAP  ============ -->
+        <footer>
+        <div class="wrap">
+            <div class="footer-grid">
+            <div>
+                <h3>Shop</h3>
+                <ul>
+                <li><a href="makeup-face.html">Face</a></li>
+                <li><a href="makeup-eyes.html">Eyes</a></li>
+                <li><a href="makeup-lips.html">Lips</a></li>
+                <li><a href="makeup-nails.html">Nails</a></li>
+                <li><a href="makeup-remover.html">Makeup Remover</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>My Account</h3>
+                <ul>
+                <li><a href="login.html">Login / Register</a></li>
+                <li><a href="membership.html">Beauty Pass Membership</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="payment.html">Payment</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Discover</h3>
+                <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="promotions.html">Promotions &amp; Events</a></li>
+                <li><a href="book-services.html">Book Beauty Services</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Get In Touch</h3>
+                <ul>
+                <li><a href="feedback.html">Feedback Form</a></li>
+                <li><a href="mailto:hello@whatever.com">hello@whatever.com</a></li>
+                </ul>
+            </div>
+            </div>
+        
+        </div>
+        </footer>
+        <script src="main_page.js"></script>
+
+   
+
+</body>
+</html>

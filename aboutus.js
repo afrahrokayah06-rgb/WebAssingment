@@ -1,5 +1,4 @@
 // ============ SECTION 6: looping images ============
-// Replace these with the 3 real image paths when ready
 const loopImages = ["Promotion1.jpg", "Promotion2.jpg", "Promotion3.jpg"];
 let loopIndex = 0;
 

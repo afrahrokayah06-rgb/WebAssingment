@@ -1,31 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback Form</title>
-    <link href="formstyle.css" rel="stylesheet">
-    <link href="nav.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Feedback | Whatever</title>
+<meta name="description" content="Tell us what you think — Whatever customer feedback form.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="feedbackstyle.css">
 </head>
 <body>
+
+<!-- ============ TOP UTILITY BAR ============ -->
 <header>
   <div class="nav-top">
     <div class="nav-left">
-      <a href="login.html" id="userAccountLink">
-          <img src="profile.png" alt="Profile Icon" class="nav-icon">
-          <span id="userAccountName">Sign In / Sign Up</span>
-      </a>
+      <div class="account-dropdown">
+        <a href="login.html" id="userAccountLink">
+            <img src="profile.png" alt="" class="nav-icon">
+            <span id="userAccountName">Sign In / Sign Up</span>
+        </a>
+        <div id="accountMenu" class="account-menu">
+            <a href="your_purchases.html" id="order-button">Your Purchases</a>
+            <a href="#" id="logout-button">Log Out</a>
+            <a href="#" id="delete-account-button" class="delete-account">Delete Account</a>
+        </div>
+      </div>
     </div>
-    <div class="nav-right"> 
-    <a href="#membership"><img src="member-removebg-preview.png" alt="Membership Icon" class="nav-icon">Membership</a>
-    <a href="#services"><img src="promotion_events.png" alt="Book Services Icon" class="nav-icon">Book Beauty Services</a>  
-    <a href="#promotions"><img src="beautypass.png" alt="Promotions Icon" class="nav-icon">Promotions &amp; Events</a>
-    <a href="#wishlist" class="icon-link"><img src="wishlist.png" alt="Wishlist Icon" class="nav-icon">Wishlist</a>
-    <a href="cart.html" class="icon-link"><img src="cart.png" alt="Cart Icon" class="nav-icon">Cart</a>
+    <div class="nav-right">
+      <a href="membership.html"><img src="member-removebg-preview.png" alt="" class="nav-icon">Membership</a>
+      <a href="beauty_service.html"><img src="promotion_events.png" alt="" class="nav-icon">Book Beauty Services</a>
+      <a href="promotions.html"><img src="beautypass.png" alt="" class="nav-icon">Promotions &amp; Events</a>
+      <a href="wishlist.html" class="icon-link"><img src="wishlist.png" alt="" class="nav-icon">Wishlist</a>
+      <a href="cart.html" class="icon-link"><img src="cart.png" alt="" class="nav-icon">Cart</a>
     </div>
   </div>
 </header>
 
+<!-- ============ MASTHEAD — WHATEVER title ============ -->
+<div class="masthead">
+  <div class="wrap">
+    <a class="logo" href="main_page.html">WHATEVER</a>
+  </div>
+</div>
+
+<!-- ============ CUSTOMER FEEDBACK FORM ============ -->
+<main>
+  <div class="feedback-banner">Customer Feedback</div>
+
+  <div class="feedback-page">
+    <form id="feedbackForm">
+      <div class="feedback-table-wrap">
+        <table class="feedback-table">
+          <tbody>
+
+            <!-- Name -->
+            <tr>
+              <td class="label-cell">Name:</td>
+              <td class="input-cell">
+                <input type="text" id="name" name="name" required pattern="[A-Za-z\s]+" title="Letters only" autocomplete="name">
+                <ul class="field-hints"><li>Required</li><li>Letters only</li></ul>
+              </td>
+            </tr>
+
+            <!-- Email -->
+            <tr>
+              <td class="label-cell">Email:</td>
+              <td class="input-cell">
+                <input type="text" id="email" name="email" required pattern="^.*@.*$" title="Email must contain an @" autocomplete="email">
+                <ul class="field-hints"><li>Required</li><li>Valid email format</li></ul>
+                <div class="email-warning" id="emailWarning">Missing an @</div>
+              </td>
+            </tr>
+
+            <!-- Phone -->
+            <tr>
+              <td class="label-cell">Phone Number:</td>
+              <td class="input-cell">
+                <input type="text" id="phone" name="phone" required pattern="[0-9]+" title="Numbers only" inputmode="numeric" autocomplete="tel">
+                <ul class="field-hints"><li>Required</li><li>Numbers only</li></ul>
+              </td>
+            </tr>
+
+            <!-- Age -->
+            <tr>
+              <td class="label-cell">Age:</td>
+              <td class="input-cell">
+                <input type="number" id="age" name="age" min="1" max="100" inputmode="numeric">
+                <ul class="field-hints"><li>Optional</li><li>1–100</li></ul>
+              </td>
+            </tr>
+
+            <!-- Gender -->
+            <tr>
+              <td class="label-cell">What is your Gender?</td>
+              <td class="input-cell">
+                <div class="option-group">
+                  <label><input type="radio" name="gender" value="Male"> Male</label>
+                  <label><input type="radio" name="gender" value="Female"> Female</label>
+                  <label><input type="radio" name="gender" value="Rather Not Say" checked> Rather Not Say</label>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Feedback type -->
+            <tr>
+              <td class="label-cell">What type of feedback is this?</td>
+              <td class="input-cell">
+                <div class="option-group">
+                  <label><input type="radio" name="feedbackType" value="Product Review"> Product Review</label>
+                  <label><input type="radio" name="feedbackType" value="Website Experience"> Website Experience</label>
+                  <label><input type="radio" name="feedbackType" value="Delivery"> Delivery</label>
+                  <label><input type="radio" name="feedbackType" value="Customer Service"> Customer Service</label>
+                  <label><input type="radio" name="feedbackType" value="Other"> Other:</label>
+                </div>
+                <input type="text" id="feedbackTypeOtherInput" class="other-input" placeholder="Please specify" style="display:none;">
+              </td>
+            </tr>
+
+            <!-- Product category -->
+            <tr>
+              <td class="label-cell">Which product category are you giving feedback about?</td>
+              <td class="input-cell">
+                <select id="productCategory" name="productCategory">
+                  <option value="" selected disabled>Select a category</option>
+                  <option value="Eyes">Eyes</option>
+                  <option value="Lips">Lips</option>
+                  <option value="Nails">Nails</option>
+                  <option value="Face">Face</option>
+                  <option value="Makeup Remover">Makeup Remover</option>
+                  <option value="Other">Other</option>
+                </select>
+                <input type="text" id="productCategoryOtherInput" class="other-input" placeholder="Please specify" style="display:none;">
+              </td>
+            </tr>
+
+            <!-- Rating -->
+            <tr>
+              <td class="label-cell">How would you rate your experience?</td>
+              <td class="input-cell">
+                <div class="option-group">
+                  <label><input type="radio" name="rating" value="1"> 1</label>
+                  <label><input type="radio" name="rating" value="2"> 2</label>
+                  <label><input type="radio" name="rating" value="3"> 3</label>
+                  <label><input type="radio" name="rating" value="4"> 4</label>
+                  <label><input type="radio" name="rating" value="5" checked> 5</label>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Aspects liked -->
+            <tr>
+              <td class="label-cell">Which aspects did you like?</td>
+              <td class="input-cell">
+                <div class="option-group">
+                  <label><input type="checkbox" name="aspects" value="Product Quality"> Product Quality</label>
+                  <label><input type="checkbox" name="aspects" value="Product Selection"> Product Selection</label>
+                  <label><input type="checkbox" name="aspects" value="Colour Selection"> Colour Selection</label>
+                  <label><input type="checkbox" name="aspects" value="Website Design"> Website Design</label>
+                  <label><input type="checkbox" name="aspects" value="Pricing"> Pricing</label>
+                  <label><input type="checkbox" name="aspects" value="Delivery"> Delivery</label>
+                  <label><input type="checkbox" name="aspects" value="Customer Service"> Customer Service</label>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Recommend -->
+            <tr>
+              <td class="label-cell">Would you recommend our store?</td>
+              <td class="input-cell">
+                <div class="option-group">
+                  <label><input type="radio" name="recommend" value="Yes"> Yes</label>
+                  <label><input type="radio" name="recommend" value="Maybe"> Maybe</label>
+                  <label><input type="radio" name="recommend" value="No"> No</label>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Tell us more -->
+            <tr>
+              <td class="label-cell">Tell us more:</td>
+              <td class="input-cell">
+                <textarea id="tellUsMore" name="tellUsMore" class="recessed-textarea" rows="5" minlength="20" maxlength="200" placeholder="Type your thoughts here..."></textarea>
+                <ul class="field-hints"><li>Maximum 200 characters</li><li>Minimum 20 characters</li></ul>
+              </td>
+            </tr>
+
+            <!-- Hear about us -->
+            <tr>
+              <td class="label-cell">How did you hear about us?</td>
+              <td class="input-cell">
+                <select id="hearAbout" name="hearAbout">
+                  <option value="" selected disabled>Select</option>
+                  <option value="Search Engine">Search Engine</option>
+                  <option value="Instagram">Instagram</option>
+                  <option value="TikTok">TikTok</option>
+                  <option value="Friend / Family">Friend / Family</option>
+                  <option value="Advertisement">Advertisement</option>
+                  <option value="Other">Other</option>
+                </select>
+                <input type="text" id="hearAboutOtherInput" class="other-input" placeholder="Please specify" style="display:none;">
+              </td>
+            </tr>
+
+            <!-- Review: product name and star rating -->
+            <tr>
+              <td class="label-cell">Leave a Review? (Optional)</td>
+              <td class="input-cell">
+                <div class="review-subrow">
+                  <label for="reviewProductName">Product Name:</label>
+                  <input type="text" id="reviewProductName" name="reviewProductName" placeholder="Product name">
+                </div>
+                <div class="review-subrow">
+                  <div class="star-rating-wrap">
+                    <span class="rating-label">Rating</span>
+                    <div class="star-rating" id="starRating">
+                      <img src="starempty.png" class="star" data-index="1" alt="Rate 1 star">
+                      <img src="starempty.png" class="star" data-index="2" alt="Rate 2 stars">
+                      <img src="starempty.png" class="star" data-index="3" alt="Rate 3 stars">
+                      <img src="starempty.png" class="star" data-index="4" alt="Rate 4 stars">
+                      <img src="starempty.png" class="star" data-index="5" alt="Rate 5 stars">
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Attach file -->
+            <tr>
+              <td class="label-cell">Attach a picture/video</td>
+              <td class="input-cell">
+                <input type="file" id="attachFile" name="attachFile" accept="image/*,video/*">
+              </td>
+            </tr>
+
+            <!-- Write review -->
+            <tr>
+              <td class="label-cell">Write your review:</td>
+              <td class="input-cell">
+                <textarea id="reviewText" name="reviewText" class="recessed-textarea" rows="5" minlength="20" maxlength="200" placeholder="Write your review here..."></textarea>
+                <ul class="field-hints"><li>Maximum 200 characters</li><li>Minimum 20 characters</li></ul>
+              </td>
+            </tr>
+
+            <!-- Agree -->
+            <tr>
+              <td class="full-cell" colspan="2">
+                <label class="agree-label">
+                  <input type="checkbox" id="agreeTerms" required> I agree to the feedback terms.
+                </label>
+              </td>
+            </tr>
+
+            <!-- Buttons -->
+            <tr>
+              <td class="full-cell" colspan="2">
+                <div class="form-buttons" id="formButtons">
+                  <button type="submit" id="submitBtn">✓ SUBMIT FEEDBACK</button>
+                  <button type="button" id="clearBtn">↺ CLEAR FORM</button>
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </div>
+</main>
+
+<!-- ============ FOOTER  ============ -->
 <footer>
   <div class="wrap">
     <div class="footer-grid">
@@ -51,7 +295,7 @@
       <div>
         <h3>Discover</h3>
         <ul>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="aboutus.html">About Us</a></li>
           <li><a href="promotions.html">Promotions &amp; Events</a></li>
           <li><a href="book-services.html">Book Beauty Services</a></li>
           <li><a href="faq.html">FAQ</a></li>
@@ -65,9 +309,14 @@
         </ul>
       </div>
     </div>
- 
   </div>
 </footer>
-    <script src="form.js"></script>
+
+<!-- ============ SUBMIT POPUP ============ -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-box">Form Submitted!</div>
+</div>
+
+<script src="feedback.js"></script>
 </body>
 </html>

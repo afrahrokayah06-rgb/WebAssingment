@@ -6,25 +6,51 @@
     <title>About Us</title>
     <link href="aboutstyle.css" rel="stylesheet">
     <link href="nav.css" rel="stylesheet">
+    
 </head>
 <body>
+<!-- ============ TOP UTILITY BAR ============ -->
 <header>
   <div class="nav-top">
     <div class="nav-left">
-      <a href="login.html" id="userAccountLink">
-          <img src="profile.png" alt="Profile Icon" class="nav-icon">
-          <span id="userAccountName">Sign In / Sign Up</span>
-      </a>
+      <div class="account-dropdown">
+        <a href="login.html" id="userAccountLink">
+            <img src="profile.png" alt="" class="nav-icon">
+            <span id="userAccountName">Sign In / Sign Up</span>
+        </a>
+        <div id="accountMenu" class="account-menu">
+            <a href="#" id="logout-button">
+                Log Out
+            </a>
+            <a href="#" id="delete-account-button" class="delete-account">
+                Delete Account
+            </a>
+        </div>
+    </div>
     </div>
     <div class="nav-right"> 
-    <a href="#membership"><img src="member-removebg-preview.png" alt="Membership Icon" class="nav-icon">Membership</a>
-    <a href="#services"><img src="promotion_events.png" alt="Book Services Icon" class="nav-icon">Book Beauty Services</a>  
-    <a href="#promotions"><img src="beautypass.png" alt="Promotions Icon" class="nav-icon">Promotions &amp; Events</a>
-    <a href="#wishlist" class="icon-link"><img src="wishlist.png" alt="Wishlist Icon" class="nav-icon">Wishlist</a>
-    <a href="cart.html" class="icon-link"><img src="cart.png" alt="Cart Icon" class="nav-icon">Cart</a>
+   <!-- AFTER -->
+    <a href="membership.html"><img src="member-removebg-preview.png" alt=""class="nav-icon">Membership</a>
+    <a href="beauty_service.html"><img src="promotion_events.png" alt=""class="nav-icon">Book Beauty Services</a>  
+    <a href="promotions.html"><img src="beautypass.png" alt="" class="nav-icon">Promotions &amp; Events</a>
+    <a href="wishlist.html" class="icon-link"><img src="wishlist.png" alt="" class="nav-icon">Wishlist</a>
+    <a href="cart.html" class="icon-link"><img src="cart.png" alt="" class="nav-icon">Cart</a>
     </div>
   </div>
 </header>
+
+<!-- ============ PROMO STRIP (banner) ============ -->
+<div class="promo-strip">
+  <div class="wrap">
+    <div class="promo-track">
+      <p>WHATEVER BEAUTY PASS MEMBERS ENJOY MORE — unlock exclusive online offers and early access to new arrivals</p>
+    </div>
+    <div class="promo-actions">
+      <a class="btn filled" href="login.html">Sign In</a>
+      <a class="btn" href="register.html">Sign Up</a>
+    </div>
+  </div>
+</div>
 
     <!-- ------------ SECTION 1 ---------- -->
     <div class="section1">
@@ -39,16 +65,16 @@
         <div class="s1-about">
             <h2>About Us</h2>
             <p><span>Whatever</span>&nbsp;&nbsp;you are looking for, we have it all! Founded with a passion for making beauty accessible, we carefully select products that combine quality, affordability and authenticity for beginners, enthusiasts, and professionals</p>
-            <button class="s1-button">Browse Products</button>
+            <a href="makeup-eye.html" class="s1-button">Browse Products</a>
         </div>
 
         <div class="s1-imgmap">
             <img src="MakeupKit2.jpg" usemap="#productsMap" alt="Makeup Products" class="fill-img">
             <map name="productsMap">
-                <area shape="rect" coords="0,0,175,175" href="page1.html" alt="Product 1">
-                <area shape="rect" coords="175,0,350,175" href="page2.html" alt="Product 2">
-                <area shape="rect" coords="0,175,175,350" href="page3.html" alt="Product 3">
-                <area shape="rect" coords="175,175,350,350" href="page4.html" alt="Product 4">
+                <area shape="rect" coords="0,0,175,175" href="makeup-lips.html" alt="Product 1">
+                <area shape="rect" coords="175,0,350,175" href="makeup-eye.html" alt="Product 2">
+                <area shape="rect" coords="0,175,175,350" href="makeup-face.html" alt="Product 3">
+                <area shape="rect" coords="175,175,350,350" href="makeup-face.html" alt="Product 4">
             </map>
         </div>
 
@@ -120,23 +146,23 @@
             <h4>Shop by Category</h4>
             <div class="s3-products-row">
 
-                <a href="products.html" class="s3-card">
+                <a href="makeup-face.html" class="s3-card">
                     <div class="s3-card-img"><img src="CategoryFace.jpg" alt="Face Category" class="fill-img"></div>
                     <div class="s3-card-label"><h6>Face</h6></div>
                 </a>
-                <a href="products.html" class="s3-card">
+                <a href="makeup-eye.html" class="s3-card">
                     <div class="s3-card-img"><img src="CategoryEyes.jpg" alt="Eyes Category" class="fill-img"></div>
                     <div class="s3-card-label"><h6>Eyes</h6></div>
                 </a>
-                <a href="products.html" class="s3-card">
+                <a href="makeup-lips.html" class="s3-card">
                     <div class="s3-card-img"><img src="DustyRose.jpeg" alt="Dusty Rose Lipstick" class="fill-img"></div>
                     <div class="s3-card-label"><h6>Lips</h6></div>
                 </a>
-                <a href="products.html" class="s3-card">
+                <a href="makeup-nails.html" class="s3-card">
                     <div class="s3-card-img"><img src="MochaCheck.jpeg" alt="Mocha Check Nail Polish" class="fill-img"></div>
                     <div class="s3-card-label"><h6>Nails</h6></div>
                 </a>
-                <a href="products.html" class="s3-card">
+                <a href="makeup-remover.html" class="s3-card">
                     <div class="s3-card-img"><img src="Micellar_Water.jpeg" alt="Micellar Water" class="fill-img"></div>
                     <div class="s3-card-label"><h6>Makeup Remover</h6></div>
                 </a>
@@ -151,7 +177,7 @@
         <div class="s4-bg">
 
             <h5 class="s4-heading"><span>Whatever:</span> The Art of Freedom<br>The Essence of Beauty</h5>
-            <button class="s4-button">Buy Now!</button>
+            <a href="makeup-lips.html" class="s4-button">Buy Now!</a>
 
             <div class="s4-cards">
                 <div class="s4-card s4-card-img"><img src="Section4Card.jpg" alt="Section 4 Card Picture" class="fill-img"></div>
@@ -160,7 +186,7 @@
                     <p>Special offers for your special occassions! Our brand new releases are now available at a special price of RM 29.90</p>
                 </div>
 
-                <a href="products.html" class="s4-small-link">
+                <a href="cart.html" class="s4-small-link">
                     <img src="Shopping Cart.png" alt="Shopping Cart Icon" class="fill-img">
                 </a>
 
@@ -371,15 +397,15 @@
         </div>
         <div class="s11-buttons">
             <a href="https://www.facebook.com" target="_blank" rel="noopener" class="s11-button-a">
-                <img src="facebook.png" alt="Facebook Icon" class="s11-btn-icon">
+                <img src="facebook button.png" alt="Facebook Icon" class="s11-btn-icon">
                 Facebook
             </a>
             <a href="https://www.instagram.com" target="_blank" rel="noopener" class="s11-button-b">
-                <img src="instagram.png" alt="Instagram Icon" class="s11-btn-icon">
+                <img src="instagram button.png" alt="Instagram Icon" class="s11-btn-icon">
                 Instagram
             </a>
             <a href="https://www.whatsapp.com" target="_blank" rel="noopener" class="s11-button-c">
-                <img src="whatsapp.png" alt="WhatsApp Icon" class="s11-btn-icon">
+                <img src="whatsapp button.png" alt="WhatsApp Icon" class="s11-btn-icon">
                 WhatsApp
             </a>
         </div>
