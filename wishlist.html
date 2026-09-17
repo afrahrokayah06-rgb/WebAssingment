@@ -19,6 +19,9 @@
             <span id="userAccountName">Sign In / Sign Up</span>
         </a>
         <div id="accountMenu" class="account-menu">
+            <a href="your_purchases.html" id="order-button">
+                Your Purchases
+            </a>
             <a href="#" id="logout-button">
                 Log Out
             </a>
@@ -57,7 +60,7 @@
     </div>
   </main>
 
-  <div id="wish-toast" class="wish-toast"></div>
+  <div id="wish-toast" class="toast"></div>
 
  <script>
   
@@ -76,30 +79,49 @@
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
     }
 
+    function updateCartCount() {
+      const cart = getCart();
+
+      const totalItems = cart.reduce(function (total, item) {
+          return total + (Number(item.quantity) || 0);
+      }, 0);
+
+      const cartLink = document.querySelector('a[href="cart.html"]');
+
+      if (cartLink) {
+          cartLink.innerHTML = `
+              <img src="cart.png" alt="" class="nav-icon">
+              Cart (${totalItems})
+          `;
+      }
+    }
+
     function addToCart(item) {
       const cart = getCart();
 
-      // cart.js items have no "id" field — it matches rows by index only —
-      // so we dedupe here by name + image to avoid creating duplicate rows.
-      const existing = cart.find(c => c.name === item.name && c.image === item.image);
+      const existing = cart.find(function (cartItem) {
+          return cartItem.id === item.id;
+      });
 
       if (existing) {
-        existing.quantity = (Number(existing.quantity) || 1) + 1;
+          existing.quantity = (Number(existing.quantity) || 1) + 1;
       } else {
-        // cart.js does Number(product.price), so strip things like "RM " down to a plain number first
-        const numericPrice = parseFloat(String(item.price).replace(/[^0-9.]/g, '')) || 0;
+          const numericPrice =
+              parseFloat(String(item.price).replace(/[^0-9.]/g, '')) || 0;
 
-        cart.push({
-          name: item.name,
-          price: numericPrice,
-          image: item.image,
-          quantity: 1
-        });
+          cart.push({
+              id: item.id,
+              name: item.name,
+              price: numericPrice,
+              image: item.image,
+              quantity: 1
+          });
       }
 
       saveCart(cart);
-      showToast('Added to Cart');
-    }
+      updateCartCount();
+      showToast("Added to Cart");
+  }
 
     function getWishlist() {
       try {
@@ -160,7 +182,7 @@
             <h3>${item.name}</h3>
             <span class="wish-price">${item.price}</span>
             <div class="wish-actions">
-              <button class="wish-add-bag">Add to Bag</button>
+              <button class="wish-add-bag">Add to Cart</button>
               <button class="wish-remove" data-id="${item.id}">Remove</button>
             </div>
           </div>
@@ -185,7 +207,7 @@
       });
     }
 
-    document.addEventListener('DOMContentLoaded', renderWishlist);
+    document.addEventListener('DOMContentLoaded', renderWishlist, updateCartCount);
   </script>
   <script src="main_page.js"></script>
 
