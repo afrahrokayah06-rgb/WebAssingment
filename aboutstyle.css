@@ -42,6 +42,7 @@ a { color: inherit; text-decoration: none;
 }
 
 .wrap {
+  max-width: 1024px;
   margin: 0 auto;
   padding: 0 32px;
 }
@@ -130,6 +131,109 @@ h1, h2, h3, h4, h5, h6 {
 .promo-strip .btn.filled {
     background-color: var(--color-maroon);
     color: var(--color-pink-light);
+}
+
+/* ============ MASTHEAD & CATEGORY NAV (from main_page.css) ============ */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.masthead {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--nav-border-soft);
+}
+
+.masthead .wrap {
+    display: grid;
+    grid-template-columns: 1fr minmax(280px, 480px) 1fr;
+    align-items: center;
+    gap: 24px;
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 2.1rem;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    color: var(--color-pink-light);
+}
+
+.search-form {
+    display: flex;
+    border: 1.5px solid var(--sub-gold);
+}
+
+.search-form input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: var(--nav-text-cream);
+    padding: 12px 16px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+}
+
+.search-form input::placeholder {
+    color: var(--nav-text-cream-dim);
+}
+
+.search-form button {
+    border: none;
+    background: var(--sub-gold);
+    color: var(--color-maroon);
+    width: 48px;
+    cursor: pointer;
+}
+
+.free-sample {
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--nav-text-cream-dim);
+    margin: 0;
+}
+
+.free-sample strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--nav-text-cream);
+}
+
+.category-nav {
+    background: #2c0216;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--sub-gold);
+}
+
+.category-nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.category-nav li {
+    margin: 0;
+}
+
+.category-nav a {
+    color: var(--sub-gold);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 8px 0;
+}
+
+.category-nav a:hover,
+.category-nav a:focus-visible {
+    text-decoration: underline;
 }
 
 /* SECTION 1 — video / about us / image map                     */
@@ -1107,6 +1211,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Parts that have 100% browser screen width */
 header,
 .promo-strip,
+.masthead,
+.category-nav,
 .section1,
 footer {
     width: 100vw;
@@ -1115,11 +1221,6 @@ footer {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-}
-
-.footer-grid{
-    margin-left:6%;
-    font-family: var(--font-bofu);
 }
 
 /* Responsive from 320px up            */

@@ -41,6 +41,108 @@ main {
   display: block;
 }
 
+/* ============ MASTHEAD & CATEGORY NAV ( from main_page.css) ============ */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.masthead {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--nav-border-soft);
+}
+
+.masthead .wrap {
+    display: grid;
+    grid-template-columns: 1fr minmax(280px, 480px) 1fr;
+    align-items: center;
+    gap: 24px;
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 2.1rem;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    color: var(--color-pink-light);
+}
+
+.search-form {
+    display: flex;
+    border: 1.5px solid var(--sub-gold);
+}
+
+.search-form input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: var(--nav-text-cream);
+    padding: 12px 16px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+}
+
+.search-form input::placeholder {
+    color: var(--nav-text-cream-dim);
+}
+
+.search-form button {
+    border: none;
+    background: var(--sub-gold);
+    color: var(--color-maroon);
+    width: 48px;
+    cursor: pointer;
+}
+
+.free-sample {
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--nav-text-cream-dim);
+    margin: 0;
+}
+
+.free-sample strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--nav-text-cream);
+}
+
+.category-nav {
+    background: #2c0216;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--sub-gold);
+}
+
+.category-nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.category-nav li {
+    margin: 0;
+}
+
+.category-nav a {
+    color: var(--sub-gold);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 8px 0;
+}
+
+.category-nav a:hover,
+.category-nav a:focus-visible {
+    text-decoration: underline;
+}
 /* Every section: 40px left/right margin, 25px bottom margin */
 .promo-section {
   margin: 0 40px 25px 40px;
@@ -58,6 +160,8 @@ main {
 header,
 .promo-strip,
 footer,
+.masthead,
+.category-nav,
 #section-imagemap {
   width: 100vw;
   position: relative;
@@ -598,8 +702,8 @@ footer {
 }
 
 .reveal-icon {
-  width: 46px;
-  height: 46px;
+  width: 70px;
+  height: 70px;
   object-fit: contain;
   animation: reveal-icon-float 1.6s ease-in-out infinite;
 }

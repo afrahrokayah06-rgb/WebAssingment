@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="aboutstyle.css" rel="stylesheet">
     <link href="nav.css" rel="stylesheet">
     
@@ -51,6 +53,43 @@
     </div>
   </div>
 </div>
+<!-- ============ MASTHEAD: logo / search form / sample note ============ -->
+<div class="masthead">
+  <div class="wrap">
+    <a class="logo" href="main_page.html">WHATEVER</a>
+
+    <form class="search-form" role="search" action="#" method="get">
+      <label for="site-search" class="visually-hidden">Search products</label>
+      <input type="search" id="site-search" name="q" list="search-suggestions"
+             placeholder="What are you looking for?" required>
+      <datalist id="search-suggestions">
+        <option value="Lipstick"></option>
+        <option value="Mascara"></option>
+        <option value="Foundation"></option>
+        <option value="Nail Polish"></option>
+        <option value="Makeup Remover Wipes"></option>
+      </datalist>
+      <button type="submit" aria-label="Search">🔍</button>
+    </form>
+
+    <p class="free-sample"><strong>Free Sample</strong>with every purchase</p>
+  </div>
+</div>
+
+<!-- ============ CATEGORY NAVIGATION  ============ -->
+<nav class="category-nav" aria-label="Product categories">
+  <div class="wrap">
+    <button class="nav-toggle" aria-expanded="false">Menu ☰</button>
+    <ul>
+    <li><a href="new.html">New</a></li>
+      <li><a href="makeup-face.html">Face</a></li>
+      <li><a href="makeup-eyes.html">Eyes</a></li>
+      <li><a href="makeup-lips.html">Lips</a></li>
+      <li><a href="makeup-nails.html">Nails</a></li>
+      <li><a href="makeup-remover.html">Makeup Remover</a></li>
+    </ul>
+  </div>
+</nav>
 
     <!-- ------------ SECTION 1 ---------- -->
     <div class="section1">

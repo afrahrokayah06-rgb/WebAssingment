@@ -54,7 +54,7 @@ h1, h2, h3 {
 }
 
 .wrap {
-  max-width: var(--max-width);
+  max-width: 1024px;
   margin: 0 auto;
   padding: 0 32px;
 }
@@ -147,17 +147,22 @@ footer {
 }
 
 .masthead {
-  padding: 26px 0 20px;
-  border-bottom: 1px solid var(--border-soft);
-  text-align: center;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--nav-border-soft);
+}
+.masthead .wrap {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 480px) 1fr;
+  align-items: center;
+  gap: 24px;
 }
 
 .logo {
   font-family: var(--font-display);
-  font-size: 3.6rem;
-  letter-spacing: 0.14em;
+  font-size: 2.1rem;
+  letter-spacing: 0.18em;
   font-weight: 600;
-  display: inline-block;
+  color: var(--color-pink-light);
 }
 
 /* Footer (from main.html) */
