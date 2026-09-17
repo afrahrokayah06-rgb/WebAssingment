@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
 
     <title>New Arrivals | Whatever</title>
-    <link rel="stylesheet" href="nav.css">
 
+    <meta name="description" content="Shop Face, Eyes, Lips, Nails and Makeup Remover. Free sample with every purchase.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="main_page.css">
+    <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="newArrivals.css">
     <link rel="stylesheet" href="lipstickpage.css">
     <script src="newArrivals.js" defer></script>
 </head>
-
+<body>
 <!-- ============ TOP UTILITY BAR ============ -->
 <header>
   <div class="nav-top">
@@ -42,10 +48,23 @@
   </div>
 </header>
 
+<!-- ============ PROMO STRIP (animation) ============ -->
+<div class="promo-strip">
+  <div class="wrap">
+    <div class="promo-track">
+      <p>WHATEVER BEAUTY PASS MEMBERS ENJOY MORE — unlock exclusive online offers and early access to new arrivals</p>
+    </div>
+    <div class="promo-actions">
+      <a class="btn filled" href="login.html">Sign In</a>
+      <a class="btn" href="register.html">Sign Up</a>
+    </div>
+  </div>
+</div>
+
 <!-- ============ MASTHEAD: logo / search form / sample note ============ -->
 <div class="masthead">
   <div class="wrap">
-    <a class="logo" href="index.html">WHATEVER</a>
+    <a class="logo" href="main_page.html">WHATEVER</a>
   <form class="search-form" role="search" action="#" method="get">
       <label for="site-search" class="visually-hidden">Search products</label>
       <input type="search" id="site-search" name="q" list="search-suggestions"
@@ -81,7 +100,7 @@
 </nav>
 
 
-<body>
+
 
     <main class="new-arrivals-page">
 
@@ -407,7 +426,8 @@
                     </button>
                 </div>
                 <div class="lip-body">
-                    <div class="lip-shade-dot"></div>
+                    <span class="lip-shade-dot" style="background-color:#D56B87"></span>
+                 
                     <h3>Coral Charm</h3>
                     <p class="lip-desc">
                         A soft coral-pink wash of color with a glassy, second-skin shine —

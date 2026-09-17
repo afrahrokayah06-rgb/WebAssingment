@@ -9,6 +9,40 @@
 </head>
 <body>
 
+<!-- ============ TOP UTILITY BAR ============ -->
+<header>
+  <div class="nav-top">
+    <div class="nav-left">
+      <div class="account-dropdown">
+        <a href="login.html" id="userAccountLink">
+            <img src="profile.png" alt="" class="nav-icon">
+            <span id="userAccountName">Sign In / Sign Up</span>
+        </a>
+        <div id="accountMenu" class="account-menu">
+            <a href="your_purchases.html" id="order-button">
+                Your Purchases
+            </a>
+            <a href="#" id="logout-button">
+                Log Out
+            </a>
+            <a href="#" id="delete-account-button" class="delete-account">
+                Delete Account
+            </a>
+        </div>
+    </div>
+    </div>
+    <div class="nav-right"> 
+   <!-- AFTER -->
+    <a href="membership.html"><img src="member-removebg-preview.png" alt=""class="nav-icon">Membership</a>
+    <a href="beauty_service.html"><img src="promotion_events.png" alt=""class="nav-icon">Book Beauty Services</a>  
+    <a href="promotions.html"><img src="beautypass.png" alt="" class="nav-icon">Promotions &amp; Events</a>
+    <a href="wishlist.html" class="icon-link"><img src="wishlist.png" alt="" class="nav-icon">Wishlist</a>
+    <a href="cart.html" class="icon-link"><img src="cart.png" alt="" class="nav-icon">Cart</a>
+    </div>
+  </div>
+</header>
+
+
   <header class="wish-header">
     <div class="eyebrow">Whatever Beauty</div>
     <h1>Your Wishlist</h1>
@@ -26,116 +60,156 @@
     </div>
   </main>
 
-  <div id="wish-toast" class="wish-toast"></div>
+  <div id="wish-toast" class="toast"></div>
 
  <script>
-  const WISHLIST_KEY = 'whatever_wishlist';
+  
+    const WISHLIST_KEY = 'whatever_wishlist';
+    const CART_KEY = 'cart'; // must match the key cart.js reads — do not rename
 
-  function getWishlist() {
-    try {
-      const list = JSON.parse(localStorage.getItem(WISHLIST_KEY)) || [];
-
-      // Remove broken/incomplete wishlist items
-      const validList = list.filter(item =>
-        item &&
-        item.id &&
-        item.name &&
-        item.price &&
-        item.image
-      );
-
-      // Save cleaned list
-      localStorage.setItem(WISHLIST_KEY, JSON.stringify(validList));
-
-      return validList;
-    } catch (e) {
-      return [];
-    }
-  }
-
-  function saveWishlist(list) {
-    localStorage.setItem(WISHLIST_KEY, JSON.stringify(list));
-  }
-
-  let toastTimer;
-
-  function showToast(message) {
-    const toast = document.getElementById('wish-toast');
-    toast.textContent = message;
-    toast.classList.add('show');
-
-    clearTimeout(toastTimer);
-
-    toastTimer = setTimeout(() => {
-      toast.classList.remove('show');
-    }, 2200);
-  }
-
-  function removeItem(id, cardEl) {
-    cardEl.classList.add('removing');
-    showToast('Removed from Wishlist');
-
-    cardEl.addEventListener('transitionend', () => {
-      const updated = getWishlist().filter(item => item.id !== id);
-      saveWishlist(updated);
-      renderWishlist();
-    }, { once: true });
-  }
-
-  function renderWishlist() {
-    const list = getWishlist();
-    const grid = document.getElementById('wish-grid');
-    const empty = document.getElementById('wish-empty');
-
-    grid.innerHTML = '';
-
-    if (list.length === 0) {
-      grid.style.display = 'none';
-      empty.style.display = 'block';
-      return;
+    function getCart() {
+      try {
+        return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+      } catch (e) {
+        return [];
+      }
     }
 
-    grid.style.display = 'grid';
-    empty.style.display = 'none';
+    function saveCart(cart) {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
 
-    list.forEach(item => {
-  const card = document.createElement('div');
-  card.className = 'wish-card';
+    function updateCartCount() {
+      const cart = getCart();
 
-  card.innerHTML = `
-    <div class="wish-img-wrap">
-      <img 
-        src="${item.image || 'wishlist.png'}" 
-        alt="${item.name || 'Product'}"
-      >
-    </div>
+      const totalItems = cart.reduce(function (total, item) {
+          return total + (Number(item.quantity) || 0);
+      }, 0);
 
-    <div class="wish-body">
-      <h3>${item.name || 'Product'}</h3>
-      <span class="wish-price">${item.price || ''}</span>
+      const cartLink = document.querySelector('a[href="cart.html"]');
 
-      <div class="wish-actions">
-        <button class="wish-add-bag">Add to Cart</button>
-        <button class="wish-remove" data-id="${item.id}">
-          Remove
-        </button>
-      </div>
-    </div>
-  `;
+      if (cartLink) {
+          cartLink.innerHTML = `
+              <img src="cart.png" alt="" class="nav-icon">
+              Cart (${totalItems})
+          `;
+      }
+    }
 
-  grid.appendChild(card);
-});
+    function addToCart(item) {
+      const cart = getCart();
 
-    document.querySelectorAll('.wish-remove').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const card = btn.closest('.wish-card');
-        removeItem(btn.dataset.id, card);
+      const existing = cart.find(function (cartItem) {
+          return cartItem.id === item.id;
       });
-    });
+
+      if (existing) {
+          existing.quantity = (Number(existing.quantity) || 1) + 1;
+      } else {
+          const numericPrice =
+              parseFloat(String(item.price).replace(/[^0-9.]/g, '')) || 0;
+
+          cart.push({
+              id: item.id,
+              name: item.name,
+              price: numericPrice,
+              image: item.image,
+              quantity: 1
+          });
+      }
+
+      saveCart(cart);
+      updateCartCount();
+      showToast("Added to Cart");
   }
 
-  document.addEventListener('DOMContentLoaded', renderWishlist);
-</script>
+    function getWishlist() {
+      try {
+        return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveWishlist(list) {
+      localStorage.setItem(WISHLIST_KEY, JSON.stringify(list));
+    }
+
+    let toastTimer;
+    function showToast(message) {
+      const toast = document.getElementById('wish-toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function removeItem(id, cardEl) {
+      cardEl.classList.add('removing');
+      showToast('Removed from Wishlist');
+
+      cardEl.addEventListener('transitionend', () => {
+        const updated = getWishlist().filter(item => item.id !== id);
+        saveWishlist(updated);
+        renderWishlist();
+      }, { once: true });
+    }
+
+    function renderWishlist() {
+      const list = getWishlist();
+      const grid = document.getElementById('wish-grid');
+      const empty = document.getElementById('wish-empty');
+
+      grid.innerHTML = '';
+
+      if (list.length === 0) {
+        grid.style.display = 'none';
+        empty.style.display = 'block';
+        return;
+      }
+
+      grid.style.display = 'grid';
+      empty.style.display = 'none';
+
+      list.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'wish-card';
+        card.innerHTML = `
+          <div class="wish-img-wrap">
+            <img src="${item.image}" alt="${item.name}">
+          </div>
+          <div class="wish-body">
+            <h3>${item.name}</h3>
+            <span class="wish-price">${item.price}</span>
+            <div class="wish-actions">
+              <button class="wish-add-bag">Add to Cart</button>
+              <button class="wish-remove" data-id="${item.id}">Remove</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      document.querySelectorAll('.wish-add-bag').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('.wish-card');
+          const id = card.querySelector('.wish-remove').dataset.id;
+          const item = list.find(i => i.id === id);
+          if (item) addToCart(item);
+        });
+      });
+ 
+      document.querySelectorAll('.wish-remove').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('.wish-card');
+          removeItem(btn.dataset.id, card);
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderWishlist, updateCartCount);
+  </script>
+  <script src="main_page.js"></script>
 
 
 </body>
