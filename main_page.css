@@ -66,6 +66,8 @@ h1, h2, h3 {
   color: var(--bg-maroon);
   overflow: hidden;
   position: relative;
+ 
+  
 }
  
 .promo-strip .wrap {
@@ -74,7 +76,8 @@ h1, h2, h3 {
   justify-content: space-between;
   gap: 24px;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 10px; 
+  max-width: none;
 }
  
 .promo-track {
@@ -127,6 +130,7 @@ h1, h2, h3 {
 }
  
 .masthead .wrap {
+  max-width: 1280px;
   display: grid;
   grid-template-columns: 1fr minmax(280px, 480px) 1fr;
   align-items: center;
