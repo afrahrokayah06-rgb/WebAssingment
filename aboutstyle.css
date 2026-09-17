@@ -678,7 +678,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .s7-img {
     flex: 1;
-    fill-img: cover;
+    img-fill: cover;
+    width: 100%;
+}
+
+.s7-bottom img {
+    object-fit: fill;
     width: 100%;
 }
 
