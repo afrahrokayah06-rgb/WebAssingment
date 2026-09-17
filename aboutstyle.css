@@ -388,7 +388,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .s9-dl-item {
-    margin-bottom: 45px;
+    margin-bottom: 35px;
 }
 
 .s9-dl-1 { margin-left: 0; }
@@ -437,9 +437,9 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: flex-start;
     width: 100%;
-    margin-top: 25px;
+    margin-top: 5px;
     gap: 20px;
-    padding: 0 40px;
+    padding: 0 36px;
 }
 
 .s3-video-col {
