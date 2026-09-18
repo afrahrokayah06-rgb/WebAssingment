@@ -230,12 +230,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-            /* Success */
-
-            message.textContent =
-                "Account created successfully! Redirecting to login...";
-
-            message.style.color = "green";
+            
 
 
             /* Clear form */
@@ -368,12 +363,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-            /* Success */
-
-            message.textContent =
-                "Login successful! Redirecting...";
-
-            message.style.color = "green";
+           
 
 
             /* Redirect */
