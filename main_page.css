@@ -543,7 +543,7 @@ td.deal-price { color: var(--text-cream); font-weight: 600; }
 .tier-name {
   font-size: 18px;
   font-weight: 700;
-  color: var(--maroon);
+  color: var(--bg-maroon);
 }
  
 .tier-range {
