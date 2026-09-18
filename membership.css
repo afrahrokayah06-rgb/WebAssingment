@@ -54,8 +54,8 @@ body {
  
 /* ---------- Tier / points summary ---------- */
 .tier-card {
-  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
-  color: var(--text-light);
+  background: linear-gradient(135deg, var(--maroon) 0%, var(--gold) 100%);
+  color: var(--gold-light);
   border-radius: 12px;
   padding: 32px 36px;
   display: flex;
@@ -179,7 +179,7 @@ body {
  
 .section-heading h2 {
   font-size: 20px;
-  color: var(--maroon);
+  color: var(--gold-light);
   letter-spacing: 0.3px;
 }
  
@@ -451,7 +451,7 @@ body {
 .activity-table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #fff;
+  background-color: #a39a8c;
   border: 1px solid var(--border-soft);
   border-radius: 10px;
   overflow: hidden;
