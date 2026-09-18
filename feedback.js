@@ -18,7 +18,7 @@ document.getElementById('phone').addEventListener('input', function () {
   this.value = this.value.replace(/[^0-9]/g, '');
 });
 
-// Age: numbers only, clamped 1-100
+// Age: numbers only, 1-100
 var ageInput = document.getElementById('age');
 ageInput.addEventListener('input', function () {
   this.value = this.value.replace(/[^0-9]/g, '');
@@ -36,7 +36,7 @@ emailInput.addEventListener('input', function () {
   emailWarning.style.display = this.value.includes('@') ? 'none' : 'block';
 });
 
-// Reusable "Other" reveal: pass the trigger elements and the input to show
+// Reusable "Other" reveal: pass the elements and the input to show
 function bindOtherReveal(triggers, otherInput) {
   triggers.forEach(function (el) {
     el.addEventListener('change', function () {
@@ -73,7 +73,7 @@ feedbackForm.addEventListener('submit', function (e) {
   setTimeout(function () { window.location.href = 'main_page.html'; }, 2500);
 });
 
-// Clear form: full reset, including conditional fields
+// Clear form: full reset, including other fields
 document.getElementById('clearBtn').addEventListener('click', function () {
   feedbackForm.reset();
   document.querySelectorAll('.other-input').forEach(function (el) { el.style.display = 'none'; });
