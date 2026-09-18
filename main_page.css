@@ -60,14 +60,12 @@ h1, h2, h3 {
   margin: 0;
 }
 
-/* ---------- Promo strip (the one signature animated moment) ---------- */
+/* ---------- Promo strip animated moment) ---------- */
 .promo-strip {
   background: var(--sub-gold);
   color: var(--bg-maroon);
   overflow: hidden;
   position: relative;
- 
-  
 }
  
 .promo-strip .wrap {
@@ -102,7 +100,7 @@ h1, h2, h3 {
  
 @keyframes scroll-promo {
   from { transform: translateX(0); }
-  to   { transform: translateX(-100%); }
+  to   { transform: translateX(-100%); }/* Moves left by its own full width */
 }
  
 .promo-actions { display: flex; gap: 10px; flex-shrink: 0; }
@@ -199,7 +197,7 @@ h1, h2, h3 {
 }
 
 .category-nav li {
-  margin: 0;                     /* no vertical gaps */
+  margin: 0;                     
 }
 
 .category-nav a {
@@ -245,6 +243,7 @@ h1, h2, h3 {
   font-size: 1.1rem;
   cursor: pointer;
 }
+
 .hero-banner figcaption {
   margin-top: 0;
   margin-bottom: 14px;
@@ -304,7 +303,7 @@ h1, h2, h3 {
 .product-img-wrap {
   width: 100%;
   height: 180px;
-  background: var(--bg-maroon);
+  background: var(--text-cream);
   display: flex;
   align-items: center;
   justify-content: center;
