@@ -19,6 +19,8 @@
 <main class="cart-page">
     <div id="cart-items"></div>
     <div class="cart-summary">
+        <h2 class="cart-tax">SubTotal: RM <span id="cart-taxtotal">0.00</span></h2>
+        <h2 class="cart-tax">Tax (20%): RM <span id="cart-tax">0.00</span></h2>
         <h2 class="cart-total">Total: RM <span id="cart-total">0.00</span></h2>
         <button id="checkout-btn">
             PROCEED TO CHECKOUT
@@ -44,24 +46,7 @@
     </div>
 </main>
 
-<!-- Toast -->
-  <div id="cart-toast" class="toast"></div>
- 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const backHome = document.getElementById("back-home");
-
-    if (!backHome) return;
-
-    if (cart.length === 0) {
-        backHome.style.display = "none";
-    } else {
-        backHome.style.display = "inline-block";
-    }
-});
-</script>
-
+<div id="cart-toast" class="toast"></div>
  
 <script src="main_page.js"></script>
 <script src="cart.js"></script>

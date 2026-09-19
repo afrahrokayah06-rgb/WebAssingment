@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-/* ---------- Get whatever is in the cart ---------- */
+    /* ---------- Get whatever is in the cart ---------- */
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let pendingReward =
         JSON.parse(
@@ -22,6 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("payment-items");
     const paymentSubtotal =
     document.getElementById("payment-subtotal");
+    const paymentTax =
+    document.getElementById("payment-tax");
     const paymentShipping =
         document.getElementById("payment-shipping");
     const paymentTotal =
@@ -36,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-/* ---------- Check if cart is empty ---------- */
+    /* ---------- Check if cart is empty ---------- */
     if (cart.length === 0) {
         alert("Your cart is empty!");
         window.location.href = "main_page.html";
@@ -44,12 +46,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-/* ---------- Display Cart ---------- */
+    /* ---------- Display Cart ---------- */
     let total = 0;
 
     cart.forEach(function (product) {
-        const subtotal =
-            product.price * product.quantity;
+        const subtotal = product.price * product.quantity;
         total += subtotal;
 
         const item = document.createElement("div");
@@ -79,14 +80,14 @@ document.addEventListener("DOMContentLoaded", function () {
         paymentItems.appendChild(item);
     });
 
-/* ---------- Shipping Calculation ---------- */
+    /* ---------- Shipping Calculation ---------- */
     let shipping = 0;
 
     if (total <150) {
         shipping = 10;
     }
 
-/* ---------- Reward Discount ---------- */
+    /* ---------- Reward Discount ---------- */
     let discount = 0;
 
     if (pendingReward) {
@@ -102,16 +103,24 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     }
 
-/* ---------- Final Total ---------- */
+    /* ---------- Final Total ---------- */
+    const tax = total * 0.20;
+
     const finalTotal =
-        Math.max(0, total + shipping - discount);
+        Math.max(0, total + tax + shipping - discount);
 
 
-/* ---------- Display Subtotal ---------- */
+
+    /* ---------- Display Subtotal & Tax ---------- */
     paymentSubtotal.textContent =
         total.toFixed(2);
+    
+    if (paymentTax) {
+    paymentTax.textContent = tax.toFixed(2);
+    }
 
-/* ---------- Display Discount ---------- */
+
+    /* ---------- Display Discount ---------- */
     if (pendingReward && discount > 0) {
         discountRow.style.display = "flex";
 
@@ -121,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
         discountRow.style.display = "none";
     }
 
-/* ---------- Display Shipping ---------- */
+    /* ---------- Display Shipping ---------- */
     if (shipping === 0) {
         paymentShipping.textContent = "FREE";
     } else {
@@ -129,20 +138,19 @@ document.addEventListener("DOMContentLoaded", function () {
             shipping.toFixed(2);
     }
     
-/* ---------- Display Final Total ---------- */
-if (paymentTotal) {
-    paymentTotal.textContent =
-        finalTotal.toFixed(2);
-}
+    /* ---------- Display Final Total ---------- */
+    if (paymentTotal) {
+        paymentTotal.textContent =
+            finalTotal.toFixed(2);
+    }
 
-if (payTotal) {
-    payTotal.textContent =
-        finalTotal.toFixed(2);
-}
+    if (payTotal) {
+        payTotal.textContent =
+            finalTotal.toFixed(2);
+    }
 
 
-/* ---------- Input Elements ---------- */
-
+    /* ---------- Input Elements ---------- */
     const paymentForm =
         document.getElementById("payment-form");
 
@@ -161,7 +169,7 @@ if (payTotal) {
     const email =
         document.getElementById("email");
 
-/* ---------- Card Number Formatting ---------- */
+    /* ---------- Card Number Formatting ---------- */
     cardNumber.addEventListener("input", function () {
         let value = cardNumber.value.replace(/\D/g, "");
 
@@ -172,7 +180,7 @@ if (payTotal) {
 
 
 
-/* ---------- Expiry Date Formatting ---------- */
+    /* ---------- Expiry Date Formatting ---------- */
     expiry.addEventListener("input", function () {
         let value =
             expiry.value.replace(/\D/g, "");
@@ -191,21 +199,21 @@ if (payTotal) {
     });
 
 
-/* ---------- CVV - NUMBERS ONLY ---------- */
+    /* ---------- CVV - NUMBERS ONLY ---------- */
     cvv.addEventListener("input", function () {
         cvv.value =
             cvv.value.replace(/\D/g, "")
                      .substring(0, 3);
     });
     
-/* ---------- Card Number Validation ---------- */
+    /* ---------- Card Number Validation ---------- */
     function isValidCardNumber(number) {
         const digits = number.replace(/\s/g, "");
 
         return /^\d{16}$/.test(digits);
     }
 
-/* ---------- Expiry Date Validation ---------- */
+    /* ---------- Expiry Date Validation ---------- */
     function isValidExpiry(value) {
 
         // Must be in MM/YY format
@@ -231,12 +239,12 @@ if (payTotal) {
         return true;
     }
 
-/* ---------- Email Validation ---------- */
+    /* ---------- Email Validation ---------- */
     function isValidEmail(value) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
     }
 
-/* ---------- Form Submission ---------- */
+    /* ---------- Form Submission ---------- */
     paymentForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
@@ -391,8 +399,7 @@ if (payTotal) {
         const earnedPoints =
             Math.floor(total * pointsPerRinggit);
 
-/* ---------- Use Reward ---------- */
-
+    /* ---------- Use Reward ---------- */
     if (pendingReward) {
 
         const rewardCost =
@@ -495,7 +502,6 @@ if (payTotal) {
 
     
         /* ---------- Generate Order Number & Date for Tracking Page ----------*/
-    
         const now = new Date();
  
         const datePart =
@@ -556,6 +562,7 @@ if (payTotal) {
         }),
 
         subtotal: Number(total.toFixed(2)),
+        tax: Number(tax.toFixed(2)),
         shipping: Number(shipping.toFixed(2)),
         discount: Number(discount.toFixed(2)),
         total: Number(finalTotal.toFixed(2)),
