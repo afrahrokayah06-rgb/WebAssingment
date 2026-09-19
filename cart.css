@@ -187,3 +187,28 @@ body {
 .empty-cart a:hover {
     background: var(--cart-gold);
 }
+
+/* ---------- Wishlist toast ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  transform: translate(-50%, 20px);
+  background-color: var(--lip-maroon);
+  color: var(--lip-text-light);
+  padding: 13px 26px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  box-shadow: 0 10px 24px rgba(61, 15, 34, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 999;
+}
+ 
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

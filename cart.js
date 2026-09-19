@@ -1,52 +1,77 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+    const MAX_QTY = 10;
     let toastTimer;
 
+    /* ---------- TOAST ---------- */
+
     function showToast(message) {
-        const toast = document.getElementById('cart-toast');
+        const toast = document.getElementById("cart-toast");
+
+        if (!toast) {
+            console.log(message);
+            return;
+        }
 
         toast.textContent = message;
-        toast.classList.add('show');
+        toast.classList.add("show");
 
         clearTimeout(toastTimer);
 
         toastTimer = setTimeout(() => {
-            toast.classList.remove('show');
+            toast.classList.remove("show");
         }, 2200);
     }
-    
-    // Get cart elements
+
+
+    /* ---------- GET CART ELEMENTS ---------- */
+
     const cartItems = document.getElementById("cart-items");
     const cartTotal = document.getElementById("cart-total");
     const checkoutBtn = document.getElementById("checkout-btn");
 
-    // Check that required HTML elements exist
     if (!cartItems || !cartTotal) {
         console.error("Cart elements not found.");
         return;
     }
 
-    // Get cart from localStorage
+
+    /* ---------- LOAD CART ---------- */
     let cart = [];
 
     try {
         cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        if (!Array.isArray(cart)) {
+            cart = [];
+        }
+
     } catch (error) {
-        console.error("Invalid cart data in localStorage:", error);
+
+        console.error(
+            "Invalid cart data in localStorage:",
+            error
+        );
+
         localStorage.removeItem("cart");
         cart = [];
     }
 
-    /* ---------- DISPLAY CART ---------- */
 
+    /* ---------- DISPLAY CART ---------- */
     function displayCart() {
+
         cartItems.innerHTML = "";
 
-        // Empty cart
+        /* Empty cart */
+
         if (cart.length === 0) {
+
             cartItems.innerHTML = `
                 <div class="empty-cart">
                     <p class="message">Your cart is empty!</p>
                     <p>You haven't added any products yet.</p>
+
                     <a href="makeup-remover.html">
                         CONTINUE SHOPPING
                     </a>
@@ -54,23 +79,43 @@ document.addEventListener("DOMContentLoaded", function () {
             `;
 
             cartTotal.textContent = "0.00";
+
             return;
         }
 
+
         let total = 0;
 
-        cart.forEach(function (product, index) {
-            // Make sure quantity and price are numbers
-            const price = Number(product.price) || 0;
-            const quantity = Number(product.quantity) || 1;
 
-            const subtotal = price * quantity;
+        cart.forEach(function (product, index) {
+
+            const price = Number(product.price) || 0;
+
+            let quantity =
+                Number(product.quantity) || 1;
+
+
+            /* Never allow more than 10 */
+
+            quantity = Math.min(quantity, MAX_QTY);
+
+            product.quantity = quantity;
+
+
+            const subtotal =
+                price * quantity;
+
             total += subtotal;
 
-            const cartItem = document.createElement("div");
+
+            const cartItem =
+                document.createElement("div");
+
             cartItem.classList.add("cart-item");
 
+
             cartItem.innerHTML = `
+
                 <img
                     src="${product.image}"
                     alt="${product.name}"
@@ -78,28 +123,41 @@ document.addEventListener("DOMContentLoaded", function () {
                 >
 
                 <div class="cart-product-info">
+
                     <h2>${product.name}</h2>
+
                     <p>
                         Price: RM ${price.toFixed(2)}
                     </p>
 
+
                     <div class="quantity">
+
                         <button
                             type="button"
-                            onclick="decreaseQuantity(${index})">
+                            onclick="decreaseQuantity(${index})"
+                            aria-label="Decrease quantity"
+                        >
                             −
                         </button>
+
 
                         <span>
                             ${quantity}
                         </span>
 
+
                         <button
                             type="button"
-                            onclick="increaseQuantity(${index})">
+                            onclick="increaseQuantity(${index})"
+                            aria-label="Increase quantity"
+                            ${quantity >= MAX_QTY ? "disabled" : ""}
+                        >
                             +
                         </button>
+
                     </div>
+
 
                     <p>
                         Subtotal:
@@ -108,20 +166,37 @@ document.addEventListener("DOMContentLoaded", function () {
                         </strong>
                     </p>
 
+
                     <button
                         type="button"
                         class="remove-button"
                         onclick="removeProduct(${index})"
                         aria-label="Remove ${product.name}"
                     >
-                        <img src="trash.png" alt="Trash">
+                        <img
+                            src="trash.png"
+                            alt="Trash"
+                        >
                     </button>
 
                 </div>
             `;
+
+
             cartItems.appendChild(cartItem);
         });
-        cartTotal.textContent = total.toFixed(2);
+
+
+        cartTotal.textContent =
+            total.toFixed(2);
+
+
+        /* Save corrected quantities if necessary */
+
+        localStorage.setItem(
+            "cart",
+            JSON.stringify(cart)
+        );
     }
 
 
@@ -129,10 +204,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.increaseQuantity = function (index) {
 
-        if (!cart[index]) return;
+        if (!cart[index]) {
+            return;
+        }
 
-        cart[index].quantity = Number(cart[index].quantity) || 1;
-        cart[index].quantity++;
+
+        let quantity =
+            Number(cart[index].quantity) || 1;
+
+
+        if (quantity >= MAX_QTY) {
+
+            showToast(
+                "Maximum " +
+                MAX_QTY +
+                " per product"
+            );
+
+            return;
+        }
+
+
+        quantity++;
+
+        cart[index].quantity = quantity;
 
         saveCart();
     };
@@ -141,57 +236,112 @@ document.addEventListener("DOMContentLoaded", function () {
     /* ---------- DECREASE QUANTITY ---------- */
 
     window.decreaseQuantity = function (index) {
-        if (!cart[index]) return;
 
-        cart[index].quantity = Number(cart[index].quantity) || 1;
+        if (!cart[index]) {
+            return;
+        }
 
-        if (cart[index].quantity > 1) {
-            cart[index].quantity--;
+
+        let quantity =
+            Number(cart[index].quantity) || 1;
+
+
+        if (quantity > 1) {
+
+            quantity--;
+
+            cart[index].quantity = quantity;
+
         } else {
+
             cart.splice(index, 1);
         }
+
+
         saveCart();
     };
 
 
     /* ---------- REMOVE PRODUCT ---------- */
+
     window.removeProduct = function (index) {
-        if (!cart[index]) return;
+
+        if (!cart[index]) {
+            return;
+        }
+
+
         cart.splice(index, 1);
+
         saveCart();
     };
 
 
     /* ---------- SAVE CART ---------- */
+
     function saveCart() {
-        localStorage.setItem("cart", JSON.stringify(cart));
+
+        localStorage.setItem(
+            "cart",
+            JSON.stringify(cart)
+        );
+
         displayCart();
     }
 
 
     /* ---------- CHECKOUT ---------- */
+
     if (checkoutBtn) {
-        checkoutBtn.addEventListener("click", function () {
-            const loggedInUser =
-                sessionStorage.getItem("loggedInUser");
 
-            // Check login
-            if (!loggedInUser) {
-                alert("Please log in before checkout.");
-                window.location.href = "login.html";
-                return;
+        checkoutBtn.addEventListener(
+            "click",
+            function () {
+
+                const loggedInUser =
+                    sessionStorage.getItem(
+                        "loggedInUser"
+                    );
+
+
+                /* Check login */
+
+                if (!loggedInUser) {
+
+                    alert(
+                        "Please log in before checkout."
+                    );
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+                }
+
+
+                /* Check cart */
+
+                if (cart.length === 0) {
+
+                    alert(
+                        "Your cart is empty."
+                    );
+
+                    return;
+                }
+
+
+                /* Go to payment */
+
+                window.location.href =
+                    "payment.html";
             }
-
-            // Check cart
-            if (cart.length === 0) {
-                alert("Your cart is empty.");
-                return;
-            }
-
-            // Go to payment
-            window.location.href = "payment.html";
-        });
+        );
     }
 
+
+    /* ---------- INITIAL DISPLAY ---------- */
+
     displayCart();
+
 });

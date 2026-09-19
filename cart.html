@@ -43,17 +43,22 @@
         </script>
     </div>
 </main>
+
+<!-- Toast -->
+  <div id="cart-toast" class="toast"></div>
  
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const backHome = document.getElementById("back-home");
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const backHome = document.getElementById("back-home");
 
-  if (cart.length === 0) {
-      backHome.style.display = "none";
-  } else {
-      backHome.style.display = "inline-block";
-  }
+    if (!backHome) return;
+
+    if (cart.length === 0) {
+        backHome.style.display = "none";
+    } else {
+        backHome.style.display = "inline-block";
+    }
 });
 </script>
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Makeup Remover | Whatever</title>
+<title>Lips | Whatever</title>
 <meta name="description" content="Shop Face, Eyes, Lips, Nails and Makeup Remover. Free sample with every purchase.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
@@ -558,7 +558,190 @@ function closeProduct() {
  
     document.addEventListener('DOMContentLoaded', initWishlistButtons);
   </script>
- 
+
+  <script>
+    //<!-- Cart quantity limit: max 10 per product, live counter, follows the real cart -->
+(function () {
+  const MAX_QTY = 10;
+  const COUNT_KEY = 'whatever_lips_cart_counts'; // fallback counter (only used if the cart storage can't be found)
+  const MEMO_KEY  = 'whatever_lips_cart_key';    // remembers which storage key holds the cart
+
+  function safeParse(s) { try { return JSON.parse(s); } catch (e) { return null; } }
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function getStore(name) { return name === 'session' ? sessionStorage : localStorage; }
+
+  let counts = safeParse(lsGet(COUNT_KEY)) || {};
+
+  /* ---------- find + read the real cart ---------- */
+
+  function isSkipped(k) {
+    return k === COUNT_KEY || k === MEMO_KEY || /wishlist/i.test(k);
+  }
+
+  function scan(test) {
+    for (const name of ['local', 'session']) {
+      try {
+        const st = getStore(name);
+        for (let i = 0; i < st.length; i++) {
+          const k = st.key(i);
+          if (isSkipped(k)) continue;
+          if (test(k, st.getItem(k))) return { store: name, key: k };
+        }
+      } catch (e) {}
+    }
+    return null;
+  }
+
+  function remember(loc) { lsSet(MEMO_KEY, JSON.stringify(loc)); }
+
+  function locateCart() {
+    const memo = safeParse(lsGet(MEMO_KEY));
+    if (memo && memo.key) return memo;
+    const found = scan(k => /cart/i.test(k));
+    if (found) remember(found);
+    return found;
+  }
+
+  function locateCartByContent(id) {
+    return scan((k, v) => v && v.indexOf('"' + id + '"') !== -1);
+  }
+
+  // Returns { id-or-name : quantity } for whatever is in the cart right now
+  function readCart(loc) {
+    let raw = null;
+    try { raw = getStore(loc.store).getItem(loc.key); } catch (e) {}
+    const data = raw ? safeParse(raw) : null;   // key removed / cleared => empty cart
+    const map = {};
+    const add = (k, q) => { if (k != null) { k = String(k); map[k] = (map[k] || 0) + q; } };
+
+    let items = data;
+    if (data && !Array.isArray(data) && typeof data === 'object') {
+      if (Array.isArray(data.items)) items = data.items;
+      else if (Array.isArray(data.cart)) items = data.cart;
+      else items = Object.keys(data).map(k => {
+        const v = data[k];
+        return (v && typeof v === 'object') ? Object.assign({ id: k }, v) : { id: k, quantity: v };
+      });
+    }
+    if (Array.isArray(items)) {
+      items.forEach(it => {
+        if (!it || typeof it !== 'object') return;
+        const q = Number(it.quantity ?? it.qty ?? it.count ?? 1) || 0;
+        add(it.id ?? it.productId ?? it.sku, q);
+        if (it.name) add(it.name, q);
+      });
+    }
+    return map;
+  }
+
+  function currentCartMap() {
+    const loc = locateCart();
+    return loc ? readCart(loc) : null;
+  }
+
+  function qtyFor(btn, cartMap) {
+    if (cartMap) return cartMap[btn.dataset.id] ?? cartMap[btn.dataset.name] ?? 0;
+    return counts[btn.dataset.id] || 0;
+  }
+
+  /* ---------- toast ---------- */
+
+  let limitToastTimer;
+  function showLimitToast(message) {
+    const toast = document.getElementById('cart-toast');
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(limitToastTimer);
+    limitToastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+  }
+
+  /* ---------- counter badge ---------- */
+
+  function getBadge(btn) {
+    let badge = btn.parentElement.querySelector('.lip-qty-badge');
+    if (!badge) {
+      badge = document.createElement('span');
+      badge.className = 'lip-qty-badge';
+      btn.parentElement.insertBefore(badge, btn);
+    }
+    return badge;
+  }
+
+  function renderQty(btn, qty, animate) {
+    const badge = getBadge(btn);
+    badge.classList.toggle('show', qty > 0);
+    badge.classList.toggle('max', qty >= MAX_QTY);
+    badge.textContent = qty >= MAX_QTY ? 'Max ' + MAX_QTY : qty + ' / ' + MAX_QTY;
+    btn.classList.toggle('maxed', qty >= MAX_QTY);
+
+    if (animate && qty > 0) {
+      badge.classList.remove('pop');
+      void badge.offsetWidth;
+      badge.classList.add('pop');
+    }
+  }
+
+  function renderAll(animateBtn) {
+    const map = currentCartMap();
+    document.querySelectorAll('button.cart').forEach(btn => {
+      renderQty(btn, qtyFor(btn, map), btn === animateBtn);
+    });
+  }
+
+  /* ---------- keep counters in sync with the cart ---------- */
+
+  document.addEventListener('DOMContentLoaded', () => renderAll());
+  window.addEventListener('pageshow', () => renderAll());          // coming back from the cart page
+  window.addEventListener('focus', () => renderAll());
+  window.addEventListener('storage', () => renderAll());           // cart changed in another tab
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) renderAll();
+  });
+
+  /* ---------- Add to Cart click ---------- */
+
+  // Capture phase: runs before the normal Add to Cart handler,
+  // so the 11th click never reaches the cart.
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('button.cart');
+    if (!btn) return;
+
+    const id = btn.dataset.id;
+    const before = qtyFor(btn, currentCartMap());
+
+    if (before >= MAX_QTY) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      showLimitToast('Maximum ' + MAX_QTY + ' per product');
+      return;
+    }
+
+    // Let the normal handler add the item, then refresh from the real cart.
+    setTimeout(() => {
+      let map = currentCartMap();
+      const inCart = map && (map[id] != null || map[btn.dataset.name] != null);
+
+      if (!inCart) {
+        const alt = locateCartByContent(id);   // cart stored under an unexpected key
+        if (alt) {
+          remember(alt);
+        } else if (!map) {
+          counts[id] = before + 1;             // no cart storage found: fall back to own counter
+          lsSet(COUNT_KEY, JSON.stringify(counts));
+        }
+      }
+      renderAll(btn);
+    }, 0);
+
+    setTimeout(() => renderAll(), 300);
+  }, true);
+})();
+
+
+  </script>
+
 <!-- ============ FOOTER — SITEMAP  ============ -->
 <footer>
   <div class="wrap">
