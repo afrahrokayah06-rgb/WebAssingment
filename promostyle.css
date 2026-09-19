@@ -729,7 +729,153 @@ footer {
   .promo-calendar,
   .week-selector,
   .week-display,
-  .timeline {
+  .timeline,
+  .savings-calculator {
     width: 92%;
   }
+}
+
+/* SECTION 8 — YOUR EVENT SAVINGS CALCULATOR (table)*/
+.savings-trigger-wrap {
+  text-align: center;
+}
+
+.calc-savings-btn {
+  background-color: var(--color-gold);
+  color: var(--color-dark-maroon);
+  border: none;
+  border-radius: var(--radius-button);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 14px 32px;
+  cursor: pointer;
+}
+
+.savings-calculator {
+  width: 80%;
+  max-width: 1100px;
+  margin: 20px auto 0 auto;
+}
+
+.promo-generate-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+#generatePromoBtn {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 10px;
+}
+
+.generated-promo-display {
+  color: var(--color-pink-light);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.savings-table-wrap {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.savings-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.savings-table td {
+  background-color: var(--color-pink-light);
+  color: var(--color-maroon);
+  font-size: 18px;
+  font-family: var(--font-body);
+  padding: 10px 14px;
+  border: 1px solid var(--color-brown);
+  vertical-align: middle;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.savings-table td:first-child {
+  width: 45%;
+  font-weight: 600;
+}
+
+.savings-table td:nth-child(2) {
+  width: 30%;
+}
+
+.savings-table td:last-child {
+  width: 25%;
+}
+
+.savings-table td:nth-child(2),
+.savings-table td:last-child {
+  text-align: center;
+}
+
+.savings-subhead td {
+  background-color: var(--color-gold-light);
+  color: var(--color-tan);
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+
+.savings-strong td {
+  background-color: var(--color-white);
+  color: var(--color-brown);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#redeemPointsBtn {
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.savings-goodnews {
+  background-color: var(--color-tan);
+  color: var(--color-gold-light);
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  padding: 14px;
+  margin-top: 12px;
+  border-radius: 6px;
+}
+
+.savings-input {
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 6px 10px;
+  border: 1px solid var(--color-brown);
+  border-radius: 4px;
+  background-color: var(--color-white);
+  color: var(--color-maroon);
+  width: 140px;
+}
+
+.field-error {
+  display: inline-block;
+  margin-left: 8px;
+  color: var(--color-red);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+#membershipPointsValue {
+  margin-right: 10px;
+  font-weight: 600;
 }
