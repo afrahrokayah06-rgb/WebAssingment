@@ -18,14 +18,14 @@ document.getElementById('phone').addEventListener('input', function () {
   this.value = this.value.replace(/[^0-9]/g, '');
 });
 
-// Age: numbers only, 1-100
+// Age: numbers only, 18-100 (Users can type in until 1000 but doesn't accept)
 var ageInput = document.getElementById('age');
 ageInput.addEventListener('input', function () {
   this.value = this.value.replace(/[^0-9]/g, '');
 });
 ageInput.addEventListener('blur', function () {
   if (this.value === '') return;
-  var v = Math.min(100, Math.max(1, parseInt(this.value, 10)));
+  var v = Math.min(1000, Math.max(1, parseInt(this.value, 10)));
   this.value = v;
 });
 
