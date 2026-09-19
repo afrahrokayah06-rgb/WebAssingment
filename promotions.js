@@ -241,12 +241,304 @@ var WEEKS = [
     });
   }
 
+  /* SECTION 8 — YOUR EVENT SAVINGS CALCULATOR */
+
+  // Manually set discount rate% for each tier
+  var MEMBERSHIP_DISCOUNT_PCT = { Bronze: 4, Silver: 6, Gold: 8 };
+
+  // referred to membership.js and membership html for the conversions
+  var POINT_REWARDS = [
+    { cost: 2500, rm: 50 },
+    { cost: 1200, rm: 25 },
+    { cost: 800, rm: 15 },
+    { cost: 500, rm: 5 }
+  ];
+
+  // Manually set promocodes PROMOPK(1-5)
+  var PROMO_CODES = {
+    PROMOPK1: 5,
+    PROMOPK2: 5,
+    PROMOPK3: 6,
+    PROMOPK4: 6,
+    PROMOPK5: 10
+  };
+
+  function getMembershipInfo() {
+    var points = 0;
+
+    try {
+      var loggedInUserData = sessionStorage.getItem('loggedInUser');
+      if (loggedInUserData) {
+        var loggedInUser = JSON.parse(loggedInUserData);
+        var users = JSON.parse(localStorage.getItem('makeupUsers')) || [];
+        var match = users.find(function (u) { return u.email === loggedInUser.email; });
+        if (match && typeof match.points === 'number') {
+          points = match.points;
+        }
+      }
+    } catch (e) {
+      // no membership data available yet = default Bronze / 0 points
+      points = 0;
+    }
+
+    var tier = 'Bronze';
+    if (points >= 3000) tier = 'Gold';
+    else if (points >= 1000) tier = 'Silver';
+
+    return { points: points, tier: tier };
+  }
+
+  function bestPointsReward(points) {
+    for (var i = 0; i < POINT_REWARDS.length; i++) {
+      if (points >= POINT_REWARDS[i].cost) return POINT_REWARDS[i];
+    }
+    return null;
+  }
+
+  // Manually added the dates based on the Event Timeline and Circled Dates on the Events Calendar - Sandi
+  function getDateEventData(day) {
+    if ([9, 10, 11, 12, 13, 14].indexOf(day) !== -1) {
+      return { item: 'Golden Shimmer Bronzer', price: 40, eventDiscountPct: 20, cashback: 0, bundle: 0 };
+    }
+    if ([18, 19, 20].indexOf(day) !== -1) {
+      return { item: 'Lotus Lipstick (Flower/Palace) Edition', price: 60, eventDiscountPct: 0, cashback: 10, bundle: 0 };
+    }
+    if ([24, 25, 26, 27, 28, 29, 30].indexOf(day) !== -1) {
+      return { item: 'Cleansing Balm Set: Peony and Cherry', price: 80, eventDiscountPct: 0, cashback: 0, bundle: 20 };
+    }
+    return null;
+  }
+
+  function calculateNormalTotal(price, shipping) {
+    return price + shipping;
+  }
+
+  function calculateMembershipDiscount(price, tier) {
+    var pct = MEMBERSHIP_DISCOUNT_PCT[tier] || 0;
+    return Math.round(price * pct / 100);
+  }
+
+  function setupSavingsCalculator() {
+    var calcBtn = document.getElementById('calcSavingsBtn');
+    var calculator = document.getElementById('savingsCalculator');
+
+    var dateInput = document.getElementById('eventDateInput');
+    var dateError = document.getElementById('eventDateError');
+    var saleItemCell = document.getElementById('saleItemCell');
+    var originalPriceCell = document.getElementById('originalPriceCell');
+    var normalTotalCell = document.getElementById('normalTotalCell');
+
+    var membershipTierCell = document.getElementById('membershipTierCell');
+    var membershipDiscountPctCell = document.getElementById('membershipDiscountPctCell');
+    var membershipDiscountRMCell = document.getElementById('membershipDiscountRMCell');
+
+    var membershipPointsValue = document.getElementById('membershipPointsValue');
+    var redeemPointsBtn = document.getElementById('redeemPointsBtn');
+    var pointsRedeemRMCell = document.getElementById('pointsRedeemRMCell');
+
+    var eventDiscountPctCell = document.getElementById('eventDiscountPctCell');
+    var eventDiscountRMCell = document.getElementById('eventDiscountRMCell');
+    var cashbackRMCell = document.getElementById('cashbackRMCell');
+    var bundleRMCell = document.getElementById('bundleRMCell');
+
+    var promoCodeInput = document.getElementById('promoCodeInput');
+    var promoCodeError = document.getElementById('promoCodeError');
+    var promoRMCell = document.getElementById('promoRMCell');
+
+    var finalPriceCell = document.getElementById('finalPriceCell');
+    var goodNews = document.getElementById('savingsGoodNews');
+
+    var generateBtn = document.getElementById('generatePromoBtn');
+    var generatedDisplay = document.getElementById('generatedPromoDisplay');
+
+    var SHIPPING = 10;
+
+    var state = {
+      originalPrice: 0,
+      eventData: null,
+      membership: getMembershipInfo(),
+      pointsRedeemedRM: 0,
+      promoRM: 0,
+      generatedCode: null
+    };
+
+    calcBtn.addEventListener('click', function () {
+      calcBtn.hidden = true;
+      calculator.hidden = false;
+
+      // membership info doesn't depend on the event date, so fill it in immediately
+      membershipTierCell.textContent = state.membership.tier;
+      var pct = MEMBERSHIP_DISCOUNT_PCT[state.membership.tier] || 0;
+      membershipDiscountPctCell.textContent = pct + '%';
+      membershipPointsValue.textContent = state.membership.points + ' pts';
+
+      recalculate();
+    });
+
+    generateBtn.addEventListener('click', function () {
+      var n = Math.floor(Math.random() * 5) + 1;
+      state.generatedCode = 'PROMOPK' + n;
+      generatedDisplay.textContent = 'Your code: ' + state.generatedCode;
+
+      // a freshly generated code clears whatever was typed before
+      promoCodeInput.value = '';
+      promoCodeError.textContent = '';
+      promoRMCell.textContent = '';
+      state.promoRM = 0;
+      recalculate();
+    });
+
+    dateInput.addEventListener('input', function () {
+      var raw = dateInput.value.trim();
+      dateError.textContent = '';
+
+      if (raw === '') {
+        saleItemCell.textContent = '';
+        originalPriceCell.textContent = '';
+        eventDiscountPctCell.textContent = '';
+        eventDiscountRMCell.textContent = '';
+        cashbackRMCell.textContent = '';
+        bundleRMCell.textContent = '';
+        state.originalPrice = 0;
+        state.eventData = null;
+        recalculate();
+        return;
+      }
+
+      if (!/^[0-9]+$/.test(raw)) {
+        dateError.textContent = 'Whole numbers only.';
+        return;
+      }
+
+      var day = parseInt(raw, 10);
+      if (day < 1 || day > 30) {
+        dateError.textContent = 'Enter a day between 1 and 30.';
+        return;
+      }
+
+      var data = getDateEventData(day);
+      state.eventData = data;
+
+      if (!data) {
+        saleItemCell.textContent = 'No event on this date';
+        originalPriceCell.textContent = '';
+        eventDiscountPctCell.textContent = '';
+        eventDiscountRMCell.textContent = '';
+        cashbackRMCell.textContent = '';
+        bundleRMCell.textContent = '';
+        state.originalPrice = 0;
+        recalculate();
+        return;
+      }
+
+      saleItemCell.textContent = data.item;
+      originalPriceCell.textContent = 'RM' + data.price;
+      state.originalPrice = data.price;
+
+      eventDiscountPctCell.textContent = data.eventDiscountPct ? (data.eventDiscountPct + '%') : '';
+      eventDiscountRMCell.textContent = data.eventDiscountPct
+        ? ('-RM' + Math.round(data.price * data.eventDiscountPct / 100))
+        : '';
+      cashbackRMCell.textContent = data.cashback ? ('-RM' + data.cashback) : '';
+      bundleRMCell.textContent = data.bundle ? ('-RM' + data.bundle) : '';
+
+      recalculate();
+    });
+
+    redeemPointsBtn.addEventListener('click', function () {
+      var isOn = redeemPointsBtn.dataset.on === 'true';
+
+      if (isOn) {
+        state.pointsRedeemedRM = 0;
+        pointsRedeemRMCell.textContent = '';
+        redeemPointsBtn.dataset.on = 'false';
+        redeemPointsBtn.textContent = 'Redeem';
+      } else {
+        var reward = bestPointsReward(state.membership.points);
+        if (!reward) {
+          pointsRedeemRMCell.textContent = 'Not enough points';
+        } else {
+          state.pointsRedeemedRM = reward.rm;
+          pointsRedeemRMCell.textContent = '-RM' + reward.rm;
+          redeemPointsBtn.dataset.on = 'true';
+          redeemPointsBtn.textContent = 'Undo';
+        }
+      }
+
+      recalculate();
+    });
+
+    promoCodeInput.addEventListener('input', function () {
+      var entered = promoCodeInput.value.trim();
+      promoCodeError.textContent = '';
+
+      if (entered === '') {
+        state.promoRM = 0;
+        promoRMCell.textContent = '';
+        recalculate();
+        return;
+      }
+
+      if (!state.generatedCode) {
+        promoCodeError.textContent = 'Generate a code first.';
+        state.promoRM = 0;
+        promoRMCell.textContent = '';
+        recalculate();
+        return;
+      }
+
+      if (entered === state.generatedCode && PROMO_CODES.hasOwnProperty(entered)) {
+        state.promoRM = PROMO_CODES[entered];
+        promoRMCell.textContent = '-RM' + state.promoRM;
+      } else {
+        promoCodeError.textContent = 'Invalid Code, Please check your spelling!';
+        state.promoRM = 0;
+        promoRMCell.textContent = '';
+      }
+
+      recalculate();
+    });
+
+    function recalculate() {
+      var normalTotal = calculateNormalTotal(state.originalPrice, SHIPPING);
+      normalTotalCell.textContent = state.originalPrice ? ('RM' + normalTotal) : '';
+
+      var membershipDiscountRM = calculateMembershipDiscount(state.originalPrice, state.membership.tier);
+      membershipDiscountRMCell.textContent = state.originalPrice ? ('-RM' + membershipDiscountRM) : '';
+
+      var eventDiscountRM = 0;
+      if (state.eventData && state.eventData.eventDiscountPct) {
+        eventDiscountRM = Math.round(state.originalPrice * state.eventData.eventDiscountPct / 100);
+      }
+
+      var cashbackRM = state.eventData ? state.eventData.cashback : 0;
+      var bundleRM = state.eventData ? state.eventData.bundle : 0;
+
+      // Total everything
+      var totalDeductions = membershipDiscountRM + state.pointsRedeemedRM +
+        eventDiscountRM + cashbackRM + bundleRM + state.promoRM + SHIPPING;
+
+      var finalPrice = normalTotal - totalDeductions;
+      if (finalPrice < 0) finalPrice = 0;
+
+      if (state.originalPrice) {
+        finalPriceCell.textContent = 'RM' + finalPrice;
+        var savings = normalTotal - finalPrice;
+        goodNews.textContent = 'Good News! You will save RM' + savings + ' in this event!';
+      } else {
+        finalPriceCell.textContent = '';
+        goodNews.textContent = '';
+      }
+    }
+  }
+
 
   buildCalendar();
   buildWeekButtons();
-  selectWeek(2); // default is Week 3
+  selectWeek(2); // default is Week 3, index = 2
   initTimelineButtons();
   initCards();
   setupReveal();
+  setupSavingsCalculator();
 
 });

@@ -278,6 +278,124 @@
     </div>
   </section>
 
+  <!-- ============ SECTION 8 : EVENT SAVINGS CALCULATOR ============ -->
+  <section class="promo-section" id="section-savings">
+
+    <div class="savings-trigger-wrap">
+      <button type="button" id="calcSavingsBtn" class="calc-savings-btn">Calculate My Event Savings</button>
+    </div>
+
+    <div class="savings-calculator" id="savingsCalculator" hidden>
+
+      <div class="promo-generate-wrap">
+        <button type="button" id="generatePromoBtn" class="reminder-btn">Generate Promo Code</button>
+        <span id="generatedPromoDisplay" class="generated-promo-display"></span>
+      </div>
+
+      <div class="savings-table-wrap">
+      <table class="savings-table">
+        <tbody>
+
+          <tr>
+            <td>Event Date:</td>
+            <td>
+              <input type="text" id="eventDateInput" class="savings-input" placeholder="e.g. 14" inputmode="numeric" autocomplete="off">
+              <span id="eventDateError" class="field-error"></span>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Sale item:</td>
+            <td id="saleItemCell"></td>
+            <td></td>
+          </tr>
+
+          <tr class="savings-subhead"><td></td><td></td><td>Regular Pricing</td></tr>
+
+          <tr>
+            <td>Original price:</td>
+            <td></td>
+            <td id="originalPriceCell"></td>
+          </tr>
+          <tr>
+            <td>Shipping fees:</td>
+            <td></td>
+            <td>RM10</td>
+          </tr>
+          <tr class="savings-strong">
+            <td>Normal total price:</td>
+            <td></td>
+            <td id="normalTotalCell"></td>
+          </tr>
+
+          <tr class="savings-subhead">
+            <td>Your Special Offers</td>
+            <td></td>
+            <td>Deductions</td>
+          </tr>
+
+          <tr>
+            <td>Membership tier:</td>
+            <td id="membershipTierCell"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Membership discount:</td>
+            <td id="membershipDiscountPctCell"></td>
+            <td id="membershipDiscountRMCell"></td>
+          </tr>
+          <tr>
+            <td>Redeem Membership points</td>
+            <td>
+              <span id="membershipPointsValue"></span>
+              <button type="button" id="redeemPointsBtn" class="reminder-btn" data-on="false">Redeem</button>
+            </td>
+            <td id="pointsRedeemRMCell"></td>
+          </tr>
+          <tr>
+            <td>Event Discount:</td>
+            <td id="eventDiscountPctCell"></td>
+            <td id="eventDiscountRMCell"></td>
+          </tr>
+          <tr>
+            <td>Cashback</td>
+            <td></td>
+            <td id="cashbackRMCell"></td>
+          </tr>
+          <tr>
+            <td>Set Bundle Deal</td>
+            <td></td>
+            <td id="bundleRMCell"></td>
+          </tr>
+          <tr>
+            <td>Redeem Promo Code</td>
+            <td>
+              <input type="text" id="promoCodeInput" class="savings-input" placeholder="PROMOPK(no.)" autocomplete="off">
+              <span id="promoCodeError" class="field-error"></span>
+            </td>
+            <td id="promoRMCell"></td>
+          </tr>
+          <tr>
+            <td>Shipping fees:</td>
+            <td>FREE</td>
+            <td>RM0</td>
+          </tr>
+          <tr class="savings-strong">
+            <td>Your final price:</td>
+            <td></td>
+            <td id="finalPriceCell"></td>
+          </tr>
+
+        </tbody>
+      </table>
+      </div>
+
+      <div class="savings-goodnews" id="savingsGoodNews"></div>
+
+    </div>
+
+  </section>
+
 </main>
 
 <footer>
