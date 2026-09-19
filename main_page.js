@@ -114,6 +114,7 @@ if (deleteAccountButton) {
 
         if (!confirmed) {
             return;
+            
         }
 
 
