@@ -559,6 +559,88 @@ function closeProduct() {
     document.addEventListener('DOMContentLoaded', initWishlistButtons);
   </script>
  
+<!-- Cart quantity limit: max 10 per product, with a live counter -->
+<script>
+(function () {
+  const MAX_QTY = 10;
+  const COUNT_KEY = 'whatever_lips_cart_counts';
+
+  let counts;
+  try {
+    counts = JSON.parse(localStorage.getItem(COUNT_KEY)) || {};
+  } catch (e) {
+    counts = {};
+  }
+
+  function saveCounts() {
+    try {
+      localStorage.setItem(COUNT_KEY, JSON.stringify(counts));
+    } catch (e) {}
+  }
+
+  let limitToastTimer;
+  function showLimitToast(message) {
+    const toast = document.getElementById('cart-toast');
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(limitToastTimer);
+    limitToastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+  }
+
+  function getBadge(btn) {
+    let badge = btn.parentElement.querySelector('.lip-qty-badge');
+    if (!badge) {
+      badge = document.createElement('span');
+      badge.className = 'lip-qty-badge';
+      btn.parentElement.insertBefore(badge, btn);
+    }
+    return badge;
+  }
+
+  function renderQty(btn, animate) {
+    const qty = counts[btn.dataset.id] || 0;
+    const badge = getBadge(btn);
+
+    badge.classList.toggle('show', qty > 0);
+    badge.classList.toggle('max', qty >= MAX_QTY);
+    badge.textContent = qty >= MAX_QTY ? 'Max ' + MAX_QTY : qty + ' / ' + MAX_QTY;
+    btn.classList.toggle('maxed', qty >= MAX_QTY);
+
+    if (animate) {
+      badge.classList.remove('pop');
+      void badge.offsetWidth;
+      badge.classList.add('pop');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('button.cart').forEach(btn => renderQty(btn, false));
+  });
+
+  // Capture phase: runs before any other Add to Cart handler,
+  // so the 11th click never reaches the cart.
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('button.cart');
+    if (!btn) return;
+
+    const id = btn.dataset.id;
+    const qty = counts[id] || 0;
+
+    if (qty >= MAX_QTY) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      showLimitToast('Maximum ' + MAX_QTY + ' per product');
+      return;
+    }
+
+    counts[id] = qty + 1;
+    saveCounts();
+    renderQty(btn, true);
+  }, true);
+})();
+</script>
+
 <!-- ============ FOOTER — SITEMAP  ============ -->
 <footer>
   <div class="wrap">

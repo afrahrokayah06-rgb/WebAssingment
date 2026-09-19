@@ -80,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     }
 
+<<<<<<< HEAD
 
 /* ---------- Logout ---------- */
     const logoutButton =
@@ -328,6 +329,8 @@ if (deleteAccountButton) {
     });
 
 }
+=======
+>>>>>>> 782ecdacc25fe46fbb92ca0f8b0d453ac619c791
     /* ---------- Hero Video Sound Toggle ---------- */
 const heroVideo = document.getElementById('hero-video');
 const soundToggle = document.getElementById('hero-sound-toggle');

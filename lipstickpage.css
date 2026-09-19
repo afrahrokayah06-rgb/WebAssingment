@@ -126,7 +126,7 @@
 }
 
 .lip-card {
-  background-color: #fff;
+  background-color: #660033;
   border: 1px solid var(--lip-border-soft);
   border-radius: 14px;
   overflow: hidden;
@@ -178,13 +178,13 @@
   font-family: var(--lip-font);
   font-size: 16px;
   font-weight: 700;
-  color: var(--lip-maroon);
+  color: var(--lip-gold-light);
   margin-bottom: 8px;
 }
 
 .lip-card p.lip-desc {
   font-size: 13px;
-  color: #6d6355;
+  color: #b89a6b;
   line-height: 1.5;
   margin-bottom: 16px;
   flex: 1;
@@ -199,7 +199,7 @@
 .lip-card .lip-price {
   font-size: 15px;
   font-weight: 700;
-  color: var(--lip-maroon);
+  color: var(--lip-gold-light);
 }
 
 .lip-footer-actions {
@@ -524,4 +524,40 @@
 .toast.show {
   opacity: 1;
   transform: translate(-50%, 0);
+}
+
+/* ---------- Cart quantity indicator (max 10 per product) ---------- */
+.lip-qty-badge {
+  display: none;
+  background-color: var(--lip-gold-light);
+  color: var(--lip-maroon-dark);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.lip-qty-badge.show {
+  display: inline-block;
+}
+
+.lip-qty-badge.pop {
+  animation: lip-qty-pop 0.3s ease;
+}
+
+.lip-qty-badge.max {
+  background-color: #fff;
+}
+
+.lip-card button.cart.maxed {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@keyframes lip-qty-pop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.3); }
+  100% { transform: scale(1); }
 }
