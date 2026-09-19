@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let toastTimer;
 
     /* ---------- TOAST ---------- */
-
     function showToast(message) {
         const toast = document.getElementById("cart-toast");
 
@@ -25,9 +24,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ---------- GET CART ELEMENTS ---------- */
-
     const cartItems = document.getElementById("cart-items");
     const cartTotal = document.getElementById("cart-total");
+    const cartTaxTotal = document.getElementById("cart-taxtotal");
+    const cartTax = document.getElementById("cart-tax");
     const checkoutBtn = document.getElementById("checkout-btn");
 
     if (!cartItems || !cartTotal) {
@@ -78,6 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             `;
 
+            cartTaxTotal.textContent = "0.00";
+            cartTax.textContent = "0.00";
             cartTotal.textContent = "0.00";
 
             return;
@@ -96,15 +98,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             /* Never allow more than 10 */
-
             quantity = Math.min(quantity, MAX_QTY);
 
             product.quantity = quantity;
 
 
-            const subtotal =
-                price * quantity;
-
+            const subtotal = price * quantity;
             total += subtotal;
 
 
@@ -141,17 +140,15 @@ document.addEventListener("DOMContentLoaded", function () {
                             −
                         </button>
 
-
                         <span>
                             ${quantity}
                         </span>
 
-
                         <button
                             type="button"
+                            class="${quantity >= MAX_QTY ? "max-quantity" : ""}"
                             onclick="increaseQuantity(${index})"
                             aria-label="Increase quantity"
-                            ${quantity >= MAX_QTY ? "disabled" : ""}
                         >
                             +
                         </button>
@@ -186,13 +183,16 @@ document.addEventListener("DOMContentLoaded", function () {
             cartItems.appendChild(cartItem);
         });
 
+        const tax = total * 0.20;
+        const grandTotal = total + tax;
 
-        cartTotal.textContent =
-            total.toFixed(2);
+        cartTaxTotal.textContent = total.toFixed(2);
+        cartTax.textContent = tax.toFixed(2);
+        cartTotal.textContent = grandTotal.toFixed(2);
+
 
 
         /* Save corrected quantities if necessary */
-
         localStorage.setItem(
             "cart",
             JSON.stringify(cart)
@@ -201,50 +201,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ---------- INCREASE QUANTITY ---------- */
-
     window.increaseQuantity = function (index) {
 
         if (!cart[index]) {
             return;
         }
 
-
         let quantity =
             Number(cart[index].quantity) || 1;
-
-
-        if (quantity >= MAX_QTY) {
-
-            showToast(
-                "Maximum " +
-                MAX_QTY +
-                " per product"
-            );
-
-            return;
-        }
-
 
         quantity++;
 
         cart[index].quantity = quantity;
+
+        if (quantity >= MAX_QTY) {
+            showToast(`Maximum ${MAX_QTY} per product.`);
+        }
 
         saveCart();
     };
 
 
     /* ---------- DECREASE QUANTITY ---------- */
-
     window.decreaseQuantity = function (index) {
 
         if (!cart[index]) {
             return;
         }
 
-
         let quantity =
             Number(cart[index].quantity) || 1;
-
 
         if (quantity > 1) {
 
@@ -254,16 +240,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         } else {
 
+            // Quantity reaches zero → remove product
             cart.splice(index, 1);
         }
-
 
         saveCart();
     };
 
 
     /* ---------- REMOVE PRODUCT ---------- */
-
     window.removeProduct = function (index) {
 
         if (!cart[index]) {
@@ -278,7 +263,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ---------- SAVE CART ---------- */
-
     function saveCart() {
 
         localStorage.setItem(
@@ -291,7 +275,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* ---------- CHECKOUT ---------- */
-
     if (checkoutBtn) {
 
         checkoutBtn.addEventListener(
@@ -305,7 +288,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 /* Check login */
-
                 if (!loggedInUser) {
 
                     alert(
@@ -320,7 +302,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 /* Check cart */
-
                 if (cart.length === 0) {
 
                     alert(
@@ -332,15 +313,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 /* Go to payment */
-
                 window.location.href =
                     "payment.html";
             }
         );
     }
-
-
-    /* ---------- INITIAL DISPLAY ---------- */
 
     displayCart();
 
