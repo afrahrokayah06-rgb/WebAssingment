@@ -215,9 +215,6 @@ var WEEKS = [
     var textBoxes = cardsWrap.querySelectorAll('.promo-card-text');
     textBoxes.forEach(function (textBox) {
       var p = textBox.querySelector('p');
-      // the default/reverted state is whatever text is actually written
-      // in the <p> in the HTML — not a separate data-short attribute,
-      // so it can never drift out of sync with what's on the page
       var shortText = p.textContent;
       var fullText = textBox.dataset.full;
 
