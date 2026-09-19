@@ -19,6 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const orderSubtotalEl =
         document.getElementById("orderSubtotal");
 
+    const orderTaxEl =
+        document.getElementById("orderTax");
+
     const orderShippingEl =
         document.getElementById("orderShipping");
 
@@ -230,6 +233,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const subtotal =
         Number(order.subtotal) || 0;
 
+    const tax =
+        Number(order.tax) || 0;
+
     const shipping =
         Number(order.shipping) || 0;
 
@@ -242,6 +248,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     orderSubtotalEl.textContent =
         "RM" + subtotal.toFixed(2);
+
+    orderTaxEl.textContent =
+        "RM" + tax.toFixed(2);
 
 
     if (shipping === 0) {

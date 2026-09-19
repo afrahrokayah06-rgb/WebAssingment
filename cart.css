@@ -143,6 +143,13 @@ body {
     margin-top: 30px;
 }
 
+.cart-tax {
+    font-size: 18px;
+    color: var(--cart-text-light);
+    font-weight: 600;
+    font-family: var(--cart-font);
+}
+
 .cart-total {
     font-size: 20px;
     color: var(--cart-text-light);
@@ -188,14 +195,14 @@ body {
     background: var(--cart-gold);
 }
 
-/* ---------- Wishlist toast ---------- */
+/* ---------- Cart toast ---------- */
 .toast {
   position: fixed;
   left: 50%;
   bottom: 32px;
   transform: translate(-50%, 20px);
-  background-color: var(--lip-maroon);
-  color: var(--lip-text-light);
+  background-color: var(--cart-gold);
+  color: var(--cart-text-light);
   padding: 13px 26px;
   border-radius: 30px;
   font-size: 13px;
@@ -211,4 +218,9 @@ body {
 .toast.show {
   opacity: 1;
   transform: translate(-50%, 0);
+}
+
+.quantity button.max-quantity {
+    opacity: 0.4;
+    cursor: not-allowed;
 }
